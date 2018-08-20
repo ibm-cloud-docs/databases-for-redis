@@ -1,0 +1,24 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="databases-for-redis" audience="service" href="/docs/services/databases-for-redis/index.html"}
+Databases For Redis
+
+	{: .navgroup id="learn"}
+	index.md
+
+	{: .topicgroup}
+	The Service Dashboard
+		dashboard-overview.md
+		dashboard-backups.md
+	{: .navgroup-end}
+
+	{: .navgroup id="howto"}
+	{: .topicgroup}
+	Connecting to Databases for Redis
+		connecting-ibmcloud-app.md
+	{: .navgroup-end}
+
+	{: .navgroup id="reference"}
+	reference-security.md
+	{: .navgroup-end}
