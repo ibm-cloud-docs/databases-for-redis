@@ -16,16 +16,16 @@ lastupdated: "2018-08-20"
 
 ## Protection Against Unauthorized Access
 
-IBM Cloud Databases use the following methods to protect data in transit or in storage.
-- All IBM Cloud Databases use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
+{{site.data.keyword.databases-for-redis_full}} use the following methods to protect data in transit or in storage.
+- All {{site.data.keyword.databases-for-redis}} use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
 - Access to the Account, Management Console UI, and API is secured via IAM (Identity & Access Management)
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require a valid set of database-level credentials which are obtainable only through prior access to the database or through our Management Console UI or API.
-- All IBM Cloud Database storage is provided on encrypted volumes using the Linux Unified Keys Setup (LUKS).  
+- All {{site.data.keyword.databases-for-redis}} storage is provided on encrypted volumes that use the Linux Unified Keys Setup (LUKS).  
 
 ## Data Resilience
 
-- Backups are included in the service. Backups reside in the same cloud storage location as the database service itself, and so are also encrypted.
-- All IBM Cloud Databases are configured with replication, so the data exists with multiple copies and each copy resides on a different cluster and host. Where available, those clusters are also spread in different availability zones within the region where the service is deployed.
+- Backups are included in the service. {{site.data.keyword.databases-for-redis}} backups reside in the same cloud storage location as the database service itself, and so are also encrypted.
+- All {{site.data.keyword.databases-for-redis}} are configured with replication, so the data exists with multiple copies and each copy resides on a different cluster and host. Where available, those clusters are also spread in different availability zones within the region where the service is deployed.
 
 ## Terms
 
