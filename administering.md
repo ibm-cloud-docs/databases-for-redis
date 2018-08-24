@@ -13,7 +13,7 @@ lastupdated: "2017-08-24"
 
 # Administering your Redis databases
 
-The {{site.data.keyword.databases-for-redis_full}} service is provisioned with authentication enabled, so you will need a username and password to connect and issue commands.
+The {{site.data.keyword.databases-for-redis_full}} service is provisioned with authentication enabled, so you need a username and password to connect and issue commands.
 
 To get started, you will have to complete the following steps:
 
@@ -42,20 +42,20 @@ curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
 
 For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword).
 
-## Connecting with command-line tools
+## Connecting with command line tools
 
 
 ### Getting the connection string with the API
 
 To retrieve the admin user's connection strings through the API, send a GET request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin`. The JSON response includes the strings to connect to `redli` in "cli" field.
 
-The `redis` connection information table describes the sub-fields of connection information.
+The `redis` connection information table describes the subfields of connection information.
 
 Field Name|Description
 ----------|-----------
 `arguments`|The information that is passed as arguments to the `redis` command,
 `bin`|The package that this information is intended for; in this case `redis`.
-`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. This is base64 encoded. You need to decode the key before using it.
+`certificate`|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
 `composed`|A formatted `rediss` command to establish a connection to your deployment.
 `environment`|`redis` arguments that can be set and pulled from the environment.
 `type`|The type of package that uses this connection information; in this case `cli`. 
@@ -63,7 +63,7 @@ Field Name|Description
 
 ## Connecting with `redli`
 
-`redli` is an open-source Redis-cli application. It mimics the redis-cli command line arguments with support for rediss: protocols and a `--tls` flag. It can connect to TLS/SSL secured Redis without the need for tunnels. You can download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases). 
+`redli` is an open source Redis-cli application. It mimics the redis-cli command line arguments with support for rediss: protocols and a `--tls` flag. It can connect to TLS/SSL secured Redis without the need for tunnels. You can download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases). 
 
 To connect to your Redis databases using `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
 ```
@@ -72,11 +72,11 @@ redli example command here
 For more information, see the [GitHub repo](https://github.com/IBM-Cloud/redli).
 
 
-### Connecting to 'redli' with the CLI plugin
+### Connecting to 'redli' with the CLI plug-in
 
-The {{site.data.keyword.cloud_notm}} CLI cloud databases plugin provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
+The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
 
-You can also connect to `redli` from the cloud databases plugin with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
+You can also connect to `redli` from the cloud databases plug-in with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
 
 ## Using the self-signed certificate
 
@@ -86,9 +86,9 @@ The formatted `redis` command sets the option to verify the server via certifica
 2. Decode the certificate from base64 format to the .pem certificate format.
 3. Provide the path to the certificate to the connection string in the `ROOTCERT` environment variable.
 
-### CLI plugin support for the self-signed certificate
+### CLI plug-in support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plugin with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to the `ROOTCERT` environment variable.
+You can display the decoded certificate for your deployment with the CLI plug-in with the `ibmcloud cdb deployment-cacert "your-service-name" command. Copy and save the command's output to a file and provide the file's path to the `ROOTCERT` environment variable.
 
 ## Connecting with `redis-cli`
 
@@ -104,7 +104,7 @@ To use the `redis-cli` with an encrypted connection set up a utility like `stunn
 
     - The password is the text between the second colon and at-symbol: `PASSWORD`.
     - The host is the text after the @ and up to the next colon: `portal972-7.bmix-lon-yp-38898e17-ff6f-4340-9da8-2ba24c41e6d8.composeci-us-ibm-com.composedb.com`.
-    - The port is the number following that colon: `24370`.
+    - The port is the number that follows the colon: `24370`.
 
 3. Add your configuration information to the `stunnel.conf` file. The configuration includes the following information.
     - A name for a service (`[redis-cli]`)
@@ -128,7 +128,7 @@ To use the `redis-cli` with an encrypted connection set up a utility like `stunn
 
     Type the `stunnel` command at the command line. It immediately runs in the background.
     
-5. In a new Terminal window, run `redis-cli` pointing to the local host and port, and authenticate with the deployment's credentials.
+5. In a new terminal window, run `redis-cli` pointing to the local host and port, and authenticate with the deployment's credentials.
 
     ```shell
     redis-cli -p 6830 -a <password>

@@ -18,8 +18,8 @@ lastupdated: "2018-08-20"
 
 {{site.data.keyword.databases-for-redis_full}} use the following methods to protect data in transit or in storage.
 - All {{site.data.keyword.databases-for-redis}} use TLS/SSL encryption for data in transit. The current supported version of this encryption is TLS 1.2.
-- Access to the Account, Management Console UI, and API is secured via IAM (Identity & Access Management)
-- Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require a valid set of database-level credentials which are obtainable only through prior access to the database or through our Management Console UI or API.
+- Access to the Account, Management Console UI, and API is secured via IAM (Identity and Access Management)
+- Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.databases-for-redis}} storage is provided on encrypted volumes that use the Linux Unified Keys Setup (LUKS).  
 
 ## Data Resilience
@@ -29,7 +29,7 @@ lastupdated: "2018-08-20"
 
 ## Terms
 
-The IBM Privacy Policy: https://www.ibm.com/privacy/us/en/
-The IBM Cloud Notices and Terms of Use: https://console.bluemix.net/docs/overview/terms-of-use/notices.html#notices
+The IBM Privacy Policy - https://www.ibm.com/privacy/us/en/
+The IBM Cloud Notices and Terms of Use - https://console.bluemix.net/docs/overview/terms-of-use/notices.html#notices
 
 
