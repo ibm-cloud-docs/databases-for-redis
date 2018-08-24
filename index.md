@@ -14,7 +14,6 @@ lastupdated: "2018-08-17"
 # About {{site.data.keyword.databases-for-redis_full_notm}}
 {: #about-databases-for-redis}
 
-
 {{site.data.keyword.databases-for-redis_full}} is a managed Redis service hosted in the {{site.data.keyword.cloud_notm}} and integrated with other {{site.data.keyword.cloud_notm}} services. It is alo currently highly-experimental and should not be used for production workloads in its current state.
 
 ## Creating a {{site.data.keyword.databases-for-redis}} service
@@ -34,9 +33,11 @@ ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-re
 
 ## Managing {{site.data.keyword.databases-for-redis}}
 
-{{site.data.keyword.databases-for-redis}} is an IAM integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM integrated services across the {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation.
+{{site.data.keyword.databases-for-redis}} is an Identity and Access Management (IAM) integrated service. Access is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation.
 
-There are a few ways to manage your {{site.data.keyword.databases-for-redis}} deployment:
+More information on IAM roles and actions for the {{site.data.keyword.databases-for-redis}} service is available on the [Access Management](./access-management.html) page.
+
+Once you or another users have access to the service, there are a few ways to manage it.
 
 - You can manage your service by selecting _Manage_ from the left sidebar and opening the management panel from your service. Here you can find information about your {{site.data.keyword.databases-for-redis}} database.  Database settings are available in the [Settings](./dashboard-settings.html) tab and backups are available through the [Backups](./dashboard-backups.html) tab.
 
@@ -44,15 +45,17 @@ There are a few ways to manage your {{site.data.keyword.databases-for-redis}} de
 
 - You can manage your service through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{DomainName}/docs/cli/index.html#overview). Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} Databases plugin available. Download the latest release from it's [release page](https://github.ibm.com/compose/ibmcloud-dbs-plugin/releases), unzip it, and then install using `ibmcloud plugin install ibmcloud-dbs-plugin -f`. Once you have it installed, run `ibmcloud cdb help` for other commands and usage information. 
 
-## Connecting to {{site.data.keyword.databases-for-redis}}
+## Database Administration and Connecting to Redis
+
+Access to the Redis databases is provided by [setting up the admin user](./administering.html) on your {{site.data.keyword.databases-for-postgresql}} service.
 
 You can connect to your deployment using the connection strings and command-line information that are provided upon provision of your service.
 
-## Connecting an {{site.data.keyword.cloud_notm}} application to {{site.data.keyword.databases-for-redis}}
+### Connecting an {{site.data.keyword.cloud_notm}} application to {{site.data.keyword.databases-for-redis}}
 
 To connect an {{site.data.keyword.cloud_notm}} application to your service, use credentials that are created in the _Service Credentials_ panel. You can find information on how to connect an {{site.data.keyword.cloud_notm}} application to a {{site.data.keyword.databases-for-postgresql}} service in [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-ibmcloud-app.html).
 
-## Connecting to {{site.data.keyword.databases-for-redis}} from outside {{site.data.keyword.cloud_notm}}
+### Connecting to {{site.data.keyword.databases-for-redis}} from outside {{site.data.keyword.cloud_notm}}
 
 If you want to connect to {{site.data.keyword.databases-for-redis}} from outside {{site.data.keyword.cloud_notm}}, you can use the provided connection strings or command-line. You can find information on how to connect in [Connecting an external application](./connecting-external.html).
 

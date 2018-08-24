@@ -14,6 +14,9 @@ Databases For Redis
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
+	access-management.md
+	administering.md
+	
 	{: .topicgroup}
 	Connecting to Databases for Redis
 		connecting-ibmcloud-app.md
