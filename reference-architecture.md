@@ -29,16 +29,13 @@ All {{site.data.keyword.databases-for-redis}} services all have encryption at re
 
 ## Portals
 
-{{site.data.keyword.databases-for-redis}} database connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the Redis cluster and provide load-balancing. The portals are then behind the Kubernetes Nodeport Service, which provides the point of connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
+{{site.data.keyword.databases-for-redis}} database connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the Redis cluster and provide load-balancing. The portals are then behind a Kubernetes endpoints, which provides the connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
 
 ### Encryption in Transit
 
 All {{site.data.keyword.databases-for-redis}} HAProxy portals are TLS/SSL enabled and support TLS version 1.2. Self-signed certificates are provided to enable applications to validate the server upon connection.
 
-## Monitoring
-
-Each cluster's monitoring gathers the collected database, container, pod, and cluster metrics. All relevant container and database application monitoring is collected and sent to the IBM Cloud Monitoring Service.
-
 ## Access Management
+
 {{site.data.keyword.databases-for-redis}} is an IAM-integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM integrated services across the {{site.data.keyword.cloud_notm}}. For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation. For details on how IAM affects access to {{site.data.keyword.databases-for-redis}}, see the [Managing Access](./access-management.html) page.
 
