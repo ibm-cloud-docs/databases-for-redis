@@ -31,7 +31,7 @@ Use the `cdb user-password` command to set the admin password with the {{site.da
 
 For example, to set the admin password for a deployment named "example-deployment", use the following command.
 ```
-ibmcloud cdb user-password example-deployment admin <newpassword>
+ibmcloud cdb user-password example-deployment admin <thenewpassword>
 ```
 
 ### Setting the admin password via the API
