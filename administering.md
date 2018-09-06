@@ -25,29 +25,22 @@ To get started, you will have to complete the following steps:
 
 You have to set the admin password before you can use it to connect. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the service dashboard to open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
 
-You can also set the admin user password through the API. Send a `PATCH` request to the `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin` endpoint.
+### Setting the admin password via the command line
 
+Use the `cdb user-password` command to set the admin password with the {{site.data.keyword.cloud_notm}} CLI cloud databases plugin. 
+
+For example, to set the admin password for a deployment named "example-deployment", use the following command.
 ```
-curl -X PATCH "https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin" \
--H "Authorization: Bearer $APITOKEN" \
--H "Content-Type: application/json; charset=utf-8" \
--d \
-  '{
-  "user": 
-    {
-      "password":"lkdfj1ieo4fhhelk5aei2efjdsa"
-    }
-  }'
+ibmcloud cdb user-password example-deployment admin <newpassword>
 ```
+
+### Setting the admin password via the API
+
+The _Foundation Endpoint_ shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it in conjunction with the `/users/admin` endpoint if you need to manage or automate setting the password programmatically.
 
 For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword).
 
 ## Connecting with command line tools
-
-
-### Getting the connection string with the API
-
-To retrieve the admin user's connection strings through the API, send a GET request to `https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users/admin`. The JSON response includes the strings to connect to `redli` in "cli" field.
 
 The `redis` connection information table describes the subfields of connection information.
 
@@ -71,12 +64,11 @@ redli example command here
 ```
 For more information, see the [GitHub repo](https://github.com/IBM-Cloud/redli).
 
-
 ### Connecting to 'redli' with the CLI plug-in
 
-The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud dbs deployment-connections "your-service-name"`.
+The {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in provides the admin user's connection string in URI format with the command: `ibmcloud cdb deployment-connections "your-service-name"`.
 
-You can also connect to `redli` from the cloud databases plug-in with the admin user with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
+You can also connect to `redli` from the cloud databases plug-in with `ibmcloud cdb deployment-connections "your-service-name" -u admin --start`. Enter the admin password when prompted.
 
 ## Using the self-signed certificate
 
