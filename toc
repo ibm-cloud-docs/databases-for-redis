@@ -14,7 +14,6 @@ Databases For Redis
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	access-management.md
 	administering.md
 	
 	{: .topicgroup}
@@ -25,4 +24,5 @@ Databases For Redis
 	{: .navgroup id="reference"}
 	reference-architecture.md
 	reference-security.md
+	reference-access-management.md
 	{: .navgroup-end}
