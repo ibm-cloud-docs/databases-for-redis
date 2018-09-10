@@ -17,12 +17,12 @@ The {{site.data.keyword.databases-for-redis_full}} service is provisioned with a
 
 ## Prerequisites
 
-Before starting, you will have to complete the following steps:
+To get started, complete the following steps:
 
 1. Set the admin user's password
-2. Install a command line client for Redis, `redli` or `redis-cli`.
+2. Install a command line client for Redis; `redli` or `redis-cli`.
 
-It is also recommended that you install the [{{site.data.keyword.cloud_notm}} CLI](https://console.{DomainName}/docs/cli/index.html#overview) and install the [cloud databases plugin](). These both make it easier to access connection information and connect to your Redis deployment.
+It is also recommended that you install the [{{site.data.keyword.cloud_notm}} CLI](https://console.{DomainName}/docs/cli/index.html#overview) and install the [cloud databases plugin](). They make it easier to access connection information and connect to your Redis deployment.
 
 ## Setting the admin password
 
@@ -39,7 +39,7 @@ ibmcloud cdb user-password example-deployment admin <newpassword>
 
 ### Setting the admin password via the API
 
-The _Foundation Endpoint_ shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it in conjunction with the `/users/admin` endpoint if you need to manage or automate setting the password programmatically.
+The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/users/admin` endpoint if you need to manage or automate setting the password programmatically.
 
 For more information, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/apiv4doc-static.html#operation/changeUserPassword).
 
@@ -51,7 +51,7 @@ The `ibmcloud cdb deployment-connections` command handles everything involved in
 ibmcloud cdb deployment-connections NewRedis -start
 ```
 
-The command will prompt for the admin password and then run the `redli` command line client to connect to the database.
+The command prompts for the admin password and then run the `redli` command line client to connect to the database.
 
 ## Getting command line connection information
 
@@ -97,21 +97,21 @@ For more information, see the [GitHub repo](https://github.com/IBM-Cloud/redli).
 The formatted `redis` command sets the option to verify the server via certificate upon connection. To use this feature, you need to complete the following steps.
 
 1. Copy the certificate information from the Base64 field of the connection information. 
-2. Decode the Base64 string into text and save it to a file. (You can use the Name provided or your own filename).
+2. Decode the Base64 string into text and save it to a file. (You can use the Name that is provided or your own filename).
 3. Provide the path to the certificate file to the connection string in the `ROOTCERT` environment variable.
 
 ### CLI plug-in support for the self-signed certificate
 
-You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It will decode the base64 into text. Copy and save the command's output to a file and provide the file's path to the `ROOTCERT` environment variable.
+You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the `ROOTCERT` environment variable.
 
 ## Connecting with `redis-cli`
 
-`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, you can set up a utility like `stunnel`, which wraps the redis-cli connection in TLS encryption. The steps to set up [stunnel](https://www.stunnel.org/index.html) are:
+`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, you can set up a utility like `stunnel`, which wraps the `redis-cli` connection in TLS encryption. The steps to set up [stunnel](https://www.stunnel.org/index.html) are:
 
 1. Install `stunnel`. Use your package manager for Linux, Homebrew for Mac, or [download](https://www.stunnel.org/downloads.html) the appropriate package for your platform.
 
 2. Grab connection information.
-   To set up a connection, stunnel will need the the host, the port, and the certificate of your Redis deployment. Host and port are both available from the CLI "composed" connection string, but they can also be found parsed out in the [table of connection information](./connecting-external.html) provided for connecting external applications and drivers.
+   To set up a connection, `stunnel` needs the host, the port, and the certificate of your Redis deployment. Host and port are both available from the CLI "composed" connection string. They can also be found parsed out in the [table of connection information](./connecting-external.html) that is provided for connecting external applications and drivers.
 
    The certificate is in the  "Base 64" field of the connection information. [Copy, decode, and save](#using-the-self-signed-certificate) the certificate to a file.
 
