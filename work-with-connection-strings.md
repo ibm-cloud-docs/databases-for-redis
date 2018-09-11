@@ -14,17 +14,17 @@ lastupdated: "2018-09-10"
 
 # Getting your Connection Strings
 
-The {{site.data.keyword.databases-for-redis_full}} service is provisioned with authentication enabled. You will need a username and password to connect and issue commands. The username for Redis is always "admin".
+The {{site.data.keyword.databases-for-redis_full}} service is provisioned with authentication enabled. You need a username and password to connect and issue commands. The username for Redis is always "admin".
 
-Before connecting to the database, you have to set the admin password. For more information, see the [Setting the Admin Password](./admin-password.html) page.
+You have to set the admin password before connecting to the database For more information, see the [Setting the Admin Password](./admin-password.html) page.
 {: .tip}
 
-The simplest way to retrieve connection information is from the [cloud databases plugin](./working-cli.html#the-cloud-databases-plugin). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for your deployment. For example, to retrieve a connection string for a deployment named  "NewRedis", use the following command.
+The simplest way to retrieve connection information is from the [cloud databases plug-in](./working-cli.html#the-cloud-databases-plugin). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for your deployment. For example, to retrieve a connection string for a deployment named  "NewRedis", use the following command.
 
 ```
 ibmcloud cdb deployment-connections NewRedis
 ```
-or
+Or
 ```
 ibmcloud cdb cxn NewRedis
 ```
@@ -43,27 +43,27 @@ The information in Table 1 is also available as JSON from the cloud databases AP
 
 ## Connection String Breakdown
 
-There are two sections to the connection information, Redis and CLI.
-
 ### The Redis Section
 
-This section contains information suited to applications making connections to Redis.
+The "Redis" section contains information suited to applications making connections to Redis.
 
 Field Name|Index|Description
 ----------|-----|-----------
-`Type`||Type of connection - for Redis, this is "uri"
-`Scheme`||Scheme for a URI - for Redis, this is "rediss"
-`Path`||Path for a URI - for Redis, this is the database number
+`Type`||Type of connection - for Redis, it is "URI"
+`Scheme`||Scheme for a URI - for Redis, it is "rediss"
+`Path`||Path for a URI - for Redis, it is the database number
 `Authentication`|`Username`|A username that should be used when connecting.
-`Authentication`|`Password`|A password for the user - may be shown as `$PASSWORD`
-`Authentication`|`Method`|How authentication should take place; "direct" authentication is handled by the driver.
+`Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
+`Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver.
 `Hosts`|`0...`|A hostname and port to connect to
-`Composed`|`0...`|A URI combining Scheme, Authentication, Host and Path
-`Certificate`|`Name`|The allocated name for the self-signed certificate for database deplpyment
+`Composed`|`0...`|A URI combining Scheme, Authentication, Host, and Path
+`Certificate`|`Name`|The allocated name for the self-signed certificate for database deployment
 `Certificate`|Base64|A base64 encoded version of the certificate.
-{: caption="Table 1. `redis`/`uri` connection information" caption-side="top"}
+{: caption="Table 1. `redis`/`URI` connection information" caption-side="top"}
 
 ### The CLI Section
+
+The "CLI" section contains information suited for command-line clients making connections to Redis.
 
 Field Name|Index|Description
 ----------|-----|-----------
@@ -79,7 +79,7 @@ Field Name|Index|Description
 ## Using the self-signed certificate
 
 1. Copy the certificate information from the Base64 field of the connection information. 
-2. Decode the Base64 string into text and save it to a file. (You can use the Name that is provided or your own filename).
+2. Decode the Base64 string into text and save it to a file. (You can use the Name that is provided or your own file name).
 
 ### CLI plug-in support for the self-signed certificate
 

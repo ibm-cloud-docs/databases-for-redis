@@ -24,33 +24,33 @@ You can access your Redis database directly from a command line client. Descript
 
 ## Installing `redis-cli`
  
-`redis-cli` is the official supported command line interface for Redis, unfortunately it does not support TLS connections. If you choose to use it, there are some extra configuration steps. It comes as part of the Redis package, so you will need to have Redis installed locally to use it. On Mac OS X we recommend installing [brew](http://brew.sh) and then using `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest build or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
+`redis-cli` is the official supported command line interface for Redis. Unfortunately, it does not support TLS connections. If you choose to use it, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On Mac OS X, we recommend installing [brew](http://brew.sh) and then using `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest build or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
 
 ## Admin Connection Strings
 
-{{site.data.keyword.databases-for-redis_full}} provides connection strings specifically for CLI clients containing all the relevant pieces of connection information. You can get the admin connection strings by following the steps in the [Getting your Connection Strings](./working-connection-strings) page. 
+{{site.data.keyword.databases-for-redis_full}} provides connection strings specifically for CLI clients. They contain all the relevant pieces of connection information. You can get the admin connection strings by following the steps in the [Getting your Connection Strings](./working-connection-strings) page. 
 
 Also available is a [table](./working-connection-strings#the-cli-section) with a breakdown of all the CLI connection information.
 
-Before connecting to the database, you have to set the admin password. For more information, see the [Setting the Admin Password](./admin-password.html) page.
+You have to set the admin password before connecting to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
 {: .tip}
 
 ## Connecting with `redli`
 
-The `ibmcloud cdb deployment-connections` command handles everything involved in creating the client connection. For example, to connect to a deployment named  "NewRedis", use the following command.
+The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named  "NewRedis", use the following command.
 
 ```
 ibmcloud cdb deployment-connections NewRedis -start
 ```
-or
+Or
 ```
 ibmcloud cdb cxn NewRedis -s
 ```
 
-The command prompts for the admin password and then run the `redli` command line client to connect to the database.
+The command prompts for the admin password and then runs the `redli` command line client to connect to the database.
 
 
-If you have not installed the cloud databases plugin, connect to your Redis databases using `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
+If you have not installed the cloud databases plug-in, connect to your Redis databases using `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
 ```
 redli example command here
 ```
@@ -58,7 +58,9 @@ For more information, see the [GitHub repo](https://github.com/IBM-Cloud/redli).
 
 ## Connecting with `redis-cli`
 
-`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, you can set up a utility like `stunnel`, which wraps the `redis-cli` connection in TLS encryption. The steps to set up [stunnel](https://www.stunnel.org/index.html) are:
+`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, you can set up a utility like [`stunnel`](https://www.stunnel.org/index.html), which wraps the `redis-cli` connection in TLS encryption.
+
+### Setting up `stunnel`
 
 1. Install `stunnel`. Use your package manager for Linux, Homebrew for Mac, or [download](https://www.stunnel.org/downloads.html) the appropriate package for your platform.
 
