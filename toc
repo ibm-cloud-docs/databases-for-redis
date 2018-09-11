@@ -21,13 +21,12 @@ Databases For Redis
 	
 	{: .topicgroup}
 	Work with your Database
-		working-cli.md
-		working-api.md
+		work-with-connection-strings.md
+		work-with-cli.md
 
 	{: .topicgroup}
 	Connect an Application to your Database
 		connecting-ibmcloud-app.md
-		connecting-external.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
