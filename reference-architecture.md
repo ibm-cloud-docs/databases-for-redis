@@ -17,7 +17,7 @@ lastupdated: "2018-08-21"
 
 ## Redis Databases
 
-An {{site.data.keyword.databases-for-redis}} service contains a cluster with two data members; a leader and a follower member. Data is replicated across both data members, and their disk space is spread over the region's availability zones. High-availability is managed with [Redis Sentinel](https://redis.io/topics/sentinel) If one data member becomes unreachable, your cluster continues to operate normally.
+An {{site.data.keyword.databases-for-redis}} service contains a cluster with three members. The cluster is spread over the region's availability zones. High-availability is managed with [Redis Sentinel](https://redis.io/topics/sentinel). Two members run the redis process and hold data. All three run the redis sentinel process to monitor state. If one data member becomes unreachable, your cluster continues to operate normally.
 
 ### Storage
 
@@ -29,7 +29,7 @@ All {{site.data.keyword.databases-for-redis}} services all have encryption at re
 
 ## Portals
 
-{{site.data.keyword.databases-for-redis}} connections are managed by 2 HAProxy portals. They automatically connect to the leader member of the Redis cluster and provide load-balancing. The portals are then behind a Kubernetes endpoint, which provides the connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
+{{site.data.keyword.databases-for-redis}} connections are managed by 2 HAProxy portals. The portals are then behind a Kubernetes endpoint, which provides the connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
 
 ### Encryption in Transit
 

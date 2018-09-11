@@ -21,7 +21,7 @@ The {{site.data.keyword.cloud_notm}} CLI is a general-purpose developer tool tha
 
 An introduction and installation instructions are available on the [{{site.data.keyword.cloud_notm}} CLI Overview](https://console.{DomainName}/docs/cli/index.html#overview) page. If you install the CLI from the cURL command that is provided, you get a selection of extra plug-ins and extensions for multiple IDEs.
 
-You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI]https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#install_use page. 
+You can install just the stand-alone package from the [Installing the stand-alone IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#install_use) page. 
 
 ## The cloud databases plug-in
 
