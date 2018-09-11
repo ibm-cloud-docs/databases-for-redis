@@ -21,7 +21,7 @@ An {{site.data.keyword.databases-for-redis}} service contains a cluster with two
 
 ### Storage
 
-All storage for {{site.data.keyword.cloud_notm}} Databases is provided on {{site.data.keyword.cloud_notm}} Object Storage. Storage for {{site.data.keyword.databases-for-redis}} is auto-scaled to the size of your data on disk.
+All storage for {{site.data.keyword.cloud_notm}} Databases is provided on {{site.data.keyword.cloud_notm}} Block Storage. Storage for {{site.data.keyword.databases-for-redis}} is auto-scaled to the size of your data on disk.
 
 ### Full-disk Encryption
 
