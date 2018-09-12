@@ -10,7 +10,7 @@ This repo contains the documentation for the IBM Cloud Databases for Redis servi
 
 The output from these docs is available on the IBM Cloud staging server: 
 
-- [About IBM Cloud Databases for Redis](https://console.stage1.bluemix.net/docs/services/databases-for-postgresql/index.html#about-databases-for-redis)
+- [About IBM Cloud Databases for Redis](https://console.stage1.bluemix.net/docs/services/databases-for-redis/index.html#about-databases-for-redis)
 
 ## Resources
 
