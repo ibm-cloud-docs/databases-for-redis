@@ -22,11 +22,11 @@ The _Deployment Details_ panel shows details of your service.
 
 ### Type
 
-The type of database that is offered by the service, and the database version that your service uses.
+The type of database that is offered by the service, and the database version that your service uses. In this case, it is `redis`.
 
 ### ID
 
-An internal identifier for the service.
+A [CRN (Cloud Resource Name)](https://console.bluemix.net/docs/overview/crn.html) which uniquely identified the database deployment. The CRN is used when referring to the database in the API and can be used with the CLI.
 
 ## Recent Tasks
 

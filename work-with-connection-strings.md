@@ -61,6 +61,8 @@ Field Name|Index|Description
 `Certificate`|Base64|A base64 encoded version of the certificate.
 {: caption="Table 1. `redis`/`URI` connection information" caption-side="top"}
 
+* `0...` indicates there may be one or more of these entries in an array.
+
 ### The CLI Section
 
 The "CLI" section contains information suited for command-line clients making connections to Redis.
@@ -69,12 +71,14 @@ Field Name|Index|Description
 ----------|-----|-----------
 `Bin`||The recommended binary to create a connection; in this case it is `redli`.
 `Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings and uses `Arguments` as command line parameters.
-`Environment`||`redli` arguments that can be set and pulled from the environment.
+`Environment`||A list of key/values that should be set as environment variables.
 `Arguments`|0...|The information that is passed as arguments to the command shown in the Bin field.
 `Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
 `Certificate`|Name|The allocated name for the self-signed certificate.
 `Type`||The type of package that uses this connection information; in this case `cli`. 
-{: caption="Table 1. `cli` connection information for Redis" caption-side="top"}
+{: caption="Table 1. `redis`/`cli` connection information" caption-side="top"}
+
+* `0...` indicates there may be one or more of these entries in an array.
 
 ## Using the self-signed certificate
 
