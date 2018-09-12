@@ -19,6 +19,10 @@ lastupdated: "2018-08-21"
 
 An {{site.data.keyword.databases-for-redis}} service contains a cluster with three members. The cluster is spread over the region's availability zones. High-availability is managed with [Redis Sentinel](https://redis.io/topics/sentinel). Two members run the redis process and hold data. All three run the redis sentinel process to monitor state. If one data member becomes unreachable, your cluster continues to operate normally.
 
+### Configuration
+
+By default, the {{site.data.keyword.databases-for-redis}} service is configured with a "noeviction" policy and a max memory usage of 80% of available memory.
+
 ### Storage
 
 All storage for {{site.data.keyword.databases-for-redis}} is provided on {{site.data.keyword.cloud_notm}} Block Storage.
