@@ -16,7 +16,7 @@ lastupdated: "2018-09-10"
 
 The {{site.data.keyword.databases-for-redis_full}} service is provisioned with authentication enabled. You need a username and password to connect and issue commands. The username for Redis is always "admin".
 
-You have to set the admin password before connecting to the database For more information, see the [Setting the Admin Password](./admin-password.html) page.
+You have to set the admin password before you connect to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
 {: .tip}
 
 The simplest way to retrieve connection information is from the [cloud databases plug-in](./working-cli.html#the-cloud-databases-plugin). Use the `ibmcloud cdb deployment-connections` command to display a formatted connection URI for your deployment. For example, to retrieve a connection string for a deployment named  "NewRedis", use the following command.
@@ -45,14 +45,14 @@ The information in Table 1 is also available as JSON from the cloud databases AP
 
 ### The Redis Section
 
-The "Redis" section contains information suited to applications making connections to Redis.
+The "Redis" section contains information that is suited to applications making connections to Redis.
 
 Field Name|Index|Description
 ----------|-----|-----------
 `Type`||Type of connection - for Redis, it is "URI"
 `Scheme`||Scheme for a URI - for Redis, it is "rediss"
 `Path`||Path for a URI - for Redis, it is the database number
-`Authentication`|`Username`|A username that should be used when connecting.
+`Authentication`|`Username`|The username that you use to connect.
 `Authentication`|`Password`|A password for the user - might be shown as `$PASSWORD`
 `Authentication`|`Method`|How authentication takes place; "direct" authentication is handled by the driver.
 `Hosts`|`0...`|A hostname and port to connect to
@@ -61,24 +61,24 @@ Field Name|Index|Description
 `Certificate`|Base64|A base64 encoded version of the certificate.
 {: caption="Table 1. `redis`/`URI` connection information" caption-side="top"}
 
-* `0...` indicates there may be one or more of these entries in an array.
+* `0...` indicates that there might be one or more of these entries in an array.
 
 ### The CLI Section
 
-The "CLI" section contains information suited for command-line clients making connections to Redis.
+The "CLI" section contains information that is suited for command-line clients making connections to Redis.
 
 Field Name|Index|Description
 ----------|-----|-----------
 `Bin`||The recommended binary to create a connection; in this case it is `redli`.
 `Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings and uses `Arguments` as command line parameters.
-`Environment`||A list of key/values that should be set as environment variables.
+`Environment`||A list of key/values you set as environment variables.
 `Arguments`|0...|The information that is passed as arguments to the command shown in the Bin field.
 `Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
 `Certificate`|Name|The allocated name for the self-signed certificate.
 `Type`||The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 1. `redis`/`cli` connection information" caption-side="top"}
 
-* `0...` indicates there may be one or more of these entries in an array.
+* `0...` indicates that there might be one or more of these entries in an array.
 
 ## Using the self-signed certificate
 

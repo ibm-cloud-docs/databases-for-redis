@@ -43,17 +43,17 @@ You can manage your service by selecting _Manage_ from the left sidebar and open
 
 ### Using the CLI
 
-You can manage your service through the {{site.data.keyword.cloud_notm}} CLI. If you haven't already downloaded and installed it, get it [here](https://console.{DomainName}/docs/cli/index.html#overview). 
+You can manage your service through the {{site.data.keyword.cloud_notm}} CLI. If you need to downloaded and install it, get it [here](https://console.{DomainName}/docs/cli/index.html#overview). 
 
-Once you have the {{site.data.keyword.cloud_notm}} CLI, there is an {{site.data.keyword.cloud_notm}} databases plug-in available. Install it with the command `ibmcloud plugin install cloud-databases`.
+Once you have the {{site.data.keyword.cloud_notm}} CLI, get the {{site.data.keyword.cloud_notm}} databases plug-in. Install it with the command `ibmcloud plugin install cloud-databases`.
 
-If not available, add the IBM staging repository for plugins with `ibmcloud plugin repo-add stage1 https://plugins.stage1.ng.bluemix.net/` and then install the plugin with `ibmcloud plugin install cloud-databases -r stage1`.
+If not available, add the IBM staging repository for plug-ins with `ibmcloud plugin repo-add stage1 https://plugins.stage1.ng.bluemix.net/` and then install the plug-in with `ibmcloud plugin install cloud-databases -r stage1`.
 
 Once you have it installed, run `ibmcloud cdb help` for other commands and usage information. 
 
 ### Using the API
 
-{{site.data.keyword.databases-for-redis}} can be configured and managed with the {{site.data.keyword.cloud_notm}} databases API. Authentication is IAM-based, so use your {{site.data.keyword.cloud_notm}} account's platform API keys when accessing the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the _Overview_ page when you open the _Manage_ panel of your service. *The full API reference is available on [GitHub](https://pages.github.ibm.com/compose/apidocs/).*
+{{site.data.keyword.databases-for-redis}} can be configured and managed with the {{site.data.keyword.cloud_notm}} databases API. Authentication is IAM-based, and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://console.{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the _Overview_ page when you open the _Manage_ panel of your service. *The full API reference is available on [GitHub](https://pages.github.ibm.com/compose/apidocs/).*
 
 ## Database Administration and Connecting to Redis
 
