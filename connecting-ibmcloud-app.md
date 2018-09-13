@@ -14,7 +14,7 @@ lastupdated: "2018-08-15"
 
 # Connecting an {{site.data.keyword.cloud_notm}} application
 
-Applications running in {{site.data.keyword.cloud_notm}}  have can be bound to your {{site.data.keyword.databases-for-redis_full}} service. 
+Applications running in {{site.data.keyword.cloud_notm}} can be bound to your {{site.data.keyword.databases-for-redis_full}} service. 
 
 {{site.data.keyword.cloud_notm}} uses a manifest file - `manifest.yml` to associate an application with a service. Follow these steps to create your manifest file.
 - In an editor, open a new file and add the text:

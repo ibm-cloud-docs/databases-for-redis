@@ -47,3 +47,4 @@ Many calls to the API require that the database deployment be identified. The da
 ### {{site.data.keyword.cloud_notm}} databases API Reference
 
 For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference page](https://console.stage1.bluemix.net/apidocs/cloud-databases-api).
+
