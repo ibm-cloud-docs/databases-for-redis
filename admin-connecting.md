@@ -14,25 +14,26 @@ lastupdated: "2018-09-10"
 
 # Connecting as an Admin
 
-**This doc is a WIP**
-
-You can access your Redis database directly from a command line client. Description of why you might want to do this. What sorts of things would you do on the database? Testing? query performance?, etc.
-
-## Installing `redli`
-
-`redli` is an open source Redis-cli application. It mimics the redis-cli command line arguments with support for rediss: protocols and a `--tls` flag. It can connect to TLS/SSL secured Redis without the need for tunnels. You can download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases). 
+You can access your Redis database directly from a command line client. It allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
 
 ## Installing `redis-cli`
  
-`redis-cli` is the official supported command line interface for Redis. Unfortunately, it does not support TLS connections. If you choose to use it, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On Mac OS X, we recommend installing [brew](http://brew.sh) and then using `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest build or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
+`redis-cli` is the official supported command line interface for Redis. Unfortunately, it does not support TLS connections. For that reason, we suggest you consider `redli` as a client (see the next section).
+
+If you do choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, we recommend installing [brew](http://brew.sh) and then using `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
+
+## Installing `redli`
+
+`redli` is an open source Redis command line client. It is stand-alone, mimics the redis-cli command line arguments, and adds support for TLS/SSL redis connections. It recognizes the rediss: protocol in URIs and  supports a `--tls` flag for non-URI connections. It can connect to TLS/SSL secured Redis without the need for tunnels. You can download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases). 
+
 
 ## Admin Connection Strings
 
 {{site.data.keyword.databases-for-redis_full}} provides connection strings specifically for CLI clients. They contain all the relevant pieces of connection information. You can get the admin connection strings by following the steps in the [Getting your Connection Strings](./working-connection-strings) page. 
 
-Also available is a [table](./working-connection-strings#the-cli-section) with a breakdown of all the CLI connection information.
+A [table](./working-connection-strings#the-cli-section) with a breakdown of all the CLI connection information is also available.
 
-You have to set the admin password before connecting to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
+You have to set the admin password before you connect to the database. For more information, see the [Setting the Admin Password](./admin-password.html) page.
 {: .tip}
 
 ## Connecting with `redli`
@@ -51,9 +52,11 @@ The command prompts for the admin password and then runs the `redli` command lin
 
 
 If you have not installed the cloud databases plug-in, connect to your Redis databases using `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
+
 ```
-redli example command here
+redli -u
 ```
+
 For more information, see the [GitHub repo](https://github.com/IBM-Cloud/redli).
 
 ## Connecting with `redis-cli`

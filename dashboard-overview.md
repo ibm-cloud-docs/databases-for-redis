@@ -22,11 +22,11 @@ The _Deployment Details_ panel shows details of your service.
 
 ### Type
 
-The type of database that is offered by the service, and the database version that your service uses.
+The type of database that is offered by the service, and the database version that your service uses. In this case, it is `redis`.
 
 ### ID
 
-An internal identifier for the service.
+The ID is a [CRN (Cloud Resource Name)](https://console.bluemix.net/docs/overview/crn.html) which uniquely identifies the database deployment. The CRN is used to refer to the database in the API and can be used with the CLI.
 
 ## Recent Tasks
 
@@ -34,16 +34,17 @@ Every time that you make administrative changes to your service (such as scaling
 
 ## Instance Administration API
 
-You can manage your {{site.data.keyword.databases-for-redis}} service through the {{site.data.keyword.cloud_notm}} databases API.
+You can manage your {{site.data.keyword.databases-for-redis}} service through the {{site.data.keyword.cloud_notm}} databases API. This panel provides the essential information for any user wanting to use of this capability.
 
 ### Foundation Endpoint
 
-The foundation endpoint is composed of the region your service resides in and the base {{site.data.keyword.cloud_notm}} databases API endpoint. 
+The foundation endpoint is the opening stanza of the URL to be used to send API requests to. It combines the region that your service resides in and the base {{site.data.keyword.cloud_notm}} databases API endpoint. 
 
 ### Deployment ID
 
-The deployment ID is necessary for most calls, and identifies the specific deployment instance.
+Many API calls require the ID of the database deployment. The database deployment's ID/CRN shown here is the same as the ID/CRN shown in the Deployment Details, in a click-to-copy field to make it simpler to use. Note that this ID needs to be URL encoded to be used in an API call because it includes a "/".
 
 ### {{site.data.keyword.cloud_notm}} databases API Reference
 
-For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference page](https://pages.github.ibm.com/compose/apidocs/).
+For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://console.stage1.bluemix.net/apidocs/cloud-databases-api) page.
+

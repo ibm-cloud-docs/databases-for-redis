@@ -36,7 +36,7 @@ ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-re
 A pre-formatted command for a specific backup is available in detailed view of the backup on the _Backups_ tab of the service dashboard.
 {: .tip}
 
-## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI cloud databases plugin
+## Managing Backups via the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
 
 Use the `cdb deployment-backups-list` command to view the list of all available backups for your deployment. To get the details about a specific backup, use `cdb backup-show` command.
 
@@ -60,7 +60,7 @@ The response has the backup `ID`, the `Deployment ID`, `Type`, `Created At`, `St
 
 ## Managing Backups via the {{site.data.keyword.cloud_notm}} databases API
 
-The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it in conjunction with the `/backups` endpoint if you need to manage or automate backups programmatically.
+The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/backups` endpoint if you need to manage or automate backups programmatically.
 
 For more information and examples, see the [API Reference](https://pages.github.ibm.com/compose/apidocs/cloud-databases-api-static.html#tag/Backups).
 

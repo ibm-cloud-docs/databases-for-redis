@@ -19,6 +19,10 @@ lastupdated: "2018-08-21"
 
 An {{site.data.keyword.databases-for-redis}} service contains a cluster with three members. The cluster is spread over the region's availability zones. High-availability is managed with [Redis Sentinel](https://redis.io/topics/sentinel). Two members run the redis process and hold data. All three run the redis sentinel process to monitor state. If one data member becomes unreachable, your cluster continues to operate normally.
 
+### Configuration
+
+By default, the {{site.data.keyword.databases-for-redis}} service is configured with a "noeviction" policy and a max memory usage of 80% of available memory.
+
 ### Storage
 
 All storage for {{site.data.keyword.databases-for-redis}} is provided on {{site.data.keyword.cloud_notm}} Block Storage.
@@ -29,7 +33,7 @@ All {{site.data.keyword.databases-for-redis}} services all have encryption at re
 
 ## Portals
 
-{{site.data.keyword.databases-for-redis}} connections are managed by 2 HAProxy portals. The portals are then behind a Kubernetes endpoint, which provides the connection for your applications. Having two portals allows for applications to maintain connectivity if one of the portals becomes unreachable.
+{{site.data.keyword.databases-for-redis}} connections are managed by 2 HAProxy portals. The portals are then placed behind a Kubernetes endpoint. This endpoint provides the connection for your applications. Having two portals behind it allows for applications to maintain connectivity if one of the portals becomes unreachable.
 
 ### Encryption in Transit
 
