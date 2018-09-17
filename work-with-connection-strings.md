@@ -37,9 +37,18 @@ ibmcloud cdb deployment-connections NewRedis --all
 
 ## Other ways of accessing the connection strings
 
-It is possible to make the admin connection information available the in _Service Credentials_ panel. The resulting "CLI" JSON object contains the same fields as Table 1. For more information, see the [Connecting an External Application](./connecting-external.html) page
+It is possible to make the admin connection information available the in _Service Credentials_ panel. 
+1. Navigate to the service dashboard for your service.
+2. Click _Service Credentials_ to open the _Service Credentials_ panel.
+3. Click **New Credential**.
+4. Choose a descriptive name for the credential, if wanted. 
+5. Click **Add**.
 
-The information in Table 1 is also available as JSON from the cloud databases API. The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/users/admin` endpoint to retrieve the admin connection strings. For more information, see the [API Reference]().
+NOTE: Redis does not support multiple users. Adding more service credentials does not give you more users. It just re-uses the admin credential.
+
+The admin credentials appear in the table, and the connection strings are available as JSON in in a click-to-copy field under _View Credentials_. The JSON object contains the same fields as Table 1 and Table 2. 
+
+Connection information also available as JSON from the cloud databases API. The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/users/admin` endpoint to retrieve the admin connection strings. For more information, see the [API Reference]().
 
 ## Connection String Breakdown
 

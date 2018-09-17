@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-09-14"
 ---
 
 {:new_window: target="_blank"}
@@ -17,7 +17,7 @@ lastupdated: "2018-08-21"
 
 ## Redis Databases
 
-An {{site.data.keyword.databases-for-redis}} service contains a cluster with three members. The cluster is spread over the region's availability zones. High-availability is managed with [Redis Sentinel](https://redis.io/topics/sentinel). Two members run the redis process and hold data. All three run the redis sentinel process to monitor state. If one data member becomes unreachable, your cluster continues to operate normally.
+An {{site.data.keyword.databases-for-redis}} service contains a cluster with two data members in a master/replica configuration. The cluster is spread over the region's availability zones. High-availability is managed with a quorum of three Redis sentinels. If one data member becomes unreachable, your cluster continues to operate normally.
 
 ### Configuration
 
@@ -25,11 +25,11 @@ By default, the {{site.data.keyword.databases-for-redis}} service is configured 
 
 ### Storage
 
-All storage for {{site.data.keyword.databases-for-redis}} is provided on {{site.data.keyword.cloud_notm}} Block Storage.
+All backup storage for {{site.data.keyword.databases-for-redis}} is provided on {{site.data.keyword.cloud_notm}} Object Storage. 
 
 ### Full-disk Encryption
 
-All {{site.data.keyword.databases-for-redis}} services all have encryption at rest. Your data resides on servers that have volume-level encryption enabled.
+All {{site.data.keyword.databases-for-redis}} services all have encryption at rest. Your backups reside on servers that have volume-level encryption enabled.
 
 ## Portals
 

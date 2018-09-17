@@ -14,7 +14,7 @@ lastupdated: "2018-09-10"
 
 # Connecting as an Admin
 
-You can access your Redis database directly from a command line client. It allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
+You can access your Redis database directly from a command line client. A command line client allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
 
 ## Installing `redis-cli`
  
@@ -25,7 +25,6 @@ If you do choose to use `redis-cli`, there are some extra configuration steps. I
 ## Installing `redli`
 
 `redli` is an open source Redis command line client. It is stand-alone, mimics the redis-cli command line arguments, and adds support for TLS/SSL redis connections. It recognizes the rediss: protocol in URIs and  supports a `--tls` flag for non-URI connections. It can connect to TLS/SSL secured Redis without the need for tunnels. You can download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases). 
-
 
 ## Admin Connection Strings
 
