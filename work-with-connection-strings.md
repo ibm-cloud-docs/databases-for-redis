@@ -44,9 +44,10 @@ It is possible to make the admin connection information available the in _Servic
 4. Choose a descriptive name for the credential, if wanted. 
 5. Click **Add**.
 
-NOTE: Redis does not support multiple users. Adding more service credentials does not give you more users. It just re-uses the admin credential.
+Redis does not support multiple users. Adding more service credentials does not give you more users. It just reuses the admin credential.
+{: .tip}
 
-The admin credentials appear in the table, and the connection strings are available as JSON in in a click-to-copy field under _View Credentials_. The JSON object contains the same fields as Table 1 and Table 2. 
+The admin credentials appear in the table, and the connection strings are available as JSON in a click-to-copy field under _View Credentials_. The JSON object contains the same fields as Table 1 and Table 2. 
 
 Connection information also available as JSON from the cloud databases API. The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/users/admin` endpoint to retrieve the admin connection strings. For more information, see the [API Reference]().
 
@@ -54,7 +55,7 @@ Connection information also available as JSON from the cloud databases API. The 
 
 ### The Redis Section
 
-The "Redis" section contains information that is suited to applications making connections to Redis.
+The "Redis" section contains information that is suited for applications that make connections to Redis.
 
 Field Name|Index|Description
 ----------|-----|-----------
@@ -74,7 +75,7 @@ Field Name|Index|Description
 
 ### The CLI Section
 
-The "CLI" section contains information that is suited for command-line clients making connections to Redis.
+The "CLI" section contains information that is suited for command-line clients that make connections to Redis.
 
 Field Name|Index|Description
 ----------|-----|-----------

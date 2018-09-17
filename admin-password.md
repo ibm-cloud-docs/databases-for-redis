@@ -13,7 +13,7 @@ lastupdated: "2018-09-10"
 
 # Setting the Admin Password
 
-The {{site.data.keyword.databases-for-redis_full}} service is provisioned with authentication enabled. You will need a username and password to connect and issue commands. The username for Redis is always "admin". 
+The {{site.data.keyword.databases-for-redis_full}} service is provisioned with authentication enabled. You need a username and password to connect and issue commands. The username for Redis is always "admin". 
 
 You have to set the admin password before you can use it to connect. To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select _Manage_ from the service dashboard to open the management panel for your service. Open the _Settings_ tab, and use the _Change Password_ panel to set a new admin password.
 

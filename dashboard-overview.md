@@ -34,7 +34,7 @@ Every time that you make administrative changes to your service (such as scaling
 
 ## Instance Administration API
 
-You can manage your {{site.data.keyword.databases-for-redis}} service through the {{site.data.keyword.cloud_notm}} databases API. This panel provides the essential information for any user wanting to use of this capability.
+You can manage your {{site.data.keyword.databases-for-redis}} service through the {{site.data.keyword.cloud_notm}} databases API. This panel provides the essential information for using the API.
 
 ### Foundation Endpoint
 
@@ -42,9 +42,9 @@ The foundation endpoint is the opening stanza of the URL to be used to send API 
 
 ### Deployment ID
 
-Many API calls require the ID of the database deployment. The database deployment's ID/CRN shown here is the same as the ID/CRN shown in the Deployment Details, in a click-to-copy field to make it simpler to use. Note that this ID needs to be URL encoded to be used in an API call because it includes a "/".
+Many API calls require the ID of the database deployment. The database deployment's ID/CRN shown here is the same as the ID/CRN shown in the Deployment Details, in a click-to-copy field to make it simpler to use. The ID needs to be URL encoded to be used in an API call because it includes a "/".
 
 ### {{site.data.keyword.cloud_notm}} databases API Reference
 
-For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://console.stage1.bluemix.net/apidocs/cloud-databases-api) page.
+For more information on using the {{site.data.keyword.cloud_notm}} databases API, see the [API reference](https://console.{DomainName}/apidocs/cloud-databases-api) page.
 
