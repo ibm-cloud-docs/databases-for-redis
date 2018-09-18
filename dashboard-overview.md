@@ -42,7 +42,7 @@ The foundation endpoint is the opening stanza of the URL to be used to send API 
 
 ### Deployment ID
 
-Many API calls require the ID of the database deployment. The database deployment's ID/CRN shown here is the same as the ID/CRN shown in the Deployment Details, in a click-to-copy field to make it simpler to use. The ID needs to be URL encoded to be used in an API call because it includes a "/".
+Many API calls require the ID of the database deployment. The database deployment's ID/CRN shown here is the same as the ID/CRN shown in the Deployment Details, in a click-to-copy field to make it simpler to use. The ID needs to be URL encoded to be used in an API call because the CRN includes a "/".
 
 ### {{site.data.keyword.cloud_notm}} databases API Reference
 
