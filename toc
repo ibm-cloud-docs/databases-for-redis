@@ -6,6 +6,7 @@ Databases For Redis
 
 	{: .navgroup id="learn"}
 	index.md
+	getting-started.md
 
 	{: .topicgroup}
 	The Service Dashboard
@@ -27,10 +28,11 @@ Databases For Redis
 	{: .topicgroup}
 	Connect an Application to your Database
 		connecting-ibmcloud-app.md
+		connecting-external.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
 	reference-architecture.md
 	reference-security.md
 	reference-access-management.md
-	{: .navgroup-end}
+	{: .navgroup-end}`
