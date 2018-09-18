@@ -16,11 +16,6 @@ lastupdated: "2018-07-31"
 This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-redis-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-redis_full}} service. The application creates, reads from, and writes to a database that uses data supplied through the app's web interface.
 {: shortdesc}
 
-
-# clouddatabases-redis-helloworld-nodejs overview
-
-clouddatabases-redis-helloworld-nodejs is a sample IBM Cloud application which shows you how to connect to an IBM Cloud Databases for Redis service to a IBM Cloud Foundry application written in Node.js.
-
 ## Before you begin
 
 Make sure you have an [{{site.data.keyword.cloud_notm}} account][ibm_cloud_signup_url]{:new_window}.
@@ -144,7 +139,6 @@ Now, when you visit `<route>.mybluemix.net/` you can see the contents of your {{
 
 Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it locally to test the connection to your {{site.data.keyword.databases-for-redis}} service instance. To connect to the service, you need to create a set of service credentials.
 
-1. From your {{site.data.keyword.cloud_notm}} dashboard, open your {{site.data.keyword.databases-for-redis}} service instance.
 2. Select _Service Credentials_ from the main menu to open the Service Credentials view.
 3. Click **New Credential**.
 4. Choose a name for your credentials and click **Add**.
@@ -185,3 +179,6 @@ To start exploring your {{site.data.keyword.databases-for-redis}} service, see t
 - [Dashboard Overview](./dashboard-overview.html)
 - [Backups](./dashboard-backups.html)
 - [Settings](./dashboard-settings.html)
+
+
+[ibm_cloud_signup_url]: https://ibm.biz/databases-for-redis-signup
