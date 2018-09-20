@@ -12,7 +12,7 @@ lastupdated: "2018-09-10"
 {:tip: .tip}
 
 
-# Connecting as an Admin
+# Connecting with a command line client
 
 You can access your Redis database directly from a command line client. A command line client allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
 
