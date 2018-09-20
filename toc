@@ -15,10 +15,10 @@ Databases For Redis
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	provisioning.md
-	admin-password.md
-	getting-connection-strings.md
-	using-ibmcloud-cli.md
+	howto-provisioning.md
+	howto-admin-password.md
+	howto-getting-connection-strings.md
+	howto-using-ibmcloud-cli.md
 
 	{: .topicgroup}
 	Connecting to Databases for Redis
