@@ -15,24 +15,21 @@ Databases For Redis
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	{: .topicgroup}
-	Administer your Database
-		admin-password.md
-		admin-connecting.md
-	
-	{: .topicgroup}
-	Work with your Database
-		work-with-connection-strings.md
-		work-with-cli.md
+	provisioning.md
+	admin-password.md
+	getting-connection-strings.md
+	using-ibmcloud-cli.md
 
 	{: .topicgroup}
-	Connect an Application to your Database
+	Connecting to Databases for Redis
 		connecting-ibmcloud-app.md
 		connecting-external.md
+		connecting-cli-client.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
 	reference-architecture.md
 	reference-security.md
 	reference-access-management.md
-	{: .navgroup-end}`
+	reference-activity-tracker.md
+	{: .navgroup-end}
