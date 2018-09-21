@@ -20,21 +20,19 @@ Manage your {{site.data.keyword.databases-for-redis_full}} service through these
 
 The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage the available resources for your deployment by adjusting the groups of resources. 
 
-Resources that are not scalable are grayed out. They are shown for informational purposes only.
+You can not currently scale down, and scaling operations can cause downtime.
 {: .tip} 
 
-**Storage** - Storage shows the amount of disk space that is allocated to your service. Each container gets the allocated space. Your data is replicated across two data containers in the PostgreSQL cluster, so the total amount of storage you are using is roughly twice the size of your data.
+**Storage** - Storage shows the amount of disk space that is allocated to your service. Each container gets the allocated space. Your data is replicated across two data containers in the Redis cluster, so the total amount of storage you are using is roughly twice the size of your data.
 
-**Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two containers in a cluster, so the amount of memory you add is added to both containers. 
-
-Scaling operations can cause downtime. When the scaling is complete the Deployment Details pane updates to show the current usage and the new values for the available storage and memory. 
+**Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two containers in a cluster, so the amount of memory you add is added to both containers.  
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
 ### Scaling via the UI
 
-Adjust the slider to increase or decrease the resources that are allocated to your service. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
+Adjust the slider to increase the resources that are allocated to your service. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
 
 ### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
 
