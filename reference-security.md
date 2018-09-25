@@ -39,7 +39,7 @@ You can request an SOC 2 Type 2 report from the customer portal or contact your 
 
 ## General Data Protection Regulation (GDPR) 
 
-If you have an account provisioned by IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
+If you have an account with IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
 [IBM DPA ![External link icon](../images/launch-glyph.svg "External link icon"](https://www.ibm.com/support/customer/zz/en/dpa.html){:new_window}
 
 {{site.data.keyword.databases-for-redis}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. {{site.data.keyword.databases-for-redis}} monitors client interactions with the {{site.data.keyword.databases-for-redis}} dashboard. 
