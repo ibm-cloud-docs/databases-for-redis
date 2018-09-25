@@ -13,7 +13,7 @@ lastupdated: "2018-07-31"
 
 
 # Getting started tutorial
-This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-redis-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-redis_full}} service. The application creates, reads from, and writes to a database that uses data supplied through the app's web interface.
+This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-redis-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-redis_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
 {: shortdesc}
 
 If you have already created your database and just want to connect to your {{site.data.keyword.databases-for-redis}} database through command line tools so you can administer it, you will want to [set your administrator password](admin-password.html) and then use a [command line tool to connect](admin-connecting.html).
@@ -21,7 +21,7 @@ If you have already created your database and just want to connect to your {{sit
 
 ## Before you begin
 
-Make sure you have an [{{site.data.keyword.cloud_notm}} account][ibm_cloud_signup_url]{:new_window}.
+Make sure that you have an [{{site.data.keyword.cloud_notm}} account][ibm_cloud_signup_url]{:new_window}.
 
 You also need to install [Node.js](https://nodejs.org/) and [Git](https://git-scm.com/downloads).
 
@@ -121,7 +121,7 @@ The alias name can be the same as the database service instance name. For exampl
 This step fails if the service has not finished provisioning from Step 1. You can check its progress on your {{site.data.keyword.cloud_notm}} _Dashboard_.
 {: .tip}
 
-When you push the app, it will automatically be bound to the service specified in the manifest file.
+When you push the app, it is automatically bound to the service specified in the manifest file.
 
 ```
 ibmcloud cf push
@@ -130,13 +130,13 @@ ibmcloud cf push
 ## Step 9. Check that the app is connected to your {{site.data.keyword.databases-for-redis}} service
 
 1. Go to your {{site.data.keyword.databases-for-redis}} service dashboard
-2. Select _Connections_ from the dashboard menu. Your application should be listed under _Connected Applications_.
+2. Select _Connections_ from the dashboard menu. Your application is listed under _Connected Applications_.
 
-If your application is not listed, repeat Steps 7 and 8, making sure that you have entered the correct details in [manifest.yml](#update-manifest).
+If your application is not listed, repeat Steps 7 and 8, making sure that you entered the correct details in [manifest.yml](#update-manifest).
 
 ## Step 10. Use the app
 
-Now, when you visit `<route>.mybluemix.net/` you can see the contents of your {{site.data.keyword.databases-for-redis}} collection. As you add words and their definitions, they are added to the database and displayed. If you stop and restart the app, you'll see any words and definitions you've already added are now listed.
+Now, when you visit `<route>.mybluemix.net/` you can see the contents of your {{site.data.keyword.databases-for-redis}} collection. As you add words and their definitions, they are added to the database and displayed. If you stop and restart the app, you see any words and definitions that were already added are now listed.
 
 ## Running the app locally
 
@@ -161,7 +161,7 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
   ```
 7. Save the file as `vcap-local.json` in the directory where the sample app is located.
 
-To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file containing your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory you can see that `vcap-local.json` is listed in both, so it is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
+To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file that contains your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory, you can see that `vcap-local.json` is listed in both, so it is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
 {: .tip}
 
 Now start the local server.
@@ -169,7 +169,7 @@ Now start the local server.
 npm start
 ```
 
-The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-redis}} database. When you stop and restart the app, any words you have already added are displayed when you refresh the page.
+The app is now running at http://localhost:8080. You can add words and definitions to your {{site.data.keyword.databases-for-redis}} database. When you stop and restart the app, any words you added are displayed when you refresh the page.
 
 For more information about the credentials you created for the application to connect to your service, see [Using Service Credentials](./connecting-external.html#using-service-credentials).
 
