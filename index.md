@@ -46,7 +46,7 @@ You can use the {{site.data.keyword.cloud_notm}} databases API to manage your se
 
 ## Using {{site.data.keyword.databases-for-redis}}
 
-{{site.data.keyword.databases-for-redis}} deployments have are secured with authentication and SSL/TLS encrypted connections. [Set the admin password](./admin-password.html) to access your deployment. Then, if you want to manage the Redis databases directly, [connect using command line tools for Redis](./connecting-cli-client.html). 
+{{site.data.keyword.databases-for-redis}} deployments are secured with authentication and SSL/TLS encrypted connections. [Set the admin password](./admin-password.html) to access your deployment. Then, if you want to manage the Redis databases directly, [connect using command line tools for Redis](./connecting-cli-client.html). 
 
 ## Connecting to {{site.data.keyword.databases-for-redis}}
 

@@ -27,7 +27,7 @@ Redis has a vast array of clients for applications to use. A fairly [comprehensi
 
 Language|Driver|Instructions/Examples
 --------|------|---------------------
-C|hiredis|[Link](https://github.com/redis/hiredis)
+C|`hiredis`|[Link](https://github.com/redis/hiredis)
 PHP|`phpredis`|[Link](https://github.com/phpredis/phpredis)
 PHP|`Predis`|[Link](https://github.com/nrk/predis)
 Ruby|`redis-rb`|[Link](https://github.com/redis/redis-rb)
@@ -43,7 +43,7 @@ Node.js|`node_redis`|[Link](https://github.com/NodeRedis/node_redis)
 
 All connections to {{site.data.keyword.databases-for-redis}} are TLS 1.2 enabled, so the driver you use to connect need to be able to support TLS encryption. For {{site.data.keyword.databases-for-redis}}, this means supporting the unofficial `rediss:` protocol in connection strings. 
 
-If your selected driver does not support this protocol or TLS/SSL connections in general, it is still possible to tunnel connections to the Redis database endpoint using an TLS/SSL tunnel application such as Stunnel. An example of using Stunnel can be found in the [Admin - Connecting section](admin-connecting.html), where Stunnel is used to connect the `redis-cli` application.
+If your driver does not support the `rediss:` protocol or TLS/SSL connections, it is still possible to tunnel connections to the Redis database endpoint by using a TLS/SSL tunnel application such as Stunnel. An example of using Stunnel can be found in the [Admin - Connecting section](admin-connecting.html), where Stunnel is used to connect the `redis-cli` application.
 
 Your deployment also comes with a self-signed certificate so the driver can verify the server upon connection. In most cases, you want to decode and save a copy of the certificate, and then provide the path to the driver. For more information, see [Using the self-signed certificate](./work-with-connection-strings.html#using-the-self-signed-certificate).
 

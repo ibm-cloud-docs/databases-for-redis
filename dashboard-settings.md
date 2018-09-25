@@ -20,36 +20,62 @@ Manage your {{site.data.keyword.databases-for-redis_full}} service through these
 
 The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage the available resources for your deployment by adjusting the groups of resources. 
 
-You can not currently scale down, and scaling operations can cause downtime.
+**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the PostgreSQL cluster, so the total amount of storage you use is approximately twice the size of your data set.
+
+The minimum storage of a Redis deployment is 2048 MB, adjustable in step sizes of 512 MB. This equates to 1024 MB per member with 256 MB increments available.
+
+You cannot scale down storage. If your data set size has decreased, you can recover space by backing up and restoring to a new deployment.
 {: .tip} 
 
-**Storage** - Storage shows the amount of disk space that is allocated to your service. Each container gets the allocated space. Your data is replicated across two data containers in the Redis cluster, so the total amount of storage you are using is roughly twice the size of your data.
+**Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your Redis deployment runs with two members in a cluster, so the amount of memory you allocate to the service is split between both members. Adding memory to the total allocation adds memory to both members equally.
 
-**Memory** - If you find that your queries and database activity suffer from performance issues due to a lack of memory, you can scale the amount of RAM allocated to your service. Your PostgreSQL deployment runs with two containers in a cluster, so the amount of memory you add is added to both containers.  
+The minimum RAM for a Redis deployment is 2048 MB, adjustable in step sizes of 512 MB.  This equates to 1024 MB per member with 256 MB increments available.
 
 Billing is based on the _total_ amount of resources that are allocated to the service.
 {: .tip}
 
 ### Scaling via the UI
 
-Adjust the slider to increase the resources that are allocated to your service. Click **Scale** to trigger the scaling operations and return to the dashboard overview.
+Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
 
 ### Scaling via the {{site.data.keyword.cloud_notm}} CLI cloud databases plug-in
 
 Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
-For example, to view the resource groups for a deployment named "example-deployment":  
+For example, the command to view the resource groups for a deployment named "example-deployment":  
 `ibmcloud cdb deployment-groups example-deployment`
 
-To scale the memory to 2048 MB of RAM for each memory member of "example-deployment":  
-`ibmcloud cdb deployment-groups-set member --memory 2048`
+This produces the output:
+
+```
+Group   member
+Count   2
+|
++   Memory
+|   Allocation              2048mb
+|   Allocation per member   1024mb
+|   Minimum                 2048mb
+|   Step Size               256mb
+|   Adjustable              true
+|
++   Disk
+|   Allocation              2048mb
+|   Allocation per member   1024mb
+|   Minimum                 2048mb
+|   Step Size               256mb
+|   Adjustable              true
+```
+
+The deployment has two members, with 2048 MB of RAM and disk allocated in total. The "per member" allocation is 1024 MB of RAM and disk. The minimum value is the lowest the total allocation can be set. The step size is the smallest amount by which the total allocation can be adjusted.
+
+The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set, in MB. For example, to scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), you use the command:  
+`ibmcloud cdb deployment-groups-set example-deployment member --memory 4096`
 
 ### Scaling via the API
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
-You can find more examples in the [API Reference](https://console.{DomainName}/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl).
-
+You can find more examples in the [API Reference](https://console.bluemix.net/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl).
 ## Setting the admin Password
 
 In order to connect to {{site.data.keyword.databases-for-redis} , you have to set the admin password. You might also need to change the password of your service. You can do so by using _Update Password_.

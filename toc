@@ -31,6 +31,7 @@ Databases For Redis
 	{: .navgroup id="reference"}
 	reference-architecture.md
 	reference-security.md
+	reference-versions.md
 	reference-access-management.md
 	reference-activity-tracker.md
 	reference-key-protect.md
