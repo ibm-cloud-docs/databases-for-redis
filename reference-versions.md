@@ -28,3 +28,8 @@ At the beginning of the period, we will seek to contact effected users of the de
 During the six-month transition window, users will be able to initiate an upgrade to a supported major version. Restoration of databases into new deployments of the deprecated major version will be possible through the deprecation, although we recommend upgrading to a non-deprecated major version as soon as possible. Existing customers instances will continue to run as normal.
 
 At the end of the six-month window, we will remove access to the database and take a backup. This backup will be available to be restored into a new supported database version.
+
+## Major versions defined
+
+Redis major versions are the first number in a major.minor.patch version number. Major versions of Redis have therefore been 2, 3, 4 and in the future 5 and 6.
+
