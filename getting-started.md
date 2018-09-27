@@ -16,7 +16,7 @@ lastupdated: "2018-07-31"
 This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-redis-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-redis_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
 {: shortdesc}
 
-If you have already created your database and just want to connect to your {{site.data.keyword.databases-for-redis}} database through command line tools so you can administer it, you will want to [set your administrator password](admin-password.html) and then use a [command line tool to connect](admin-connecting.html).
+If you have already created your deployment and just want to connect to your Redis databases, you can skip to [setting your administrator password](./admin-password.html) and then start using a [command line tool to connect](./connecting-cli-client.html).
 {: .tip}
 
 ## Before you begin
@@ -34,10 +34,10 @@ Choose a service name, region, organization and space to provision the service i
 
 Click **Create** to provision your service. Provisioning can take a while to complete. You are taken back to your {{site.data.keyword.cloud_notm}} _Dashboard_ while the service is provisioning. 
 
-You won't be able to connect an application to the service until provisioning has completed.
+You can not connect an application to the service until provisioning has completed.
 {: .tip}
 
-## Step 2. Clone the Hello World sample app from Github
+## Step 2. Clone the Hello World sample app from GitHub
 
 Clone the Hello World app to your local environment from your terminal by using the following command:
 
@@ -100,7 +100,7 @@ The alias name can be the same as the database service instance name. For exampl
 
 {{site.data.keyword.cloud_notm}} uses a manifest file - `manifest.yml` to associate an application with a service. Follow these steps to create your manifest file.
 
-1. In an editor, open a new file and add the following:
+1. In an editor, open a new file and add the following text:
 
   ```
   ---
@@ -118,7 +118,7 @@ The alias name can be the same as the database service instance name. For exampl
 4. Update the `services` value to match the alias of the service you created in [Create a Cloud Foundry alias for the database service](#create-alias).
 ## Step 8. Push the app to {{site.data.keyword.cloud_notm}}.
 
-This step fails if the service has not finished provisioning from Step 1. You can check its progress on your {{site.data.keyword.cloud_notm}} _Dashboard_.
+This step fails if the service is not finished provisioning from Step 1. You can check its progress on your {{site.data.keyword.cloud_notm}} _Dashboard_.
 {: .tip}
 
 When you push the app, it is automatically bound to the service specified in the manifest file.
@@ -161,7 +161,7 @@ Instead of pushing the app into {{site.data.keyword.cloud_notm}} you can run it 
   ```
 7. Save the file as `vcap-local.json` in the directory where the sample app is located.
 
-To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file that contains your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory, you can see that `vcap-local.json` is listed in both, so it is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
+To avoid accidentally exposing your credentials when you push an application to GitHub or {{site.data.keyword.cloud_notm}}, make sure that the file that contains your credentials is listed in the relevant ignore file. If you open `.cfignore` and `.gitignore` in your application directory, you can see that `vcap-local.json` is listed in both. It is not included in the files that are uploaded when you push the app to either GitHub or {{site.data.keyword.cloud_notm}}.
 {: .tip}
 
 Now start the local server.

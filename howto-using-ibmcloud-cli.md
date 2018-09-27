@@ -51,6 +51,6 @@ The command prompts for the admin password and then runs the `redli` command lin
 
 ## The {{site.data.keyword.cloud_notm}} CLI and IAM
 
-Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Integrated Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you have to set the correct permissions. For more information on general IAM management, see the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted).
+Access to services via {{site.data.keyword.cloud_notm}} CLI is governed through Integrated Access Management. In order to use the CLI to view or manage a service (or to grant privileges to another user on your account), you have to set the correct permissions. For more information about IAM management, see the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted).
 
 For more information on how IAM affects {{site.data.keyword.databases-for-redis}}, see the [reference page](./reference-access-management.html)

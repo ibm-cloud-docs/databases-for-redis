@@ -83,7 +83,7 @@ Field Name|Index|Description
 `Composed`||A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings and uses `Arguments` as command line parameters.
 `Environment`||A list of key/values you set as environment variables.
 `Arguments`|0...|The information that is passed as arguments to the command shown in the Bin field.
-`Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. You need to decode the key before using it.
+`Certificate`|Base64|A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded.
 `Certificate`|Name|The allocated name for the self-signed certificate.
 `Type`||The type of package that uses this connection information; in this case `cli`. 
 {: caption="Table 1. `redis`/`cli` connection information" caption-side="top"}

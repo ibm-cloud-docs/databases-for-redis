@@ -40,4 +40,4 @@ Authorize {{site.data.keyword.keymanagementserviceshort}} for use with {{site.da
 
 Caution - If you delete the key that is used to encrypt your service, you lose access to the data. You will not be able to recover the data from the live deployment. You might be able recover the database by restoring a backup into a new {{site.data.keyword.databases-for-redis}} deployment.
 
-If you wish to securely delete your data, you must delete both the {{site.data.keyword.databases-for-redis}} deployment and remove the Key Protect key.
+If you want to securely delete your data, you must delete both the {{site.data.keyword.databases-for-redis}} deployment and remove the Key Protect key.

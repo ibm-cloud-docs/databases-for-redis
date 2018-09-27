@@ -21,7 +21,7 @@ lastupdated: "2018-08-20"
 - Access to the Account, Management Console UI, and API is secured via IAM (Identity and Access Management)
 - Access to the database is secured through the standard access controls provided by the database. These access controls are configured to require valid database-level credentials that are obtainable only through prior access to the database or through our Management Console UI or API.
 - All {{site.data.keyword.databases-for-redis}} storage is provided on encrypted volumes that use the Linux Unified Keys Setup (LUKS). If you require bring-your-own-key (BYOK) for encryption, it is available through [{{site.data.keyword.cloud_notm}} Key Protect](https://console.bluemix.net/docs/services/key-protect/about.html#about). 
-- IP Whitelisting - All deployments have the ability to whitelist IP addresses to restrict access to the service.
+- IP Whitelisting - All deployments support whitelisting IP addresses to restrict access to the service.
 
 ## Data Resilience
 
@@ -42,9 +42,7 @@ You can request an SOC 2 Type 2 report from the customer portal or contact your 
 If you have an account with IBM Cloud, your personal data is held by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.IBM_notm}} Data Processing Addendum (Addendum) applies to the processing of client's personal data by {{site.data.keyword.IBM_notm}} on behalf of client in order to provide {{site.data.keyword.IBM_notm}} standard services.
 [IBM DPA ![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/support/customer/zz/en/dpa.html){:new_window}
 
-{{site.data.keyword.databases-for-redis}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. {{site.data.keyword.databases-for-redis}} monitors client interactions with the {{site.data.keyword.databases-for-redis}} dashboard. 
-
-{{site.data.keyword.databases-for-redis}} uses email for contacting clients as appropriate. 
+{{site.data.keyword.databases-for-redis}} processes limited client Personal Information (PI) in the course of running the service and optimizing the user experience. 
 
 {{site.data.keyword.databases-for-redis}} provides a [Data Sheet Addendum (DSA)![External link icon](../images/launch-glyph.svg "External link icon")](https://www.ibm.com/software/reports/compatibility/clarityreports/report/html/softwareReqsForProduct?deliverableId=CD09D2E06DC811E8A0B560E89C071ECC){:new_window} with its policies as a Data Processor regarding content and data protection. 
 
