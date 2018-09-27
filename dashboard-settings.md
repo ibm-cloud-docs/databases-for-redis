@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-09-21"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -20,7 +20,7 @@ Manage your {{site.data.keyword.databases-for-redis_full}} service through these
 
 The _Scale Resources_ panel shows the current size and resource allocation for your deployment. You can manage the available resources for your deployment by adjusting the groups of resources. 
 
-**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the PostgreSQL cluster, so the total amount of storage you use is approximately twice the size of your data set.
+**Storage** - Storage shows the amount of disk space that is allocated to your service. Each member gets an equal share of the allocated space. Your data is replicated across two data members in the Redis cluster, so the total amount of storage you use is approximately twice the size of your data set.
 
 The minimum storage of a Redis deployment is 2048 MB, adjustable in step sizes of 512 MB. This equates to 1024 MB per member with 256 MB increments available.
 
@@ -76,19 +76,20 @@ The `cdb deployment-groups-set` command allows either the total RAM or total dis
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
 You can find more examples in the [API Reference](https://console.bluemix.net/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl).
+
 ## Setting the admin Password
 
-In order to connect to {{site.data.keyword.databases-for-redis} , you have to set the admin password. You might also need to change the password of your service. You can do so by using _Update Password_.
+In order to connect to {{site.data.keyword.databases-for-redis}} , you have to set the admin password. You might also need to change the password of your service. You can do so by using _Update Password_.
 
-A new, randomly generated password appears, or you can type your own password into the field. To regenerate another password, click the icon to the right of the field. When you click *Update Password*, you will be asked to confirm before the change is applied. 
+A new, randomly generated password appears, or you can type your own password into the field. To regenerate another password, click the icon to the right of the field. When you click *Update Password*, you are asked to confirm before the change is applied. 
 
 **Note:** Changing the password changes the credentials that you or any other services that use the admin user to connect. It can cause these services to disconnect and experience downtime.
 
 ## Whitelisting
 
-If you want to restrict access to your databases, you can whitelist specific IP addresses or ranges of IP addresses on your deployment. When there are no IP addresses in the whitelist, the whitelist is disabled and the deployment will accept connections from any system on the internet.
+If you want to restrict access to your databases, you can whitelist specific IP addresses or ranges of IP addresses on your deployment. When no IP addresses are in the whitelist, the whitelist is disabled and the deployment accepts connections from any system on the internet.
 
-{{site.data.keyword.cloud_notm}} management services will still be able to connect.
+Even if not explicitly whitelisted, {{site.data.keyword.cloud_notm}} management services are still able to connect.
 {: .tip}
 
 ### IP Addresses
@@ -109,4 +110,4 @@ The *Description* can be any user-significant text for identifying the whitelist
 ### Removal
 
 To remove an IP address or netmask from the Whitelist, click *Remove*.
-When all entries on the whitelist are removed, the whitelist will be disabled and all IP addresses are accepted by the TCP access portals.
+When all entries on the whitelist are removed, the whitelist is disabled and all IP addresses are accepted by the TCP access portals.

@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-09-20"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -36,7 +36,7 @@ If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on th
 ]
 ### Managing Access to {{site.data.keyword.databases-for-redis}}
 
-{{site.data.keyword.databases-for-redis}} is an Identity and Access Management (IAM) integrated service. Access is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted). For more information on IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation.
+{{site.data.keyword.databases-for-redis}} is an Identity and Access Management (IAM) integrated service. Access is governed by the roles and attributes that are consistent across IAM-integrated services in {{site.data.keyword.cloud_notm}}. Get started with managing your users on the [IAM Getting Started tutorial](https://console.{DomainName}/docs/iam/quickstart.html#getstarted). For more information about IAM, see the [What is IAM?](https://console.{DomainName}/docs/iam/index.html#iamoverview) documentation.
 
 More information on IAM roles and actions for the {{site.data.keyword.databases-for-redis}} service is available on the [Access Management](./reference-access-management.html) page.
 
@@ -46,7 +46,7 @@ You can use the {{site.data.keyword.cloud_notm}} databases API to manage your se
 
 ## Using {{site.data.keyword.databases-for-redis}}
 
-{{site.data.keyword.databases-for-redis}} deployments are secured with authentication and SSL/TLS encrypted connections. [Set the admin password](./admin-password.html) to access your deployment. Then, if you want to manage the Redis databases directly, [connect using command line tools for Redis](./connecting-cli-client.html). 
+{{site.data.keyword.databases-for-redis}} deployments are secured with authentication and SSL/TLS encrypted connections. [Set the admin password](./admin-password.html) to access your deployment. Then, if you want to manage the Redis databases directly, [connect by using command line tools for Redis](./connecting-cli-client.html). 
 
 ## Connecting to {{site.data.keyword.databases-for-redis}}
 
