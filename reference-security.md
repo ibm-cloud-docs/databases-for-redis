@@ -30,10 +30,7 @@ lastupdated: "2018-09-27"
  
 ## SOC 2 Type 1 Certification
 
-{{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 1 report 
-for {{site.data.keyword.databases-for-redis}}. The reports evaluate IBM's operational controls according to the criteria set by the American Institute of Certified Public Accountants (AICPA) Trust Services Principles. 
-The Trust Services Principles define adequate control systems and establish industry standards 
-for service providers such as IBM Cloud to safeguard their customers' data and information.
+{{site.data.keyword.IBM_notm}} provides a Service Organization Controls (SOC) 2 Type 1 report for {{site.data.keyword.databases-for-redis}}. The reports evaluate IBM's operational controls according to the criteria set by the American Institute of Certified Public Accountants (AICPA) Trust Services Principles. The Trust Services Principles define adequate control systems and establish industry standards for service providers such as IBM Cloud to safeguard their customers' data and information.
 
 You can request an SOC 2 Type 1 report from the customer portal or contact your sales representative. Alternatively, you can open a support ticket with [IBM Cloud support](https://www.ibm.com/cloud/support){:new_window} 
 
