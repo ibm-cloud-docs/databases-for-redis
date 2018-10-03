@@ -16,7 +16,7 @@ lastupdated: "2018-09-27"
 This tutorial uses a [sample app](https://github.com/IBM-Cloud/clouddatabases-redis-helloworld-nodejs) to demonstrate how to connect a Cloud Foundry application in {{site.data.keyword.cloud_notm}} to an {{site.data.keyword.databases-for-redis_full}} service. The application creates, reads from, and writes to a database that uses data that is supplied through the app's web interface.
 {: shortdesc}
 
-If you have already created your deployment and just want to connect to your Redis databases, you can skip to [setting your administrator password](./admin-password.html) and then start using a [command line tool to connect](./connecting-cli-client.html).
+If you have already created your deployment and just want to connect to your Redis databases, you can skip to [setting your administrator password](./howto-admin-password.html) and then start using a [command line tool to connect](./connecting-cli-client.html).
 {: .tip}
 
 ## Before you begin

@@ -46,11 +46,11 @@ You can use the {{site.data.keyword.cloud_notm}} databases API to manage your se
 
 ## Using {{site.data.keyword.databases-for-redis}}
 
-{{site.data.keyword.databases-for-redis}} deployments are secured with authentication and SSL/TLS encrypted connections. [Set the admin password](./admin-password.html) to access your deployment. Then, if you want to manage the Redis databases directly, [connect by using command line tools for Redis](./connecting-cli-client.html). 
+{{site.data.keyword.databases-for-redis}} deployments are secured with authentication and SSL/TLS encrypted connections. [Set the admin password](./howto-admin-password.html) to access your deployment. Then, if you want to manage the Redis databases directly, [connect by using command line tools for Redis](./connecting-cli-client.html). 
 
 ## Connecting to {{site.data.keyword.databases-for-redis}}
 
-General information on getting connection strings can be found on the [Getting Connection Strings](./howto-using-connection-strings) page.
+General information on getting connection strings can be found on the [Getting Connection Strings](./howto-getting-connection-strings) page.
 
 Specific guidance on connecting with Redis drivers is on the [Connecting External Applications](./connecting-external.html) page. If you want to connect a Cloud Foundry application that is running in {{site.data.keyword.cloud_notm}}, see the [Connecting an {{site.data.keyword.cloud_notm}} Application](./connecting-ibmcloud-app.html) page. The [Getting Started tutorial](./getting-started.html) that provides a sample application that can run locally or on {{site.data.keyword.cloud_notm}} to test-drive your {{site.data.keyword.databases-for-redis}} deployment.
 
