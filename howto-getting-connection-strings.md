@@ -37,7 +37,7 @@ ibmcloud cdb deployment-connections NewRedis --all
 
 ## Other ways of accessing the connection strings
 
-It is possible to make the admin connection information available the in _Service Credentials_ panel. 
+It is possible to make the "admin" connection information available the in _Service Credentials_ panel. 
 1. Navigate to the service dashboard for your service.
 2. Click _Service Credentials_ to open the _Service Credentials_ panel.
 3. Click **New Credential**.
