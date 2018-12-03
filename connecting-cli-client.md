@@ -56,13 +56,13 @@ ibmcloud cdb cxn NewRedis -s
 
 The command prompts for the admin password and then runs the `redli` command line client to connect to the database.
 
-If you have not installed the cloud databases plug-in, connect to your Redis databases using `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
+If you have not installed the cloud databases plug-in, connect to your Redis databases with the `redli` command. You will need to download and save the self-signed certificate from your deployment. Then, you can use `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
 
 ```
 $ redli --uri rediss://admin:$PASSWORD@e6b2c3f8-54a6-439e-8d8a-aa6c4a78df49.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32371/0 --certfile /path/to/redis-cert.pem
 ```
 
-For more information, see the [GitHub repo](https://github.com/IBM-Cloud/redli).
+There are other connection options and parameters supported by `redli`. For more information, see its documentation in the [`redli` GitHub repo](https://github.com/IBM-Cloud/redli).
 
 ## Installing `redis-cli`
  
