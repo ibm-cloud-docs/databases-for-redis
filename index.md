@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2018
-lastupdated: "2018-09-27"
+lastupdated: "2018-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -42,7 +42,7 @@ The {{site.data.keyword.cloud_notm}} command line interface provides in interact
 
 ### Using the cloud databases API
 
-You can use the {{site.data.keyword.cloud_notm}} databases API to manage your service. Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://{DomainName}/docs/iam/apikeys.html#platform-api-keys). The API foundation endpoint for your service is on the deployment's [_Overview_](./dashboard-overview.html) page. For more information, see the [API reference](https://{DomainName}/apidocs/cloud-databases-api).
+{{site.data.keyword.databases-for-redis}} is compatible with the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API, so you can access and manage your service programmatically. Each region has an unique endpoint, so you can find the API foundation endpoint for your deployment on the [_Overview_](./dashboard-overview.html) page. The {{site.data.keyword.IBM_notm}} API documentation contains the full [{{site.data.keyword.databases-for}} API reference](https://{DomainName}/apidocs/cloud-databases-api). Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](https://{DomainName}/docs/iam/apikeys.html#platform-api-keys).
 
 ## Connecting to {{site.data.keyword.databases-for-redis}}
 

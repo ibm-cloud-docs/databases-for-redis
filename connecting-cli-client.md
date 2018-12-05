@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017,2018
-lastupdated: "2018-09-27"
+lastupdated: "2018-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -66,7 +66,7 @@ There are other connection options and parameters supported by `redli`. For more
 
 ## Installing `redis-cli`
  
-`redis-cli` is the official supported command line interface for Redis. Unfortunately, it does not support TLS connections. For that reason, we suggest you consider `redli` as a client (see the next section).
+`redis-cli` is the official supported command line interface for Redis. Unfortunately, it does not support TLS connections.
 
 If you do choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, we recommend installing [brew](http://brew.sh) and then using `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
 
