@@ -8,6 +8,8 @@ Databases For Redis
 	index.md
 	pricing.md
 	getting-started.md
+	high-availability.md
+	security-compliance.md
 
 	{: .topicgroup}
 	The Service Dashboard
@@ -30,8 +32,6 @@ Databases For Redis
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
-	reference-architecture.md
-	reference-security.md
 	reference-versions.md
 	reference-access-management.md
 	reference-activity-tracker.md
