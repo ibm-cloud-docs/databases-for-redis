@@ -12,7 +12,7 @@ lastupdated: "2018-08-27"
 {:pre: .pre}
 
 # Backups
-{: #backups}
+{: #dashboard-backups}
 
 {{site.data.keyword.databases-for-redis_full}} backups are accessible from the _Backups_ tab of your service dashboard. Daily and on-demand backups are available for 30 days. Each backup is labeled with its type, and when the backup was taken. Click the backup to expand the options for any available backup.
 

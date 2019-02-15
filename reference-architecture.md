@@ -12,6 +12,7 @@ lastupdated: "2018-09-27"
 {:pre: .pre}
 
 # Architecture
+{: #architecture}
 
 {{site.data.keyword.databases-for-redis_full}} is a managed cloud database service that runs in containers that are orchestrated by Kubernetes. It is fully integrated into the {{site.data.keyword.cloud_notm}} ecosystem. The database, storage, and monitoring all run in {{site.data.keyword.cloud_notm}}.
 
@@ -41,5 +42,5 @@ All {{site.data.keyword.databases-for-redis}} HAProxy portals are TLS/SSL enable
 
 ## Access Management
 
-{{site.data.keyword.databases-for-redis}} is an IAM-integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM-integrated services across the {{site.data.keyword.cloud_notm}}. For more information about IAM, see the [What is IAM?](https://{DomainName}/docs/iam/index.html#iamoverview) documentation. For details on how IAM affects access to {{site.data.keyword.databases-for-redis}}, see the [Managing Access](./access-management.html) page.
+{{site.data.keyword.databases-for-redis}} is an IAM-integrated service. Access to the service is governed by the roles and attributes that are consistent with IAM-integrated services across the {{site.data.keyword.cloud_notm}}. For more information about IAM, see the [What is IAM?](/docs/iam?topic=iam-iamoverview) documentation. For more information on how IAM affects access to {{site.data.keyword.databases-for-postgresql}}, see the [IAM Integration](/docs/services/databases-for-redisl?topic=databases-for-redis-iam) page.
 
