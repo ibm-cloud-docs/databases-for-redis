@@ -55,6 +55,6 @@ If you have an account with IBM Cloud, your personal data is held by {{site.data
 ## Terms
 
 - [The IBM Privacy Policy](https://www.ibm.com/privacy/us/en/)
-- [The IBM Cloud Notices and Terms of Use](https://{DomaninName}/docs/overview/terms-of-use/notices.html#notices)
+- [The IBM Cloud Notices and Terms of Use](https://{DomainName}/docs/overview/terms-of-use/notices.html#notices)
 
 

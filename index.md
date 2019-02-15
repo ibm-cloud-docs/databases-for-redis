@@ -24,7 +24,7 @@ lastupdated: "2018-12-05"
 
 For detailed provisioning information, including {{site.data.keyword.cloud_notm}} CLI instructions, see the [Provisioning](/docs/services/databases-for-redis?topic=databases-for-redis-provisioning) page.
 
-If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://DomainName}/registration/) page.
+If you don't yet have an {{site.data.keyword.cloud_notm}} account, sign up on the [registration](https://{DomainName}/registration/) page.
 
 ### Managing Access to {{site.data.keyword.databases-for-redis}}
 
@@ -42,7 +42,7 @@ The {{site.data.keyword.cloud_notm}} command line interface provides in interact
 
 ### Using the cloud databases API
 
-{{site.data.keyword.databases-for-redis}} is compatible with the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API, so you can access and manage your service programmatically. Each region has an unique endpoint, so you can find the API foundation endpoint for your deployment on the [_Overview_](./dashboard-overview.html) page. The {{site.data.keyword.IBM_notm}} API documentation contains the full [{{site.data.keyword.databases-for}} API reference](https://{DomainName}/apidocs/cloud-databases-api). Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](docs/iam/apikeys?topic=iam-manapikey).
+{{site.data.keyword.databases-for-redis}} is compatible with the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API, so you can access and manage your service programmatically. Each region has an unique endpoint, so you can find the API foundation endpoint for your deployment on the [_Overview_](./dashboard-overview.html) page. The {{site.data.keyword.IBM_notm}} API documentation contains the full [{{site.data.keyword.databases-for}} API reference](https://{DomainName}/apidocs/cloud-databases-api). Authentication is IAM-based and you use your {{site.data.keyword.cloud_notm}} account's platform API keys to access the API. More information on API keys is in the [IAM documentation](/docs/iam/apikeys?topic=iam-manapikey).
 
 ## Connecting to {{site.data.keyword.databases-for-redis}}
 
