@@ -11,6 +11,7 @@ Databases For Redis
 	high-availability.md
 	security-compliance.md
 	versioning.md
+	/databases-for-postgresql/databases-for-postgresql-tutorial-k8s-app
 
 	{: .topicgroup}
 	The Service Dashboard
