@@ -28,7 +28,7 @@ The new service instance is automatically named "redis-restore-[timestamp]", and
 You can also use the {{site.data.keyword.cloud_notm}} CLI to restore a backup.
 
 ```
-ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-redis standard REGION -p '{"backup_id":"{backup_id"}
+ibmcloud resource service-instance-create SERVICE_INSTANCE_NAME databases-for-redis standard REGION -p '{"backup_id":"{backup_id}"}'
 ```
 
 **Note:** The change the value of `SERVICE_INSTANCE_NAME` to the name you want for your new service and REGION is where you want the service to be located.
