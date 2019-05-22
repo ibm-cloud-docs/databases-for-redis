@@ -46,7 +46,8 @@ Note on `volitile` and `allkeys`. When using an `allkeys` policy, the algorithm 
 
 Policy|Behavior|Notes
 ---------|---------|------------
-`stop-writes-on-bgsave-error` | Default value, `yes`. Redis stops accepting writes if it detects an unsuccessful backup snapshot.| If your backups are disabled for caching, it gets set to `no`.
+`appendonly` | Default value, `yes`. Enables Redis data to be written to disk. | Most likely if you are just caching data, you want to set this value to `no`.
+`stop-writes-on-bgsave-error` | Default value, `yes`. Redis stops accepting writes if it detects an unsuccessful backup snapshot.| If your backups are disabled for caching, you can set to `no`.
 `maxmemory-samples` | Tunes the LRU algorithm, default value `5`. | [Redis Docs Link](https://redis.io/topics/lru-cache#approximated-lru-algorithm)
 
 {: caption="Table 2. Redis cache settings " caption-side="top"}
@@ -60,7 +61,7 @@ You are able to use `CONFIG SET` directly from a Redis cli-client, but changes m
 
 For example, the Redis documentation recommends using the `allkeys-lru` setting as a good starting place for a general-use cache. Its also just fine to leave the `maxmemory` and `maxmemory-samples` at their default values. So to configure the cache from the CLI, you can use
 ```
-ibmcloud cdb deployment-configuration <deployment name or CRN> {"configuration":{"maxmemory-policy":"allkeys-lru", "stop-writes-on-bgsave-error":"no"}}
+ibmcloud cdb deployment-configuration <deployment name or CRN> {"configuration":{"maxmemory-policy":"allkeys-lru", "appendolnly":"no", "stop-writes-on-bgsave-error":"no"}}
 ```
 
 To set up the same configuration through the API, you can use
@@ -69,7 +70,8 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
 -H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
 -d '{"configuration":{
-        "maxmemory-policy":"allkeys-lru", 
+        "maxmemory-policy":"allkeys-lru",
+        "appendonly":"no",
         "stop-writes-on-bgsave-error":"no"
       }
     }'

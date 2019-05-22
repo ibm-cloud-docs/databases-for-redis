@@ -23,6 +23,8 @@ subcollection: databases-for-redis
 
 By default, data persistence is enabled on all deployments and your data is written to disk. The data persistence model uses [preamble snapshots and AOF (Append Only File)](https://redis.io/topics/persistence). The interval for Redis to write to disk (fsync) is set to [once every second](https://redis.io/topics/persistence#how-durable-is-the-append-only-file). 
 
+You can turn off data persistence, which is useful for [configuring Redis as a cache](/docs/services/databases-for-redis?topic=databases-for-redis-redis-cache).
+
 ## Application-level High-Availability
 
 Applications that communicate over networks and cloud services are subject to transient connection failures. You want to design your applications to retry connections when errors are caused by a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}.
