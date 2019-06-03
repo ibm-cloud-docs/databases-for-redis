@@ -21,9 +21,9 @@ subcollection: databases-for-redis
 
 To make permanent changes to the database configuration, you want to use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=cloud-databases-cli-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration) to write the changes to the configuration file for your deployment. 
 
-The configuration is defined in a schema. When you change the the configuration via the API or the CLI, you make changes to the configuration's JSON schema. To make a change, you make a JSON object with the settings and their new values. For example, to set the `maxmemory` setting , you would supply 
+The configuration is defined in a schema. When you change the the configuration via the API or the CLI, you make changes to the configuration's JSON schema. To make a change, you make a JSON object with the settings and their new values. For example, to set the `maxmemory-policy` setting , you would supply 
 ```
-{"configuration":{"maxmemory":""}}
+{"configuration":{"maxmemory-policy":"allkeys-lru"}}
 ```
 to either the CLI or to the API.
 
