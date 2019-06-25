@@ -49,10 +49,6 @@ You can retrieve connection information is from the [cloud databases plug-in](/d
 ```
 ibmcloud cdb deployment-connections NewRedis [--endpoint-type <endpoint type>]
 ```
-Or
-```
-ibmcloud cdb cxn NewRedis
-```
 
 Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. Retrieve all the connection information for a deployment named  "NewRedis", use the following command.
 
