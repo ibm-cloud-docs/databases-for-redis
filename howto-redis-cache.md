@@ -22,7 +22,7 @@ subcollection: databases-for-redis
 
 ## Cache Settings
 
-To configure the cache, you adjust a few of the Redis databases settings. `maxmemory` that defines how large the cache. The `maxmemory-policy` defines the eviction behavior when the `maxmemory` limit is reached. The other policies take care of database operations and tuning.
+To configure the cache, you adjust the `maxmemory` and the `maxmemory` settings of your deployment. `maxmemory` defines the size of the cache. The `maxmemory-policy` defines the eviction behavior when the `maxmemory` limit is reached. In addition, there are other settings that take care of database operations and tuning.
 
 ### `maxmemory`
 
