@@ -110,3 +110,7 @@ If you are planning to use Databases-for-Redis for your applications, check out 
 Also, to ensure the stability of your applications and your database, check out the pages on 
 - [High-Availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability)
 - [Performance](/docs/databases-for-redis?topic=databases-for-redis-performance)
+
+Tutorial for migrating your data to {{site.data.keyword.databases-for-redis}}
+- [A How-To for Migrating Redis to IBM Cloud Databases for Redis](https://www.ibm.com/cloud/blog/a-how-to-for-migrating-redis-to-ibm-cloud-databases-for-redis) 
+
