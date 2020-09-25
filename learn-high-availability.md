@@ -1,10 +1,10 @@
 ---
 
 Copyright:
-  years: 2019
-lastupdated: "2019-08-06"
+  years: 2019, 2020
+lastupdated: "2020-09-25"
 
-keywords: redis, databases
+keywords: redis, databases, ha, dr
 
 subcollection: databases-for-redis
 
@@ -31,8 +31,6 @@ You can turn off data persistence, which is useful for [configuring Redis as a c
 
 ## HA for your Application 
 
-Applications that communicate over networks and cloud services are subject to transient connection failures. Also, because {{site.data.keyword.databases-for-redis}} is a managed service, regular updates and database maintenance occurs as part of normal operations. These operations can cause a short blip in connectivity or trigger a failover. In the event of a failover, it takes a short time for the database to determine which member is a replica and which is the leader, so you might also see a short connection interruption.
-
 You want to design your applications to handle a temporary loss in connectivity to your deployment or to {{site.data.keyword.cloud_notm}}. 
 
 Many Redis clients have features for error checking and handling. For example,
@@ -45,7 +43,7 @@ A good example of cloud-ready application development using the Node.js client `
 In all cases, you should consult your client's documentation to help you design a stable application that checks for connectivity, reconnects when disconnected, and retries commands when it makes sense for your application to do so.
 {: .tip}  
 
-Several minutes of database unavailability or connection interruptions are not expected. Open a [support ticket](/docs/get-support?topic=get-support-getting-customer-support) with details if you have time periods longer than a minute with no connectivity. 
+Several minutes of database unavailability or connection interruptions are not expected. Open a [support ticket](/docs/get-support?topic=get-support-using-avatar) with details if you have time periods longer than a minute with no connectivity. 
 
 ## Monitoring the state of your databases
 
@@ -53,7 +51,7 @@ Several minutes of database unavailability or connection interruptions are not e
 
 Checking your deployment's logs helps you monitor the state of HA and replication for your deployment. If you are having persistent issues with your applications, logs can also provide insight to what is happening on your databases when you are experiencing connection failures or other disruptions. 
 
-## SLA
+## High availablility, disaster recovery, and SLA resources
 
-{{site.data.keyword.databases-for-redis}} deployments conform to the {{site.data.keyword.cloud_notm}} [SLA terms](/docs/overview?topic=overview-slas).
+{{site.data.keyword.databases-for-redis}} deployments conform to the {{site.data.keyword.cloud_notm}} Databases [HA, DR, and SLA](/cloud-databases/cloud-databases-ha-dr) terms.
 
