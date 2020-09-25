@@ -51,7 +51,7 @@ Several minutes of database unavailability or connection interruptions are not e
 
 Checking your deployment's logs helps you monitor the state of HA and replication for your deployment. If you are having persistent issues with your applications, logs can also provide insight to what is happening on your databases when you are experiencing connection failures or other disruptions. 
 
-## High availablility, disaster recovery, and SLA resources
+## High availability, disaster recovery, and SLA resources
 
 {{site.data.keyword.databases-for-redis}} deployments conform to the {{site.data.keyword.cloud_notm}} Databases [HA, DR, and SLA](/cloud-databases/cloud-databases-ha-dr) terms.
 
