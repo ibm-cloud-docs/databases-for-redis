@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020
-lastupdated: "2020-05-19"
+  years: 2021
+lastupdated: "2021-02-03"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -21,11 +21,9 @@ subcollection: databases-for-redis
 # Upgrading to a new Major Version
 {: #upgrading}
 
-When a major version of a database is at its end of life (EOL), it is a good idea to upgrade to a current major version. 
+When a major version of a database is at its end of life (EOL), it is a good idea to upgrade to a current major version. You can find the available versions of Redis on the [{{site.data.keyword.databases-for-redis_full}} the catalog](https://cloud.ibm.com/catalog/databases-for-redis) page, from the cloud databases cli plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
-You can find the available versions of Redis on the [{{site.data.keyword.databases-for-redis_full}} the catalog](https://cloud.ibm.com/catalog/databases-for-redis) page, from the cloud databases cli plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
-
-Since most uses of {{site.data.keyword.databases-for-redis}} serve as a cache where the data tends to be ephemeral, it is best to create a new deployment. In this simple method, point your application at the new deployment and build up the cache directly through initial use. 
+Since most uses of {{site.data.keyword.databases-for-redis}} serve as a cache where the data tends to be transient, it is best to create a new deployment. In this simple method, point your application at the new deployment and build up the cache directly through initial use. 
 
 However, if you need to retain persisted data from the old deployment, you need to copy all the key-value pairs. Do this from your old instance to your new deployment by using a method appropriate to your use case. 
 
