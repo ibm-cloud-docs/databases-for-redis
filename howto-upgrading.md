@@ -23,13 +23,12 @@ subcollection: databases-for-redis
 
 When a major version of a database is at its end of life (EOL), it is a good idea to upgrade to a current major version. You can find the available versions of Redis on the [{{site.data.keyword.databases-for-redis_full}} the catalog](https://cloud.ibm.com/catalog/databases-for-redis) page, from the cloud databases cli plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show), or from the cloud databases API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases) endpoint.
 
-Since most uses of {{site.data.keyword.databases-for-redis}} serve as a cache where the data tends to be transient, it is best to create a new deployment. In this simple method, point your application at the new deployment and build up the cache directly through initial use. 
+## Simple upgrade path
+Since most uses of {{site.data.keyword.databases-for-redis}} serve as a cache where the data tends to be transient, it is best to create a new deployment. In this simple method, provision a new deployment using the latest version of {{site.data.keyword.databases-for-redis}} and then point your application to the new deployment. This will build up the cache directly through initial use. 
 
-However, if you need to retain persisted data from the old deployment, you need to copy all the key-value pairs. Do this from your old instance to your new deployment by using a method appropriate to your use case. 
+## If you require data migration
 
-## Migrating your data
-
-If you absolutely must retain your data when upgrading to the next major version of {{site.data.keyword.databases-for-redis}}, you need to take some steps to successfully migrate all of your data. 
+If you absolutely must retain your persisted data when upgrading to the next major version of {{site.data.keyword.databases-for-redis}}, you need to take some steps to successfully migrate all of your data. You need to copy all the key-value pairs into the new deployment. Do this from your old instance to your new deployment by using a method appropriate to your use case.
 
 {{site.data.keyword.databases-for}} has provided an unsupported example script to help simplify this process. 
 
