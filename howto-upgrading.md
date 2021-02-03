@@ -52,19 +52,19 @@ Another way to get this information is using the IBM Cloud CLI. Using the cdb pl
 ```
 ibmcloud cdb deployment-connections <Redis deployment name>
 ```
-[: .pre]
+{: .pre}
 
 This provides you with your {{site.data.keyword.databases-for-redis}} connection URI that includes the hostname and port. To get the decoded CA certificate for the database, run:
 ```
 ibmcloud cdb deployment-cacert <Redis deployment name>
 ```
-[: .pre]
+{: .pre}
 
 After the CA certificate is decoded, you need to save that to a file to connect to the database later. If you don’t know the password for your deployment, either get that from your generated service credentials or you can create a new password by running:
 ```
 ibmcloud cdb deployment-user-password <Redis deployment name> admin <new password>
 ```
-[: .pre]
+{: .pre}
 
 With this information, you have what you need for the destination and the source databases.
 
@@ -75,7 +75,7 @@ python pymigration.py <source host> <source password> <source port>
 <destination host> <destination password> <destination port>
 <destination ca certificate path> --sslsrc --ssldst
 ```
-[: .pre]
+{: .pre}
 
 Since you are copying data from a {{site.data.keyword.databases-for-redis}} database, you need to add the --sslsrc flag if your {{site.data.keyword.databases-for-redis}} database is SSL/TLS enabled. If it isn’t, then don’t add the flag. This makes sure that Redis is connecting to a SSL/TLS enabled database. You also need to add --ssldst since the destination database is your new {{site.data.keyword.databases-for-redis}} which also is SSL/TLS enabled. Supplementary flags that you might add are --db and --flush. Using --db, you can indicate the database that your keys are copied from, which is the database that they recopied into in your new {{site.data.keyword.databases-for-redis}} deployment. The --flush flag flushes the destination database before importing the keys from the source database. If you want to keep things fresh in your new {{site.data.keyword.databases-for-redis}} deployment, flush will delete all the keys first then import the new keys from your source database.
 
