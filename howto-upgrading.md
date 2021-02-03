@@ -13,6 +13,7 @@ subcollection: databases-for-redis
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
 {:pre: .pre}
 {:tip: .tip}
 
@@ -36,8 +37,8 @@ If you absolutely must retain your data when upgrading to the next major version
 
 ### The migration script
 
-This script is unsupported and exists as an example of what you can build to move {{site.data.keyword.databases-for-redis}} data from one instance to another as part of a version upgrade. All source code and/or binaries that are attached to this document are referred to here as "the Program". IBM is not providing program services of any kind for the Program. IBM is providing the Program on an "AS IS" basis without warranty of any kind. IBM WILL NOT BE LIABLE FOR ANY ACTUAL, DIRECT, SPECIAL, INCIDENTAL, OR INDIRECT DAMAGES OR FOR ANY ECONOMIC CONSEQUENTIAL DAMAGES (INCLUDING LOST PROFITS OR SAVINGS), EVEN IF IBM, OR ITS RESELLER, HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-{: .warning}
+Warning: This script is unsupported and exists as an example of what you can build to move {{site.data.keyword.databases-for-redis}} data from one instance to another as part of a version upgrade. All source code and/or binaries that are attached to this document are referred to here as "the Program". IBM is not providing program services of any kind for the Program. IBM is providing the Program on an "AS IS" basis without warranty of any kind. IBM WILL NOT BE LIABLE FOR ANY ACTUAL, DIRECT, SPECIAL, INCIDENTAL, OR INDIRECT DAMAGES OR FOR ANY ECONOMIC CONSEQUENTIAL DAMAGES (INCLUDING LOST PROFITS OR SAVINGS), EVEN IF IBM, OR ITS RESELLER, HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+{: .note}
 
 Copying data from your old {{site.data.keyword.databases-for-redis}} deployment to a new version involves running a simple Python script [available on GitHub](https://github.com/IBM-Cloud/clouddatabases-migration-examples/blob/master/redis/redis_migration.py). The script copies all the keys from your source database over to your new {{site.data.keyword.databases-for-redis}} deployment. Download the script and make sure that you have Python 3.x installed. If you’re on macOS, you can use `homebrew` to install it running the command `brew install python3`, which will give you the latest version.
 
