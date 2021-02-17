@@ -30,7 +30,7 @@ Since most uses of {{site.data.keyword.databases-for-redis}} serve as a cache wh
 
 If you absolutely must retain your persisted data when upgrading to the next major version of {{site.data.keyword.databases-for-redis}}, you need to take some steps to successfully migrate all of your data. You need to copy all the key-value pairs into the new deployment. Do this from your old instance to your new deployment by using a method appropriate to your use case.
 
-{{site.data.keyword.databases-for}} has provided an unsupported example script to help simplify this process. 
+{{site.data.keyword.databases-for-redis}} has provided an unsupported example script to help simplify this process. 
 
 ### The migration script
 
@@ -42,7 +42,9 @@ Copying data from your old {{site.data.keyword.databases-for-redis}} deployment 
 Next, we recommend creating a migration window to let your users know that you are doing some maintenance. That way you have some time to migrate all your data over to your new {{site.data.keyword.databases-for-redis}} deployment. If you are using Redis as a key-value store with expire times on keys, know that these expiry times are copied over to your new database. Our example does this with 10 million keys in our database, which doesn't take much time to migrate depending on your bandwidth.
 
 ### Getting the destination and source database credentials
-Now, you need to have the credentials of both the old source database and your new {{site.data.keyword.databases-for-redis}} deployment. You can get the credentials for both {{site.data.keyword.databases-for-redis}} deployments by clicking the respective databases from the IBM Cloud resources page. Then, click the Service credentials link from the left menu that takes you to the Service credentials view. From there, you can create a New credential for the destination database by clicking that button and you can use any credentials that you’ve already created for the source respectively.
+Now, you need to have the credentials of both the old source database and your new {{site.data.keyword.databases-for-redis}} deployment. You can get the credentials for both {{site.data.keyword.databases-for-redis}} deployments by clicking the respective databases from the IBM Cloud resources page. Then, click the Service credentials link from the left menu that takes you to the Service credentials view. From there, you can create a new credential for the destination database by clicking the `New credential` button. You can use any credentials that you’ve already created for the source respectively.
+
+![Service credentials view](images/service-credentials.png)
 
 Another way to get this information is using the IBM Cloud CLI. Using the cdb plug-in, run:
 
