@@ -34,7 +34,7 @@ Review the [`Getting to production`](/docs/cloud-databases?topic=cloud-databases
 
 You have to set the admin password before you can use it to connect. To set the password through the UI, open the _Settings_ tab and use the _Change Database Admin Password_ panel to set a new admin password.
 
-![The Chnage Database Admin Password Panel in _Settings_](images/settings-admin-password.png)
+![The Change Database Admin Password Panel in _Settings_](images/settings-admin-password.png)
 
 Alternatively, use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI cloud databases plugin to set the admin password with the command line.
 ```
