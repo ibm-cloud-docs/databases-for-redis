@@ -32,7 +32,7 @@ You have to [set the admin password](/docs/databases-for-redis?topic=databases-f
 
 The admin user and all other users on your deployment have full access to the set of redis commands, with the exception of the subcommand `configure set` - this includes the admin user.
 
-In Redis 6.x and above, any user that you create, whether through _Service Credentials_, the CLI, the API, or directly in Redis all have this same set of access. You can use Redis itself to create roles with access limited to specific keys or ranges of keys. Refer to the redis documentation for [commands to manage roles](https://redis.io/topics/acl#configuring-acls-using-the-acl-command).
+In Redis 6.x and above, any user that you create; whether through _Service Credentials_, the CLI, the API, or directly in Redis; all have this same access. You cannot use Redis itself to create users or roles with access limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensures the propagates across the cluster.
 
 ## Additional Users - Redis 6.x only
 
