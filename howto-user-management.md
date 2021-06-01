@@ -13,6 +13,7 @@ subcollection: databases-for-redis
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
 {:pre: .pre}
 {:tip: .tip}
 
@@ -39,6 +40,10 @@ In Redis 6.x and above, any user that you create; whether through _Service Crede
 Access to your {{site.data.keyword.databases-for-redis}} deployment is not limited to the admin user. You can create users by using the _Service Credentials_ panel, the {{site.data.keyword.IBM_notm}} CLI, or through the {{site.data.keyword.IBM_notm}} {{site.data.keyword.databases-for}} API. 
 
 All users on your deployment can use the connection strings, including connection strings for either public or private endpoints. 
+
+{: note}
+Starting with Redis 6.x, IBM Cloud Databases for Redis disables the default user. Instead, to stay in sync with the new ACL support, every deployment gets a dedicated admin user for full support of ACLs. Newly provisioned users via the UI, API or CLI will adhere to this pattern, as well. If your drivers don't support ACL at this point in time, we recommend using Redis 5 and switching to Redis 6 once your drivers are ready to support ACL.
+{: note}
 
 ### Creating Users From _Service Credentials_
 
