@@ -82,5 +82,5 @@ There are four reserved users on your deployment. Modifying these users will cau
 - `admin` - The default user provided to access your deployment.
 
 {: note}
-Starting with Redis 6.x, IBM Cloud Databases for Redis disables the default user. Instead, to stay in sync with the new ACL support, every deployment gets a dedicated admin user for full support of ACLs. Newly provisioned users via the UI, API or CLI will adhere to this pattern, as well. If your drivers don't support ACL at this point in time, we recommend using Redis 5 and switching to Redis 6 once your drivers are ready to support ACL.
+Starting with Redis 6.x, IBM Cloud Databases for Redis disables the default user. Instead, to stay in sync with the new ACL support, every deployment gets a dedicated admin user for full support of ACLs. Newly provisioned users via the UI, API, or CLI will adhere to this pattern, as well. If your drivers don't support ACL at this point in time, we recommend using Redis 5 and switching to Redis 6 once your drivers are ready to support ACL.
 {: note}
