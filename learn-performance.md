@@ -19,7 +19,7 @@ subcollection: databases-for-redis
 # Performance
 {: #performance}
 
-{{site.data.keyword.databases-for-redis_full}} deployments deployments can be both manually [to your usage](/docs/databases-for-redis?topic=databases-for-redis-resources-scaling), or configured to [autoscale](/docs/databases-for-redis?topic=databases-for-redis-autoscaling) under certain resource conditions. There are a few factors to consider if you are tuning the performance of your deployment.
+{{site.data.keyword.databases-for-redis_full}} deployments can be both manually [to your usage](/docs/databases-for-redis?topic=databases-for-redis-resources-scaling), or configured to [autoscale](/docs/databases-for-redis?topic=databases-for-redis-autoscaling) under certain resource conditions. There are a few factors to consider if you are tuning the performance of your deployment.
 
 ## Monitoring your deployment
 
