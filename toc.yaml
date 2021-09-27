@@ -56,7 +56,7 @@ toc:
           - howto-autoscaling.md
       - /cloud-databases/cloud-databases-dashboard-backups
       - /cloud-databases/cloud-databases-allowlisting
-      - toipicgroup:
+      - topicgroup:
           label: Configuring Redis
           topics:
           - howto-config.md
