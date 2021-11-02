@@ -71,7 +71,7 @@ You can also set up a connection to your deployment through redli yourself witho
 
 Connection Strings for your deployment are displayed on the _Dashboard Overview_, in the _Endpoints_ panel. The _CLI_ tab contains information that a CLI client uses to make a connection to your deployment. The three pieces you need are the self-signed certificate, the certificate name, and the connection string in the _CLI endpoint_ field. 
 
-![CLI Endpoints panel](images/cli-endpoints-pane.png)
+![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="Figure 1. CLI Endpoints panel" caption-side="bottom"}
 
 Download, or save the _contents_ of the TLS certificate to a file and name the file with the TLS certificate _name_. Remember where the file is saved.
 
