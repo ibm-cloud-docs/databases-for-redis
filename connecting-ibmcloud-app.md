@@ -37,7 +37,7 @@ Before connecting your Kubernetes Service application to a deployment, make sure
 
 **Public Endpoints** - If you are using the default public service endpoint to connect to your deployment, you can run the `cluster service bind` command with your cluster name and your deployment name.
 ```shell
-ibmcloud ks cluster service bind <your_cluster_name> <your_database_deployment>
+ibmcloud ks cluster service bind <your_cluster_name> <namespace> <your_database_deployment>
 ```
 OR  
 **Private Endpoints** - If you want to use a private endpoint (if one is enabled on your deployment), then first you need to create a service key for your database so Kubernetes can use it when binding to the database. 
