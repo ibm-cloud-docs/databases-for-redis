@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2020
-lastupdated: "2020-11-16"
+lastupdated: "2021-11-16"
 
 keywords: redis, databases, update, client
 
