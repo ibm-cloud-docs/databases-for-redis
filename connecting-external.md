@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2020
-lastupdated: "2021-11-16"
+lastupdated: "2022-02-03"
 
 keywords: redis, databases
 
@@ -93,7 +93,7 @@ Deployments also come with a self-signed certificate so you can verify the serve
 ### Using the self-signed certificate
 {: #using-cert}
 
-1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the connection information.
+1. Copy the certificate information from the *Endpoints* panel or the Base64 field of the connection information.
 2. If needed, decode the Base64 string into text.
 3. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the driver or client.
