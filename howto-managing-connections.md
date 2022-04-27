@@ -22,68 +22,46 @@ subcollection: databases-for-redis
 
 Connections to your {{site.data.keyword.databases-for-redis_full}} deployment use resources, so it is important to consider how many connections you need when tuning your deployment's performance. MySQL uses a `maxclients` setting to limit the number of connections (and resources that are consumed by connections) to prevent runaway connection behavior from overwhelming your deployment's resources.
 
-You can check the value of `maxclients` with your [admin user](/docs/databases-for-mysql?topic=databases-for-mysql-user-management#the-admin-user) and [`mysql`](/docs/databases-for-mysql?topic=databases-for-mysql-connecting-mysql).
+You can check the value of `maxclients` with your [admin user](/docs/databases-for-redis?topic=databases-for-redis-user-management#the-admin-user).
 ```shell
-ibmclouddb=> SHOW max_connections;
- max_connections
------------------
- 200
-(1 row)
+code snippet needed here
 ```
-{: .codeblock}
 
-## MySQL Connection Limits 
+## Redis Connection Limits 
 {: #managing-mysql-connection-limits}
 
-At provision, {{site.data.keyword.databases-for-mysql}} sets the maximum number of connections to your MySQL database to **200**. You can raise this value by [Changing the MySQL Configuration](/docs/databases-for-mysql?topic=databases-for-mysql-changing-configuration). We recommend leaving some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. 
+At provision, {{site.data.keyword.databases-for-redis_full}} sets the maximum number of connections to your Redis deployment to **10000**. We recommend leaving some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. 
 
-As well, it is recommended that you limit the number of simultaneous connections for any non-admin account. For example, setting `max_user_connections=3` will restrict the given user account to a maximum of three simultaneous connections.
+We recommend that you use reuse connection pooling to minimize number of active connections against the database.
 {: .tip}
 
 After the connection limit has been reached, any attempts at starting a new connection result in an error. 
 
 ```shell
-FATAL: remaining connection slots are reserved for
-non-replication superuser connections
+code snippet needed
 ```
 Exceeding the connection limit for your deployment can cause your database to be unreachable by your applications.
 
-You can access information about connections to your deployment with the admin user, `mysql`, and `SHOW GLOBAL STATUS`.
+You can access information about connections to your deployment with the admin user.
 ```shell
-mysql> SHOW GLOBAL STATUS;
-+-----------------------------------+------------+
-| Variable_name                     | Value      |
-+-----------------------------------+------------+
-| Aborted_clients                   | 0          |
-| Aborted_connects                  | 0          |
-| Bytes_received                    | 155372598  |
-| Bytes_sent                        | 1176560426 |
-...
-| Connections                       | 30023      |
-| Created_tmp_disk_tables           | 0          |
-| Created_tmp_files                 | 3          |
-| Created_tmp_tables                | 2          |
-...
-| Threads_created                   | 217        |
-| Threads_running                   | 88         |
-| Uptime                            | 1389872    |
-+-----------------------------------+------------+
+code snippet needed
+
 ```
 
-If you need to figure out where the connections are going, you can break down the connections by database with the help of the `threads_connected` variable.
+If you need to figure out where the connections are going, you can break down the connections by database with the help of the `__________________` variable.
 ``` shell
-mysql> show status where `variable_name` = 'Threads_connected';
+code snippet needed;
 ```
 {: pre}
 
-To further investigate your connections, use the `SHOW PROCESSLIST` command.
+To further investigate your connections, use the `___________` command.
 ```shell
-SHOW [FULL] PROCESSLIST;
+code snippet needed;
 ```
 {: pre}
 
 ## Terminating Connections
-{: #managing-mysql-connections-terminating}
+{: #managing-redis-connections-terminating}
 
 Each connection to [mysqld](https://dev.mysql.com/doc/refman/5.7/en/mysqld.html), the MySQL Server, runs in a separate thread and can be killed with a `processlist_id` statement.
 ```shell
@@ -91,10 +69,9 @@ KILL [CONNECTION | QUERY] processlist_id
 ```
 {: pre}
 
-- `KILL CONNECTION` terminates the connection associated with the given `processlist_id`, after terminating ny statement the connection is executing. 
-- `KILL QUERY` terminates the statement the connection is currently executing, but leaves the connection itself intact.
+- `CLIENT KILL` command closes a given client connection. 
 
-Check out the [MySQL 5.7 Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/kill.html) for more information on the `KILL` statement.
+Check out the [Redis CLIENT KILL documentation](https://redis.io/commands/client-kill/) for more information on the `CLIENT KILL` statement.
 
 
 ### End Connections
@@ -106,7 +83,7 @@ In the UI, on the _Settings_ tab, there is a button to `End Connections` to your
 
 The CLI command to end connections to the deployment is 
 ```shell
-ibmcloud cdb deployment-kill-connections <deployment name or CRN>
+code snippet needed
 ```
 
 You can also use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api#kill-connections-to-a-MySql-deployment) to perform the end all connections operation.
