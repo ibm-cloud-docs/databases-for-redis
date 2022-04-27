@@ -32,7 +32,7 @@ code snippet needed here
 
 At provision, {{site.data.keyword.databases-for-redis_full}} sets the maximum number of connections to your Redis deployment to **10000**. We recommend leaving some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. 
 
-We recommend that you use reuse connection pooling to minimize number of active connections against the database.
+We recommend that you use [connection pooling](#managing-redis-connection-pooling) to minimize the number of active connections against your deployment.
 {: .tip}
 
 After the connection limit has been reached, any attempts at starting a new connection result in an error. 
@@ -63,11 +63,7 @@ code snippet needed;
 ## Terminating Connections
 {: #managing-redis-connections-terminating}
 
-Each connection to [mysqld](https://dev.mysql.com/doc/refman/5.7/en/mysqld.html), the MySQL Server, runs in a separate thread and can be killed with a `processlist_id` statement.
-```shell
-KILL [CONNECTION | QUERY] processlist_id
-```
-{: pre}
+Due to the single-threaded nature of Redis, it is not possible to kill a client connection while it is executing a command. From the client point of view, the connection can never be closed in the middle of the execution of a command. However, the client will notice the connection has been closed only when the next command is sent (and results in network error).
 
 - `CLIENT KILL` command closes a given client connection. 
 
@@ -75,7 +71,7 @@ Check out the [Redis CLIENT KILL documentation](https://redis.io/commands/client
 
 
 ### End Connections
-{: #managing-mysql-connections-end}
+{: #managing-redis-connections-end}
 
 If your deployment reaches the connection limit or you are having trouble connecting to your deployment and suspect that a high number of connections is a problem, you can disconnect (or end) all of the connections to your deployment. 
 
@@ -89,10 +85,7 @@ code snippet needed
 You can also use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api#kill-connections-to-a-MySql-deployment) to perform the end all connections operation.
 
 ## Connection Pooling
-{: #managing-mysql-connection-pooling}
+{: #managing-redis-connection-pooling}
 
 One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling.
 
-[MySQL Connectors](https://dev.mysql.com/doc/refman/5.7/en/connectors-apis.html) enable you to connect and execute MySQL statements from another language or environment, including ODBC, Java (JDBC), C++, Python, PHP, Perl, Ruby, and native C and embedded MySQL instances.
-
-For example, connection pooling with [MySQL Connector/J](https://dev.mysql.com/doc/refman/5.7/en/connector-j-info.html) can increase performance while reducing overall usage. [MySQL Connector/Python](https://dev.mysql.com/doc/connector-python/en/connector-python-connection-pooling.html) also allows for optimization using the `mysql.connector.pooling` module.
