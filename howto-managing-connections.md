@@ -69,7 +69,6 @@ Due to the single-threaded nature of Redis, it is not possible to kill a client 
 
 Check out the [Redis CLIENT KILL documentation](https://redis.io/commands/client-kill/) for more information on the `CLIENT KILL` statement.
 
-
 ### End Connections
 {: #managing-redis-connections-end}
 
