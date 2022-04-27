@@ -82,8 +82,6 @@ The CLI command to end connections to the deployment is
 code snippet needed
 ```
 
-You can also use the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api#kill-connections-to-a-MySql-deployment) to perform the end all connections operation.
-
 ## Connection Pooling
 {: #managing-redis-connection-pooling}
 
