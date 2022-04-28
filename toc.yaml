@@ -58,6 +58,7 @@ toc:
           - howto-autoscaling.md
       - /cloud-databases/cloud-databases-dashboard-backups
       - /cloud-databases/cloud-databases-allowlisting
+      - howto-managing-connections.md
       - topicgroup:
           label: Configuring Redis
           topics:
