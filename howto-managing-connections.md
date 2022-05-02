@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2022-04-27"
+lastupdated: "2022-05-02"
 
 keywords: redis, databases, connection limits, terminating connections, connection pooling
 
@@ -30,7 +30,7 @@ code snippet needed here
 ## Redis Connection Limits 
 {: #managing-mysql-connection-limits}
 
-At provision, {{site.data.keyword.databases-for-redis_full}} sets the maximum number of connections to your Redis deployment to **10000**. We recommend leaving some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. 
+At provision, {{site.data.keyword.databases-for-redis_full}} sets the maximum number of connections to your Redis deployment to **10,000**. We recommend leaving some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. 
 
 We recommend that you use [connection pooling](#managing-redis-connection-pooling) to minimize the number of active connections against your deployment.
 {: .tip}
