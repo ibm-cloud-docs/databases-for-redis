@@ -28,7 +28,7 @@ Connections to your {{site.data.keyword.databases-for-redis_full}} deployment us
 
 At provision, {{site.data.keyword.databases-for-redis_full}} sets the maximum number of connections to your Redis deployment to **10,000**. Leave some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. 
 
-Exceeding the connection limit for your deployment can make your database unreachable by your applications. If your connection limit is reached, you will see the following error
+Exceeding the connection limit for your deployment can make your database unreachable by your applications. If your connection limit is reached, the following error is output
 
 ```shell
 ERR max number of clients reached
@@ -37,7 +37,7 @@ ERR max number of clients reached
 ### Checking Connection Limits
 {: #checking-redis-connections}
 
-To display your current client connections, using the following CLI command with your [admin user](/docs/databases-for-redis?topic=databases-for-redis-user-management#the-admin-user).
+To display your current client connections, use the following CLI command with your [admin user](/docs/databases-for-redis?topic=databases-for-redis-user-management#the-admin-user).
 
 ```shell
 CLIENT LIST
