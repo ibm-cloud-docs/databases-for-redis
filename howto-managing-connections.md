@@ -49,21 +49,24 @@ The output can be filtered, for example
 CLIENT LIST TYPE NORMAL
 ```
 
-For more information, see [Redis CLIENT LIST](https://redis.io/commands/client-list/).
+For more information, see [Redis CLIENT LIST.](https://redis.io/commands/client-list/){: .external}
 
 ## Ending Connections
 {: #managing-redis-connections-end}
 
 Due to the single-threaded nature of Redis, it is not possible to end a client connection while it is running a command. From the client point of view, the connection can never be closed in the middle of the execution of a command. However, the client will notice that the connection is closed only when the next command is sent (and results in network error).
 
-- `CLIENT KILL` Command closes a client connection. 
+The `CLIENT KILL` Command closes a client connection. 
 
-For more information, see [Redis CLIENT KILL documentation.](https://redis.io/commands/client-kill/)
+For more information, see [Redis CLIENT KILL documentation](https://redis.io/commands/client-kill/){: .external}.
 
 ## Connection Pooling
 {: #managing-redis-connection-pooling}
 
 One way to prevent exceeding the connection limit and ensure that connections from your applications are being handled efficiently is through connection pooling. Connection pooling minimizes the number of active connections against your deployment. For more information, see [The Pooling of Connections in Redis
-](https://medium.com/geekculture/the-pooling-of-connections-in-redis-e8188335bf64){: .external} and [Connection Pools.](https://medium.com/geekculture/the-pooling-of-connections-in-redis-e8188335bf64){: .external}
+](https://medium.com/geekculture/the-pooling-of-connections-in-redis-e8188335bf64){: .external} and [Connection Pools.](https://medium.com/geekculture/the-pooling-of-connections-in-redis-e8188335bf64){: .external}.
+
+## Allowlisting
+{: #managing-redis-allowlisting}
 
 You can also use allowlisting to manage and/or limit connections to your Redis deployment. For more information, see [Allowlisting](/docs/databases-for-redis?topic=cloud-databases-allowlisting).
