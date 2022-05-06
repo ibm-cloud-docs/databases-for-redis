@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019
-lastupdated: "2022-02-03"
+  years: 2019, 2022
+lastupdated: "2022-05-05"
 
 keywords: redis, databases, redis cache
 
@@ -25,12 +25,12 @@ subcollection: databases-for-redis
 ## Cache Settings
 {: #redis-cache-settings}
 
-To configure the cache, you adjust the `maxmemory` and the `maxmemory` settings of your deployment. `maxmemory` defines the size of the cache. The `maxmemory-policy` defines the eviction behavior when the `maxmemory` limit is reached. In addition, there are other settings that take care of database operations and tuning.
+To configure the cache, you adjust the `maxmemory` and the `maxmemory` settings of your deployment. `maxmemory` defines the size of the cache. The `maxmemory-policy` defines the eviction behavior when the `maxmemory` limit is reached. In addition, other settings take care of database operations and tuning.
 
 ### `maxmemory`
 {: #redis-cache-maxmemory}
 
-By default, `maxmemory` is set to 80% of a data node's available memory, so your node doesn't run out of system resources. You can adjust this setting, but it is recommended that you set a reasonable limit. Otherwise, your data can take all the available memory and your deployment runs out of resources.
+By default, `maxmemory` is set to 80% of a data node's available memory, so your node doesn't run out of system resources. You can adjust this setting, but set a reasonable limit. Otherwise, your data can take all the available memory and your deployment runs out of resources.
 
 ### `maxmemory-policy`
 {: #redis-cache-maxmemory-policy}
@@ -45,14 +45,15 @@ Policy|Behavior
 `volatile-ttl` | Evicts keys that expire, and tries to evict keys with a shorter time to live (TTL) first.
 {: caption="Table 1. Available Redis eviction policies" caption-side="top"}
 
-Note on `volatile` and `allkeys`. When using an `allkeys` policy, the algorithm chooses which keys to evict from the set of all keys. When using a `volatile` policy, the algorithm chooses to evict keys that have either [expire](https://redis.io/commands/expire) or have a [time-to-live (TTL)](https://redis.io/commands/ttl) set. When using a `volatile` policy, if there are no keys that match the policy, no keys are evicted.
+With an `allkeys` policy, the algorithm chooses which keys to evict from the set of all keys. With a `volatile` policy, the algorithm chooses to evict keys that have either [expired](https://redis.io/commands/expire) or have a [time-to-live (TTL)](https://redis.io/commands/ttl) set. In a `volatile` policy, if there are no keys that match the policy, no keys are evicted.
+{: .tip} 
 
 ### Other settings
 {: #redis-cache-other-settings}
 
 Policy|Behavior|Notes
 ---------|---------|------------
-`appendonly` | Default value, `yes`. Enables Redis data to be written to disk. | If you are just caching data, you want to set this value to `no`.
+`appendonly` | Default value, `yes`. Enables Redis data to be written to disk. | If you are caching data, you want to set this value to `no`.
 `stop-writes-on-bgsave-error` | Default value, `yes`. Redis stops accepting writes if it detects an unsuccessful backup snapshot.| For caching, you can set to `no`.
 `maxmemory-samples` | Tunes the LRU algorithm, default value `5`. | [Redis Docs Link](https://redis.io/topics/lru-cache#approximated-lru-algorithm)
 {: caption="Table 2. Redis cache settings " caption-side="top"}
