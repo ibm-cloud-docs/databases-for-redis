@@ -45,7 +45,7 @@ Policy|Behavior
 `volatile-ttl` | Evicts keys that expire, and tries to evict keys with a shorter time to live (TTL) first.
 {: caption="Table 1. Available Redis eviction policies" caption-side="top"}
 
-With an `allkeys` policy, the algorithm chooses which keys to evict from the set of all keys. With a `volatile` policy, the algorithm chooses to evict keys that have either [expired](https://redis.io/commands/expire) or have a [time-to-live (TTL)](https://redis.io/commands/ttl) set. In a `volatile` policy, if there are no keys that match the policy, no keys are evicted.
+With an `allkeys` policy, the algorithm chooses which keys to evict from the set of all keys. With a `volatile` policy, the algorithm chooses to evict keys that have either [expired](https://redis.io/commands/expire) or have a [time-to-live (TTL)](https://redis.io/commands/ttl) set. In a `volatile` policy, if no keys match the policy, no keys are evicted.
 {: .tip} 
 
 ### Other settings
@@ -61,9 +61,9 @@ Policy|Behavior|Notes
 ## Setting an Example Cache
 {: #redis-cache-example-cache}
 
-To adjust the configuration of your deployment, you send a JSON object containing the settings you want to change and their new values. 
+To adjust the configuration of your deployment, send a JSON object with the settings that you want to change and their new values. 
 
-You are able to use `CONFIG SET` directly from a Redis cli-client, but changes made there will not be permanent. Use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration) to make changes to your deployment's configuration file. More information is in [Changing Your Redis Configuration](/docs/databases-for-redis?topic=databases-for-redis-redis-cache).
+You are able to use `CONFIG SET` directly from a Redis cli-client, but changes made there are not permanent. Use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration) to change your deployment's configuration file. More information is in [Changing Your Redis Configuration](/docs/databases-for-redis?topic=databases-for-redis-redis-cache).
 {: .tip} 
 
 For example, the Redis documentation recommends the `allkeys-lru` setting as a good starting place for a general-use cache. It's also fine to leave the `maxmemory` and `maxmemory-samples` at their default values. So to configure the cache from the CLI, you can use
