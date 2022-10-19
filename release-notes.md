@@ -21,7 +21,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: shortdesc}
 
 ## 19 October 2022
-{: #databases-for-postgresql-19oct2022}
+{: #databases-for-redis-19oct2022}
 {: release-note}
 
 Deploying and Connecting a Cloud Databases Instance Tutorial
