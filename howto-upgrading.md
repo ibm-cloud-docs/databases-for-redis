@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-14"
+  years: 2021, 2023
+lastupdated: "2023-04-12"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -9,14 +9,7 @@ subcollection: databases-for-redis
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:note: .note}
-{:pre: .pre}
-{:tip: .tip}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Upgrading to a new Major Version
 {: #upgrading}
