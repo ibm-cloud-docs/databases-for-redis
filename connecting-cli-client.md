@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-07-20"
+  years: 2017, 2023
+lastupdated: "2023-04-27"
 
 keywords: redis, databases, update, client
 
@@ -9,13 +9,7 @@ subcollection: databases-for-redis
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting with a command-line client
 {: #connecting-cli-client}
