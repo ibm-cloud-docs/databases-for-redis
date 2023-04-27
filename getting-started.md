@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2023
-lastupdated: "2023-04-26"
+lastupdated: "2023-04-27"
 
 keywords: redis, getting started redis, deploy redis, redli
 
@@ -53,7 +53,7 @@ sudo cp redli /usr/local/bin
 Unfortunately, the native Redis CLI client does not support TLS/SSL connections and deployments require secure connections. To use Redis CLI, set up something like [Stunnel](https://www.stunnel.org/index.html){: .external} to handle the TLS/SSL connection. For more information, see [Connecting with a CLI client](/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client#connecting-with-redis-cli).
 {: .tip}
 
-## 3. Connect to Redis
+## Connect to Redis
 {: #connecting-redis}
 {: step}
 
