@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-11-30"
+  years: 2019, 2023
+lastupdated: "2023-04-28"
 
 keywords: redis, databases, scaling, manual scaling, disk I/O, memory, CPU
 
@@ -10,12 +10,7 @@ subcollection: databases-for-redis
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
 # Scaling Disk, Memory, and CPU
 {: #resources-scaling}
@@ -79,8 +74,6 @@ You can enable or increase the CPU allocation to the deployment. With dedicated 
 
 A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page. 
 
-![The Scale Resources Panel in Resources](images/scaling-update.png){: caption="Figure 1. The Scale Resources Panel in Resources" caption-side="bottom"}
-
 Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI currently uses a coarser-grained resolution than is available via the CLI or API. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
 
 ## Scaling in the CLI 
@@ -89,12 +82,16 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
-For example, the command to view the resource groups for a deployment named "example-deployment":  
-`ibmcloud cdb deployment-groups example-deployment`
+To view the resource groups for a deployment named `example-deployment`, use a command like: 
+
+```sh
+ibmcloud cdb deployment-groups example-deployment
+```
+{: pre}
 
 This produces the output:
 
-```sh
+```text
 Group   member
 Count   2
 |
@@ -131,12 +128,13 @@ The `cdb deployment-groups-set` command allows either the total RAM or total dis
 
 The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this deployment through the API. Use it with the `/groups` endpoint if you need to manage or automate scaling programmatically.
 
-To view the current and scalable resources on the "example-deployment",
+To view the current and scalable resources on the "example-deployment", use a command like:
 ```sh
 curl -X GET -H "Authorization: Bearer $APIKEY" 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups'
 ```
+{: pre}
 
-To scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB).
+To scale the memory of the "example-deployment" to 2048 MB of RAM for each memory member (for a total memory of 4096 MB), use a command like:
 ```sh
 curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/groups/member' \
 -H "Authorization: Bearer $APIKEY" \
@@ -146,5 +144,6 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
       }
     }'
 ```
+{: pre}
 
 For more information, see [API Reference](https://{DomainName}/apidocs/cloud-databases-api#get-currently-available-scaling-groups-from-a-depl).
