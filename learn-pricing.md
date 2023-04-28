@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2023
-lastupdated: "2023-03-03"
+lastupdated: "2023-04-28"
 
 keywords: redis, databases, pricing, resources, scaling
 
@@ -50,7 +50,7 @@ Dedicated cores are an optional feature. The default `Shared CPU` setting provis
 
 | Resource | Minimum | Maximum | Scaling Granularity (API/CLI) |
 | ---------- | ----- | ----- | ------- |
-| Disk | 5 GB per member | 4 TB per member | 1024 MB per member |
+| Disk | 1 GB per member | 4 TB per member | 1024 MB per member |
 | RAM | 1 GB per member | 112 GB per member | 128 MB per member |
 | CPU (if enabled) | 3 CPUs per member | 28 CPUs per member| 1 CPU per member |
 {: caption="Table 1. Per Member Scaling Limits" caption-side="top"}
