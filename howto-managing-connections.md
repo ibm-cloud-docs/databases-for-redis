@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-05-06"
+  years: 2017, 2023
+lastupdated: "2023-05-30"
 
 keywords: redis, databases, connection limits, terminating connections, connection pooling, managing connections
 
@@ -10,14 +10,9 @@ subcollection: databases-for-redis
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
-# Managing {{site.data.keyword.databases-for-redis_full}} Connections
+# Managing Connections
 {: #managing-redis-connections}
 
 Connections to your {{site.data.keyword.databases-for-redis_full}} deployment use resources, so it is important to consider how many connections you need to tune your deployment's performance. 
@@ -67,4 +62,4 @@ One way to prevent exceeding the connection limit and ensure that connections fr
 ## Redis Allowlisting
 {: #managing-redis-allowlisting}
 
-You can also use allowlisting to manage and/or limit connections to your Redis deployment. For more information, see [Allowlisting](/docs/databases-for-redis?topic=cloud-databases-allowlisting).
+You can also use allowlisting to manage and/or limit connections to your Redis deployment. For more information, see [Allowlisting](/docs/databases-for-redis?topic=databases-for-redis-allowlisting).
