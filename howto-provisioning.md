@@ -4,9 +4,9 @@ copyright:
   years: 2023
 lastupdated: "2023-07-17"
 
-keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision postgresql
+keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision redis
 
-subcollection: databases-for-postgresql
+subcollection: databases-for-redis
 
 ---
 
@@ -15,7 +15,7 @@ subcollection: databases-for-postgresql
 # Provisioning
 {: #provisioning}
 
-Provision a {{site.data.keyword.databases-for-postgresql_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-postgresql/create){: external}, the [{{site.data.keyword.databases-for}} CLI](/docs/databases-for-postgresql?topic=databases-cli-plugin-cdb-reference&interface=ui){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
+Provision a {{site.data.keyword.databases-for-redis_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-redis/create){: external}, the [{{site.data.keyword.databases-for}} CLI](/docs/databases-for-redis?topic=databases-cli-plugin-cdb-reference&interface=ui){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, or through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 
 ## Provisioning through the catalog
 {: #catalog}
@@ -25,7 +25,7 @@ Deploy from the catalog by specifying the following parameters:
 
 - **Service name** - The name can be any string and is the name that is used on the web and in the CLI to identify the new deployment.
 - **Location** - The deployment's public cloud region or Satellite location.
-- **Database Version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/databases-for-postgresql?topic=cloud-databases-versioning-policy&interface=ui){: external}.
+- **Database Version** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/databases-for-redis?topic=cloud-databases-versioning-policy&interface=ui){: external}.
 - **Resource allocation** - Specify initial RAM, disk, and cores for your databases. The minimum sizes of memory and disk are selected by default. With dedicated cores, your resource group is given a single-tenant host with a minimum reserve of CPU shares. Your deployments are then allocated the number of cores you specify. *Once provisioned, disk cannot be scaled down.*
 - **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 - **The resource group** - If you are organizing your services into [resource groups](/docs/account?topic=account-account_setup), specify the resource group in this field. Otherwise, you can leave it at default. For more information, see [Managing resource groups](/docs/account?topic=account-rgs).
@@ -51,7 +51,7 @@ Before provisioning, follow the instructions provided in the documentation to in
       {: pre}
 
 
-1. Create a {{site.data.keyword.databases-for-postgresql}} service instance within {{site.data.keyword.cloud_notm}} by running a command like:
+1. Create a {{site.data.keyword.databases-for-redis}} service instance within {{site.data.keyword.cloud_notm}} by running a command like:
 
    ```sh
    ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP>
@@ -62,7 +62,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    | Field | Description | Flag |
    |-------|------------|------------|
    | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
-   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-postgresql}}, use `databases-for-postgresql`. |  |
+   | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-redis}}, use `databases-for-redis`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
    | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
@@ -78,7 +78,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    Service instance INSTANCE_NAME was created.
                         
    Name:                INSTANCE_NAME
-   ID:                  crn:v1:bluemix:public:databases-for-postgresql:us-east:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+   ID:                  crn:v1:bluemix:public:databases-for-redis:us-east:a/   40ddc34a846383BGB5b60e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
    GUID:                dd13152c-fe15-4bb6-af94-fde0af56897
    Location:            LOCATION
    State:               provisioning
@@ -109,10 +109,10 @@ Before provisioning, follow the instructions provided in the documentation to in
    OK
                           
    Name:                  INSTANCE_NAME
-   ID:                    crn:v1:bluemix:public:databases-for-postgresql:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+   ID:                    crn:v1:bluemix:public:databases-for-redis:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
    GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
    Location:              <LOCATION>
-   Service Name:          databases-for-postgresql
+   Service Name:          databases-for-redis
    Service Plan Name:     standard
    Resource Group Name:   default
    State:                 active
@@ -125,7 +125,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    Updated at:            2023-06-26T19:53:25Z
    Last Operation:                  
                           Status    create succeeded
-                          Message   Provisioning postgresql with version 12 (100%)
+                          Message   Provisioning redis with version 12 (100%)
    ```
    {: codeblck}
 
@@ -146,9 +146,9 @@ The `service-instance-create` command supports a `-p` flag, which allows JSON-fo
 For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 9 GB of memory across three members, then the command to provision 3 GBs per member looks like:
 
 ```sh
-ibmcloud resource service-instance-create databases-for-postgresql <SERVICE_NAME> standard us-south \
+ibmcloud resource service-instance-create databases-for-redis <SERVICE_NAME> standard us-south \
 -p \ '{
-  "backup_id": "crn:v1:blue:public:databases-for-postgresql:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
+  "backup_id": "crn:v1:blue:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "members_memory_allocation_mb": "3072"
 }'
 ```
@@ -192,7 +192,7 @@ Follow these steps to provision using the [Resource Controller API](https://clou
        "name": "my-instance",
        "target": "blue-us-south",
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
-       "resource_plan_id": "databases-for-postgresql-standard"
+       "resource_plan_id": "databases-for-redis-standard"
      }'
    ```
    {: .pre}
