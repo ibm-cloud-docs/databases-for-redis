@@ -32,15 +32,14 @@ toc:
       id: howto
       topics:
       - howto-provisioning.md
+      - howto-user-management.md
       - topicgroup: 
           label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
           topics:
           - include: ../cloud-databases/howto-sat-loc.md
           - include: ../cloud-databases/howto-sat-loc-aws.md
           - include: ../cloud-databases/howto-sat-loc-onprem.md
-      - howto-admin-password.md
       - howto-getting-connection-strings.md
-      - howto-user-management.md
       - howto-upgrading.md
       - include: ../cloud-databases/howto-deprovisioning.md
       - include: ../cloud-databases/closures.md
