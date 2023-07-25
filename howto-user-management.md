@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-07-25"
 
 keywords: acl, access control list, 
 
@@ -14,12 +14,12 @@ subcollection: databases-for-redis
 # Managing Users and Roles
 {: #user-management}
 
-{{site.data.keyword.databases-for-redis_full}} deployments come with authentication enabled and use Redis's built-in access control. Redis 5.x and below only supported a single `admin` user. Redis 6 introduced [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. Upgrade to take advantage of multiple users and authentication.
+{{site.data.keyword.databases-for-redis_full}} deployments come with authentication enabled and use Redis's built-in access control. Redis 5.x and below only support a single `admin` user. Redis 6 introduced [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. Upgrade to take advantage of multiple users and authentication.
 
 ## The `admin` user
 {: #admin-user}
 
-When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to the admin user. If you are using Redis 5.x and below, the admin user is the only user available on your deployment. If you are using Redis 6.x and above you have the admin user and the ability to create additional users and credentials.
+When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to the `admin` user. If you are using Redis 5.x and below, the `admin` user is the only user available on your deployment. If you are using Redis 6.x and above you have the admin user and the ability to create additional users and credentials.
 
 To use the `admin` user to connect to your deployment, set the `admin` password.
 
@@ -55,6 +55,34 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 -d `{"password":"newrootpasswordsupersecure21"}` \
 ```
 {: pre}
+
+## The `default` user
+{: #redis-default-user}
+
+Prior to the arrival of [ACL support in Redis 6](https://redis.com/blog/getting-started-redis-6-access-control-lists-acls/){: external}, the `default` user had broad permissions and was used internally by {{site.data.keyword.databases-for}} and external users to manage {{site.data.keyword.databases-for-redis}} deployments.
+
+With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. {{site.data.keyword.databases-for-redis}} deployments are managed by {{site.data.keyword.databases-for}} using the `ibm` user. 
+
+### `default` user permissions
+{: #redis-default-user-permissions}
+
+The `default` user should be used to manage your databases; however, it has more limited permissions than the `ibm` user. Specifically, the following permissions are restriced for the `default` user:
+- `config` This permission and view, add, update, and delete database configuration, as well as create and manage database users and roles.
+- `acl` <DOES THIS PREVENT USERS FROM CREATING NEW USERS WITHIN REDIS?>
+
+### Upgrading to Redis 6.2 and the `default` user 
+{: #redis-default-user-permissions-upgrading}
+
+If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications using the `default` user to make sure your applications are fully functional. Once you confirm the upgrade has not disrupted performance, change the `default` user password. This password update introduces the new limited permissions.
+
+To update the `default` user password, use the following command:
+
+```sh
+ibmcloud cdb deployment-user-password <Redis deployment name> default <new password>
+```
+{: pre}
+
+For information on upgrading, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading){: external}.
 
 ## Redis roles
 {: #redis-roles}
@@ -120,6 +148,3 @@ There are four reserved users on your deployment. Modifying these users will cau
 - `replication-user` - The user account that is used for replication.
 - `sentinel-user` - The user account for sentinels to handle monitoring and failovers.
 - `admin` - The default user provided to access your deployment.
-
-Starting with Redis 6.x, IBM Cloud Databases for Redis disables the default user. Instead, to stay in sync with the new ACL support, every deployment gets a dedicated admin user for full support of ACLs. Newly provisioned users via the UI, API, or CLI will adhere to this pattern, as well. If your drivers don't support ACL at this point in time, we recommend using Redis 5 and switching to Redis 6 once your drivers are ready to support [Access Control List (ACL) support](https://redis.io/topics/acl){: external}.
-{: note}
