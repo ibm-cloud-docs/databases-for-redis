@@ -66,14 +66,15 @@ With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `de
 ### `default` user permissions
 {: #redis-default-user-permissions}
 
-The `default` user should be used to manage your databases; however, it has more limited permissions than the `ibm` user. Specifically, the following permissions are restriced for the `default` user:
+If your deployments currently use `DEFAULT` user (Redis 5.x), it's possible to continue doing so in the later versions, like 6.2. However, this continued usage of the `DEFAULT` user  after upgrading to v6.2 requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user, starting with Redis v6.2.
+
 - `config` This permission and view, add, update, and delete database configuration, as well as create and manage database users and roles.
 - `acl` <DOES THIS PREVENT USERS FROM CREATING NEW USERS WITHIN REDIS?>
 
 ### Upgrading to Redis 6.2 and the `default` user 
 {: #redis-default-user-permissions-upgrading}
 
-If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications using the `default` user to make sure your applications are fully functional. Once you confirm the upgrade has not disrupted performance, change the `default` user password. This password update introduces the new limited permissions.
+If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications using the `default` user to make sure your applications are fully functional. Upgrading to v6.2 and continuing to use the `DEFAULT` user requires a password change.
 
 To update the `default` user password, use the following command:
 
