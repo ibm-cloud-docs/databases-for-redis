@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2017, 2023
-lastupdated: "2023-04-27"
+lastupdated: "2023-07-26"
 
-keywords: redis, databases, update, client
+keywords: redis, databases, update, client, pub/sub
 
 subcollection: databases-for-redis
 
@@ -14,7 +14,7 @@ subcollection: databases-for-redis
 # Connecting with a command-line client
 {: #connecting-cli-client}
 
-You can access your Redis database directly from a command-line client. A command-line client allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
+Access your Redis database directly from a command-line client. A command-line client allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
 
 The `redli` client needs to be [updated for Redis 6](https://github.com/IBM-Cloud/redli/releases) which introduced user management features. If you try to connect to without updating the client, you will see an error like: `(error) WRONGPASS invalid username-password pair`. 
 {: .note}
@@ -115,4 +115,10 @@ If you do choose to use `redis-cli`, there are some extra configuration steps. I
     ```sh
     redis-cli -p 6830 -a <password>
     ```
-    
+
+## Pub/Sub
+{: #external-app-pubsub}
+
+{{site.data.keyword.databases-for-redis}} supports Pub/Sub (publish/subscribe). Pub/Sub is a messaging technology that facilitates communication between different components in a distributed system.
+
+For more information, see [Pub/Sub (publish/subscribe)](https://redis.com/glossary/pub-sub/){: external}.
