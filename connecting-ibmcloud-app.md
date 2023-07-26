@@ -1,23 +1,16 @@
 ---
 
 copyright:
-  years: 2018, 2022
-lastupdated: "2022-12-01"
+  years: 2018, 2023
+lastupdated: "2023-07-26"
 
-keywords: redis, databases
+keywords: redis, databases, pub/sub, application
 
 subcollection: databases-for-redis
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
-{:deprecated: .deprecated}
-
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting an {{site.data.keyword.cloud_notm}} application
 {: #ibmcloud-app}
@@ -37,25 +30,35 @@ Before connecting your Kubernetes Service application to a deployment, make sure
 ### Binding your deployment
 {: #ibmcloud-app-bind-deployment}
 
-**Public Endpoints** - If you are using the default public service endpoint to connect to your deployment, you can run the `cluster service bind` command with your cluster name, the resource group, and your deployment name.
+**Public Endpoints** - If you are using the default public service endpoint to connect to your deployment, run the `cluster service bind` command with your cluster name, the resource group, and your deployment name.
+
 ```sh
 ibmcloud ks cluster service bind <your_cluster_name> <resource_group> <your_database_deployment>
 ```
-OR  
-**Private Endpoints** - If you want to use a private endpoint (if one is enabled on your deployment), then first you need to create a service key for your database so Kubernetes can use it when binding to the database. 
+{: pre}
+
+**Private Endpoints** - Too use a private endpoint (if one is enabled on your deployment), create a service key for your database so Kubernetes can use it when binding to the database.
+
 ```sh
 ibmcloud resource service-key-create <your-private-key> --instance-name <your_database_deployment> --service-endpoint private  
 ```
-The private service endpoint is selected with `--service-endpoint private`. After that, you bind the database to the Kubernetes cluster through the private endpoint with the `cluster service bind` command.
+{: pre}
+
+The private service endpoint is selected with `--service-endpoint private`. After that, bind the database to the Kubernetes cluster through the private endpoint with the `cluster service bind` command.
+
 ```sh
 ibmcloud ks cluster service bind <your_cluster_name> <resource_group> <your_database_deployment> --key <your-private-key>
 ```
+{: pre}
 
 **Verify** - Verify that the Kubernetes secret was created in your cluster namespace. Running the following command, you get the API key for accessing the instance of your deployment that is provisioned in your account.
+
 ```sh
 kubectl get secrets --namespace=default
 ```
-More information on binding services is found in the [Kubernetes Service documentation](/docs/containers?topic=containers-service-binding#bind-services).
+{: pre}
+
+For more information, see [Kubernetes Service documentation](/docs/containers?topic=containers-service-binding#bind-services).
 
 ### Configuring in your Kubernetes app 
 {: #ibmcloud-app-configuring-kubernetes}
@@ -65,3 +68,10 @@ When you bind your application to Kubernetes Service, it creates an environment 
 The [Connection Strings](/docs/databases-for-redis?topic=databases-for-redis-connection-strings#connection-string-breakdown) page contains a reference of the JSON fields.
 
 For more information, see the [Kubernetes Service docs](https://cloud.ibm.com/docs/containers?topic=containers-service-binding#reference_secret).
+
+## Pub/Sub
+{: #ibmcloud-app-pubsub}
+
+{{site.data.keyword.databases-for-redis}} supports Pub/Sub (publish/subscribe). Pub/Sub is a messaging technology that facilitates communication between different components in a distributed system.
+
+For more information, see [Pub/Sub (publish/subscribe)](https://redis.com/glossary/pub-sub/){: external}.
