@@ -1,20 +1,15 @@
 ---
 copyright:
-  years: 2018, 2022
-lastupdated: "2022-07-20"
+  years: 2018, 2023
+lastupdated: "2023-07-26"
 
-keywords: redis, databases
+keywords: redis, databases, pub/sub
 
 subcollection: databases-for-redis
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
 # Connecting an external application
 {: #external-app}
@@ -102,3 +97,10 @@ Deployments also come with a self-signed certificate so you can verify the serve
 {: #cli-support-cert}
 
 You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the client.
+
+## Pub/Sub
+{: #external-app-pubsub}
+
+{{site.data.keyword.databases-for-redis}} supports Pub/Sub (publish/subscribe). Pub/Sub is a messaging technology that facilitates communication between different components in a distributed system.
+
+For more information, see [Pub/Sub (publish/subscribe)](https://redis.com/glossary/pub-sub/){: external}.
