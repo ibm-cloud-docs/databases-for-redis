@@ -3,7 +3,7 @@ copyright:
   years: 2018, 2023
 lastupdated: "2023-07-26"
 
-keywords: redis, databases
+keywords: redis, databases, pub/sub
 
 subcollection: databases-for-redis
 
