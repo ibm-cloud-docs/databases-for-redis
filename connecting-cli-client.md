@@ -117,7 +117,7 @@ If you do choose to use `redis-cli`, there are some extra configuration steps. I
     ```
 
 ## Pub/Sub
-{: #external-app-pubsub}
+{: #cli-client-pubsub}
 
 {{site.data.keyword.databases-for-redis}} supports Pub/Sub (publish/subscribe). Pub/Sub is a messaging technology that facilitates communication between different components in a distributed system.
 
