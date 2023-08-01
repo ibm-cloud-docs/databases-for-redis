@@ -108,3 +108,11 @@ toc:
       - include: ../cloud-databases/reference-iam.md
       - include: ../cloud-databases/reference-hpcs.md
       - include: ../cloud-databases/reference-responsibilities.md
+  - navgroup:
+      id: help
+      topics:
+      - topicgroup:
+          label: FAQs
+          topics:
+          - availability-zones-faq.md
+          - status-page-faq.md
