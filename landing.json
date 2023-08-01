@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud® Databases for Redis docs",
-    "lastupdated": "2023-03-03",
+    "lastupdated": "2023-08-01",
     "introduction": "Redis is a blazingly fast, in-memory data structure store.",
     "section_devtools": {
       "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
@@ -16,7 +16,7 @@
       {
         "title": "Setting the Admin Password",
         "description": "The IBM Cloud® Databases for Redis service is provisioned with a admin user. You must set the admin password before you use it to connect.",
-        "href": "/docs/databases-for-redis?topic=databases-for-redis-admin-password&interface=ui"
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#user-management-set-admin-password-ui"
       },
       {
         "title": "Getting Connection Strings",
