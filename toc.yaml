@@ -19,7 +19,6 @@ toc:
       id: learn
       topics:
       - getting-started.md
-      - howto-user-management.md
       - include: ../cloud-databases/learn-getting-to-production.md
       - link:
           label: What is Databases for Redis?
@@ -33,6 +32,7 @@ toc:
       id: howto
       topics:
       - howto-provisioning.md
+      - howto-user-management.md
       - topicgroup: 
           label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
           topics:
