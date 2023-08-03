@@ -3,7 +3,7 @@ copyright:
   years: 2018, 2023
 lastupdated: "2023-07-26"
 
-keywords: redis, databases, pub/sub
+keywords: redis, databases
 
 subcollection: databases-for-redis
 
@@ -14,7 +14,7 @@ subcollection: databases-for-redis
 # Connecting an external application
 {: #external-app}
 
-Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-redis_full}}. The service provides connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Your applications and drivers use connection strings to make a connection to {{site.data.keyword.databases-for-redis_full}}. The service provides connection strings specifically for drivers and applications. Connection strings are displayed in the *Endpoints* panel of your deployment's *Overview*, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
 ## Connection Strings for Applications
 {: #connection-strings-application}
@@ -39,13 +39,13 @@ The information a driver needs to make a connection to your deployment is in the
 
 Redis drivers are often able to make a connection to your deployment when given the URI-formatted connection string found in the "composed" field of the connection information. For example, if you set the connection string in the environment variable `REDIS_URL`
 
-```bash
+```sh
 export REDIS_URL=rediss://admin:$PASSWORD@e6b2c3f8-54a6-439e-8d8a-aa6c4a78df49.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32371/0
 ```
 
 then the Node.js client is able to make a connection with
 
-```bash
+```sh
 let connectionString = process.env.REDIS_URL;
 
 if (connectionString === undefined) {  
@@ -60,7 +60,7 @@ client = redis.createClient(connectionString, {
 });
 ```
 
-Alternatively, the connection string can be parsed and its parts sent to the connection handler, as with the following Python client example
+Alternatively, the connection string can be parsed and its parts sent to the connection handler, as with the following Python client example:
 
 ```python
 parsed = urlparse(connection_string)
@@ -73,8 +73,9 @@ r = redis.StrictRedis(
     ssl_ca_certs='/etc/ssl/certs/ca-certificates.crt',
     decode_responses=True)
 ```
+{: pre}
 
-Redis has a vast array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients). Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability), security, and self-signed certificate support.
+Redis has an array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients). Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability), security, and self-signed certificate support.
 
 ## TLS and self-signed certificate support
 {: #tls-cert-support}
@@ -96,11 +97,11 @@ Deployments also come with a self-signed certificate so you can verify the serve
 ### CLI plug-in support for the self-signed certificate
 {: #cli-support-cert}
 
-You can display the decoded certificate for your deployment with the CLI plug-in with the command `ibmcloud cdb deployment-cacert "your-service-name"`. It decodes the base64 into text. Copy and save the command's output to a file and provide the file's path to the client.
+You can display the decoded certificate for your deployment with the CLI plug-in with a command like:
 
-## Pub/Sub
-{: #external-app-pubsub}
+```sh
+ibmcloud cdb deployment-cacert <SERVICE_NAME>
+```
+{: pre}
 
-{{site.data.keyword.databases-for-redis}} supports Pub/Sub (publish/subscribe). Pub/Sub is a messaging technology that facilitates communication between different components in a distributed system.
-
-For more information, see [Pub/Sub (publish/subscribe)](https://redis.com/glossary/pub-sub/){: external}.
+This command decodes the Base64 into text. Copy and save the command's output to a file and provide the file's path to the client.
