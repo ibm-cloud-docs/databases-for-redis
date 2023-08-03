@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2023
-lastupdated: "2023-07-26"
+lastupdated: "2023-08-03"
 
 keywords: redis, databases, update, client, pub/sub
 
@@ -11,20 +11,20 @@ subcollection: databases-for-redis
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Connecting with a command-line client
+# Connecting through the command-line interface (CLI)
 {: #connecting-cli-client}
 
-Access your Redis database directly from a command-line client. A command-line client allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
+Access your Redis database directly from a command-line interface (CLI). The CLI allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
 
-The `redli` client needs to be [updated for Redis 6](https://github.com/IBM-Cloud/redli/releases) which introduced user management features. If you try to connect to without updating the client, you will see an error like: `(error) WRONGPASS invalid username-password pair`. 
+The `redli` client needs to be updated for the user management features introduced in [Redis 6](https://github.com/IBM-Cloud/redli/releases){: external}. If you try to connect to without updating the client, you see an error like: `(error) WRONGPASS invalid username-password pair`. 
 {: .note}
 
 ## Connection Strings
 {: #connection-strings-cli}
 
-Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [cloud databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
+Connection strings are displayed in the _Endpoints_ panel of your deployment's _Overview_, and can also be retrieved from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections), and the [{{site.data.keyword.databases-for}} API](https://{DomainName}/apidocs/cloud-databases-api#discover-connection-information-for-a-deployment-f-e81026).
 
-The information the clients need to make a connection to your deployment is in the "cli" section of your connection strings. The table contains a breakdown for reference.
+The information the clients need to connect to your deployment is in the "cli" section of your connection strings. The table contains a breakdown for reference.
 
 | Field Name|Index|Description |
 | ---------- | ----- | ----------- |
@@ -42,42 +42,46 @@ The information the clients need to make a connection to your deployment is in t
 ## Installing `redli`
 {: #install-redli}
 
-`redli` is an open source Redis command-line client. It is stand-alone, mimics the redis-cli command-line arguments, and adds support for TLS/SSL Redis connections. It recognizes the `rediss:` protocol in URIs and  supports a `--tls` flag for non-URI connections. It can connect to TLS/SSL secured Redis without the need for tunnels. You can download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases). 
+`redli` is an open source Redis command-line client. It is stand-alone, mimics the redis-cli command-line arguments, and adds support for TLS/SSL Redis connections. It recognizes the `rediss:` protocol in URIs and supports a `--tls` flag for non-URI connections. It can connect to TLS/SSL secured Redis without the need for tunnels. Download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases){: external}. 
 
 ## Connecting with `redli`
 {: #connection-redli}
 
-The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named  "NewRedis", use the following command.
+The `ibmcloud cdb deployment-connections` command handles everything that is involved in creating the client connection. For example, to connect to a deployment named "NewRedis", use the following command.
 
 ```sh
 ibmcloud cdb deployment-connections NewRedis --start
 ```
+{: pre}
+
 or
+
 ```sh
 ibmcloud cdb cxn NewRedis -s
 ```
+{: pre}
 
-The command prompts for the admin password and then runs the `redli` command-line client to connect to the database.
+The command prompts for the `admin` password and then runs the `redli` command-line client to connect to the database.
 
-If you have not installed the cloud databases plug-in, connect to your Redis databases with the `redli` command. Download and save the self-signed certificate from your deployment. Then, you can use `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
+If you have not installed the cloud databases plug-in, connect to your Redis databases with the `redli` command. Download and save the self-signed certificate from your deployment. Then, use `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
 
 ```sh
 redli --uri rediss://admin:$PASSWORD@e6b2c3f8-54a6-439e-8d8a-aa6c4a78df49.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32371/0 --certfile /path/to/redis-cert.pem
 ```
 
-There are other connection options and parameters that are supported by `redli`. For more information, see its documentation in the [`redli` GitHub repo](https://github.com/IBM-Cloud/redli).
+There are other connection options and parameters that are supported by `redli`. For more information, see its documentation in the [`redli` GitHub repo](https://github.com/IBM-Cloud/redli){: external}.
 
 ## Installing `redis-cli`
 {: #installing-redis-cli}
 
 `redis-cli` is the official supported command-line interface for Redis. Unfortunately, it does not support TLS connections.
 
-If you do choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, instal [brew](http://brew.sh) and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
+If you choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, install [brew](http://brew.sh) and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
 
 ## Connecting with `redis-cli`
 {: #connecting-with-redis-cli}
 
-`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, you can set up a utility like [`stunnel`](https://www.stunnel.org/index.html), which wraps the `redis-cli` connection in TLS encryption.
+`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, set up a utility like [`stunnel`](https://www.stunnel.org/index.html), which wraps the `redis-cli` connection in TLS encryption.
 
 ### Setting up `stunnel`
 {: #setting-up-stunnel}
@@ -87,7 +91,7 @@ If you do choose to use `redis-cli`, there are some extra configuration steps. I
 2. Grab connection information.
    To set up a connection, `stunnel` needs the host, the port, and the certificate of your Redis deployment. Host and port are both available from the CLI "composed" connection string. They can also be found parsed out in the [table of connection information](/docs/databases-for-redis?topic=databases-for-redis-connection-strings#the-redis-section) that is provided for connecting external applications and drivers.
 
-   The certificate is in the  "Base 64" field of the connection information. Copy, decode, and save the certificate to a file.
+   The certificate is in the "Base 64" field of the connection information. Copy, decode, and save the certificate to a file.
 
 3. Add your configuration information to the `stunnel.conf` file. The configuration includes the following information.
     - A name for a service. (`[redis-cli]`)
@@ -115,10 +119,4 @@ If you do choose to use `redis-cli`, there are some extra configuration steps. I
     ```sh
     redis-cli -p 6830 -a <password>
     ```
-
-## Pub/Sub
-{: #cli-client-pubsub}
-
-{{site.data.keyword.databases-for-redis}} supports Pub/Sub (publish/subscribe). Pub/Sub is a messaging technology that facilitates communication between different components in a distributed system.
-
-For more information, see [Pub/Sub (publish/subscribe)](https://redis.com/glossary/pub-sub/){: external}.
+    {: pre}
