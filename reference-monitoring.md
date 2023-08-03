@@ -16,7 +16,7 @@ subcollection: databases-for-redis
 
 Monitoring for {{site.data.keyword.databases-for-redis_full}} deployments is provided through integration with the {{site.data.keyword.monitoringfull}} service. Your deployments forward selected information so you can monitor deployment health and resource usage. To see your {{site.data.keyword.databases-for-redis}} dashboards in {{site.data.keyword.monitoringfull_notm}}, you have to [Enable Platform Metrics](/docs/monitoring?topic=monitoring-platform_metrics_enabling) in the same region as your deployment. If you have deployments in more than one region, provision {{site.data.keyword.monitoringfull_notm}} and enable platform metrics in each region.
 
-To access {{site.data.keyword.monitoringfull_notm}} from your deployment, select _Monitoring_ from the **Actions...** dropdown.
+To access {{site.data.keyword.monitoringfull_notm}} from your deployment, select _Monitoring_ from the **Actions...** dropdown menu.
 
 ## Monitoring Availability
 {: #monitoring-availability}
