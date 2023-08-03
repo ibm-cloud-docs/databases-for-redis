@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-04-17"
+lastupdated: "2023-08-03"
 
 keywords: redis, monitoring, metrics, iops, disk usage, memory usage
 
@@ -14,22 +14,16 @@ subcollection: databases-for-redis
 # Monitoring Integration
 {: #monitoring}
 
-Monitoring for {{site.data.keyword.databases-for-redis_full}} deployments is provided through integration with the {{site.data.keyword.monitoringfull}} service. Your deployments forward selected information so you can monitor deployment health and resource usage. To see your {{site.data.keyword.databases-for-redis}} dashboards in {{site.data.keyword.monitoringfull_notm}}, you have to [Enable Platform Metrics](/docs/monitoring?topic=monitoring-platform_metrics_enabling) in the same region as your deployment. If you have deployments in more than one region, you have to provision {{site.data.keyword.monitoringfull_notm}} and enable platform metrics in each region.
+Monitoring for {{site.data.keyword.databases-for-redis_full}} deployments is provided through integration with the {{site.data.keyword.monitoringfull}} service. Your deployments forward selected information so you can monitor deployment health and resource usage. To see your {{site.data.keyword.databases-for-redis}} dashboards in {{site.data.keyword.monitoringfull_notm}}, you have to [Enable Platform Metrics](/docs/monitoring?topic=monitoring-platform_metrics_enabling) in the same region as your deployment. If you have deployments in more than one region, provision {{site.data.keyword.monitoringfull_notm}} and enable platform metrics in each region.
 
-To access {{site.data.keyword.monitoringfull_notm}} from your deployment, use the _Monitoring_ link from the right menu. (If you do not already have a monitoring service in the same region as your deployment it says _Add monitoring_.)
-
-![The Monitoring link in a deployment](images/monitoring-ui-link.png){: caption="Figure 1. The Monitoring link in a deployment" caption-side="bottom"}
-
-To access your deployment's monitoring dashboard from {{site.data.keyword.monitoringfull_notm}}, it's in the sidebar, under _IBM_.
-
-![Cloud databases dashboard in monitoring](images/monitoring-ibm-list.png){: caption="Figure 2. Cloud databases dashboard in monitoring" caption-side="bottom"}
+To access {{site.data.keyword.monitoringfull_notm}} from your deployment, select _Monitoring_ from the **Actions...** dropdown.
 
 ## Monitoring Availability
 {: #monitoring-availability}
 
-{{site.data.keyword.monitoringfull_notm}} is available for deployments in every region. Deployments in Multi-zone Regions (MZRs) - `eu-gb`, `eu-de`, `us-east`, `us-south`, `jp-tok`, `au-syd` - have their metrics in the corresponding region.
+{{site.data.keyword.monitoringfull_notm}} is available for deployments in every region. Deployments in [multizone regions](#x9774820){: term} (MZRs) - `eu-gb`, `eu-de`, `us-east`, `us-south`, `jp-tok`, `au-syd` - have their metrics in the corresponding region.
 
-If you have deployments that are in Single-zone Region (SZR) `che01` then your logs are forwarded to a {{site.data.keyword.monitoringfull_notm}} instance in another region. You need to provision monitoring instances in the region where your metrics are forwarded to. Metrics for deployments in `che01` go to `jp-tok`.
+If you have deployments that are in a [single-campus multizone region](#x10127487){: term} `che01` then your logs are forwarded to a {{site.data.keyword.monitoringfull_notm}} instance in another region. You need to provision monitoring instances in the region where your metrics are forwarded to. Metrics for deployments in `che01` go to `jp-tok`.
 
 ## Available Metrics
 {: #metrics-by-plan}
@@ -224,7 +218,7 @@ The following attributes are available for segmenting all of the metrics listed.
 {: caption="Table 12. Global Attributes Metadata" caption-side="top"}
 
 ### Additional Attributes
-{: # additional-attributes}
+{: #additional-attributes}
 
 The following attributes are available for segmenting one or more attributes as described in the reference. See the individual metrics for segmentation options.
 
