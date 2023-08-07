@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-08-03"
+lastupdated: "2023-08-07"
 
 keywords: redis, monitoring, metrics, iops, disk usage, memory usage
 
@@ -16,7 +16,15 @@ subcollection: databases-for-redis
 
 Monitoring for {{site.data.keyword.databases-for-redis_full}} deployments is provided through integration with the {{site.data.keyword.monitoringfull}} service. Your deployments forward selected information so you can monitor deployment health and resource usage. To see your {{site.data.keyword.databases-for-redis}} dashboards in {{site.data.keyword.monitoringfull_notm}}, you have to [Enable Platform Metrics](/docs/monitoring?topic=monitoring-platform_metrics_enabling) in the same region as your deployment. If you have deployments in more than one region, provision {{site.data.keyword.monitoringfull_notm}} and enable platform metrics in each region.
 
-To access {{site.data.keyword.monitoringfull_notm}} from your deployment, select _Monitoring_ from the **Actions...** dropdown menu.
+## Monitoring your Instance
+{: #monitoring-instance}
+
+Access {{site.data.keyword.monitoringfull_notm}} for your {{site.data.keyword.databases-for-redis}} instance from the {{site.data.keyword.cloud_notm}} dashboard:
+
+- From the dashboard, select your instance from the **Resource list**.
+- Within the **Actions** menu, select *Monitoring*.
+
+![Action menu](images/action-monitoring-menu.svg){: caption="Figure 1. Actions monitoring menu" caption-side="bottom"}
 
 ## Monitoring Availability
 {: #monitoring-availability}
