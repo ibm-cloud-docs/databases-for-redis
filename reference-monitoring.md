@@ -68,7 +68,7 @@ The following attributes are available for segmenting all of the metrics listed.
 | `Resource` | `ibm_resource` | The resource being measured by the service - typically a identifying name or GUID. |
 | `Resource Type` | `ibm_resource_type` | The type of the resource being measured by the service. |
 | `Scope` | `ibm_scope` | The scope is the account, organization, or space GUID associated with this metric. |
-{: caption="Table 12. Global Attributes Metadata" caption-side="top"}
+{: caption="Table 2. Global Attributes Metadata" caption-side="top"}
 
 ### Additional Attributes
 {: #additional-attributes}
@@ -80,4 +80,4 @@ The following attributes are available for segmenting one or more attributes as 
 | `Service instance` | `ibm_service_instance` | The service instance segment identifies the instance the metric is associated with. |
 | `Service instance name` | `ibm_service_instance_name` | The service instance name provides the user-provided name of the service instance, which isn't necessarily a unique value depending on the name provided by the user. |
 | `Resource group` | `ibm_resource_group_name` | The resource group where the service instance was created. |
-{: caption="Table 13. Additional Attributes Metadata" caption-side="top"}
+{: caption="Table 3. Additional Attributes Metadata" caption-side="top"}
