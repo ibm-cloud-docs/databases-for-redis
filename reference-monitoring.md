@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-08-07"
+lastupdated: "2023-08-08"
 
 keywords: redis, monitoring, metrics, iops, disk usage, memory usage
 
@@ -36,177 +36,22 @@ If you have deployments that are in a [single-campus multizone region](#x1012748
 ## Available Metrics
 {: #metrics-by-plan}
 
-| Metric Name |
-|-----------|
-| [IO utilization in percent 5 minute average](#ibm_databases_for_redis_disk_io_utilization_percent_average_5m) | 
-| [IO utilization in percent 15 minute average](#ibm_databases_for_redis_disk_io_utilization_percent_average_15m) | 
-| [IO utilization in percent 30 minute average](#ibm_databases_for_redis_disk_io_utilization_percent_average_30m) | 
-| [IO utilization in percent 60 minute average](#ibm_databases_for_redis_disk_io_utilization_percent_average_60m) | 
-| [IOPS read & write total count for an instance.](#ibm_databases_for_redis_disk_iops_read_write_total) | 
-| [Max allowed memory for an instance.](#ibm_databases_for_redis_memory_limit_bytes) | 
-| [Total disk space for an instance.](#ibm_databases_for_redis_disk_total_bytes) | 
-| [Used CPU for an instance.](#ibm_databases_for_redis_cpu_used_percent) | 
-| [Used disk space for an instance (byte)](#ibm_databases_for_redis_disk_used_bytes) | 
-| [Used disk space for an instance (percent)](#ibm_databases_for_redis_disk_used_percent) | 
-| [Used memory for an instance (byte)](#ibm_databases_for_redis_memory_used_bytes) | 
-| [Used memory for an instance (percent)](#ibm_databases_for_redis_memory_used_percent) | 
-{: caption="Table 1. Available Metrics Reference Table" caption-side="bottom"}
+| Metric                                                  | Metric name                                                       | Description                                                                                                | Metric type | Value type | Segment by       |
+|---------------------------------------------------------|-------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|-------------|------------|------------------|
+| IO utilization in percent 5 minute average              | `ibm_databases_for_redis_disk_io_utilization_percent_average_5m`  | How much disk I/O has been used over 5 minutes as a percentage of total disk I/O available.                | gauge       | percent    | Service instance |
+| IO utilization in percent 15 minute average             | `ibm_databases_for_redis_disk_io_utilization_percent_average_15m` | How much disk I/O has been used over 15 minutes as a percentage of total disk I/O available.               | gauge       | percent    | Service instance |
+| IO utilization in percent 30 minute average             | `ibm_databases_for_redis_disk_io_utilization_percent_average_30m` | How much disk I/O has been used over 30 minutes as a percentage of total disk I/O available.               | gauge       | percent    | Service instance |
+| IO utilization in percent 60 minute average             | `ibm_databases_for_redis_disk_io_utilization_percent_average_60m` | How much disk I/O has been used over 60 minutes as a percentage of total disk I/O available.               | gauge       | percent    | Service instance |
+| IOPS read & write total count for an instance           | `ibm_databases_for_redis_disk_iops_read_write_total`              | How many input/output operations per second your deployment is performing.                                 | gauge       | count      | Service instance |
+| Max allowed memory for an instance                      | `ibm_databases_for_redis_memory_limit_bytes`                      | The maximum amount of memory available to your deployment.                                                 | gauge       | byte       | Service instance |
+| Total disk space for an instance                        | `ibm_databases_for_redis_disk_total_bytes`                        | Represents the total amount of disk available to your deployment.                                          | gauge       | byte       | Service instance |
+| Used CPU for an instance                                | `ibm_databases_for_redis_cpu_used_percent`                        | How much CPU is used as a percentage of total CPU available. Only for deployments that have dedicated CPU. | gauge       | percent    | Service instance |
+| Used disk space for an instance                         | `ibm_databases_for_redis_disk_used_bytes`                         | How much disk your deployment is using in bytes.                                                           | gauge       | byte       | Service instance |
+| Used disk space as a percentage of total disk available | `ibm_databases_for_redis_disk_used_percent`                       | How much disk space is used as a percentage of total disk available.                                       | gauge       | percent    | Service instance |
+| Used memory for an instance                             | `ibm_databases_for_redis_memory_used_bytes`                       | How much memory your deployment is using in bytes.                                                         | gauge       | byte       | Service instance |
+| Used memory as a percentage of total memory available   | `ibm_databases_for_redis_memory_used_percent`                     | How much memory is used as a percentage of total memory available                                          | gauge       | percent    | Service instance |
+{: caption="Table 1. Available Metrics" caption-side="top"}
 
-### IO utilization in percent 5 minute average
-{: #ibm_databases_for_redis_disk_io_utilization_percent_average_5m}
-
-How much disk I/O has been used over 5 minutes as a percentage of total disk I/O available.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_io_utilization_percent_average_5m`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `percent` |
-| `Segment By` | `Service instance` |
-{: caption="Table 2. IO utilization in percent 5 minute average metric metadata" caption-side="top"}
-
-### IO utilization in percent 15 minute average
-{: #ibm_databases_for_redis_disk_io_utilization_percent_average_15m}
-
-How much disk I/O has been used over 15 minutes as a percentage of total disk I/O available.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_io_utilization_percent_average_15m`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `percent` |
-| `Segment By` | `Service instance` |
-{: caption="Table 3. IO utilization in percent 15 minute average metric metadata" caption-side="top"}
-
-### IO utilization in percent 30 minute average
-{: #ibm_databases_for_redis_disk_io_utilization_percent_average_30m}
-
-How much disk I/O has been used over 30 minutes as a percentage of total disk I/O available.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_io_utilization_percent_average_30m`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `percent` |
-| `Segment By` | `Service instance` |
-{: caption="Table 4. IO utilization in percent 30 minute average metric metadata" caption-side="top"}
-
-### IO utilization in percent 60 minute average
-{: #ibm_databases_for_redis_disk_io_utilization_percent_average_60m}
-
-How much disk I/O has been used over 60 minutes as a percentage of total disk I/O available.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_io_utilization_percent_average_60m`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `percent` |
-| `Segment By` | `Service instance` |
-{: caption="Table 5. IO utilization in percent 60 minute average metric metadata" caption-side="top"}
-
-### IOPS read & write total count for an instance
-{: #ibm_databases_for_redis_disk_iops_read_write_total}
-
-How many input/output operations per second your deployment is performing.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_iops_read_write_total`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `count` |
-| `Segment By` | `Service instance` |
-{: caption="Table 6. IOPS read & write total count for an instance metric metadata" caption-side="top"}
-
-### Max allowed memory for an instance
-{: #ibm_databases_for_redis_memory_limit_bytes}
-
-The maximum amount of memory available to your deployment.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_memory_limit_bytes`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `byte` |
-| `Segment By` | `Service instance` |
-{: caption="Table 7. Max allowed memory for an instance metric metadata" caption-side="top"}
-
-### Total disk space for an instance
-{: #ibm_databases_for_redis_disk_total_bytes}
-
-Represents the total amount of disk available to your deployment.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_total_bytes`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `byte` |
-| `Segment By` | `Service instance` |
-{: caption="Table 8. Total disk space for an instance metric metadata" caption-side="top"}
-
-### Used CPU for an instance
-{: #ibm_databases_for_redis_cpu_used_percent}
-
-How much CPU is used as a percentage of total CPU available. Only for deployments that have dedicated CPU.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_cpu_used_percent`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `percent` |
-| `Segment By` | `Service instance` |
-{: caption="Table 9. Used CPU for an instance metric metadata" caption-side="top"}
-
-### Used disk space for an instance
-{: #ibm_databases_for_redis_disk_used_bytes}
-
-How much disk your deployment is using in bytes.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_used_bytes`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `byte` |
-| `Segment By` | `Service instance` |
-{: caption="Table 10. Used disk space for an instance metric metadata" caption-side="top"}
-
-### Used disk space as a percentage of total disk available
-{: #ibm_databases_for_redis_disk_used_percent}
-
-How much disk space is used as a percentage of total disk available
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_disk_used_percent`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `PERCENT` |
-| `Segment By` | `Service instance` |
-{: caption="Table 10.5: Used disk space for an instance metric metadata" caption-side="top"}
-
-### Used memory for an instance
-{: #ibm_databases_for_redis_memory_used_bytes}
-
-How much memory your deployment is using in bytes.
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_memory_used_bytes`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `byte` |
-| `Segment By` | `Service instance` |
-{: caption="Table 11. Used memory for an instance metric metadata" caption-side="top"}
-
-### Used memory as a percentage of total memory available
-{: #ibm_databases_for_redis_memory_used_percent}
-
-How much memory is used as a percentage of total memory available
-
-| Metadata | Description |
-|----------|-------------|
-| `Metric Name` | `ibm_databases_for_redis_memory_used_percent`|
-| `Metric Type` | `gauge` |
-| `Value Type`  | `PERCENT` |
-| `Segment By` | `Service instance` |
-{: caption="Table 11.5: Used memory for an instance metric metadata" caption-side="top"}
 
 ## Attributes for Segmentation
 {: #attributes}
