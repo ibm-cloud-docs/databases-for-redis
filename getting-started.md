@@ -31,7 +31,7 @@ This tutorial is a short introduction to using an {{site.data.keyword.databases-
 
 - Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI Plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
 
-- Before connecting, set your admin password. For more information, see [Setting the Admin Password](/docs/databases-for-redis?topic=databases-for-redis-admin-password).
+- Before connecting, set your admin password. For more information, see [Setting the Admin Password](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#user-management-set-admin-password-ui).
 
 For more information, see [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices).
 
