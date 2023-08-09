@@ -23,7 +23,7 @@ All users on your deployment can use the connection strings, including connectio
 Your connection string will default to database `0`. However, modifying your connection to connect to a database other than `0` is supported. 
 {: .note}
 
-Your Redis deployment is provisioned with an admin user. You must set the admin password before you can use it to connect to the database. For more information, see the [Setting the Admin Password](/docs/databases-for-redis?topic=databases-for-redis-admin-password) page.
+Your Redis deployment is provisioned with an admin user. You must set the admin password before you can use it to connect to the database. For more information, see the [Setting the Admin Password](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#user-management-set-admin-password-ui) page.
 {: .tip}
 
 ## Getting Connection Strings from the CLI
