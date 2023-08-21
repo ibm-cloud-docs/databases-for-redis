@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-05-25"
+lastupdated: "2023-08-21"
 
 keywords: databases-for-redis release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 21 August 2023
+{: #databases-for-redis-21aug2023}
+{: release-note}
+
+Redis default user
+:  Before the arrival of [ACL support in Redis 6](https://redis.com/blog/getting-started-redis-6-access-control-lists-acls/){: external}, the `default` user had broad permissions and was used internally by {{site.data.keyword.databases-for}} and external users to manage {{site.data.keyword.databases-for-redis}} deployments. With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. {{site.data.keyword.databases-for-redis}} deployments are managed by {{site.data.keyword.databases-for}} the `ibm` user. For more information, see [Managing Users and Roles](/docs/databases-for-redis?topic=databases-for-redis-user-management){: external}.
 
 ## 23 May 2023
 {: #databases-for-redis-23may2023}
