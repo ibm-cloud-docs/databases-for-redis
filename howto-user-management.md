@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-08-21"
 
-keywords: acl, access control list, 
+keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user
 
 subcollection: databases-for-redis
 
@@ -14,12 +14,12 @@ subcollection: databases-for-redis
 # Managing Users and Roles
 {: #user-management}
 
-{{site.data.keyword.databases-for-redis_full}} deployments come with authentication enabled and use Redis's built-in access control. Redis 5.x and below only supported a single `admin` user. Redis 6 introduced [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. Upgrade to take advantage of multiple users and authentication.
+{{site.data.keyword.databases-for-redis_full}} deployments come with authentication enabled and use Redis's built-in access control. Redis 5.x and older support only a single `admin` user. Redis 6 introduced [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. Upgrade to take advantage of multiple users and authentication.
 
 ## The `admin` user
 {: #admin-user}
 
-When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to the admin user. If you are using Redis 5.x and below, the admin user is the only user available on your deployment. If you are using Redis 6.x and above you have the admin user and the ability to create additional users and credentials.
+When you provision a new deployment in {{site.data.keyword.cloud_notm}}, you are automatically given access to the `admin` user. If you are using Redis 5.x and older, the `admin` user is the only user available on your deployment. If you are using Redis 6.x and newer, you have the `admin` user and the ability to create users and credentials.
 
 To use the `admin` user to connect to your deployment, set the `admin` password.
 
@@ -56,12 +56,41 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ```
 {: pre}
 
+## The `default` user
+{: #redis-default-user}
+
+Before the arrival of [ACL support in Redis 6](https://redis.com/blog/getting-started-redis-6-access-control-lists-acls/){: external}, the `default` user had broad permissions and was used internally by {{site.data.keyword.databases-for}} and external users to manage {{site.data.keyword.databases-for-redis}} deployments.
+
+With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. {{site.data.keyword.databases-for-redis}} deployments are managed by {{site.data.keyword.databases-for}} the `ibm` user. 
+
+### `default` user permissions
+{: #redis-default-user-permissions}
+
+If your deployments currently use `DEFAULT` user (Redis 5.x), it's possible to continue doing so in the later versions, like 6.2. However, continued usage of the `DEFAULT` user after upgrading to v6.2 requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user, starting with Redis v6.2.
+
+- `config` The `default` user cannot view, add, update, or delete database configurations. The `default` user also cannot create or manage database users and roles.
+- `acl` The `default` user cannot create new users.
+
+### Upgrading to Redis 6.2 and the `default` user 
+{: #redis-default-user-permissions-upgrading}
+
+If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications by using the `default` user to make sure your applications are fully functional. Upgrading to v6.2 and continuing to use the `DEFAULT` user requires a password change.
+
+To update the `default` user password, use the following command:
+
+```sh
+ibmcloud cdb deployment-user-password <Redis deployment name> default <new password>
+```
+{: pre}
+
+For more information, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading){: external}.
+
 ## Redis roles
 {: #redis-roles}
 
-The `admin` user and all other users on your deployment have full access to the set of redis commands, with the exception of the subcommand `configure set` - this includes the admin user.
+The `admin` user and all other users on your deployment have full access to the set of redis commands, except for the subcommand `configure set` - this includes the `admin` user.
 
-In Redis 6.x and above, any user that you create; whether through _Service Credentials_, the CLI, API, or directly in Redis; have the same access. You cannot use Redis itself to create users or roles with access limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensure propagation across the cluster.
+In Redis 6.x and newer, any user that you create; whether through _Service Credentials_, the CLI, API, or directly in Redis; have the same access. You cannot use Redis itself to create users or roles with access that is limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensure propagation across the cluster.
 
 ## Additional Users - Redis 6.x only
 {: #add-users}
@@ -78,7 +107,7 @@ All users on your deployment can use the connection strings, including connectio
 2. Click _Service Credentials_ to open the _Service Credentials_ panel.
 3. Click __New Credential**.
 4. Choose a descriptive name for your new credential. 
-5. (Optional) Specify if the new credentials should use a public or private endpoint. Use either `{ "service-endpoints": "public" }` / `{ "service-endpoints": "private" }` in the _Add Inline Configuration Parameters_ field to generate connection strings using the specified endpoint. Use of the endpoint is not enforced, it just controls which hostnames are in the connection strings. Public endpoints are generated by default.
+5. (Optional) Specify whether the new credentials use a public or private endpoint. Use either `{ "service-endpoints": "public" }` / `{ "service-endpoints": "private" }` in the _Add Inline Configuration Parameters_ field to generate connection strings using the specified endpoint. Use of the endpoint is not enforced. It just controls which hostnames are in the connection strings. Public endpoints are generated by default.
 6. Click __Add__ to provision the new credentials. A username and password, and an associated {{site.data.keyword.databases-for-redis}} user is auto-generated.
 
 The new credentials appear in the table, and the connection strings are available as JSON in a click-to-copy field under _View Credentials_.
@@ -115,11 +144,8 @@ To retrieve a user's connection strings, use the base URL with the `/users/{user
 ## Internal-use Users - Redis 6.x only
 {: #internal-users}
 
-There are four reserved users on your deployment. Modifying these users will cause your deployment to become unstable or unusable.
-- `ibm` - An internal admin user used for managing the deployment and exposing metrics.
+There are four reserved users on your deployment. Modifying these users causes your deployment to become unstable or unusable.
+- `ibm` - An internal `admin` user for managing the deployment and exposing metrics.
 - `replication-user` - The user account that is used for replication.
 - `sentinel-user` - The user account for sentinels to handle monitoring and failovers.
 - `admin` - The default user provided to access your deployment.
-
-Starting with Redis 6.x, IBM Cloud Databases for Redis disables the default user. Instead, to stay in sync with the new ACL support, every deployment gets a dedicated admin user for full support of ACLs. Newly provisioned users via the UI, API, or CLI will adhere to this pattern, as well. If your drivers don't support ACL at this point in time, we recommend using Redis 5 and switching to Redis 6 once your drivers are ready to support [Access Control List (ACL) support](https://redis.io/topics/acl){: external}.
-{: note}
