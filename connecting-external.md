@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2023
-lastupdated: "2023-07-26"
+lastupdated: "2023-09-29"
 
 keywords: redis, databases
 
@@ -85,6 +85,8 @@ All connections to {{site.data.keyword.databases-for-redis}} are TLS 1.2 enabled
 If your driver does not support the `rediss:` protocol or TLS/SSL connections, it is still possible to tunnel connections to the Redis database endpoint by using a TLS/SSL tunnel application such as Stunnel. An example of using Stunnel can be found on the [Connecting with a Command-line Client](/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client) page, where it is used to connect the `redis-cli` application.
 
 Deployments also come with a self-signed certificate so you can verify the server upon starting a connection. While not required, it is an additional security step that is recommended if your client supports it.
+
+For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/databases-for-redis?topic=databases-for-redis-faq-cert){: external}.
 
 ### Using the self-signed certificate
 {: #using-cert}
