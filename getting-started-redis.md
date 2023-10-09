@@ -15,7 +15,7 @@ completion-time: 30m
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting Started
+# Getting Started with {{site.data.keyword.databases-for-redis}}
 {: #getting-started-redis}
 {: toc-content-type="tutorial"}
 {: toc-completion-time="30m"}
