@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-09-12"
+lastupdated: "2023-10-10"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision redis
 
