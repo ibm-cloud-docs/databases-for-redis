@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2023
-lastupdated: "2023-08-21"
+lastupdated: "2023-11-02"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user
 
@@ -27,7 +27,7 @@ To use the `admin` user to connect to your deployment, set the `admin` password.
 {: #user-management-set-admin-password-ui}
 {: ui}
 
-To set the password through the {{site.data.keyword.cloud_notm}} dashboard, select __Manage__ from the service dashboard. Open the _Settings_ tab, and use _Change Database Admin Password_ to set a new admin password.
+Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
 ### Setting the Admin Password in the CLI
 {: #user-management-set-admin-password-cli}
