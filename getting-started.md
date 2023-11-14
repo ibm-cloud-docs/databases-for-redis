@@ -25,7 +25,7 @@ This tutorial is a short introduction to using an {{site.data.keyword.databases-
 ## Before you begin
 {: #before-begin}
 
-- You need to have an [{{site.data.keyword.cloud_notm}} account](https://ibm.biz/databases-for-redis-signup){: external}.
+- You need an [{{site.data.keyword.cloud_notm}} account](https://ibm.biz/databases-for-redis-signup){: external}.
 
 - You also need a {{site.data.keyword.databases-for-redis}} deployment, which can be provisioned from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-redis/). Give your deployment a memorable name that appears in your account's Resource List.
 
