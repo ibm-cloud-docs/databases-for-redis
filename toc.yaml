@@ -9,7 +9,7 @@ toc:
     version: 2
     category: database
     audience: service
-    href: /docs/databases-for-redis?topic=databases-for-redis-getting-started
+    href: /docs/databases-for-redis
     console-page: /catalog/services/databases-for-redis
     product-page: https://www.ibm.com/cloud/databases-for-redis
     path: databases-for-redis
