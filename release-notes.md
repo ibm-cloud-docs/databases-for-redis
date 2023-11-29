@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-11-27"
+lastupdated: "2023-11-29"
 
 keywords: databases-for-redis release notes
 
@@ -24,7 +24,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: #databases-for-redis-27nov2023}
 {: release-note}
 
-Monitoring Integreation documentation updated
+Monitoring Integration documentation updated
 :  Monitoring Integration documentation now lists metrics for all {{site.data.keyword.databases-for}} services. For more information, see [Monitoring Integration](/docs/cloud-databases?topic=cloud-databases-monitoring){: external}.
 
 ## 12 October 2023
