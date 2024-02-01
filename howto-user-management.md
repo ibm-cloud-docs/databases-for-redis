@@ -149,7 +149,7 @@ For `USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-write>` `
 
 ### Create a user through Terraform
 {: #redis-rba-create-user-tf}
-{: tf}
+{: terraform}
 
 To create a user using RBAC roles, use a configuration like:
 
