@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-02-01"
+lastupdated: "2024-02-06"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user
 
@@ -16,20 +16,23 @@ subcollection: databases-for-redis
 
 {{site.data.keyword.databases-for-redis_full}} instances come with authentication enabled and use Redis's built-in access control. Redis 5.x and older support only a single `admin` user. Redis 6 introduced [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. Upgrade to take advantage of multiple users and authentication.
 
-## The Admin user
+## Managing Redis Users
+{: #user-management-users}
+
+### The Admin user
 {: #admin-user}
 
 When you provision a new instance in {{site.data.keyword.cloud_notm}}, you are automatically given access to the Admin user. If you are using Redis 5.x and older, the Admin user is the only user available on your instance. If you are using Redis 6.x and newer, you have the Admin user and the ability to create users and credentials.
 
 To use the Admin user to connect to your instance, first set the Admin password.
 
-### Setting the Admin Password in the UI
+#### Setting the Admin Password in the UI
 {: #user-management-set-admin-password-ui}
 {: ui}
 
 Set your Admin Password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
-### Setting the Admin Password in the CLI
+#### Setting the Admin Password in the CLI
 {: #user-management-set-admin-password-cli}
 {: cli}
 
@@ -42,7 +45,7 @@ ibmcloud cdb user-password example-instance admin <newpassword>
 ```
 {: pre}
 
-### Setting the Admin Password in the API
+#### Setting the Admin Password in the API
 {: #user-management-set-admin-password-api}
 {: api}
 
@@ -56,27 +59,24 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ```
 {: pre}
 
-## The `default` user
+### The `default` user
 {: #redis-default-user}
 
 Before the arrival of [ACL support in Redis 6](https://redis.com/blog/getting-started-redis-6-access-control-lists-acls/){: external}, the `default` user had broad permissions and was used internally by {{site.data.keyword.databases-for}} and external users to manage {{site.data.keyword.databases-for-redis}} instances.
 
-With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. {{site.data.keyword.databases-for-redis}} instances are managed by the {{site.data.keyword.databases-for}} `ibm` user.
+With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. Instead, {{site.data.keyword.databases-for-redis}} instances are managed by the {{site.data.keyword.databases-for}} `ibm` user.
 
-### `default` user permissions
-{: #redis-default-user-permissions}
+If your instances currently use the `deafult` user (Redis 5.x), it's possible to continue doing so in the later versions, like 6.2. However, continued usage of the `default` user after upgrading to v6.2 requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user, starting with Redis v6.2:
 
-If your instances currently use `DEFAULT` user (Redis 5.x), it's possible to continue doing so in the later versions, like 6.2. However, continued usage of the `DEFAULT` user after upgrading to v6.2 requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user, starting with Redis v6.2.
+- `config`: The `default` user cannot view, add, update, or delete database configurations. The `default` user also cannot create or manage database users and roles.
+- `acl`: The `default` user cannot create new users.
 
-- `config` The `default` user cannot view, add, update, or delete database configurations. The `default` user also cannot create or manage database users and roles.
-- `acl` The `default` user cannot create new users.
-
-### Upgrading to Redis 6.2 and the `default` user
+#### Upgrading to Redis 6.2 and the `default` user
 {: #redis-default-user-permissions-upgrading}
 
-If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications by using the `default` user to make sure your applications are fully functional. Upgrading to v6.2 and continuing to use the `DEFAULT` user requires a password change.
+If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications by using the `default` user to make sure your applications are fully functional. Upgrading to v6.2 and continuing to use the `default` user requires a password change.
 
-To update the `default` user password, use the following command:
+To update the `default` user password, use a command like:
 
 ```sh
 ibmcloud cdb deployment-user-password <Redis deployment name> default <new password>
@@ -85,7 +85,10 @@ ibmcloud cdb deployment-user-password <Redis deployment name> default <new passw
 
 For more information, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading){: external}.
 
-## Role-based access control (RBAC)
+## Managing Redis Roles
+{: #user-management-roles}
+
+### Role-based access control (RBAC)
 {: #redis-rbac}
 
 Role-based access control (RBAC) allows you to configure the level of access each user has.
@@ -98,8 +101,16 @@ Role-based access control (RBAC) allows you to configure the level of access eac
 
 These roles can also be combined to configure a user's level of access.
 
-### RBAC role combinations
+#### RBAC role combinations
 {: #redis-rbac-combos}
+
+`+` includes commands
+
+`-` excludes commands
+
+`+@` includes command categories
+
+`-@` excludes command categories
 
 - `admin` + `read`: Full control with the ability to execute read operations.
 - `admin` + `write`: Full control with the ability to execute write operations.
@@ -128,7 +139,7 @@ POST /deployments/{id}/users/{user_type}
   "user": {
   "username": "#{USER}",
   "password": "<PASSWORD>",
-  "role": "<+/-@all> <+/-@read> <+/-write> <+/-admin>"
+  "role": "<+/-@all> <+/-@read> <+/-@write> <+/-@admin>"
   }
 }
 ```
@@ -145,7 +156,7 @@ ibmcloud cdb deployment-user-create (NAME\ID) USERNAME PASSWORD [-t USER_TYPE] [
 ```
 {: pre}
 
-For `USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-write>` `<+/-admin>` to grant desired access.
+For `USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant desired access.
 
 ### Create a user through Terraform
 {: #redis-rba-create-user-tf}
@@ -172,7 +183,7 @@ resource "ibm_database" "redis" {
 ```
 {: pre}
 
-For `role`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-write>` `<+/-admin>` to grant desired access.
+For `role`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant desired access.
 
 
 ## Redis roles
@@ -180,7 +191,7 @@ For `role`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-write>` `<+/-a
 
 The Admin user and all other users on your instance have full access to the set of redis commands, except for the subcommand `configure set` - this includes the `admin` user.
 
-In Redis 6.x and newer, any user that you create; whether through _Service Credentials_, the CLI, API, or directly in Redis; have the same access. You cannot use Redis itself to create users or roles with access that is limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensure propagation across the cluster.
+In Redis 6.x and newer, any user that you create; whether through *Service Credentials*, the CLI, API, or directly in Redis; have the same access. You cannot use Redis itself to create users or roles with access that is limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensure propagation across the cluster.
 
 ## Additional Users - Redis 6.x only
 {: #add-users}
@@ -189,7 +200,7 @@ Access to your {{site.data.keyword.databases-for-redis}} instance is not limited
 
 All users on your instance can use the connection strings, including connection strings for either public or private endpoints.
 
-### Creating Users From the _Service Credentials_ UI
+### Creating Users Through the UI
 {: #create-users-service-cred}
 {: ui}
 
