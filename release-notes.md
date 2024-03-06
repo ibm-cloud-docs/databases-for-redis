@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2023
-lastupdated: "2023-11-29"
+  years: 2018, 2024
+lastupdated: "2024-03-06"
 
 keywords: databases-for-redis release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 06 March 2024
+{: #databases-for-redis-06mar2024}
+{: release-note}
+
+Role-based access control (RBAC) feature released
+:  Role-based access control (RBAC) allows you to configure the level of access for each user. For more information, see [Role-based access control (RBAC)](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#redis-rbac){: external}.
 
 ## 27 November 2023
 {: #databases-for-redis-27nov2023}
