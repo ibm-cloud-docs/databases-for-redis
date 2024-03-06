@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-02-06"
+lastupdated: "2024-03-06"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user
 
