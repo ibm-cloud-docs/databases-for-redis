@@ -49,7 +49,7 @@ ibmcloud cdb user-password example-instance admin <newpassword>
 {: #user-management-set-admin-password-api}
 {: api}
 
-The Foundation Endpoint that is shown on the Overview panel Deployment Details section of your service provides the base URL to access this instance through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
+The Foundation Endpoint that is shown in the Overview Deployment Details section of your service provides the base URL to access this instance through the API. Use it with the [Set specified user's password](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#changeuserpassword){: external} endpoint to set the admin password.
 
 ```sh
 curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/admin` \
@@ -74,7 +74,7 @@ If your instances currently use the `default` user (Redis 5.x), it's possible to
 #### Upgrading to Redis 6.2 and the `default` user
 {: #redis-default-user-permissions-upgrading}
 
-If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications by using the `default` user to make sure your applications are fully functional. Upgrading to v6.2 and continuing to use the `default` user requires a password change.
+If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications by using the `default` user to make sure that your applications are fully functional. Upgrading to v6.2 and continuing to use the `default` user requires a password change.
 
 To update the `default` user password, use a command like:
 
@@ -96,10 +96,10 @@ Role-based access control (RBAC) allows you to configure the level of access eac
 {{site.data.keyword.databases-for-redis}} currently supports the following roles:
 - The `admin` role provides full control and access to all admin commands and operations.
 - The `all` role provides both `read` and `write` access, giving users full control over all commands and operations.
-- The `read` role allows read-only access to commands. Users with this role can execute read operations but cannot perform write operations.
-- The `write` role allows write-only access to commands. Users with this role can execute write operations but cannot perform read operations.`
+- The `read` role allows read-only access to commands. Users with this role can run read operations but cannot perform write operations.
+- The `write` role allows write-only access to commands. Users with this role can run write operations but cannot perform read operations.`
 
-The admin commands `config get`, `config reset`, `acl whoami`, `acl cat`, `acl users`, `acl genpass`, `acl log`, and `acl help` are availabe for use in `admin` and `all` but all other `acl` and `config` commands are not.
+The admin commands `config get`, `config reset`, `acl whoami`, `acl cat`, `acl users`, `acl genpass`, `acl log`, and `acl help` are available for use in `admin` and `all` but all other `acl` and `config` commands are not.
 
 These roles can also be combined to configure a user's level of access.
 
@@ -114,16 +114,16 @@ These roles can also be combined to configure a user's level of access.
 
 `-@` excludes command categories
 
-- `admin` + `read`: Full `admin` control with the ability to execute `read` operations.
-- `admin` + `write`: Full `admin` control with the ability to execute `write` operations.
-- `admin` + `all`: Simpifies to `all` which includes `admin`, `read`, and `write`.
+- `admin` + `read`: Full `admin` control with the ability to run `read` operations.
+- `admin` + `write`: Full `admin` control with the ability to run `write` operations.
+- `admin` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 - `read` + `write`: Users with both `read` and `write` roles can perform both `read` and `write` operations, but they won't have administrative privileges.
-- `read` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
-- `write` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
-- `admin` + `read` + `write`: Full `admin` control with the ability to execute both `read` and `write` operations.
-- `admin` + `read` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
-- `admin` + `write` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
-- `read` + `write` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
+- `read` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
+- `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
+- `admin` + `read` + `write`: Full `admin` control with the ability to run both `read` and `write` operations.
+- `admin` + `read` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
+- `admin` + `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
+- `read` + `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 
 These combinations provide different levels of access control. Choose the combination that aligns with your specific requirements and security considerations.
 
@@ -158,7 +158,7 @@ ibmcloud cdb deployment-user-create (NAME\ID) USERNAME PASSWORD [-t USER_TYPE] [
 ```
 {: pre}
 
-For `USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant desired access.
+For `USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant access.
 
 Once the task is finished, retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
@@ -187,7 +187,7 @@ resource "ibm_database" "redis" {
 ```
 {: pre}
 
-For `role`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant desired access.
+For `role`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant  access.
 
 ## Redis roles
 {: #redis-roles}
@@ -205,7 +205,7 @@ In Redis 6.x and newer, any user that you create; whether through *Service Crede
 3. Select *New Credential*.
 4. Choose a descriptive name for your new credential.
 5. (Optional) Specify whether the new credentials use a public or private endpoint. Use either `{ "service-endpoints": "public" }` / `{ "service-endpoints": "private" }` in the *Add Inline Configuration Parameters* field to generate connection strings using the specified endpoint. Use of the endpoint is not enforced. It just controls which hostnames are in the connection strings. Public endpoints are generated by default.
-6. Click *Add* to provision the new credentials. A username, password, and an associated user is auto-generated.
+6. Click *Add* to provision the new credentials. A username, password, and an associated user are auto-generated.
 
 The new credentials appear in the table, and the connection strings are available as JSON in a click-to-copy field under *View Credentials*.
 
@@ -213,7 +213,7 @@ The new credentials appear in the table, and the connection strings are availabl
 {: #create-users-api}
 {: api}
 
-The _Foundation Endpoint_ that is shown on the _Overview_ panel of your service provides the base URL to access this instance through the API. To create and manage users, use the base URL with the `/users` endpoint:
+The _Foundation Endpoint_ that is shown in the _Overview_ of your service provides the base URL to access this instance through the API. To create and manage users, use the base URL with the `/users` endpoint:
 
 ```sh
 curl -X POST 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/users' \
