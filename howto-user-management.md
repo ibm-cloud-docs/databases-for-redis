@@ -64,9 +64,9 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 
 Before the arrival of [ACL support in Redis 6](https://redis.com/blog/getting-started-redis-6-access-control-lists-acls/){: external}, the `default` user had broad permissions and was used internally by {{site.data.keyword.databases-for}} and external users to manage {{site.data.keyword.databases-for-redis}} instances.
 
-With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. Instead, {{site.data.keyword.databases-for-redis}} instances are managed by the {{site.data.keyword.databases-for}} `ibm` user.
+With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. Instead, {{site.data.keyword.databases-for-redis}} instances are managed by the {{site.data.keyword.databases-for}} `ibm-user`.
 
-If your instances currently use the `deafult` user (Redis 5.x), it's possible to continue doing so in the later versions, like 6.2. However, continued usage of the `default` user after upgrading to v6.2 requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user, starting with Redis v6.2:
+If your instances currently use the `default` user (Redis 5.x), it's possible to continue doing so in the later versions, like 6.2. However, continued usage of the `default` user after upgrading to v6.2 requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user, starting with Redis v6.2:
 
 - `config`: The `default` user cannot view, add, update, or delete database configurations. The `default` user also cannot create or manage database users and roles.
 - `acl`: The `default` user cannot create new users.
@@ -94,10 +94,12 @@ For more information, see [Upgrading to a new major version](/docs/databases-for
 Role-based access control (RBAC) allows you to configure the level of access each user has.
 
 {{site.data.keyword.databases-for-redis}} currently supports the following roles:
-- The `admin` role provides full control and access to all commands and operations.
+- The `admin` role provides full control and access to all admin commands and operations.
 - The `all` role provides both `read` and `write` access, giving users full control over all commands and operations.
 - The `read` role allows read-only access to commands. Users with this role can execute read operations but cannot perform write operations.
 - The `write` role allows write-only access to commands. Users with this role can execute write operations but cannot perform read operations.`
+
+The admin commands `config get`, `config reset`, `acl whoami`, `acl cat`, `acl users`, `acl genpass`, `acl log`, and `acl help` are availabe for use in `admin` and `all` but all other `acl` and `config` commands are not.
 
 These roles can also be combined to configure a user's level of access.
 
@@ -112,16 +114,16 @@ These roles can also be combined to configure a user's level of access.
 
 `-@` excludes command categories
 
-- `admin` + `read`: Full control with the ability to execute read operations.
-- `admin` + `write`: Full control with the ability to execute write operations.
-- `admin` + `all`: Full control with the ability to execute both read and write operations.
-- `read` + `write`: Users with both `read` and `write` roles can perform both read and write operations, but they won't have administrative privileges.
-- `read` + `all`: Users with both `read` and `all` roles can execute read operations and have administrative privileges, but cannot perform write-only operations.
-- `write` + `all`: Users with both `write` and `all` roles can execute write operations and have administrative privileges, but cannot perform read-only operations.
-- `admin` + `read` + `write`: Full control with the ability to execute both read and write operations.
-- `admin` + `read` + `all`: Full control with the ability to execute read operations and have administrative privileges, but cannot perform write-only operations.
-- `admin` + `write` + `all`: Full control with the ability to execute write operations and have administrative privileges, but cannot perform read-only operations.
-- `read` + `write` + `all`: Users with all three roles have full control with the ability to execute both read and write operations, but they won't have additional administrative privileges beyond those provided by the `admin` role.
+- `admin` + `read`: Full `admin` control with the ability to execute `read` operations.
+- `admin` + `write`: Full `admin` control with the ability to execute `write` operations.
+- `admin` + `all`: Simpifies to `all` which includes `admin`, `read`, and `write`.
+- `read` + `write`: Users with both `read` and `write` roles can perform both `read` and `write` operations, but they won't have administrative privileges.
+- `read` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
+- `write` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
+- `admin` + `read` + `write`: Full `admin` control with the ability to execute both `read` and `write` operations.
+- `admin` + `read` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
+- `admin` + `write` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
+- `read` + `write` + `all`: Simplifies to `all` which includes `admin`, `read`, and `write`.
 
 These combinations provide different levels of access control. Choose the combination that aligns with your specific requirements and security considerations.
 
@@ -190,7 +192,7 @@ For `role`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-
 ## Redis roles
 {: #redis-roles}
 
-The Admin user and all other users on your instance have full access to the set of Redis commands, except for the subcommand `configure set` - this includes the Admin user.
+The Admin user and all other users on your instance have full access to the set of Redis commands, except for the subcommand `config` and `acl` - this includes the Admin user. `config get`, `config reset`, `acl whoami`, `acl cat`, `acl users`, `acl genpass`, `acl log`, and `acl help` are useable.
 
 In Redis 6.x and newer, any user that you create; whether through *Service Credentials*, the CLI, API, or directly in Redis; have the same access. You cannot use Redis itself to create users or roles with access that is limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensure propagation across the cluster.
 
@@ -223,11 +225,11 @@ curl -X POST 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{i
 
 To retrieve a user's connection strings, use the base URL with the `/users/{userid}/connections` endpoint.
 
-## Internal-use Users - Redis 6.x only
+## Internal-use Users - Redis 6.x and newer
 {: #internal-users}
 
 There are four reserved users on your instance. Modifying these users causes your instance to become unstable or unusable.
-- `ibm` - An internal `admin` user for managing the instance and exposing metrics.
+- `ibm-user` - An internal `admin` user for managing the instance and exposing metrics.
 - `replication-user` - The user account that is used for replication.
 - `sentinel-user` - The user account for sentinels to handle monitoring and failovers.
 - `admin` - The default user provided to access your instance.
