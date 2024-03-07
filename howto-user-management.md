@@ -1,9 +1,9 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-03-06"
+lastupdated: "2024-03-07"
 
-keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user
+keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user, rbac
 
 subcollection: databases-for-redis
 
@@ -95,7 +95,7 @@ Role-based access control (RBAC) allows you to configure the level of access eac
 
 {{site.data.keyword.databases-for-redis}} currently supports the following roles:
 - The `admin` role provides full control and access to all admin commands and operations.
-- The `all` role provides both `read` and `write` access, giving users full control over all commands and operations.
+- The `all` role provides `admin`, `read` and `write` access, giving users full control over all commands and operations.
 - The `read` role allows read-only access to commands. Users with this role can run read operations but cannot perform write operations.
 - The `write` role allows write-only access to commands. Users with this role can run write operations but cannot perform read operations.`
 
