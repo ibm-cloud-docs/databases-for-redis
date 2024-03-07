@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud® Databases for Redis docs",
-    "lastupdated": "2024-03-06",
+    "lastupdated": "2024-03-07",
     "introduction": "Redis is a blazingly fast, in-memory data structure store.",
     "section_devtools": {
       "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction",
@@ -34,6 +34,11 @@
       "view_more": "/docs/databases-for-redis?topic=databases-for-redis-redis-relnotes",
       "tiles": [
         {
+          "date": "07 March 2024",
+          "title": "Introducing Databases for Redis v7.2",
+          "description": "Databases for Redis v7.2 is ready for use under Preview. This update includes optimizations, new commands, improvements, and bug fixes. Version 7.2 also introduces RBAC (Role Based Access Control), which allows for better access control and improves overall security. Note: Backward compatibility is not available from Databases for Redis v7.2."
+        },
+        {
           "date": "06 March 2024",
           "title": "Role-based access control (RBAC) feature released",
           "description": "Role-based access control (RBAC) allows you to configure the level of access for each user."
@@ -42,11 +47,6 @@
           "date": "27 November 2023",
           "title": "Monitoring Integration documentation updated",
           "description": "Monitoring Integration documentation now lists metrics for all {{site.data.keyword.databases-for}} services."
-        },
-        {
-          "date": "19 October 2022",
-          "title": "Deploying and Connecting an IBM Cloud® Databases Instance Tutorial",
-          "description": "This tutorial guides you through the process of deploying a Cloud Databases instance and connecting it to a web front end by creating a webpage that allows visitors to input a word and its definition. These values are then stored in a database running on Cloud Databases. You install the database infrastructure by using Terraform and your web application uses the popular Express framework. The application can then be run locally, or by using Docker."
         }
       ]
     }
