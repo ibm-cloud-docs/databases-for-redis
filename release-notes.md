@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-03-07"
+lastupdated: "2024-03-08"
 
 keywords: databases-for-redis release notes
 
@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 Introducing {{site.data.keyword.databases-for-redis}} v7.2
-:  {{site.data.keyword.databases-for-redis}} v7.2 is ready for use under [Preview](/docs/cloud-databases?topic=cloud-databases-versioning-policy#version-tags){: external}. This update includes optimizations, new commands, improvements, and bug fixes. Version 7.2 also introduces [RBAC (Role Based Access Control)](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#redis-rbac){: external}, which allows for better access control and improves overall security. Note: Backward compatibility is not available from {{site.data.keyword.databases-for-redis}} v7.2. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+:  {{site.data.keyword.databases-for-redis}} v7.2 is ready for use under [Preview](/docs/cloud-databases?topic=cloud-databases-versioning-policy#version-tags){: external}. This update includes [optimizations, new commands, improvements, and bug fixes](https://raw.githubusercontent.com/redis/redis/7.2/00-RELEASENOTES){: external}. Version 7.2 also introduces [RBAC (Role Based Access Control)](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#redis-rbac){: external}, which allows for better access control and improves overall security. Note: Backward compatibility is not available from {{site.data.keyword.databases-for-redis}} v7.2. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
 ## 06 March 2024
 {: #databases-for-redis-06mar2024}
