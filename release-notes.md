@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-03-08"
+lastupdated: "2024-03-15"
 
 keywords: databases-for-redis release notes
 
@@ -49,6 +49,9 @@ Monitoring Integration documentation updated
 :  End of life announcement: Version 5.0 reaches end of life 26 April 2024. Version 6.0 reaches end of life 25 October 2024. All {{site.data.keyword.databases-for-redis}} instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version.
 
 For more information, see [Upgrading to a new Major Version](/docs/databases-for-redis?topic=databases-for-redis-upgrading){: external}.
+
+Users preferring to continue with default user after the upgrade to version 6.2 require a password change. For more information, see [the default user](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#redis-default-user-permissions-upgrading){: external}.
+{: note}
 
 ## 21 August 2023
 {: #databases-for-redis-21aug2023}
