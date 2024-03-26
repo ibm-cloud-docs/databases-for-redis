@@ -49,6 +49,7 @@ toc:
       - include: ../cloud-databases/howto-deprovisioning.md
       - include: ../cloud-databases/closures.md
       - include: ../cloud-databases/ha-dr.md
+      - howto-migrating.md
       - topicgroup:
           label: Connecting to Databases for Redis
           topics:
