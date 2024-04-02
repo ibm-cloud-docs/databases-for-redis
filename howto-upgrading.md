@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2024
-lastupdated: "2024-03-25"
+lastupdated: "2024-04-02"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -99,9 +99,8 @@ curl -X POST \
 ```
 {: pre}
 
-------------------------------------------
 
-# Managing {{site.data.keyword.databases-for}} backups NEW
+## Managing {{site.data.keyword.databases-for}} backups section 2 NEW
 {: #dashboard-backups}
 
 Backups for {{site.data.keyword.databases-for}} instances are accessible from the _Backups_ tab of your instance's dashboard. Here is some additional general information about backups:
