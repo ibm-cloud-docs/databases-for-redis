@@ -45,11 +45,11 @@ toc:
           - include: ../cloud-databases/howto-sat-loc-aws.md
           - include: ../cloud-databases/howto-sat-loc-onprem.md
       - howto-getting-connection-strings.md
+      - howto-migrating.md
       - howto-upgrading.md
       - include: ../cloud-databases/howto-deprovisioning.md
       - include: ../cloud-databases/closures.md
       - include: ../cloud-databases/ha-dr.md
-      - howto-migrating.md
       - topicgroup:
           label: Connecting to Databases for Redis
           topics:
