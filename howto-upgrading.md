@@ -14,17 +14,15 @@ subcollection: databases-for-redis
 # Upgrading to a new major version
 {: #upgrading}
 
-When a major version of a database is at its end of life (EOL), upgrade to a current major version. 
+When a major version of a database is at its end of life (EOL), upgrade to the next available major version. Find the available versions of Redis in the [{{site.data.keyword.databases-for-redis_full}} catalog](https://cloud.ibm.com/catalog/databases-for-redis){: external}, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables-permissions){: external}. 
 
 ## Simple upgrade path
 {: #upgrading-simple}
 
 Because most uses of {{site.data.keyword.databases-for-redis}} serve as a cache where the data tends to be transient, it is best to create a new deployment. In this simple method, provision a new deployment using the latest version of {{site.data.keyword.databases-for-redis}} and then point your application to the new deployment. This builds up the cache directly through initial use.
 
-## How to upgrade to a new major version NEW
+## How to upgrade to a new major version
 {: #upgrading_major}
-
-When a major version of a database is at its end of life (EOL), upgrade to the next available major version. Find the available versions of Redis in the [{{site.data.keyword.databases-for-redis_full}} catalog](https://cloud.ibm.com/catalog/databases-for-redis){: external}, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables-permissions){: external}.
 
 Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
@@ -40,25 +38,23 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 - The entire process can be rerun at any point.
 - A fresh restoration reduces the likelihood that unneeded artifacts of the older version of the database are carried over to the new database.
 
-## Upgrade paths
+### Upgrade paths
 {: #upgrading-paths}
 
 | Current Version |	Major Version Upgrade Path |
 | ---- | ----- |
-| {{site.data.keyword.databases-for-redis}}  |	-> {{site.data.keyword.databases-for-redis}} 4.4 -> 5.0 |
-| {{site.data.keyword.databases-for-redis}}  |	-> {{site.data.keyword.databases-for-redis}} 5.0 -> 6.0 |
-| {{site.data.keyword.databases-for-redis}}  |	-> Latest version |
-
-v5.0, 26 April 2024; v6.0 25 October 2024 	v6.2
+| {{site.data.keyword.databases-for-redis}} ??  |	-> {{site.data.keyword.databases-for-redis}} ?? |
+| {{site.data.keyword.databases-for-redis}} ?? |	-> {{site.data.keyword.databases-for-redis}} ?? |
+| {{site.data.keyword.databases-for-redis}} ?? |	-> Latest version |
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
 
-## Upgrading using the UI
+### Upgrading using the UI
 {: #upgrading-ui}
 {: ui}
 
 You can upgrade to a new version by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from the _Backups_ tab of your _Deployment Overview_. Click **Restore** on a backup to bring up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
 
-## Upgrading using the CLI
+### Upgrading using the CLI
 {: #upgrading-cli}
 {: cli}
 
@@ -80,11 +76,11 @@ ibmcloud resource service-instance-create example-upgrade databases-for-redis st
 ```
 {: pre}
 
-## Upgrading using the API
+### Upgrading using the API
 {: #upgrading-api}
 {: api}
 
-Similar to provisioning through the API, you need to complete [the necessary steps to use the resource controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning){: external} before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
+Similar to provisioning through the API, you need to complete [the required steps to use the resource controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning){: external} before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
 
 ```sh
 curl -X POST \
@@ -103,7 +99,7 @@ curl -X POST \
 {: pre}
 
 
-## Managing {{site.data.keyword.databases-for}} backups section 2 NEW
+## Managing {{site.data.keyword.databases-for}} backups 
 {: #dashboard-backups}
 
 Backups for {{site.data.keyword.databases-for}} instances are accessible from the _Backups_ tab of your instance's dashboard. Here is some additional general information about backups:
@@ -121,7 +117,7 @@ Backups for {{site.data.keyword.databases-for}} instances are accessible from th
 For information on taking an on-demand backup, see [Taking an on-demand backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=cli#ondemand-backup).
 {: tip}
 
-## Backups in the UI
+### Backups in the UI
 {: #backup-ui}
 {: ui}
 
@@ -131,7 +127,7 @@ The backup types have their respective tabs, either _On-demand_ or _Automatic_. 
 
 Click the backup to reveal information for that specific backup, including its full ID. A **Restore** button, or pre-formatted CLI command, is there for restore options.
 
-## Backups in the CLI
+### Backups in the CLI
 {: #backup-ui-cli}
 {: cli}
 
@@ -153,13 +149,13 @@ ibmcloud cdb backup-show crn:v1:staging:public:cloud-databases:us-south:a/628401
 ```
 {: .pre}
 
-## Backups in the {{site.data.keyword.databases-for}} API
+### Backups in the {{site.data.keyword.databases-for}} API
 {: #backup-ui-api}
 {: api}
 
 For backups information in the {{site.data.keyword.databases-for}} API, use the [`/deployments/{id}/backups`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-currently-available-backups-from-a-deployment) endpoint to list the instance's backups. To get information about a specific backup, use the [`/backups/{backup_id}`](https://{DomainName}/apidocs/cloud-databases-api#get-information-about-a-backup) endpoint.
 
-## Taking an on-demand backup
+### Taking an on-demand backup
 {: #ondemand-backup}
 {: cli}
 
@@ -178,7 +174,7 @@ ibmcloud cdb deployment-backup-now example-deployment
 
 In the API, sending a POST to the [`/deployments/{id}/backups`](https://cloud.ibm.com/apidocs/cloud-databases-api#initiate-an-on-demand-backup) endpoint triggers an on-demand backup.
 
-## Restoring a backup
+### Restoring a backup
 {: #restore-backup}
 
 Backups are restored to a new instance. After the new instance finishes provisioning, your data in the backup file is restored into the new instance.
@@ -188,7 +184,7 @@ By default, the new instance is auto-sized to the same disk and memory allocatio
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
 {: .tip}
 
-### Restoring a backup in the UI
+#### Restoring a backup in the UI
 {: #restore-backup-ui}
 {: ui}
 
@@ -202,7 +198,7 @@ To restore a backup to a new service instance,
     - You can choose the initial resource allocation, either to expand or shrink the resources on the new instance. You can also enable or disable dedicated cores.
 4. Click **Restore**. A "restore from backup started" message appears. Clicking **Your new instance is available now.** takes you to your _Resources List_.
 
-### Restoring a backup in the CLI
+#### Restoring a backup in the CLI
 {: #restore-backup-cli}
 {: cli}
 
@@ -225,7 +221,7 @@ ibmcloud resource service-instance-create <SERVICE_INSTANCE_NAME> <service-id> s
 A pre-formatted command for a specific backup is available in detailed view of the backup on the _Backups_ tab of your instance's dashboard.
 {: .tip}
 
-### Restoring a backup using the API
+#### Restoring a backup using the API
 {: #restore-backup-api}
 {: api}
 
@@ -256,7 +252,7 @@ The `target` is the region where you want the new instance to be located, which 
 If you need to adjust resources or use a Key Protect key, add any of the optional parameters `key_protect_key`, `members_disk_allocation_mb`, `members_memory_allocation_mb`, and `members_cpu_allocation_count`, and their preferred values to the body of the request.
 
 
-### Restoring a backup using Terraform
+#### Restoring a backup using Terraform
 {: #restore-backup-tf}
 {: terraform}
 
@@ -281,14 +277,14 @@ resource "ibm_database" "<your-instance>" {
 
 For more information, see the [{{site.data.keyword.databases-for}} Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database#backup_id){: external}.
 
-## Backups and restoration
+### Backups and restoration
 {: #backup-restoration}
 
 * {{site.data.keyword.databases-for}} are not responsible for restoration, timeliness, or validity of said backups.
 * Actions that you take as a user can compromise the integrity of backups, such as under-allocating memory and disk. Users can monitor that backups are successful by using the API, and periodically restore a backup to ensure validity and integrity. Users can retrieve the most recent-scheduled backup details from the [{{site.data.keyword.databases-for}} CLI plug-in](#backups-in-the-cli) and the [{{site.data.keyword.databases-for}} API](#restoring-a-backup-through-the-api).
 * As a managed service, {{site.data.keyword.databases-for}} monitors the state of your backups and can attempt to remediate when possible. If you encounter issues from which you cannot recover, contact support for more help.
 
-## Backup locations
+### Backup locations
 {: #backup-locations}
 
 Backup location differs per database region. Ensure that the backup region location matches your data location requirements.
@@ -310,12 +306,12 @@ Backup location differs per database region. Ensure that the backup region locat
 
 For more details about {{site.data.keyword.databases-for}} Object Storage locations, review the location's [documentation](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#endpoints-geo).
 
-## Business continuity and disaster
+### Business continuity and disaster
 {: #backup-locations}
 
 {{site.data.keyword.databases-for}} provides mechanisms to protect your data and restore service functions. For more information (including [Backup Storage Regions](/docs/cloud-databases?topic=cloud-databases-bc-dr#bc-dr-single-region-backups){: external}, see [Understanding business continuity and disaster recovery for {{site.data.keyword.databases-for}}](/docs/cloud-databases?topic=cloud-databases-bc-dr){: external}.
 
-## Point-in-time recovery
+### Point-in-time recovery
 {: #pitr-recovery-options}
 
 With Point-in-Time Recovery (PITR), the instance continuously backs up incrementally and can replay transactions to bring a new instance that is restored from a backup to any point in the last 7 days. {{site.data.keyword.databases-for}} offers Point-In-Time Recovery (PITR) for the following services:
@@ -324,16 +320,13 @@ With Point-in-Time Recovery (PITR), the instance continuously backs up increment
 - [{{site.data.keyword.databases-for-postgresql_full}}](/docs/databases-for-postgresql?topic=databases-for-postgresql-pitr)
 - [{{site.data.keyword.databases-for-enterprisedb_full}}](/docs/databases-for-enterprisedb?topic=databases-for-enterprisedb-pitr&interface=ui)
 
-## Backups FAQ
+### Backups FAQ
 {: #backup-faq-reference}
 
 For frequently asked questions about backups, check out [Backups FAQ](/docs/cloud-databases?topic=cloud-databases-faq-backups){: external}.
 
 
-
---------------------------------------------
-
-## Back up and restore upgrade
+## Backing up and restoring an upgrade
 {: #backup-restore}
 
 Upgrade your database version by [restoring a backup](/docs/databases-for-redis?topic=databases-for-redis-dashboard-backups&interface=ui#restore-backup) of your data into a new deployment that is running the new database version.
@@ -357,6 +350,7 @@ ibmcloud resource service-instance-create <service-name> <service-id> <service-p
 The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are all required. You also supply the `-p` with the version and backup ID parameters in a JSON object. The new deployment is automatically sized with the same disk and memory as the source deployment at the time of the backup.
 
 This command looks like:
+
 ```sh
 ibmcloud resource service-instance-create example-upgrade databases-for-redis standard us-south \
 -p \ '{
@@ -370,7 +364,7 @@ ibmcloud resource service-instance-create example-upgrade databases-for-redis st
 {: #upgrading-api}
 {: api}
 
-Complete the necessary steps to use the [Resource Controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=api#provision-controller-api) before you use it to upgrade from a backup. Then, send the API a `POST` request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup. 
+Complete the required steps to use the [Resource Controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=api#provision-controller-api) before you use it to upgrade from a backup. Then, send the API a `POST` request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup. 
 
 This command looks like:
 ```sh
@@ -394,27 +388,27 @@ curl -X POST \
 
 For guidance about migration, see [Migrating to {{site.data.keyword.databases-for-redis}}](/docs/databases-for-redis?topic=databases-for-redis-migrating).
 
-## Backup and restore steps - Section 3 NEW
+## Backing up and restoring
 {: #backup_restore}
 
 Complete the following on-demand backup and restore steps to upgrade. This example sets out the steps to upgrade from V5 to V6.2.
 
 To create a manual backup in the UI:
 
-    1. Go to Backups and restore tab of your {{site.data.keyword.databases-for-redis}} instance
+    1. Go to the **Backups and restore** tab of your {{site.data.keyword.databases-for-redis}} instance
     2. Click Create Back up
     A message is displayed that a backup is in progress, and an on-demand backup is added to the list of available backups [The on-demand backup can be seen in the overview page]
 
 To restore a backup to a new service instance:
 
-    1. Go to Backups and restore tab
+    1. Go to the **Backups and restore** tab
     2. Click in the corresponding row to expand the options for the on-demand backup that you want to restore
-    3. Click restore backup (this will re-direct to the restore instance page)
-    In the restore page, new instance service name, region and resource allocation values can be modified [By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring]
-    Under service configuration, select Database Version as ‘6.2’
-    Click Restore backup
+    3. Click **restore backup** (this will re-direct to the restore instance page)
+    In the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring.
+    Under **Service Configuration**, select ‘6.2’ as the Database Version 
+    4. Click **Restore Backup**.
 
-Backups are restored to a new instance. After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 6.2 instance can be accessed from Resources List.
+Backups are restored to a new instance. After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 6.2 instance can be accessed from **Resource List**.
 
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
 {: .note}
