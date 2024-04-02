@@ -391,3 +391,26 @@ curl -X POST \
 
 For guidance about migration, see [Migrating to {{site.data.keyword.databases-for-redis}}](/docs/databases-for-redis?topic=databases-for-redis-migrating).
 
+## Backup and restore steps - Section 3 NEW
+{: #backup_restore}
+
+Complete the following on-demand backup and restore steps to upgrade. This example helps you upgrade from V5 to V6.2.
+
+To create a manual backup in the UI:
+
+    1. Go to Backups and restore tab of your {{site.data.keyword.databases-for-redis}} instance
+    2. Click Create Back up
+    A message is displayed that a backup is in progress, and an on-demand backup is added to the list of available backups [The on-demand backup can be seen in the overview page]
+
+To restore a backup to a new service instance:
+
+    1. Go to Backups and restore tab
+    2. Click in the corresponding row to expand the options for the on-demand backup that you want to restore
+    3. Click restore backup (this will re-direct to the restore instance page)
+    In the restore page, new instance service name, region and resource allocation values can be modified [By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring]
+    Under service configuration, select Database Version as ‘6.2’
+    Click Restore backup
+
+Backups are restored to a new instance. After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 6.2 instance can be accessed from Resources List.
+
+Note - Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
