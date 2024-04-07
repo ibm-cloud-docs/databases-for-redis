@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2024
-lastupdated: "2024-04-04"
+lastupdated: "2024-04-07"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -43,10 +43,10 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 
 | Current Version |	Major Version Upgrade Path |
 | ---- | ----- |
-| {{site.data.keyword.databases-for-redis}} ??  |	-> {{site.data.keyword.databases-for-redis}} ?? |
-| {{site.data.keyword.databases-for-redis}} ?? |	-> {{site.data.keyword.databases-for-redis}} ?? |
-| {{site.data.keyword.databases-for-redis}} ?? |	-> Latest version |
+| {{site.data.keyword.databases-for-redis}} V5  |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
+| {{site.data.keyword.databases-for-redis}} V6 |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
 {: caption="Table 1. Major version upgrade paths" caption-side="top"}
+
 
 ### Upgrading using the UI
 {: #upgrading-ui}
@@ -98,9 +98,9 @@ curl -X POST \
 ```
 {: pre}
 
-
 ## Backing up and restoring: example
 {: #backup_restore}
+{: ui}
 
 Complete the following on-demand backup and restore steps to upgrade. This example sets out the steps to upgrade from V5 to V6.2.
 
@@ -122,6 +122,9 @@ To restore a backup to a new service instance:
 Backups are restored to a new instance. After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 6.2 instance can be accessed from **Resource List**.
 
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
+{: .note}
+
+{{site.data.keyword.databases-for-redis}} will be force upgraded to the next major version at the version end of life if a customer chooses not to upgrade using 'Restore and Upgrade'.
 {: .note}
 
 ## If you require data migration
