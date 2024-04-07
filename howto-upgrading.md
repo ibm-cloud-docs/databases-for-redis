@@ -125,10 +125,8 @@ Do not delete the source instance while the backup is restoring. Before you dele
 {: .note}
 
 If you choose not to upgrade using restore and upgrade, {{site.data.keyword.databases-for-redis}} will be force upgraded to the next major version at the version end of life. 
-{: .note}
-{: ui}
-{: api}
-{: cli}
+{: .note}{: ui}{: api}{: cli}
+
 
 ## If you require data migration
 {: #upgrading-req-data-migration}
