@@ -124,7 +124,7 @@ Backups are restored to a new instance. After the new instance finishes provisio
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
 {: .note}
 
-### Forced upgrade
+## Forced upgrade
 {: #forced_upgrade}
 
 If you choose not to upgrade using restore and upgrade, {{site.data.keyword.databases-for-redis}} will be force upgraded to the next major version at the version end of life. 
