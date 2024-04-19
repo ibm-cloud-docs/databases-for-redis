@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-03-15"
+lastupdated: "2024-04-19"
 
 keywords: databases-for-redis release notes
 
@@ -19,6 +19,15 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 19 April 2024
+{: #databases-for-redis-19apr2024}
+{: release-note}
+
+{{site.data.keyword.databases-for-redis}} updated licensing agreement
+:  Recently, Redis Inc. updated their licensing agreement that impacts Redis v7.4 and onwards. While the offering is being adjusted to align with the new licensing terms, this update does not impact you, and you can continue to use {{site.data.keyword.databases-for-redis_full_notm}}.
+
+{{site.data.keyword.databases-for-redis}} v7.2 is ready for use under [Preview](/docs/cloud-databases?topic=cloud-databases-versioning-policy#version-tags){: external}. This update includes [optimizations, new commands, improvements, and bug fixes](https://raw.githubusercontent.com/redis/redis/7.2/00-RELEASENOTES){: external}. Version 7.2 also introduces [RBAC (Role Based Access Control)](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#redis-rbac){: external}, which allows for better access control and improves overall security. Note: Backward compatibility is not available from {{site.data.keyword.databases-for-redis}} v7.2. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
 ## 07 March 2024
 {: #databases-for-redis-07mar2024}
