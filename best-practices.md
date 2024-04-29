@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-04-25"
+lastupdated: "2024-04-29"
 
 keywords: redis, databases, best practices
 
@@ -23,45 +23,52 @@ Follow our best practices to learn about IBM Cloud® billing options and tools t
 
 After you set up your IBM Cloud® account, you're ready to start planning how you want to organize resources and assign access to identities in your account. These best practices provide you with the basic building blocks to enable successful and secure app development in IBM Cloud.
 
-Below are some of the best practices that are recommended for our customers using Databases for Redis.
+Below are some of the best practices that are recommended for our customers using {{site.data.keyword.databases-for-redis}}.
 
 --------
 
-## What is Databases for Redis?
+## What is {{site.data.keyword.databases-for-redis}}?
 {: #what-is-redis}
 
-Databases for Redis is a managed service of Redis OSS offered on IBM Cloud. It is in-memory data structure store used as a database, cache, message broker, and streaming engine. Unlike traditional databases which stores data in disk, Redis stores data in memory(RAM) enabling low latency. The data is ephemeral enabling Databases for Redis for top performance and high throughput. Users can also configure to store data as persistent store on disk by trading-off performance with data availability, as this is achieved by enabling AOF sync with RBD snapshots.
+{{site.data.keyword.databases-for-redis}} is a managed service of Redis OSS offered on IBM Cloud. It is in-memory data structure store used as a database, cache, message broker, and streaming engine. Unlike traditional databases which stores data in disk, Redis stores data in memory(RAM) enabling low latency. The data is ephemeral enabling {{site.data.keyword.databases-for-redis}} for top performance and high throughput. Users can also configure to store data as persistent store on disk by trading-off performance with data availability, as this is achieved by enabling AOF sync with RBD snapshots.
 
 Note: RBD snapshots are enabled for backup and high-availability, even if persistence is disabled.
 
-## Best practices for an instance capacity planning
+## Best practices for instance capacity planning
 {: #capacity-planning}
 
-Customers must plan the Databases for Redis instance capacity based on their application & architectural design, understand hardware requirements and prepare for the increase or decrease in demand. Below are some recommendations that could help you to right-size your instance
+Customers must plan the {{site.data.keyword.databases-for-redis}} instance capacity based on their application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations could help you to right-size your instance.
 
-a. Understanding your data: Customers are expected to know the data types, size and lifetime of their data. This will help you understand the duration of data available in-memory before it gets deleted or moved.
+a. **Understand your data**
+Customers are expected to know the data types, size and lifetime of their data. This will help you understand the duration of data available in-memory before it gets deleted or moved.
 
-b. Estimate the memory requirement: It is important to calculate the memory requirement. Remember to factor in not only for your data, but also for replication, client connections, max-memory buffers, Redis metadata.
+b. **Estimate the memory requirements** 
+It is important to calculate the memory requirement. Remember to factor in not only for your data, but also for replication, client connections, max-memory buffers, Redis metadata.
 
-c. Understand the Read/Write loads: Identifying your read-write loads will help you prepare for auto-scaling needs, time your application requests and maintain master-follower sync
+c. **Understand the read/write loads**
+Identifying your read-write loads will help you prepare for auto-scaling needs, time your application requests, and maintain master-follower sync
 
-d. Understand your IOPS needs: Input-Output per second is a key factor that should be considered in instance capacity planning. Databases for Redis takes RDB snapshots periodically as per the default Redis configuration, which will engage disk even if your instance is setup for cache. It's possible for very busy databases to exceed the IOPS for the disk size, and increasing disk can alleviate a performance bottleneck.
+d. **Understand your IOPS needs**
+Input-Output per second is a key factor that should be considered in instance capacity planning. {{site.data.keyword.databases-for-redis}} takes RDB snapshots periodically as per the default Redis configuration, which will engage disk even if your instance is setup for cache. It's possible for very busy databases to exceed the IOPS for the disk size, and increasing disk can alleviate a performance bottleneck.
 
-e. Plan for redundancy and reconnects: There are multiple components that are involved in cloud computation, which brings variability of momentary failures. However, at IBM Cloud Databases, we offer 99.99% high-availability, and encourage our customers to plan for connection blips into their application design using retry/reconnect logic.
+e. **Plan for redundancy and reconnects**
+There are multiple components that are involved in cloud computation, which brings variability of momentary failures. However, at IBM Cloud Databases, we offer 99.99% high-availability, and encourage our customers to plan for connection blips into their application design using retry/reconnect logic.
 
-f. Consider network bandwidth: Your network bandwidth might significantly impact your Databases for Redis performance. Ensure you have sufficient network bandwidth to handle your database loads.
+f. **Consider network bandwidth**
+Your network bandwidth might significantly impact your {{site.data.keyword.databases-for-redis}} performance. Ensure you have sufficient network bandwidth to handle your database loads.
 
-g. Monitoring and adjustments: Our recommendation is to monitor your Databases for Redis instance performance and usage to determine the evolving usage pattern of your database instance and resize as needed.
+g. **Monitoring and adjustments**
+Our recommendation is to monitor your {{site.data.keyword.databases-for-redis}} instance performance and usage to determine the evolving usage pattern of your database instance and resize as needed.
 
 
 ## Best practices for performance
 {: #performance}
 
-a. Disable persistence: By default, Databases for Redis has persistance enabled. This write AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command.
+a. Disable persistence: By default, {{site.data.keyword.databases-for-redis}} has persistance enabled. This write AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command.
 
 b. RAM vs Cores: Redis is single-threaded, in-memory database. Inherently, it needs more RAM than CORES, unlike other persistent databases. Even though it is single-threaded, it uses ‘multiplexing’ to process the requests, but all of them are processed by a thread. However, other cores are needed to maintain the sanctity and stability of databases for its internal processes. We encourage our users to emphasis more on RAM and Disk (for IOPS) for Database for Redis. Read Best practices for an instance capacity planning. 
 
-c. Downsizing memory: We advise to our customers to be careful when they reduce memory of their Databases for Redis instance. Since Redis is in-memory databases, its memory holds your data for storage, processing and retrieval purposes. Drastically reducing the memory can temporarily stop your instance returning an error, as there will not be sufficient space available to perform the operations. Think of it as loading 20GB of data trying to load in 15GB of memory. It is bound to return error.
+c. Downsizing memory: We advise to our customers to be careful when they reduce memory of their {{site.data.keyword.databases-for-redis}} instance. Since Redis is in-memory databases, its memory holds your data for storage, processing and retrieval purposes. Drastically reducing the memory can temporarily stop your instance returning an error, as there will not be sufficient space available to perform the operations. Think of it as loading 20GB of data trying to load in 15GB of memory. It is bound to return error.
 
 d. Avoid expensive commands: Certain commands in Redis are expensive to execute. KEYS is one such commands which is used frequently, and should be avoided. Instead, use SCAN command, which spreads the iteration over many calls, not tying up your whole server at one time.
 
@@ -94,7 +101,7 @@ read other Box note on common errors
 
 a. Connection pooling: Creating or closing connections is costly. Managing connection efficiently is important and connection pooling will be helpful to minimize the overhead associated with opening and closing connections.
 
-b. Connection Limits: Customers must utilise the connections efficiently. Overloading Databases for Redis with too many connections will return error and you will face application disruptions. Leave some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. We encourage you to use connection pooling
+b. Connection Limits: Customers must utilise the connections efficiently. Overloading {{site.data.keyword.databases-for-redis}} with too many connections will return error and you will face application disruptions. Leave some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. We encourage you to use connection pooling
 
 c. Connection timeouts: Setting appropriate timeout values for your connections is also important to prevent resources being tied up indefinitely. However, be careful with setting short timeouts as this can lead to connection churn and increased latency. Align timeouts with the operational expectations of your application.
 
@@ -104,9 +111,9 @@ e. Use Redis Streams feature: Redis Streams is a data type that provides a super
 
 g. Split large data: It is recommended that large datasets should be split into smaller chunks with more keys, ie split your data over multiple keys
 
-h. Batch schedule: Databases for Redis is scheduled to create automated backups everyday at a scheduled time. During this time, your databases IOPS are utilized. It is recommended that customers should not run their own batch jobs at this time.
+h. Batch schedule: {{site.data.keyword.databases-for-redis}} is scheduled to create automated backups everyday at a scheduled time. During this time, your databases IOPS are utilized. It is recommended that customers should not run their own batch jobs at this time.
 
-g. Setup notifications channels: We recommend Databases for Redis customers to setup email ids in IBM Accounts to receive periodic updates on version changes, end-of-life or maintenance schedules. They can also monitor their IBM Account notification icon to receive these updates.
+g. Setup notifications channels: We recommend {{site.data.keyword.databases-for-redis}} customers to setup email ids in IBM Accounts to receive periodic updates on version changes, end-of-life or maintenance schedules. They can also monitor their IBM Account notification icon to receive these updates.
 
 We have also written a blog which lists further details on the best practices. Refer link for details
 
