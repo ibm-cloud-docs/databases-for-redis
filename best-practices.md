@@ -39,14 +39,18 @@ Note: RBD snapshots are enabled for backup and high-availability, even if persis
 
 Customers must plan the {{site.data.keyword.databases-for-redis}} instance capacity based on their application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations could help you to right-size your instance.
 
-a. **Understand your data**
-Customers are expected to know the data types, size and lifetime of their data. This will help you understand the duration of data available in-memory before it gets deleted or moved.
+Orange
+:   The fruit of an evergreen tree of the genus Citrus.
+:   A color between red and yellow on the rainbow.
 
-b. **Estimate the memory requirements** 
-It is important to calculate the memory requirement. Remember to factor in not only for your data, but also for replication, client connections, max-memory buffers, Redis metadata.
+- Understand your data
+:   Customers are expected to know the data types, size and lifetime of their data. This will help you understand the duration of data available in-memory before it gets deleted or moved.
 
-c. **Understand the read/write loads**
-Identifying your read-write loads will help you prepare for auto-scaling needs, time your application requests, and maintain master-follower sync
+- Estimate the memory requirements
+:   It is important to calculate the memory requirement. Remember to factor in not only for your data, but also for replication, client connections, max-memory buffers, Redis metadata.
+
+- Understand the read/write loads
+:   Identifying your read-write loads will help you prepare for auto-scaling needs, time your application requests, and maintain master-follower sync
 
 d. **Understand your IOPS needs**
 Input-Output per second is a key factor that should be considered in instance capacity planning. {{site.data.keyword.databases-for-redis}} takes RDB snapshots periodically as per the default Redis configuration, which will engage disk even if your instance is setup for cache. It's possible for very busy databases to exceed the IOPS for the disk size, and increasing disk can alleviate a performance bottleneck.
