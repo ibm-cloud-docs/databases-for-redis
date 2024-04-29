@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-03-15"
+lastupdated: "2024-04-19"
 
 keywords: databases-for-redis release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 19 April 2024
+{: #databases-for-redis-19apr2024}
+{: release-note}
+
+{{site.data.keyword.databases-for-redis}} updated licensing agreement
+:  Recently, Redis Inc. updated their licensing agreement for Redis v7.4 and onward. While the offering is being adjusted to align with the new licensing terms, this update does not impact you, and you can continue to use {{site.data.keyword.databases-for-redis_full_notm}}.
 
 ## 07 March 2024
 {: #databases-for-redis-07mar2024}
