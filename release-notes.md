@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 {{site.data.keyword.databases-for-redis}} updated licensing agreement
-:  Recently, Redis Inc. updated their licensing agreement that impacts Redis v7.4 and onwards. While the offering is being adjusted to align with the new licensing terms, this update does not impact you, and you can continue to use {{site.data.keyword.databases-for-redis_full_notm}}.
+:  Recently, Redis Inc. updated their licensing agreement for Redis v7.4 and onward. While the offering is being adjusted to align with the new licensing terms, this update does not impact you, and you can continue to use {{site.data.keyword.databases-for-redis_full_notm}}.
 
 ## 07 March 2024
 {: #databases-for-redis-07mar2024}
