@@ -82,7 +82,7 @@ Set maxmemory values
 Retry and reconnect logic 
 :   Systems are prone to disruptions. You are highly encouraged to implement retry and reconnect logic into your application architecture to avoid disruptions. Use IOREDIS, NODEREDIS or any other package of your choice to ensure continuity of your application.
 
-Refer to [Error detection and handling with Redis blog post](https://developer.ibm.com/articles/error-detection-and-handling-with-redis/) for more details.
+For more details, see [Error detection and handling with Redis blog post](https://developer.ibm.com/articles/error-detection-and-handling-with-redis/).
 
 ## Best practices for monitoring
 {: #monitoring}
@@ -106,11 +106,11 @@ Connection limits
 Connection timeouts
 :   Setting appropriate timeout values for your connections is also important to prevent resources being tied up indefinitely. However, be careful with setting short timeouts because this can lead to connection churn and increased latency. Align timeouts with the operational expectations of your application.
 
-:   Use the Redis Pipeline feature
+:   Use the Redis pipeline feature
 Redis pipelining is a technique for improving performance by issuing multiple commands at once without waiting for the response to each individual command. For more information, see [Redis pipelining](https://redis.io/docs/latest/develop/use/pipelining/).
 
 Use the Redis Streams feature
-:   Redis Streams is a data type that provides a super fast in-memory abstraction of an append only log.
+:   Redis Streams is a data type that provides a super fast in-memory abstraction of an append-only log.
 
 Split large data
 :   You are recommended to split large datasets into smaller chunks with more keys, that is, split your data over multiple keys.
@@ -121,7 +121,7 @@ Batch schedule
 Set up notification channels
 :   We recommend that {{site.data.keyword.databases-for-redis}} you set up email IDs in IBM Accounts to receive periodic updates about version changes, end-of-life, or maintenance schedules. You can also monitor your IBM Account notification icon to receive these updates.
 
-The [Best Practices for Redis on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/) provides further best practice information.
+The [Best Practices for Redis on the IBM Cloud blog post](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/) provides further best practice information.
 
 
 
