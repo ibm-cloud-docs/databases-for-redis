@@ -21,15 +21,15 @@ Take time to review the following best practices that are recommended for our cu
 ## What is {{site.data.keyword.databases-for-redis}}?
 {: #what-is-redis}
 
-{{site.data.keyword.databases-for-redis}} is a managed service of Redis OSS offered on {{site.data.keyword.Bluemix_notm}}. It is in-memory _data structure store_ used as a database, cache, message broker, and streaming engine. Unlike traditional databases which stores data in disk, Redis stores data in memory(RAM) enabling low latency. The data is _ephemeral_ enabling {{site.data.keyword.databases-for-redis}} for top performance and high throughput. Users can also configure to store data as persistent store on disk by trading-off performance with data availability, as this is achieved by enabling AOF sync with RBD snapshots.
+{{site.data.keyword.databases-for-redis}} is a managed service of Redis OSS offered on {{site.data.keyword.Bluemix_notm}}. It is in-memory _data structure store_ used as a database, cache, message broker, and streaming engine. Unlike traditional databases, which store data in disk, Redis stores data in memory (RAM) enabling low latency. The data is _ephemeral_, which enables {{site.data.keyword.databases-for-redis}} for top performance and high throughput. Users can also configure to store data as persistent store on disk by trading off performance with data availability, because this is achieved by enabling AOF (Append Only File) sync with RBD snapshots.
 
 RBD snapshots are enabled for backup and high-availability, even if persistence is disabled.
-{ :note}
+{: note}
 
 ## Best practices for instance capacity planning
 {: #capacity-planning}
 
-Customers must plan the {{site.data.keyword.databases-for-redis}} instance capacity based on their application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations could help you to right-size your instance.
+You must plan {{site.data.keyword.databases-for-redis}} instance capacity based on your application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations could help you to right-size your instance.
 
 Understand your data
 :   You are expected to know the data types, size, and lifetime of their data. This helps you understand the duration of data available in-memory before it gets deleted or moved.
@@ -44,7 +44,7 @@ d. **Understand your IOPS needs**
 Input-Output per second is a key factor that you should consider in instance capacity planning. {{site.data.keyword.databases-for-redis}} takes RDB snapshots periodically as per the default Redis configuration, which engages disk even if your instance is set up for cache. It's possible for very busy databases to exceed the IOPS for the disk size, and increasing disk can alleviate a performance bottleneck.
 
 e. **Plan for redundancy and reconnects**
-There are multiple components that are involved in cloud computation, which brings variability of momentary failures. However, at {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}, we offer 99.99% high-availability, and encourage customers to plan for connection blips in their application design using retry and reconnect logic.
+There are multiple components that are involved in cloud computation, which brings variability of momentary failures. However, at {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}, we offer 99.99% high-availability, and encourage you to plan for connection blips in your application design using retry and reconnect logic.
 
 
 f. **Consider network bandwidth**
@@ -73,15 +73,15 @@ e. Choose an eviction policy
 You should choose an eviction policy that works for your application. By default, deployments are configured with a noeviction policy. Use eviction policies like `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`. See [memory policy](/docs/databases-for-redis?topic=databases-for-redis-redis-cache#redis-cache-maxmemory) for mode details.
 
 f. Set maxmemory values
-You can adjust the `maxmemory` value. However, set a reasonable limit, otherwise, your data can take all the available memory and your deployment can run out of resources. By default, we set it as 80% of data node’s available memory.
+You can adjust the `maxmemory` value. However, set a reasonable limit, otherwise, your data can consume all the available memory and your deployment can run out of resources. By default, we set it as 80% of data node’s available memory.
 
 ## Best practices for high-availability
 {: #high-availability}
 
-Retry/Reconnect logic 
+Retry and reconnect logic 
 Systems are prone to disruptions. You are highly encouraged to implement retry and reconnect logic into your application architecture to avoid disruptions. Use IOREDIS, NODEREDIS or any other package of your choice to ensure continuity of your application.
 
-We have written a blog that you can refer to [Error detection and handling with Redis](https://developer.ibm.com/articles/error-detection-and-handling-with-redis/).
+Refer to [Error detection and handling with Redis blog post](https://developer.ibm.com/articles/error-detection-and-handling-with-redis/) for more details.
 
 ## Best practices for monitoring
 {: #monitoring}
@@ -117,11 +117,11 @@ You are recommended to split large datasets into smaller chunks with more keys, 
 h. Batch schedule
 {{site.data.keyword.databases-for-redis}} is scheduled to create automated backups everyday at a scheduled time. During this time, your databases IOPS are utilized. It is recommended that you should not run your own batch jobs at this time.
 
-g. Set up notifications channels
-We recommend that {{site.data.keyword.databases-for-redis}} customers set up email IDs in IBM Accounts to receive periodic updates about version changes, end-of-life, or maintenance schedules. You can also monitor your IBM Account notification icon to receive these updates.
+g. Set up notification channels
+We recommend that {{site.data.keyword.databases-for-redis}} you set up email IDs in IBM Accounts to receive periodic updates about version changes, end-of-life, or maintenance schedules. You can also monitor your IBM Account notification icon to receive these updates.
 
-We have also written a blog which lists further details about best practices 
-[Best Practices for Redis on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/)
+The following blog lists further details about best practices 
+[Best Practices for Redis on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/).
 
 
 
