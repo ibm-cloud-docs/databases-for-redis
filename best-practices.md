@@ -29,13 +29,13 @@ RBD snapshots are enabled for backup and high availability, even if persistence 
 ## Best practices for instance capacity planning
 {: #capacity-planning}
 
-You must plan {{site.data.keyword.databases-for-redis}} instance capacity based on your application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations could help you to optimize the size your instance.
+You must plan {{site.data.keyword.databases-for-redis}} instance capacity based on your application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations can help you to optimize the size your instance.
 
 Understand your data
 :   You are expected to know the data types, size, and lifetime of your data. This helps you understand the duration of data available in-memory before it gets deleted or moved.
 
 Estimate memory requirements
-:   It is important to calculate your memory requirements. Remember to factor in not only your data, but also memory required for replication, client connections, max-memory buffers, and Redis metadata.
+:   It is important to calculate your memory requirements. Remember to factor in not only your data, but also the memory required for replication, client connections, max-memory buffers, and Redis metadata.
 
 Understand the read/write loads
 :   Identifying your read/write loads helps you prepare for auto-scaling needs, time your application requests, and maintain master-follower sync.
@@ -58,23 +58,23 @@ Monitoring and adjustments
 {: #performance}
 
 Disable persistence
-:   By default, {{site.data.keyword.databases-for-redis}} has persistance enabled. This write AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command.
+:   By default, {{site.data.keyword.databases-for-redis}} has persistance enabled. This writes AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command.
 ** which command?**
 
-RAM vs Cores
-:   Redis is single-threaded, in-memory database. Inherently, it needs more RAM than CORES, unlike other persistent databases. Even though it is single-threaded, it uses ‘multiplexing’ to process the requests, but all of them are processed by a thread. However, other cores are needed to maintain database integrity and stability for its internal processes. You are encouraged to focus more on RAM and disk (for IOPS) for {{site.data.keyword.databases-for-redis}}. For more information, see [Best practices for  instance capacity planning](/docs/databases-for-redis?topic=databases-for-redis-best-practices#capacity-planning). 
+RAM vs cores
+:   Redis is a single-threaded, in-memory database. Inherently, it needs more RAM than CORES, unlike other persistent databases. Even though it is single-threaded, it uses ‘multiplexing’ to process the requests, but all the requests are processed by a thread. However, other cores are needed to maintain database integrity and stability for its internal processes. You are encouraged to focus more on RAM and disk (for IOPS) for {{site.data.keyword.databases-for-redis}}. For more information, see [Best practices for  instance capacity planning](/docs/databases-for-redis?topic=databases-for-redis-best-practices#capacity-planning). 
 
 Downsizing memory
-:   You are advised to take care when you reduce the memory of your {{site.data.keyword.databases-for-redis}} instance. Because Redis is an in-memory database, its memory holds your data for storage, processing, and retrieval purposes. Drastically reducing the memory can temporarily stop your instance returning an error, because there is not sufficient space available to complete the operations. Consider 20 GB of data trying to load in 15 GB of memory, which is bound to return an error.
+:   You are advised to take care when you reduce the memory of your {{site.data.keyword.databases-for-redis}} instance. Because Redis is an in-memory database, its memory holds your data for storage, processing, and retrieval purposes. Drastically reducing the memory can temporarily stop your instance returning an error, because there is not sufficient space available to complete the operations. For example, consider 20 GB of data trying to load in 15 GB of memory, this case is bound to return an error.
 
 Avoid expensive commands
-:   Certain commands in Redis are expensive to run. For example, the KEYS command, which is used frequently, but should be avoided. Instead, use SCAN command, which spreads the iteration over many calls and does not tie up your whole server at one time.
+:   Certain commands in Redis are expensive to run. For example, the KEYS command, which is used frequently, but should be avoided. Instead, use the SCAN command, which spreads the iteration over many calls and does not tie up your whole server at one time.
 
 Choose an eviction policy 
-:   You should choose an eviction policy that works for your application. By default, deployments are configured with a noeviction policy. Use eviction policies like `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`. See [memory policy](/docs/databases-for-redis?topic=databases-for-redis-redis-cache#redis-cache-maxmemory) for mode details.
+:   You should choose an eviction policy that works for your application. By default, deployments are configured with a `noeviction` policy. Use eviction policies like `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`. For more details, see [memory policy](/docs/databases-for-redis?topic=databases-for-redis-redis-cache#redis-cache-maxmemory).
 
 Set maxmemory values
-:   You can adjust the `maxmemory` value. However, set a reasonable limit, otherwise, your data can consume all the available memory and your deployment can run out of resources. By default, we set it as 80% of data node’s available memory.
+:   You can adjust the `maxmemory` value. However, set a reasonable limit, otherwise your data can consume all the available memory and your deployment can run out of resources. By default, we set it at 80% of the data node’s available memory.
 
 ## Best practices for high availability
 {: #high-availability}
@@ -107,7 +107,7 @@ Connection timeouts
 :   Setting appropriate timeout values for your connections is also important to prevent resources being tied up indefinitely. However, be careful with setting short timeouts because this can lead to connection churn and increased latency. Align timeouts with the operational expectations of your application.
 
 :   Use the Redis Pipeline feature
-Redis pipelining is a technique for improving performance by issuing multiple commands at once without waiting for the response to each individual command. See [Redis pipelining](https://redis.io/docs/latest/develop/use/pipelining/) for more information.
+Redis pipelining is a technique for improving performance by issuing multiple commands at once without waiting for the response to each individual command. For more information, see [Redis pipelining](https://redis.io/docs/latest/develop/use/pipelining/).
 
 Use the Redis Streams feature
 :   Redis Streams is a data type that provides a super fast in-memory abstraction of an append only log.
@@ -121,8 +121,7 @@ Batch schedule
 Set up notification channels
 :   We recommend that {{site.data.keyword.databases-for-redis}} you set up email IDs in IBM Accounts to receive periodic updates about version changes, end-of-life, or maintenance schedules. You can also monitor your IBM Account notification icon to receive these updates.
 
-The following blog provides further best practice information
-[Best Practices for Redis on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/).
+The [Best Practices for Redis on the IBM Cloud](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/) provides further best practice information.
 
 
 
