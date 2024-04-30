@@ -58,8 +58,8 @@ Monitoring and adjustments
 {: #performance}
 
 Disable persistence
-:   By default, {{site.data.keyword.databases-for-redis}} has persistance enabled. This writes AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command.
-** which command?**
+:   By default, {{site.data.keyword.databases-for-redis}} has persistance enabled. This writes AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command `Set appendonly = no`. For more information, see  
+[Setting an example cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli#redis-cache-example-cache)
 
 RAM vs cores
 :   Redis is a single-threaded, in-memory database. Inherently, it needs more RAM than CORES, unlike other persistent databases. Even though it is single-threaded, it uses ‘multiplexing’ to process the requests, but all the requests are processed by a thread. However, other cores are needed to maintain database integrity and stability for its internal processes. You are encouraged to focus more on RAM and disk (for IOPS) for {{site.data.keyword.databases-for-redis}}. For more information, see [Best practices for  instance capacity planning](/docs/databases-for-redis?topic=databases-for-redis-best-practices#capacity-planning). 
