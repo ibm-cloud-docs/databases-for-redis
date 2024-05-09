@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-04-30"
+lastupdated: "2024-05-09"
 
 keywords: troubleshooting for Redis, common errors
 
@@ -32,39 +32,38 @@ content-type: troubleshoot
 
 {{site.data.keyword.databases-for-redis}} is an in-memory database. It differs from traditional persistent databases in terms of how it accepts, processes, and stores data. The following information highlights common errors and a few reasons for those errors that you might experience, and the solutions that you can apply.
 
-## Error 1: Connection to master lost message
+## Error: `Connection to master lost` message
 
-{{site.data.keyword.databases-for-redis}} works with 2 member (Master+replica) and 3 Sentinels. There could be various reasons for `connection to master lost` message.  Some of those reasons are as follows:
+{{site.data.keyword.databases-for-redis}} works with 2 members (Master+replica) and 3 Sentinels. There are various reasons for `connection to master lost` message.  Some of those reasons are as follows:
 
-a. Because of lower IOPS, master is busy and does not respond to Sentinels, which returns this error message in LogDNA.
+a. Because of lower input/output operations per second (IOPS), master is busy and does not respond to Sentinels, which returns this error message in LogDNA. 
 
 b. Because of network latency, Sentinels are unable to communicate with master.
 
-c. Scheduled maintenance activities
+c. Scheduled maintenance activities.
 
-d. Minor version upgardes
+d. Minor version upgrades.
 
-### Solutions:
 {: tsResolve}
 
-a. Increase timeout to > 30 sec. Or make it user configurable at {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}.
+a. Increase the timeout to over 30 seconds. Or make it user configurable at {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}.
 
-b. Increase disk size. 1GB equals 10 IOPS.
+b. Increase the disk size. 1 GB equals 10 IOPS.
 
-c. Move to dedicated cores so that noisy neighbours issue is not there.
+c. Move to dedicated cores so that the noisy neighbours issue is eliminated.
 
 d. Increase RAM size.
 
-e. RETRY logic is a must.
+e. RETRY logic is a must so ensure this is in use.
 
 f. The replica will be promoted to master automatically after few seconds.
 
-{{site.data.keyword.IBM}} {{site.data.keyword.databases-for}} does not perform any activity on MASTER node. If needed, all activities are taken on replica node, which is then promoted to master.
+{{site.data.keyword.IBM}} {{site.data.keyword.databases-for}} does not perform any activity on master node. If needed, all activities are taken on replica node, which is then promoted to master.
 {: note}
 
 Databases are set to wait for 30 seconds to find the master node, before replica promotion occurs.
 
-## Error 2: Asynchronous AOF fsync is taking too long (disk is busy?)
+## Error: Asynchronous AOF fsync is taking too long (disk is busy?)
 
 AOF is Append Only File. This is the log written to Redis persistent disk when persistent setting is on. Note: Redis use AOF and RDB files to write its log and RDB for snapshotting.
 
@@ -82,34 +81,34 @@ Except Psync which is used for metrics, we don’t request any other API in cust
 
 a. Increase disk size. Ballpark 30% extra than expected volume.
 
-b. If Redis is at max capacity, then split single Redis instance to multiple instances and adjust your application architecture.
+b. If Redis is at maximum capacity, split a single Redis instance into multiple instances and adjust your application architecture.
 
 c. Turn off persistence if it is not required. Change to CACHE mode.
 
-Disk cannot be scaled down. Memory can be scaled down. As Redis is in-memory data store, we recommend that you evaluate your ongoing data size before downsizing memory of your instance as significant reduction can result in error. This is because 
+Disk cannot be scaled down. Memory can be scaled down. Because Redis is an in-memory data store, we recommend that you evaluate your ongoing data size before downsizing memory of your instance as significant reduction can result in error. This is because 
 {: note}
 
-## Error 3: Scaling an instance is stuck or taking longer
+## Error: Scaling an instance is stuck or taking longer
 
-With {{site.data.keyword.Bluemix_notm}}, you can scale or resize your instance as your data needs grows. We offer auto-scaling and manual scaling from UI, CLI, and APIs. However, you should be careful as you resize your instance. If your scaling is taking longer, it could be for one of the following reasons:
+With {{site.data.keyword.Bluemix_notm}}, you can scale or resize your instance as your data needs grow. We offer auto-scaling and manual scaling from the UI, CLI, and APIs. However, you should be careful as you resize your instance. If your scaling is taking longer, it could be for one of the following reasons:
 
-a. Your instance is already in the largest instance (cores*rams), and there is no bigger cluster available to move their workload at the moment. In this case, a new cluster is formed and their instance is moved, which can take upto 90 minutes.  — Shashank: Not sure if we shall write this? Seems weakness at our side at our side. Perhaps a rephrase?
+a. Your instance is already in the largest instance (cores*rams), and there is no bigger cluster available to move your workload to currently. In this case, a new cluster is formed and your instance is moved, which can take up to 90 minutes.  — Shashank: Not sure if we shall write this? Seems weakness at our side at our side. Perhaps a rephrase?
 
-b. Customer has reduced its memory drastically (eg: from 16GB RAM to 10GB RAM), however, their data store size (disk) is higher eg: 11GB. In these cases, there is not sufficient space in RAM to read data from disk, and formation might get stuck.
+b. You have reduced its memory drastically (eg: from 16GB RAM to 10GB RAM), however, your data store size (disk) is higher eg: 11GB. In these cases, there is not sufficient space in RAM to read data from disk, and formation might get stuck.
 
 ### Solutions:
 {: tsResolve}
 
-a. Redis is single threaded. Customers are expected to use 3-5 threads at max. This will increase the probability of a cluster availability. It is rare to have redis cluster or high Cores. 
+a. Redis is single threaded. You are expected to use a maximum of 3-5 threads. This will increase the probability of a cluster availability. It is rare to have redis cluster or high Cores. 
 
-b. Ask customers to increase their RAM and DISK based on their IO needs.
+b. Increase your RAM and DISK based on your I/O needs.
 
-c. Customers should not reduce their RAM drastically. Gradual decrement is advised.
+c. You should not reduce your RAM drastically. You are advised to gradually decrement.
 
 There should be watermark memory left for Redis to perform its inherent processes.
 {: note} 
 
-## Error 4: READONLY You can't write against a read only slave
+## Error: READONLY You can't write against a read only slave
 
 {{site.data.keyword.databases-for-redis}} has a two nodes, master and replica. Users can connect only to master node and replica is used for ensuring high-availability, which is generally unaccessible to customers. However, because of certain reasons, as it can be with any remote connections, a switchover can occur where the replica is promoted to master. Users can experience a momentary blip in service, and no other impact is expected if they are configured correctly.
 
