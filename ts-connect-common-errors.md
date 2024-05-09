@@ -46,17 +46,20 @@ d. Minor version upgrades.
 
 
 a. Increase the timeout to over 30 seconds or make it user configurable at {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}.
+
 b. Increase the disk size. 1 GB is equal to 10 IOPS.
+
 c. Move to dedicated cores so that the noisy neighbours issue is eliminated.
+
 d. Increase RAM size.
+
 e. RETRY logic is required, so ensure this is implemented.
+
 f. The replica will be promoted to master automatically after few seconds.
 {: tsResolve}
 
-{{site.data.keyword.IBM}} {{site.data.keyword.databases-for}} does not perform any activity on the master node. If needed, all activities are completed on the replica node, which is then promoted to master.
-
-
-Databases are set to wait for 30 seconds to find the master node before replica promotion occurs.
+{{site.data.keyword.IBM}} {{site.data.keyword.databases-for}} does not perform any activity on the master node. If needed, all activities are completed on the replica node, which is then promoted to master. Databases are set to wait for 30 seconds to find the master node before replica promotion occurs.
+{: note}
 
 ## Error: Asynchronous AOF fsync is taking too long (disk is busy?)
 
