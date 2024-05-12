@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-05-11"
+lastupdated: "2024-05-12"
 
 keywords: troubleshooting for Redis, common errors
 
@@ -12,15 +12,8 @@ content-type: troubleshoot
 
 ---
 
-{:tsSymptoms: .tsSymptoms}
-{:tsCauses: .tsCauses}
-{:tsResolve: .tsResolve}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:support: data-reuse='support'}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:note:.deprecated}
+{{site.data.keyword.attribute-definition-list}}
+
 {:troubleshoot: data-hd-content-type='troubleshoot'}
 
 
@@ -49,11 +42,13 @@ d. Minor version upgrades.
 ### Solutions
 {: #solution-connection-lost}
 
+Try the following solutions to fix the error:
+
 a. Increase the timeout to over 30 seconds or make the timeout user configurable using {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}.
 
 b. Increase the disk size. 1 GB is equal to 10 IOPS.
 
-c. Move to dedicated cores so that the noisy neighbours issue is eliminated.
+c. Move to dedicated cores so that any noisy neighbours issues are eliminated.
 
 d. Increase RAM size.
 
@@ -63,6 +58,7 @@ f. The replica will be promoted to master automatically after few seconds.
 
 {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}} does not perform any activity on the master node. If needed, all activities are completed on the replica node, which is then promoted to master. Databases are set to wait for 30 seconds to find the master node before replica promotion occurs.
 {: note}
+
 
 ## Error: Asynchronous AOF fsync is taking too long (disk is busy?)
 {: #error-fsync}
@@ -76,7 +72,7 @@ Some of the reasons why you might see this error are as follows:
 
 a. Because of insufficient IOPS, Redis is unable to write to disk.
 
-b. There could a {{site.data.keyword.databases-for-redis}} backup running at the same time as your batch is running.
+b. There could be a {{site.data.keyword.databases-for-redis}} backup running at the same time as your batch is running.
 
 c. Your application might be putting unknown API calls to the Redis instance. 
 
@@ -85,6 +81,8 @@ Except Psync which is used for metrics, we don’t request any other API in your
 
 ### Solutions:
 {: #solution-fsync}
+
+Try the following solutions to fix the error:
 
 a. Increase disk size. A ballpark recommendation is 30% more than the expected volume.
 
@@ -108,6 +106,8 @@ b. You have reduced its memory drastically (for example, from 16 GB RAM to 10 GB
 ### Solutions:
 {: #solution-scaling}
 
+Try the following solutions to fix the error:
+
 a. Redis is single threaded. You are expected to use a maximum of 3-5 threads. This increases the likelihood of a cluster's availability. It is rare to have Redis cluster or high cores. 
 
 b. Increase your RAM and disk based on your I/O needs.
@@ -120,7 +120,7 @@ Ensure there is watermark memory left for Redis to perform its inherent processe
 ## Error: READONLY You can't write against a read-only slave
 {: #error-readonly}
 
-{{site.data.keyword.databases-for-redis}} has a two nodes, master and replica. Users can connect only to master node and the replica node is used for ensuring high-availability, which is generally inaccessible to users. However, as with any remote connection, a switchover can occur where the replica is promoted to master. You can experience a momentary blip in service, and no other impact is expected if they are configured correctly.
+{{site.data.keyword.databases-for-redis}} has two nodes, master and replica. Users can connect only to master node and the replica node is used for ensuring high-availability, which is generally inaccessible to users. However, as with any remote connection, a switchover can occur where the replica is promoted to master. You can experience a momentary blip in service, and no other impact is expected if they are configured correctly.
 
 a. Because of lower IOPS, master is busy and does not respond to sentinels, which returns this error message in LogDNA.
 
@@ -132,6 +132,8 @@ d. Minor version upgrades.
 
 ### Solutions:
 {: #solution-readonly}
+
+Try the following solutions to fix the error:
 
 a. Include retry and reconnect logic in your application design. You can use libraries like `ioredis` and `noderedis`. For more details, see [error detection and handling with Redis blog post](https://developer.ibm.com/articles/error-detection-and-handling-with-redis/).
 
