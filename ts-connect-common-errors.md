@@ -14,8 +14,6 @@ content-type: troubleshoot
 
 {{site.data.keyword.attribute-definition-list}}
 
-{:troubleshoot: data-hd-content-type='troubleshoot'}
-
 
 # How can I avoid common {{site.data.keyword.databases-for-redis}} errors?
 {: #troubleshoot-common-errors}
@@ -23,12 +21,12 @@ content-type: troubleshoot
 {: support}
 
 
-{{site.data.keyword.databases-for-redis}} is an in-memory database. It differs from traditional persistent databases in how it accepts, processes, and stores data. The following information highlights common errors that you might experience, some reasons for those errors, and the solutions that you can apply.
+{{site.data.keyword.databases-for-redis}} is an in-memory database. It differs from traditional persistent databases in how it accepts, processes, and stores data. The following information highlights common errors that you might experience, some reasons for those errors, and the solutions that you can apply to fix those errors.
 
 ## Error: `Connection to master lost` message
 {: #error-connection-lost}
 
-{{site.data.keyword.databases-for-redis}} works with two members (master and replica) and three sentinels. There are various reasons for the `connection to master lost` message as follows:
+{{site.data.keyword.databases-for-redis}} works with two members (master and replica) and three sentinels. The following reasons might be the cause of the `connection to master lost` message:
 
 a. Because of lower input/output operations per second (IOPS), master is busy and is not responding to sentinels, which returns this error message in LogDNA. 
 
@@ -76,7 +74,7 @@ b. There could be a {{site.data.keyword.databases-for-redis}} backup running at 
 
 c. Your application might be putting unknown API calls to the Redis instance. 
 
-Except Psync which is used for metrics, we don’t request any other API in your instance.
+Except PSYNC which is used for metrics, we don’t request any other API in your instance.
 {: note}
 
 ### Solutions:
@@ -88,9 +86,10 @@ a. Increase disk size. A ballpark recommendation is 30% more than the expected v
 
 b. If Redis is at maximum capacity, split a single Redis instance into multiple instances and adjust your application architecture.
 
-c. Turn off persistence if it is not required. Change to cache mode.
+c. Turn off persistence if it is not required. Change to cache mode instead.
 
-Disk size cannot be scaled down but memory can be. Because Redis is an in-memory data store, we recommend that you evaluate your ongoing data size before downsizing the memory of your instance because significant reduction can result in error. **This is because**??
+Disk size cannot be scaled down but memory can be. Because Redis is an in-memory data store, we recommend that you evaluate your ongoing data size before downsizing the memory of your instance because significant reduction can result in error. 
+**This is because**??
 {: note}
 
 ## Error: Scaling an instance is stuck or taking longer than expected
@@ -120,7 +119,7 @@ Ensure there is watermark memory left for Redis to perform its inherent processe
 ## Error: READONLY You can't write against a read-only slave
 {: #error-readonly}
 
-{{site.data.keyword.databases-for-redis}} has two nodes, master and replica. Users can connect only to master node and the replica node is used for ensuring high-availability, which is generally inaccessible to users. However, as with any remote connection, a switchover can occur where the replica is promoted to master. You can experience a momentary blip in service, and no other impact is expected if they are configured correctly.
+{{site.data.keyword.databases-for-redis}} has two nodes, master and replica. Users can connect only to master node and the replica node is used for ensuring high-availability, which is generally inaccessible to users. However, as with any remote connection, a switchover can occur where the replica is promoted to master. You can experience a momentary blip in service, and no other impact is expected if the nodes are configured correctly.
 
 a. Because of lower IOPS, master is busy and does not respond to sentinels, which returns this error message in LogDNA.
 

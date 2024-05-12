@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-04-30"
+lastupdated: "2024-05-12"
 
 keywords: redis, databases, best practices
 
@@ -90,9 +90,9 @@ For more details, see [Error detection and handling with Redis blog post](https:
 You must monitor your LogDNA for the following common errors and take corrective measures:
 
 * AOF sync
-* Read only available
+* Read-only available
 * Connection to master lost
-* read other Box note on common errors ** where is this?**
+* For guidance about preventing errors, see [How can I avoid common Databases for Redis errors?](/docs/databases-for-redis?topic=databases-for-redis-troubleshoot-common-errors).
 
 ## General best practices 
 {: #best-practice-general}
