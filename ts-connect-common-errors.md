@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-05-12"
+lastupdated: "2024-05-13"
 
 keywords: troubleshooting for Redis, common errors
 
@@ -42,17 +42,15 @@ d. Minor version upgrades.
 
 Try the following solutions to fix the error:
 
-a. Increase the timeout to over 30 seconds or make the timeout user configurable using {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}.
+a. Increase the disk size. 1 GB is equal to 10 IOPS.
 
-b. Increase the disk size. 1 GB is equal to 10 IOPS.
+b. Move to isolated compute for dedicated resource allocation.
 
-c. Move to dedicated cores so that any noisy neighbours issues are eliminated.
+c. Increase RAM size.
 
-d. Increase RAM size.
+d. RETRY logic is required, so ensure this is implemented.
 
-e. RETRY logic is required, so ensure this is implemented.
-
-f. The replica will be promoted to master automatically after few seconds.
+e. The replica will be promoted to master automatically after few seconds.
 
 {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}} does not perform any activity on the master node. If needed, all activities are completed on the replica node, which is then promoted to master. Databases are set to wait for 30 seconds to find the master node before replica promotion occurs.
 {: note}
@@ -89,7 +87,6 @@ b. If Redis is at maximum capacity, split a single Redis instance into multiple 
 c. Turn off persistence if it is not required. Change to cache mode instead.
 
 Disk size cannot be scaled down but memory can be. Because Redis is an in-memory data store, we recommend that you evaluate your ongoing data size before downsizing the memory of your instance because significant reduction can result in error. 
-**This is because**??
 {: note}
 
 ## Error: Scaling an instance is stuck or taking longer than expected
@@ -97,8 +94,7 @@ Disk size cannot be scaled down but memory can be. Because Redis is an in-memory
 
 With {{site.data.keyword.Bluemix_notm}}, you can scale or resize your instance as your data needs grow. We offer autoscaling and manual scaling from the UI, CLI, and APIs. However, take care as you resize your instance. If scaling is taking longer than expected, it could be for one of the following reasons:
 
-a. Your instance is already in the largest instance (cores*rams), and there is no bigger cluster available to move your workload to currently. In this case, a new cluster is formed and your instance is moved, which can take up to 90 minutes.  
-**Shashank: Not sure if we shall write this? Seems weakness at our side at our side. Perhaps a rephrase?**
+a. Your instance is already in the largest instance (cores*rams), and there is no bigger cluster available to move your workload to currently. In this case, a new cluster is formed and your instance is moved, which can take a few minutes.  
 
 b. You have reduced its memory drastically (for example, from 16 GB RAM to 10 GB RAM). However, your data store size (disk) is higher, for example, 11 GB. In these cases, there is not sufficient space in RAM to read data from disk, and formation might get stuck.
 
@@ -107,7 +103,7 @@ b. You have reduced its memory drastically (for example, from 16 GB RAM to 10 GB
 
 Try the following solutions to fix the error:
 
-a. Redis is single threaded. You are expected to use a maximum of 3-5 threads. This increases the likelihood of a cluster's availability. It is rare to have Redis cluster or high cores. 
+a. Redis is single threaded for its primary operations. You are expected to use fewer cores and more memory. This increases the likelihood of a cluster's availability. 
 
 b. Increase your RAM and disk based on your I/O needs.
 

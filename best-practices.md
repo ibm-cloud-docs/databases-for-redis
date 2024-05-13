@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-05-12"
+lastupdated: "2024-05-13"
 
 keywords: redis, databases, best practices
 
@@ -106,8 +106,8 @@ Connection limits
 Connection timeouts
 :   Setting appropriate timeout values for your connections is also important to prevent resources being tied up indefinitely. However, be careful with setting short timeouts because this can lead to connection churn and increased latency. Align timeouts with the operational expectations of your application.
 
-:   Use the Redis pipeline feature
-Redis pipelining is a technique for improving performance by issuing multiple commands at once without waiting for the response to each individual command. For more information, see [Redis pipelining](https://redis.io/docs/latest/develop/use/pipelining/).
+Use the Redis pipeline feature
+:   Redis pipelining is a technique for improving performance by issuing multiple commands at once without waiting for the response to each individual command. For more information, see [Redis pipelining](https://redis.io/docs/latest/develop/use/pipelining/).
 
 Use the Redis Streams feature
 :   Redis Streams is a data type that provides a super fast in-memory abstraction of an append-only log.
