@@ -22,6 +22,11 @@ toc:
           label: IBM Cloud Databases
           href: https://cloud.ibm.com/docs/cloud-databases
       - getting-started.md
+      - topicgroup:
+          label: Hosting models
+          topics: 
+          - include: ../cloud-databases/hosting-models.md
+          - include: ../cloud-databases/hosting-pricing.md
       - link:
           label: Getting to production for Cloud Databases
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
@@ -31,8 +36,8 @@ toc:
       - learn-dashboard-overview.md
       - learn-high-availability.md
       - learn-performance.md
-      - learn-pricing.md
       - best-practices.md
+      - learn-pricing.md
       - release-notes.md
   - navgroup:
       id: howto
