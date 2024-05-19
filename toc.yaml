@@ -76,6 +76,9 @@ toc:
           - howto-config.md
           - howto-redis-cache.md
           - redis-pubsub-blog.md
+          - link:
+              label: Error detection and handling with Redis
+              href: https://developer.ibm.com/articles/error-detection-and-handling-with-redis/
       - topicgroup:
           label: Tutorials
           topics:
