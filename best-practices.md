@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-05-13"
+lastupdated: "2024-05-20"
 
 keywords: redis, databases, best practices
 
@@ -75,6 +75,9 @@ Choose an eviction policy
 
 Set maxmemory values
 :   You can adjust the `maxmemory` value. However, set a reasonable limit, otherwise your data can consume all the available memory and your deployment can run out of resources. By default, we set it at 80% of the data node’s available memory.
+
+Set TTL (Time-To-Live) policies
+:   TTL is a great feature where keys are deleted after a defined time from the database. This is extremly helpful if you are using Redis a cache. However, be careful to set a very short or a very long value as very short can create recomputation of values, while very long can create unnecessary memory use. Refer this page for more details — Added today
 
 ## Best practices for high availability
 {: #high-availability}
