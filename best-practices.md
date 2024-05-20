@@ -77,7 +77,7 @@ Set maxmemory values
 :   You can adjust the `maxmemory` value. However, set a reasonable limit, otherwise your data can consume all the available memory and your deployment can run out of resources. By default, we set it at 80% of the data node’s available memory.
 
 Set TTL (Time-To-Live) policies
-:   TTL is a great feature where keys are deleted after a defined time from the database. This is extremly helpful if you are using Redis a cache. However, be careful to set a very short or a very long value as very short can create recomputation of values, while very long can create unnecessary memory use. Refer this page for more details — Added today
+:   TTL is a great feature where keys are deleted from the database after a defined time. This is extremely helpful if you are using Redis a cache. However, be careful about setting a very short or a very long value because a very short value can create recomputation of values and a very long value can create unnecessary memory use. See [TTL command](https://redis.io/docs/latest/commands/ttl/) for more details.
 
 ## Best practices for high availability
 {: #high-availability}

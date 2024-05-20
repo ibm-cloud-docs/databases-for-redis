@@ -52,7 +52,7 @@ d. RETRY logic is required, so ensure this is implemented.
 
 e. The replica will be promoted to master automatically after few seconds.
 
-f. Implement ‘memory eviction’ or ‘TTL’ policies in your Redis instance. — added today
+f. Implement `memory eviction` or `TTL` policies in your Redis instance. 
 
 {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}} does not perform any activity on the master node. If needed, all activities are completed on the replica node, which is then promoted to master. Databases are set to wait for 30 seconds to find the master node before replica promotion occurs.
 {: note}
