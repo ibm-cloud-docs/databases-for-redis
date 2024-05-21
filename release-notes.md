@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-04-30"
+lastupdated: "2024-05-21"
 
 keywords: databases-for-redis release notes
 
@@ -19,6 +19,15 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 21 May 2024
+{: #databases-for-redis-21may2024}
+{: release-note}
+
+New guidance information about best practices and avoiding common errors
+: [Best practices for {{site.data.keyword.databases-for-redis}}](docs/databases-for-redis?topic=databases-for-redis-best-practices){: external} details recommended best practices while using {{site.data.keyword.databases-for-redis}}. Take time to review theses suggested practices
+
+[How can I avoid common {{site.data.keyword.databases-for-redis}} errors?](/docs/databases-for-redis?topic=databases-for-redis-troubleshoot-common-errors){: external} describes various common errors seen on {{site.data.keyword.databases-for-redis}} and provides multiple suggested solutions to address these errors.
 
 ## 1 May 2024
 {: #databases-for-redis-01may2024}
@@ -62,7 +71,7 @@ Monitoring Integration documentation updated
 {{site.data.keyword.databases-for-redis}} versions end of life
 :  End of life announcement: Version 5.0 reaches end of life 26 April 2024. Version 6.0 reaches end of life 25 October 2024. All {{site.data.keyword.databases-for-redis}} instances on deprecated versions that are still active will be upgraded in-place to the next major version. We recommend that you upgrade following our [backup and restore process](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} before the EOL date of your version.
 
-For more information, see [Upgrading to a new Major Version](/docs/databases-for-redis?topic=databases-for-redis-upgrading){: external}.
+For more information, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading){: external}.
 
 Users preferring to continue with default user after the upgrade to version 6.2 require a password change. For more information, see [the default user](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#redis-default-user-permissions-upgrading){: external}.
 {: note}
