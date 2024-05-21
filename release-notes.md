@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 New guidance information about best practices and how to avoid common errors
-: [Best practices for {{site.data.keyword.databases-for-redis}}](docs/databases-for-redis?topic=databases-for-redis-best-practices){: external} details the recommended best practices for using {{site.data.keyword.databases-for-redis}}. Take time to review these suggested practices. [How can I avoid common {{site.data.keyword.databases-for-redis}} errors?](/docs/databases-for-redis?topic=databases-for-redis-troubleshoot-common-errors){: external} describes several common errors seen on {{site.data.keyword.databases-for-redis}} and provides multiple suggested solutions to fix each error.
+: [Best practices for {{site.data.keyword.databases-for-redis}}](/docs/databases-for-redis?topic=databases-for-redis-best-practices){: external} details the recommended best practices for using {{site.data.keyword.databases-for-redis}}. Take time to review these suggested practices. [How can I avoid common {{site.data.keyword.databases-for-redis}} errors?](/docs/databases-for-redis?topic=databases-for-redis-troubleshoot-common-errors){: external} describes several common errors seen on {{site.data.keyword.databases-for-redis}} and provides multiple suggested solutions to fix each error.
 
 ## 1 May 2024
 {: #databases-for-redis-01may2024}
