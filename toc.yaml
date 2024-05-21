@@ -31,6 +31,7 @@ toc:
       - learn-dashboard-overview.md
       - learn-high-availability.md
       - learn-performance.md
+      - best-practices.md
       - learn-pricing.md
       - release-notes.md
   - navgroup:
@@ -126,6 +127,7 @@ toc:
           - link:
               label: Why did my Terraform script delete my instance?
               href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-troubleshoot-terraform
+          - ts-common-errors.md
       - topicgroup:
           label: FAQs
           topics:
