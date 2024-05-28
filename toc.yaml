@@ -30,14 +30,14 @@ toc:
           topics: 
           - include: ../cloud-databases/hosting-models.md
           - include: ../cloud-databases/hosting-pricing.md
+      - best-practices.md
       - learn-dashboard-overview.md
       - learn-high-availability.md
-      - learn-performance.md
-      - best-practices.md
       - learn-pricing.md
       - release-notes.md
   - navgroup:
       id: howto
+      - learn-performance.md
       topics:
       - howto-provisioning.md
       - link:
