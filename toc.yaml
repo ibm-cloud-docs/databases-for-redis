@@ -37,13 +37,13 @@ toc:
       - release-notes.md
   - navgroup:
       id: howto
-      - learn-performance.md
       topics:
       - howto-provisioning.md
       - link:
           label: Getting to production for Cloud Databases
           href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
       - howto-user-management.md
+      - learn-performance.md
       - topicgroup:
           label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
           topics:
