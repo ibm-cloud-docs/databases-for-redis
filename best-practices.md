@@ -55,7 +55,7 @@ Monitoring and adjustments
 
 
 ## Best practices for performance
-{: #performance}
+{: #best-practice-performance}
 
 Disable persistence
 :   By default, {{site.data.keyword.databases-for-redis}} has persistance enabled. This writes AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command `Set appendonly = no`. For more information, see  
@@ -80,7 +80,7 @@ Set TTL (Time-To-Live) policies
 :   TTL is a great feature where keys are deleted from the database after a defined time. This is extremely helpful if you are using Redis a cache. However, be careful about setting a very short or a very long value because a very short value can create recomputation of values and a very long value can create unnecessary memory use. See [TTL command](https://redis.io/docs/latest/commands/ttl/) for more details.
 
 ## Best practices for high availability
-{: #high-availability}
+{: #best-practice-high-availability}
 
 Retry and reconnect logic 
 :   Systems are prone to disruptions. You are highly encouraged to implement retry and reconnect logic into your application architecture to avoid disruptions. Use IOREDIS, NODEREDIS or any other package of your choice to ensure continuity of your application.
