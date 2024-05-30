@@ -30,6 +30,8 @@ toc:
           href: https://www.ibm.com/cloud/learn/redis
       - learn-dashboard-overview.md
       - learn-high-availability.md
+      - learn-high-availability.md
+      - learn-performance.md
       - learn-performance.md
       - best-practices.md
       - learn-pricing.md
