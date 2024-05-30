@@ -26,7 +26,7 @@ subcollection: databases-for-redis
 
 {{site.data.keyword.databases-for-redis}} deployments offer an integration with the [{{site.data.keyword.monitoringfull}} service](/docs/databases-for-redis?topic=databases-for-redis-monitoring) for basic monitoring of resource usage on your deployment. Many of the available metrics, like disk usage and IOPS, are presented to help you configure [autoscaling](/docs/databases-for-redis?topic=databases-for-redis-autoscaling) on your deployment. Observing trends in your usage and configuring the autoscaling to respond to them can help alleviate performance problems before your databases become unstable due to resource exhaustion.
 
-## Memory Policies
+## Memory policies
 {: #mem-policies}
 
 By default, deployments are configured with a `noeviction` policy. All data is kept in memory until the `maxmemory` limit is reached and Redis returns an error if the memory limit is exceeded. The `maxmemory` is set to 80% of a data node's available memory, so your node doesn't run out of system resources. 
