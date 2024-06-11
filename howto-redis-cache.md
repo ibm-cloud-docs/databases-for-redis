@@ -38,7 +38,7 @@ By default, `maxmemory` is set to 80% of a data node's available memory, so your
 | Policy | Behavior |
 | --------- | --------- |
 | `noeviction` | Does not evict keys and returns an error when the `maxmemory` limit is reached. |
-| `allkeys-lfu` | Keeps frequently used keys; removes least frequently used (LFU) keys. |
+| `allkeys-lfu` | Keeps frequently used keys and removes least frequently used (LFU) keys. |
 | `volatile-lfu` | Removes least frequently used keys with the expire field set to true. |
 | `allkeys-lru` | Evicts less recently used (LRU) keys first. |
 | `volatile-lru` | Evicts less recently used (LRU) keys from the set of keys that expire first. |
