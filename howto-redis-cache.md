@@ -17,12 +17,12 @@ subcollection: databases-for-redis
 {:pre: .pre}
 {:tip: .tip}
 
-# Configuring Redis as a Cache
+# Configuring Redis as a cache
 {: #redis-cache}
 
 {{site.data.keyword.databases-for-redis_full}} supports changing the [Redis database configuration](/docs/databases-for-redis?topic=databases-for-redis-changing-configuration), and you can use it to configure [Redis as a cache](https://redis.io/topics/lru-cache){: .external}. When configured as a cache, Redis evicts old data in favor of new data according to the cache settings you define. Even when configured as a cache, {{site.data.keyword.databases-for-redis}} deployments still take a daily backup snapshot. It is not currently possible to disable backups on your deployment. They also write some data to disk for high-availability. Redis relies on copying over an `.rdb` file to resync followers.
 
-## Cache Settings
+## Cache settings
 {: #redis-cache-settings}
 
 To configure the cache, you adjust the `maxmemory` and the `maxmemory` settings of your deployment. `maxmemory` defines the size of the cache. The `maxmemory-policy` defines the eviction behavior when the `maxmemory` limit is reached. In addition, other settings take care of database operations and tuning.
