@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-05-21"
+lastupdated: "2024-06-11"
 
 keywords: databases-for-redis release notes
 
@@ -19,6 +19,13 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 11 June 2024
+{: #databases-for-redis-11jun2024}
+{: release-note}
+
+New `maxmemory` policies
+:  Two new `maxmemory` policies have been introduced: `allkeys-lfu` and `volatile-lfu`. For more information, see [`maxmemory-policy`](/docs/databases-for-redis?topic=databases-for-redis-redis-cache#redis-cache-maxmemory-policy){: external}.
 
 ## 21 May 2024
 {: #databases-for-redis-21may2024}
