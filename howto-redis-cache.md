@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-07-20"
+  years: 2019, 2024
+lastupdated: "2024-06-11"
 
 keywords: redis, databases, redis cache
 
@@ -38,6 +38,8 @@ By default, `maxmemory` is set to 80% of a data node's available memory, so your
 | Policy | Behavior |
 | --------- | --------- |
 | `noeviction` | Does not evict keys and returns an error when the `maxmemory` limit is reached. |
+| `allkeys-lfu` | Keeps frequently used keys; removes least frequently used (LFU) keys. |
+| `volatile-lfu` | Removes least frequently used keys with the expire field set to true. |
 | `allkeys-lru` | Evicts less recently used (LRU) keys first. |
 | `volatile-lru` | Evicts less recently used (LRU) keys from the set of keys that expire first. |
 | `allkeys-random` | Evicts keys randomly. |
@@ -58,7 +60,7 @@ With an `allkeys` policy, the algorithm chooses which keys to evict from the set
 | `maxmemory-samples` | Tunes the LRU algorithm, default value `5`. | [Approximated LRU algorithm](https://redis.io/topics/lru-cache#approximated-lru-algorithm){: .external} |
 {: caption="Table 2. Redis cache settings " caption-side="top"}
 
-## Setting an Example Cache
+## Setting an example cache
 {: #redis-cache-example-cache}
 
 To adjust the configuration of your deployment, send a JSON object with the settings that you want to change and their new values. 
