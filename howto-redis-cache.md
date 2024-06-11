@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2022
-lastupdated: "2022-07-20"
+  years: 2019, 2024
+lastupdated: "2024-06-11"
 
 keywords: redis, databases, redis cache
 
@@ -17,12 +17,12 @@ subcollection: databases-for-redis
 {:pre: .pre}
 {:tip: .tip}
 
-# Configuring Redis as a Cache
+# Configuring Redis as a cache
 {: #redis-cache}
 
 {{site.data.keyword.databases-for-redis_full}} supports changing the [Redis database configuration](/docs/databases-for-redis?topic=databases-for-redis-changing-configuration), and you can use it to configure [Redis as a cache](https://redis.io/topics/lru-cache){: .external}. When configured as a cache, Redis evicts old data in favor of new data according to the cache settings you define. Even when configured as a cache, {{site.data.keyword.databases-for-redis}} deployments still take a daily backup snapshot. It is not currently possible to disable backups on your deployment. They also write some data to disk for high-availability. Redis relies on copying over an `.rdb` file to resync followers.
 
-## Cache Settings
+## Cache settings
 {: #redis-cache-settings}
 
 To configure the cache, you adjust the `maxmemory` and the `maxmemory` settings of your deployment. `maxmemory` defines the size of the cache. The `maxmemory-policy` defines the eviction behavior when the `maxmemory` limit is reached. In addition, other settings take care of database operations and tuning.
@@ -38,6 +38,8 @@ By default, `maxmemory` is set to 80% of a data node's available memory, so your
 | Policy | Behavior |
 | --------- | --------- |
 | `noeviction` | Does not evict keys and returns an error when the `maxmemory` limit is reached. |
+| `allkeys-lfu` | Keeps frequently used keys and removes least frequently used (LFU) keys. |
+| `volatile-lfu` | Removes least frequently used keys with the expire field set to true. |
 | `allkeys-lru` | Evicts less recently used (LRU) keys first. |
 | `volatile-lru` | Evicts less recently used (LRU) keys from the set of keys that expire first. |
 | `allkeys-random` | Evicts keys randomly. |
@@ -58,7 +60,7 @@ With an `allkeys` policy, the algorithm chooses which keys to evict from the set
 | `maxmemory-samples` | Tunes the LRU algorithm, default value `5`. | [Approximated LRU algorithm](https://redis.io/topics/lru-cache#approximated-lru-algorithm){: .external} |
 {: caption="Table 2. Redis cache settings " caption-side="top"}
 
-## Setting an Example Cache
+## Setting an example cache
 {: #redis-cache-example-cache}
 
 To adjust the configuration of your deployment, send a JSON object with the settings that you want to change and their new values. 
