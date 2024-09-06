@@ -77,10 +77,10 @@ Before provisioning, follow the instructions provided in the documentation to in
 
 1. Log in to {{site.data.keyword.cloud_notm}}. If you use a federated user ID, it's important that you switch to a one-time passcode (`ibmcloud login --sso`), or use an API key (`ibmcloud --apikey key or @key_file`) to authenticate. For more information about how to log in by using the CLI, see [General CLI (ibmcloud) commands](/docs/cli?topic=cli-ibmcloud_cli#ibmcloud_login){: external} under `ibmcloud login`.
 
-      ```sh
-      ibmcloud login
-      ```
-      {: pre}
+    ```sh
+    ibmcloud login
+    ```
+    {: pre}
 
 2. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be provisioned on. You can change this later.
 
@@ -91,7 +91,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```
    {: pre}
 
-For example, to provision a {{site.data.keyword.databases-for-redis}} Shared Compute hosting model instance, use a command like:
+   For example, to provision a {{site.data.keyword.databases-for-redis}} Shared Compute hosting model instance, use a command like:
 
    ```sh
    ibmcloud resource service-instance-create test-database databases-for-redis standard us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
@@ -105,9 +105,8 @@ For example, to provision a {{site.data.keyword.databases-for-redis}} Shared Com
    ```
    {: pre}
 
-   
-
    The fields in the command are described in the table that follows.
+
    | Field | Description | Flag |
    |-------|------------|------------|
    | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
@@ -120,26 +119,26 @@ For example, to provision a {{site.data.keyword.databases-for-redis}} Shared Com
    | `host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
    
-In the CLI, `service-endpoints` is a flag, not a parameter.
-{: note}
+   In the CLI, `service-endpoints` is a flag, not a parameter.
+   {: note}
 
-### The `host flavor` parameter
-{: #host-flavor-parameter-cli}
-{: cli}
+   ### The `host flavor` parameter
+   {: #host-flavor-parameter-cli}
+   {: cli}
 
-The `host_flavor` parameter defines your Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration. 
+   The `host_flavor` parameter defines your Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration. 
 
-| **Host flavor** | **host_flavor value** |
-|:-------------------------:|:---------------------:|
-| Shared Compute            | `multitenant`    |
-| 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
-| 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
-| 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
-| 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
-| 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
-| 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
-{: #host_flavor_table}
+   | **Host flavor** | **host_flavor value** |
+   |:-------------------------:|:---------------------:|
+   | Shared Compute            | `multitenant`    |
+   | 4 CPU x 16 RAM            | `b3c.4x16.encrypted`    |
+   | 8 CPU x 32 RAM            | `b3c.8x32.encrypted`    |
+   | 8 CPU x 64 RAM            | `m3c.8x64.encrypted`    |
+   | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
+   | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
+   | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
+   {: caption="Table 2. Host flavor sizing parameter" caption-side="bottom"}
+   {: #host_flavor_table}
 
 
 
@@ -168,47 +167,47 @@ The `host_flavor` parameter defines your Compute sizing. Input the appropriate v
    ```
    {: codeblock}
 
-1. To check provisioning status, use the following command:
+    - To check provisioning status, use the following command:
 
-   ```sh
-   ibmcloud resource service-instance <INSTANCE_NAME>
-   ```
-   {: pre}
+     ```sh
+     ibmcloud resource service-instance <INSTANCE_NAME>
+     ```
+     {: pre}
 
-   When complete, you will see a response like:
+     When complete, you will see a response like:
 
-   ```text
-   Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
-   OK
+     ```text
+     Retrieving service instance INSTANCE_NAME in resource group default under account USER's Account as USER...
+     OK
 
-   Name:                  INSTANCE_NAME
-   ID:                    crn:v1:bluemix:public:databases-for-redis:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
-   GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
-   Location:              <LOCATION>
-   Service Name:          databases-for-redis
-   Service Plan Name:     standard
-   Resource Group Name:   default
-   State:                 active
-   Type:                  service_instance
-   Sub Type:              Public
-   Locked:                false
-   Service Endpoints:     public
-   Created at:            2023-06-26T19:42:07Z
-   Created by:            USER
-   Updated at:            2023-06-26T19:53:25Z
-   Last Operation:
-                          Status    create succeeded
-                          Message   Provisioning redis with version 12 (100%)
-   ```
-   {: codeblck}
+     Name:                  INSTANCE_NAME
+     ID:                    crn:v1:bluemix:public:databases-for-redis:us-east:a/40ddc34a953a8c02f109835656860e:dd13152c-fe15-4bb6-af94-fde0af5303f4::
+     GUID:                  dd13152c-fe15-4bb6-af94-fde5654765
+     Location:              <LOCATION>
+     Service Name:          databases-for-redis
+     Service Plan Name:     standard
+     Resource Group Name:   default
+     State:                 active
+     Type:                  service_instance
+     Sub Type:              Public
+     Locked:                false
+     Service Endpoints:     public
+     Created at:            2023-06-26T19:42:07Z
+     Created by:            USER
+     Updated at:            2023-06-26T19:53:25Z
+     Last Operation:
+                            Status    create succeeded
+                            Message   Provisioning redis with version 12 (100%)
+     ```
+     {: codeblck}
 
-1. (Optional) Deleting a service instance. 
-   Delete an instance by running a command like this one:
+    - (Optional) Deleting a service instance. 
+    Delete an instance by running a command like this one:
 
-   ```sh
-   ibmcloud resource service-instance-delete <INSTANCE_NAME>
-   ```
-   {: pre}
+     ```sh
+     ibmcloud resource service-instance-delete <INSTANCE_NAME>
+     ```
+     {: pre}
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
@@ -638,4 +637,3 @@ The `host_flavor` parameter defines your Compute sizing. To provision a Shared C
 
 CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} Isolated Compute. Disk autoscaling is available. If you have provisioned an Isolated instance or switched over from a deployment with autoscaling, keep an eye on your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 {: note}
-
