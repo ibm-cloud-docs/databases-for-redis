@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-07-20"
+lastupdated: "2024-09-16"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision redis
 
@@ -21,7 +21,7 @@ Provision a {{site.data.keyword.databases-for-redis_full}} deployment through th
 {: #catalog}
 {: ui}
 
-Deploy from the console by specifying the following parameters:
+Deploy from the console by specifying the following parameters.
 
 ### Service details
 {: #service_details}
@@ -61,7 +61,7 @@ Specify the disk size depending on your requirements. It can be increased after 
 
 - **Database Version:** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 - **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
+- **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment.
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
@@ -87,21 +87,21 @@ Before provisioning, follow the instructions provided in the documentation to in
 3. Create a {{site.data.keyword.databases-for-redis}} Shared service instance within {{site.data.keyword.cloud_notm}} by running a command like:
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p `{"members_host_flavor": "multitenant"}`
+   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <RESOURCE_GROUP> -p `{"members_host_flavor": "multitenant"}` --service-endpoints="<endpoint>"
    ```
    {: pre}
 
    For example, to provision a {{site.data.keyword.databases-for-redis}} Shared Compute hosting model instance, use a command like:
 
    ```sh
-   ibmcloud resource service-instance-create test-database databases-for-redis standard us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}'
+   ibmcloud resource service-instance-create test-database databases-for-redis standard us-south -p '{"members_host_flavor": "multitenant", "members_memory_allocation_mb": "8192"}' --service-endpoints="private"
    ```
    {: pre}
 
    Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 2](#host_flavor_table). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <SERVICE_ENDPOINTS_TYPE> <RESOURCE_GROUP> -p `{"members_host_flavor": "<host_flavor value>"}`
+   ibmcloud resource service-instance-create test-database databases-for-redis standard us-south -p `{"members_host_flavor": "b3c.4x16.encrypted"}` --service-endpoints="private"
    ```
    {: pre}
 
@@ -113,10 +113,10 @@ Before provisioning, follow the instructions provided in the documentation to in
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-redis}}, use `databases-for-redis`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    | `host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
+   | `--service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public`, `private` or `public-and-private`. |  |
    {: caption="Table 1. Basic command format fields" caption-side="top"}
    
    In the CLI, `service-endpoints` is a flag, not a parameter.
@@ -156,7 +156,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    State:               provisioning
    Type:                service_instance
    Sub Type:            Public
-   Service Endpoints:   public
+   Service Endpoints:   private
    Allow Cleanup:       false
    Locked:              false
    Created at:          2023-06-26T19:42:07Z
@@ -191,7 +191,7 @@ Before provisioning, follow the instructions provided in the documentation to in
      Type:                  service_instance
      Sub Type:              Public
      Locked:                false
-     Service Endpoints:     public
+     Service Endpoints:     private
      Created at:            2023-06-26T19:42:07Z
      Created by:            USER
      Updated at:            2023-06-26T19:53:25Z
@@ -225,7 +225,7 @@ ibmcloud resource service-instance-create databases-for-redis <SERVICE_NAME> sta
 -p \ '{
   "backup_id": "crn:v1:blue:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
   "members_memory_allocation_mb": "3072"
-}'
+}' --service-endpoints="private"
 ```
 {: .pre}
 
@@ -478,7 +478,7 @@ The fields in the command are described in the table that follows.
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-redis}}, use `databases-for-redis`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
-   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
+   | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    | `host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
@@ -521,7 +521,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 * `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "6144", and there are three database members, then the deployment gets 6 GB of RAM total, giving 2 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
 * `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used. This parameter only applies to `multitenant'.
 * `members_cpu_allocation_count` - Enables and allocates the number of specified cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default Shared Compute CPU:RAM ratios will be applied. This parameter only applies to `multitenant'.
-* `service-endpoints` - The [Service Endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
+* `service-endpoints` - The [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) supported on your deployment, `public` or `private`.
 
 ## Provisioning with Terraform
 {: #provisioning-terraform}
@@ -543,6 +543,7 @@ resource "ibm_database" "<your_database>" {
   location          = "eu-gb"
   service           = "databases-for-redis"
   resource_group_id = data.ibm_resource_group.group.id
+  service_endpoints = "private"
   tags              = ["tag1", "tag2"]
   adminpassword                = "password12"
   group {
@@ -588,6 +589,7 @@ resource "ibm_database" "<your_database>" {
   location          = "eu-gb"
   service           = "databases-for-redis"
   resource_group_id = data.ibm_resource_group.group.id
+  service_endpoints = "private"
   tags              = ["tag1", "tag2"]
   adminpassword                = "password12"
   group {
