@@ -98,7 +98,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    ```
    {: pre}
 
-   Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host_flavor_table). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
+   Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"members_host_flavor"` -p parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#members_host_flavor_table). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
    ```sh
    ibmcloud resource service-instance-create test-database databases-for-redis standard us-south -p `{"members_host_flavor": "b3c.4x16.encrypted"}` --service-endpoints="private"
@@ -138,7 +138,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
    | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
    {: caption="Table 2. Members host flavor sizing parameter" caption-side="bottom"}
-   {: #host_flavor_table}
+   {: #members_host_flavor_table}
 
 
 
@@ -431,7 +431,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
        "name": "my-instance",
        "location": "us-south",
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
-       "resource_plan_id": "databases-for-elasticsearch-enterprise"
+       "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
           "members_host_flavor": "multitenant",
           "service-endpoints": "private",
@@ -446,7 +446,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
    ```
    {: .pre}
 
-Provision a {{site.data.keyword.databases-for-elasticsearch}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.  
+Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.  
 
 ```sh
    curl -X POST \
@@ -457,7 +457,7 @@ Provision a {{site.data.keyword.databases-for-elasticsearch}} Isolated instance 
        "name": "my-instance",
        "location": "us-south",
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
-       "resource_plan_id": "databases-for-elasticsearch-enterprise"
+       "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
           "member_host_flavor": "b3c.4x16.encrypted",
           "service-endpoints":"private"
@@ -518,7 +518,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
    To use a key for your backups, you must first [enable the service-to-service delegation](/docs/cloud-databases?topic=cloud-databases-key-protect#key-byok).
    {: note}
 
-* `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "12288", and there are three database members, then the deployment gets 12 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
+* `members_memory_allocation_mb` -  Total amount of memory to be shared between the database members within the database. For example, if the value is "8192", and there are two database members, then the deployment gets 8 GB of RAM total, giving 4 GB of RAM per member. If omitted, the default value is used for the database type is used. This parameter only applies to `multitenant'.
 * `members_disk_allocation_mb` - Total amount of disk to be shared between the database members within the database. For example, if the value is "30720", and there are three members, then the deployment gets 30 GB of disk total, giving 10 GB of disk per member. If omitted, the default value for the database type is used. This parameter only applies to `multitenant'.
 * `members_cpu_allocation_count` - Enables and allocates the number of specified cores to your deployment. For example, to use two dedicated cores per member, use `"members_cpu_allocation_count":"2"`. If omitted, the default Shared Compute CPU:RAM ratios will be applied. This parameter only applies to `multitenant'.
 
