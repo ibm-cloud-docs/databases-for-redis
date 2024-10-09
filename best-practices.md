@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-05-20"
+lastupdated: "2024-10-09"
 
 keywords: redis, databases, best practices
 
@@ -16,7 +16,6 @@ subcollection: databases-for-redis
 {: #best-practices}
 
 Take time to review the following best practices that are recommended if you're using {{site.data.keyword.databases-for-redis}}.
-
 
 ## What is {{site.data.keyword.databases-for-redis}}?
 {: #what-is-redis}
@@ -46,20 +45,18 @@ Understand your IOPS needs
 Plan for redundancy and reconnects
 :   There are multiple components that are involved in cloud computation, which can cause momentary failures. However, at {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}, we offer 99.99% high availability, and encourage you to plan for connection blips in your application design using retry and reconnect logic.
 
-
 Consider network bandwidth
 :   Your network bandwidth might significantly impact your {{site.data.keyword.databases-for-redis}} performance. Ensure that you have sufficient network bandwidth to handle your database loads.
 
 Monitoring and adjustments
 :   Our recommendation is to monitor your {{site.data.keyword.databases-for-redis}} instance performance and usage to determine the evolving usage pattern of your database instance and resize as needed.
 
-
 ## Best practices for performance
 {: #best-practice-performance}
 
 Disable persistence
 :   By default, {{site.data.keyword.databases-for-redis}} has persistance enabled. This writes AOF sync and increases IOPS load. If your application doesn’t need to persist data, disable this using the command `Set appendonly = no`. For more information, see  
-[Setting an example cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli#redis-cache-example-cache)
+[Setting an example cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli#redis-cache-example-cache).
 
 RAM vs cores
 :   Redis is a single-threaded, in-memory database. Inherently, it needs more RAM than CORES, unlike other persistent databases. Even though it is single-threaded, it uses ‘multiplexing’ to process the requests, but all the requests are processed by a thread. However, other cores are needed to maintain database integrity and stability for its internal processes. You are encouraged to focus more on RAM and disk (for IOPS) for {{site.data.keyword.databases-for-redis}}. For more information, see [Best practices for  instance capacity planning](/docs/databases-for-redis?topic=databases-for-redis-best-practices#capacity-planning). 
@@ -71,13 +68,13 @@ Avoid expensive commands
 :   Certain commands in Redis are expensive to run. For example, the KEYS command, which is used frequently, but should be avoided. Instead, use the SCAN command, which spreads the iteration over many calls and does not tie up your whole server at one time.
 
 Choose an eviction policy 
-:   You should choose an eviction policy that works for your application. By default, deployments are configured with a `noeviction` policy. Use eviction policies like `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`. For more details, see [memory policy](/docs/databases-for-redis?topic=databases-for-redis-redis-cache#redis-cache-maxmemory).
+:   You should choose an eviction policy that works for your application. By default, deployments are configured with a `noeviction` policy. Use eviction policies like `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`. For more information, see [memory policy](/docs/databases-for-redis?topic=databases-for-redis-redis-cache#redis-cache-maxmemory).
 
 Set maxmemory values
 :   You can adjust the `maxmemory` value. However, set a reasonable limit, otherwise your data can consume all the available memory and your deployment can run out of resources. By default, we set it at 80% of the data node’s available memory.
 
 Set TTL (Time-To-Live) policies
-:   TTL is a great feature where keys are deleted from the database after a defined time. This is extremely helpful if you are using Redis a cache. However, be careful about setting a very short or a very long value because a very short value can create recomputation of values and a very long value can create unnecessary memory use. See [TTL command](https://redis.io/docs/latest/commands/ttl/) for more details.
+:   TTL is a great feature where keys are deleted from the database after a defined time. This is extremely helpful if you are using Redis a cache. However, be careful about setting a very short or a very long value because a very short value can create recomputation of values and a very long value can create unnecessary memory use. For more information, see [TTL command](https://redis.io/docs/latest/commands/ttl/){: external}.
 
 ## Best practices for high availability
 {: #best-practice-high-availability}
@@ -85,7 +82,7 @@ Set TTL (Time-To-Live) policies
 Retry and reconnect logic 
 :   Systems are prone to disruptions. You are highly encouraged to implement retry and reconnect logic into your application architecture to avoid disruptions. Use IOREDIS, NODEREDIS or any other package of your choice to ensure continuity of your application.
 
-For more details, see [Error detection and handling with Redis blog post](https://developer.ibm.com/articles/error-detection-and-handling-with-redis/).
+For more information, see [Error detection and handling with Redis blog post](https://developer.ibm.com/articles/error-detection-and-handling-with-redis/){: external}.
 
 ## Best practices for monitoring
 {: #monitoring}
@@ -110,7 +107,7 @@ Connection timeouts
 :   Setting appropriate timeout values for your connections is also important to prevent resources being tied up indefinitely. However, be careful with setting short timeouts because this can lead to connection churn and increased latency. Align timeouts with the operational expectations of your application.
 
 Use the Redis pipeline feature
-:   Redis pipelining is a technique for improving performance by issuing multiple commands at once without waiting for the response to each individual command. For more information, see [Redis pipelining](https://redis.io/docs/latest/develop/use/pipelining/).
+:   Redis pipelining is a technique for improving performance by issuing multiple commands at once without waiting for the response to each individual command. For more information, see [Redis pipelining](https://redis.io/docs/latest/develop/use/pipelining/){: external}.
 
 Use the Redis Streams feature
 :   Redis Streams is a data type that provides a super fast in-memory abstraction of an append-only log.
@@ -124,9 +121,4 @@ Batch schedule
 Set up notification channels
 :   We recommend that {{site.data.keyword.databases-for-redis}} you set up email IDs in IBM Accounts to receive periodic updates about version changes, end-of-life, or maintenance schedules. You can also monitor your IBM Account notification icon to receive these updates.
 
-The [Best Practices for Redis on the IBM Cloud blog post](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/) provides further best practice information.
-
-
-
-
-
+For more information, see [Best Practices for Redis on the IBM Cloud blog post](https://www.ibm.com/blog/best-practices-for-redis-on-the-ibm-cloud/){: external}.
