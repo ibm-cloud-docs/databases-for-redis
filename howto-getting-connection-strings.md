@@ -149,7 +149,7 @@ The "Redis" section of a credential created on the *Service credentials* page co
 | `Composed` | `0...` | A URI combining Scheme, authentication, host, and path. |
 | `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment. |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
-{: caption="Table 1. Redis/URI connection information" caption-side="top"}
+{: caption="Redis/URI connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
@@ -169,7 +169,7 @@ The "CLI" section of a credential created on the *Service credentials* page cont
 | `Certificate` | Base64| A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
 | `Certificate` | Name | The allocated name for the self-signed certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`.  |
-{: caption="Table 2. Redis/cli connection information" caption-side="top"}
+{: caption="Redis/cli connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 

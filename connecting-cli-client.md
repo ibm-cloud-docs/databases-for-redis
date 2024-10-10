@@ -35,7 +35,7 @@ The information the clients need to connect to your deployment is in the "cli" s
 | `Certificate` | Base64 | A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
 | `Certificate` | Name | The allocated name for the self-signed certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`. |
-{: caption="Table 1. `redis`/`cli` connection information" caption-side="top"}
+{: caption="`redis`/`cli` connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 

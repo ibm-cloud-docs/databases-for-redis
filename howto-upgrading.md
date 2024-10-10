@@ -45,7 +45,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 | ---- | ----- |
 | {{site.data.keyword.databases-for-redis}} V5  |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
 | {{site.data.keyword.databases-for-redis}} V6 |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
-{: caption="Table 1. Major version upgrade paths" caption-side="top"}
+{: caption="Major version upgrade paths" caption-side="top"}
 
 
 ### Upgrading using the UI

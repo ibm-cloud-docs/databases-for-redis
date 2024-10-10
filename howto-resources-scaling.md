@@ -223,7 +223,7 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 | 16 CPU x 64 RAM           | `b3c.16x64.encrypted`   |
 | 32 CPU x 128 RAM          | `b3c.32x128.encrypted`  |
 | 30 CPU x 240 RAM          | `m3c.30x240.encrypted`  |
-{: caption="Table 1. Host flavor sizing parameter" caption-side="bottom"}
+{: caption="Host flavor sizing parameter" caption-side="bottom"}
 
 ## Scaling in the API
 {: #resources-scaling-api}

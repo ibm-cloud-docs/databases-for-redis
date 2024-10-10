@@ -80,4 +80,4 @@ Many of the settings are used to configure Redis as a cache. For more informatio
 | [`maxmemory-policy`](https://redis.io/topics/lru-cache#eviction-policies) |`noeviction` | Determines eviction behavior when `maxmemory` limit is reached. | 
 | [`maxmemory-samples`](https://redis.io/topics/lru-cache#approximated-lru-algorithm) | `5`| Tunes LRU eviction algorithm when Redis is configured as a cache. | 
 | `stop-writes-on-bgsave-error` | `yes` | Redis stops accepting writes if it detects an unsuccessful backup snapshot.  | 
-{: caption="Table 1. Configuration Settings for Redis" caption-side="top"}
+{: caption="Configuration Settings for Redis" caption-side="top"}

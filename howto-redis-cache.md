@@ -45,7 +45,7 @@ By default, `maxmemory` is set to 80% of a data node's available memory, so your
 | `allkeys-random` | Evicts keys randomly. |
 | `volatile-random` | Evicts keys randomly from the set of keys that expire. |
 | `volatile-ttl` | Evicts keys that expire, and tries to evict keys with a shorter time to live (TTL) first. |
-{: caption="Table 1. Available Redis eviction policies" caption-side="top"}
+{: caption="Available Redis eviction policies" caption-side="top"}
 
 With an `allkeys` policy, the algorithm chooses which keys to evict from the set of all keys. With a `volatile` policy, the algorithm chooses to evict keys that have either [expired](https://redis.io/commands/expire) or have a [time-to-live (TTL)](https://redis.io/commands/ttl){: .external} set. In a `volatile` policy, if no keys match the policy, no keys are evicted.
 {: .tip} 
@@ -58,7 +58,7 @@ With an `allkeys` policy, the algorithm chooses which keys to evict from the set
 | `appendonly` | Default value, `yes`. Enables Redis data to be written to disk. | If you are caching data, you want to set this value to `no`. |
 | `stop-writes-on-bgsave-error` | Default value, `yes`. Redis stops accepting writes if it detects an unsuccessful backup snapshot.| For caching, you can set to `no`. |
 | `maxmemory-samples` | Tunes the LRU algorithm, default value `5`. | [Approximated LRU algorithm](https://redis.io/topics/lru-cache#approximated-lru-algorithm){: .external} |
-{: caption="Table 2. Redis cache settings " caption-side="top"}
+{: caption="Redis cache settings " caption-side="top"}
 
 ## Setting an example cache
 {: #redis-cache-example-cache}
