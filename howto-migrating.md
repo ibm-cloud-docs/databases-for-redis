@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2024
-lastupdated: "2024-03-25"
+lastupdated: "2024-10-14"
 
 keyowrds: redis, databases, migrating
 
@@ -55,12 +55,14 @@ ibmcloud cdb deployment-connections <Redis deployment name>
 {: .pre}
 
 This provides you with your {{site.data.keyword.databases-for-redis}} connection URI that includes the hostname and port. To get the decoded CA certificate for the database, run:
+
 ```sh
 ibmcloud cdb deployment-cacert <Redis deployment name>
 ```
 {: .pre}
 
 After the CA certificate is decoded, save it to a file to connect to the database later. If you don’t know the password for your deployment, get it either from your generated service credentials or create a new password by running:
+
 ```sh
 ibmcloud cdb deployment-user-password <Redis deployment name> admin <new password>
 ```
@@ -75,12 +77,15 @@ Since you have all the credentials for both databases (source and new {{site.dat
 
 ```python
 python pymigration.py <source host> <source password> <source port>
-<destination host> <destination password> <destination port>
+<destination host> <destination_username:destination_password> <destination port>
 <destination ca certificate path> --sslsrc --ssldst
 ```
 {: .pre}
 
-Since you are copying data from a {{site.data.keyword.databases-for-redis}} database, add the `--sslsrc` flag if your {{site.data.keyword.databases-for-redis}} database is SSL/TLS enabled. If it isn’t, then don’t add the flag. 
+For newer versions of Redis as source, use `<source user:source password>`.
+{: note}
+
+Since you are copying data from a source outside of {{site.data.keyword.databases-for-redis}} database, add the `--sslsrc` flag if your {{site.data.keyword.databases-for-redis}} database is SSL/TLS enabled. If it isn’t, then don’t add the flag. 
 
 This makes sure that Redis is connecting to a SSL/TLS enabled database. Also add `--ssldst` since the destination database is your new {{site.data.keyword.databases-for-redis}} deployment, which also is SSL/TLS enabled. 
 
@@ -89,11 +94,13 @@ Supplementary flags that you might add are `--db` and `--flush`. `--db` indicate
 The `--flush` flag flushes the destination database before importing the keys from the source database. If you want to keep things fresh in your new deployment, `--flush` deletes all of the keys, and then imports the new keys from your source database.
 
 Running the script that uses `OldDB` as the source for the data migration and `NewDB` as the destination for the migrated data, you see output like:
+
 ```text
 python pymigration.py OldDB.databases.appdomain.cloud OldDBpassword1 88888 NewDB.databases.appdomain.cloud NewDBpassword1 99999 ~/NewDBCA  --sslsrc --ssldst  10000000 keys: 100% |###################################################| Time: 0:00:00 Keys disappeared on source during scan: 0 Keys already existing on destination: 0
 ```
 
 This script copied 10 million keys from `OldDB` to `NewDB`. No keys were deleted on the `OldDB` database. If you add a new key to the `OldDB` deployment and attempt to migrate the data again, you notice that the key count on the destination changes to 10000000, as the original 10 million keys already exist in that database.
+
 ```text
 10000000 keys: 100% |###################################################| Time: 0:00:00
 Keys disappeared on source during scan: 0

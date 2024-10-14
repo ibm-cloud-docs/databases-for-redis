@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2018, 2023
-lastupdated: "2023-11-14"
+  years: 2018, 2024
+lastupdated: "2024-10-14"
 
 keywords: redis, getting started redis, deploy redis, redli
 
@@ -20,73 +20,143 @@ completion-time: 30m
 {: toc-content-type="tutorial"}
 {: toc-completion-time="30m"}
 
-This tutorial is a short introduction to using an {{site.data.keyword.databases-for-redis_full}} deployment.
+This tutorial guides you through the steps to quickly start using {{site.data.keyword.databases-for-redis_full}} deployment.
+
+Follow these steps to complete the tutorial: {: ui}
+
+* [Before you begin](#prereqs)
+* [Step 1: Provision through the console](#provision_instance_ui)
+* [Step 2: Set your Admin password through the console](#admin_pw)
+* [Step 3: Connect to your instance](#redis_connect)
+* [Step 4: Use Redis](#using-redis)
+* [Next steps](#next_steps)
+* [Things to remember](#remember_important)
+{: ui}
+
+Follow these steps to complete the tutorial: {: cli}
+
+* [Before you begin](#prereqs)
+* [Step 1: Provision through the CLI](#provision_instance_cli)
+* [Step 2: Set your Admin password through the CLI](#admin_pw)
+* [Step 3: Connect to your instance](#redis_connect)
+* [Step 4: Use Redis](#using-redis)
+* [Next steps](#next_steps)
+* [Things to remember](#remember_important)
+{: cli}
 
 ## Before you begin
-{: #before-begin}
+{: #prereqs}
+{: ui}
 
-- You need to have an [{{site.data.keyword.cloud_notm}} account](https://ibm.biz/databases-for-redis-signup){: external}.
+- You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}. 
 
-- You also need a {{site.data.keyword.databases-for-redis}} deployment, which can be provisioned from the [{{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/databases-for-redis/). Give your deployment a memorable name that appears in your account's Resource List.
+- Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
+
+- Download and install Redli {: #downloading-installing-redli}.
+
+## Before you begin
+{: #prereqs}
+{: cli}
+
+- You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}. 
 
 - Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI Plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
 
-- Before connecting, set your admin password. For more information, see [Setting the Admin Password](/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#user-management-set-admin-password-ui).
+- Download and install Redli {: #downloading-installing-redli}.
 
-For more information, see [`Getting to production`](/docs/cloud-databases?topic=cloud-databases-best-practices).
 
-## Download and Install Redli
+## Download and install Redli
 {: #downloading-installing-redli}
-{: step}
 
-To get a feel for connecting, sending, and retrieving data with Redis, start by connecting with a CLI client. All {{site.data.keyword.cloud_notm}} Databases use TLS/SSL secured connections, so use a Redis CLI client that supports TLS/SSL, like [Redli](https://github.com/IBM-Cloud/redli){: .external}.
+Redli is a Go-based alternative to the official Redis-cli application.
+
+Connect, Send and Receive data with Redis, by connecting with a CLI client. All {{site.data.keyword.cloud_notm}} Databases use TLS/SSL secured connections, so use a Redis CLI client that supports TLS/SSL, like [Redli](https://github.com/IBM-Cloud/redli){: .external}.
 
 To install Redli, [download](https://github.com/IBM-Cloud/redli/releases){: .external} and install the package for your system. Uncompress the files, give the binary executable permissions, and move it to your path. For example, to install it on a Mac, download the `redli....darwin_amd64.tar.gz` file and run a command like this one:
 
 ```sh
-tar zxvf redli_0.4.4_darwin_amd64.tar.gz
-chmod +x redli
-sudo cp redli /usr/local/bin
+tar zxvf <redli_version>.tar
+example: tar zxvf redli_0.13.0_darwin_amd64.tar
+
+chmod +x <extracted redli filename>
+sudo cp <extracted redli filename> /usr/local/bin
 ```
 {: pre}
 
-Unfortunately, the native Redis CLI client does not support TLS/SSL connections and deployments require secure connections. To use Redis CLI, set up something like [Stunnel](https://www.stunnel.org/index.html){: .external} to handle the TLS/SSL connection. For more information, see [Connecting with a CLI client](/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client#connecting-with-redis-cli).
+The native Redis CLI client does not support TLS/SSL connections and {{site.data.keyword.cloud_notm}} Databases deployments require secure connections. To use Redis CLI, set up something like [Stunnel](https://www.stunnel.org/index.html){: .external} to handle the TLS/SSL connection. For more information, see [Connecting with a CLI client](/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client#connecting-with-redis-cli).
 {: .tip}
 
-## Connect to Redis
-{: #connecting-redis}
+## Provision through the console
+{: #provision_instance_ui}
+{: ui}
 {: step}
 
-You can connect to Redis through the {{site.data.keyword.cloud_notm}} CLI or through Redli.
+1. Log in to the {{site.data.keyword.cloud_notm}} console.
+1. Click the [{{site.data.keyword.databases-for-redis_full}} service](https://cloud.ibm.com/databases/databases-for-redis/create){: external} in the **catalog**.
+1. Follow [these steps](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=ui) to provision a {{site.data.keyword.databases-for-redis_full}} instance.
+1. When your instance is provisioned, click the instance name to view more information.
+
+## Provision through the CLI
+{: #provision_instance_cli}
+{: cli}
+{: step}
+
+You can provision a {{site.data.keyword.databases-for-redis_full}} instance by using the CLI. If you don't already have it, you need to install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-getting-started){: external}.
+
+You can follow [these steps](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=cli) to provision a {{site.data.keyword.databases-for-redis_full}} instance.
+
+## Set your Admin password through the console
+{: #admin_pw}
+{: step}
+
+### The admin user
+{: #admin_pw_admin_user}
+
+When you provision a {{site.data.keyword.databases-for-redis_full}} deployment, an `admin` user is automatically created.
+
+Set the `admin` password before using it to connect.
+{: important}
+
+### Set the admin password through the UI
+{: #admin_pw_set_ui}
+{: ui}
+
+Set your `admin` password through the UI by selecting your instance from the [{{site.data.keyword.cloud_notm}} Resource list](https://cloud.ibm.com/resources){: external}. Then, select **Settings**. Next, select **Change Database Admin Password**.
+
+Refer [Managing Users and Roles](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui#user-management-set-admin-password-ui){: external} to know more.
+
+### Set the admin password through the CLI
+{: #admin_pw_set_cli}
+{: cli}
+
+Use the `cdb user-password` command from the {{site.data.keyword.cloud_notm}} CLI {{site.data.keyword.databases-for}} plug-in to set the `admin` password. Refer [Managing Users and Roles](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=cli#user-management-set-admin-password-cli){: external} to know more.
+
+For example, to set the `admin` password for your deployment, use the following command:
+
+```sh
+ibmcloud cdb user-password <INSTANCE_NAME_OR_CRN> admin <NEWPASSWORD>
+```
+{: pre}
+
+## Connect to your instance
+{: #redis_connect}
+{: step}
+
+You can easily connect to Redis through the {{site.data.keyword.cloud_notm}} CLI using Redli to store and retrieve data with your {{site.data.keyword.databases-for-redis_full}} deployment.
 
 ### Connect through the {{site.data.keyword.cloud_notm}} CLI
 {: #connecting-ibm-cloud-cli}
 
-Now that you've installed and set up Redli, the {{site.data.keyword.cloud_notm}} CLI tool, and the {{site.data.keyword.cloud_notm}} Databases plugin, connect to your deployment. Log in with `ibmcloud login`, and connect with `ibmcloud cdb cxn -s`, for example:
+Now that you've installed and set up _Redli_, the {{site.data.keyword.cloud_notm}} CLI tool, and the {{site.data.keyword.cloud_notm}} Databases plugin, connect to your deployment. Log in with `ibmcloud login`, and connect with `ibmcloud cdb cxn -s`, for example:
 
 ```sh
 ibmcloud cdb cxn -s <deployment-name>
 ```
 {: pre}
 
-When prompted for the admin password, use Redli to connect. You can now store and retrieve data with your {{site.data.keyword.databases-for-redis_full}} deployment.
+Provide `admin` password when prompted and it uses _REDLI_ to connect.
 
-### Connect through Redli
-{: #connecting-redli}
-
-You can also connect to your deployment through Redli, without using the {{site.data.keyword.cloud_notm}} CLI.
-
-Connection strings for your deployment are displayed in the _Dashboard Overview_, in the _Endpoints_ panel. The _CLI_ tab contains information that a CLI client uses to connect to your deployment. To connect, you need the self-signed certificate, the certificate name, and the connection string in the _CLI endpoint_ field.
-
-![CLI Endpoints panel](images/cli-endpoints-pane.png){: caption="CLI Endpoints panel" caption-side="bottom"}
-
-Download or save the _contents_ of the TLS certificate to a file and name the file with the TLS certificate _name_. Remember where the file is saved.
-
-The connection string in the _CLI endpoint_ field is the fully-formatted command to make a CLI connection to your deployment using Redli. Navigate to where you have saved the certificate on your system, or provide the full path to the certificate to the `REDIS_CERTFILE` environment variable. Set the admin user name and password in the environment as `USERNAME` and `PASSWORD`. Use the CLI connection string to start Redli, for example:
-
-```sh
-REDIS_CERTFILE=101afa63-91d0-11e9-a88d-5a059876d90f redli -u rediss://$USERNAME:$PASSWORD@da4103eb-f1ef-4f2d-8b41-0bfd98cb65bc.8117147f814b4b2ea643610826cd2046.databases.appdomain.cloud:30174/0
-```
+You can explore other options to connect to {{site.data.keyword.databases-for-redis_full}} using [Connecting through the command-line interface (CLI)] (https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client){: external}.
 
 ## Use Redis
 {: #using-redis}
@@ -95,30 +165,37 @@ REDIS_CERTFILE=101afa63-91d0-11e9-a88d-5a059876d90f redli -u rediss://$USERNAME:
 Your connection is now open, which looks like:
 
 ```text
-Connected to 4.0.10
 >
 ```
-you can start storing and retrieving data.
+{: pre}
+
+You can start storing and retrieving data.
+
 ```sh
-Connected to 4.0.10
 > set foo bar
 OK
 > get foo
 "bar"
 >
 ```
+{: pre}
 
-## Next Steps
-{: #redis-next-steps}
+## Next steps
+{: #next_steps}
 
-The Redis documentation has [an introduction to Redis data types and abstractions](https://redis.io/topics/data-types-intro){: .external}, and a [Command Reference](https://redis.io/commands/){: .external}.
+* If you are using Redis for the first time, read the [official Redis documentation](https://redis.io/documentation){: .external}, [an introduction to Redis data types and abstractions](https://redis.io/topics/data-types-intro){: .external}, and a [Command Reference](https://redis.io/commands/){: .external} to learn about Redis.
 
-For information on best practices, see [Best Practices for Redis on the IBM Cloud](https://www.ibm.com/cloud/blog/best-practices-for-redis-on-the-ibm-cloud){: .external}.
+* Implement {{site.data.keyword.databases-for-redis_full}} best practices, read [Best Practices for Redis on the IBM Cloud (https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-best-practices){: .external}.
 
-If you are using Redis for the first time, see the [official Redis documentation](https://redis.io/documentation){: .external}.
+* To use {{site.data.keyword.databases-for-redis_full}} with your applications, see [Connecting an external application](/docs/databases-for-redis?topic=databases-for-redis-external-app) and [Connecting an IBM Cloud application](/docs/databases-for-redis?topic=databases-for-redis-ibmcloud-app).
 
-To use {{site.data.keyword.databases-for-redis_full}} with your applications, see [Connecting an external application](/docs/databases-for-redis?topic=databases-for-redis-external-app) and [Connecting an IBM Cloud application](/docs/databases-for-redis?topic=databases-for-redis-ibmcloud-app).
+* To ensure the stability of your applications and your database, see [High-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability) and [Performance](/docs/databases-for-redis?topic=databases-for-redis-performance).
 
-To ensure the stability of your applications and your database, see [High-Availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability) and [Performance](/docs/databases-for-redis?topic=databases-for-redis-performance)
+* For more information on migrating your existing data to {{site.data.keyword.databases-for-redis}}, see [A how-to for migrating Redis to IBM Cloud Databases for Redis](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-migrating&interface=ui).
 
-For more information on migrating your existing data to {{site.data.keyword.databases-for-redis}}, see [A How-To for Migrating Redis to IBM Cloud Databases for Redis](https://www.ibm.com/cloud/blog/a-how-to-for-migrating-redis-to-ibm-cloud-databases-for-redis).
+## Things to remember
+{: #remember_important}
+
+* {{site.data.keyword.databases-for-redis_full}} deployments are set by default as [**persistence**], however, you can change it as [**Cache**](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli).
+
+* Integrate {{site.data.keyword.databases-for-redis_full}} with [IBM Cloud Monitoring](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-monitoring){: .external} and [IBM Cloud Logs] (https://cloud.ibm.com/docs/cloud-logs?topic=cloud-logs-getting-started){: .external} services to observe trends in your usage and right size your instance.
