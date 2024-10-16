@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-10-14"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user, rbac
 
@@ -94,10 +94,11 @@ For more information, see [Upgrading to a new major version](/docs/databases-for
 Role-based access control (RBAC) allows you to configure the level of access each user has.
 
 {{site.data.keyword.databases-for-redis}} currently supports the following roles:
+
 - The `admin` role provides full control and access to all admin commands and operations.
 - The `all` role provides `admin`, `read` and `write` access, giving users full control over all commands and operations.
 - The `read` role allows read-only access to commands. Users with this role can run read operations but cannot perform write operations.
-- The `write` role allows write-only access to commands. Users with this role can run write operations but cannot perform read operations.`
+- The `write` role allows write-only access to commands. Users with this role can run write operations but cannot perform read operations.
 
 The admin commands `config get`, `config reset`, `acl whoami`, `acl cat`, `acl users`, `acl genpass`, `acl log`, and `acl help` are available for use in `admin` and `all` but all other `acl` and `config` commands are not.
 
@@ -154,11 +155,11 @@ POST /deployments/{id}/users/{user_type}
 To create a user using RBAC roles, use a command like:
 
 ```sh
-ibmcloud cdb deployment-user-create (NAME\ID) USERNAME PASSWORD [-t USER_TYPE] [-r USER_ROLE] [--json] [--api-version]
+ibmcloud cdb deployment-user-create <CRN_NAME> <USERNAME> <PASSWORD> -r "+@read +@write"
 ```
 {: pre}
 
-For `USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant access.
+For `-r USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant access.
 
 Once the task is finished, retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
 
