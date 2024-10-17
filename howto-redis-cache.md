@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-06-11"
+lastupdated: "2024-10-17"
 
 keywords: redis, databases, redis cache
 
@@ -10,12 +10,7 @@ subcollection: databases-for-redis
 
 ---
 
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:tip: .tip}
+{{site.data.keyword.attribute-definition-list}}
 
 # Configuring Redis as a cache
 {: #redis-cache}
@@ -47,7 +42,7 @@ By default, `maxmemory` is set to 80% of a data node's available memory, so your
 | `volatile-ttl` | Evicts keys that expire, and tries to evict keys with a shorter time to live (TTL) first. |
 {: caption="Available Redis eviction policies" caption-side="top"}
 
-With an `allkeys` policy, the algorithm chooses which keys to evict from the set of all keys. With a `volatile` policy, the algorithm chooses to evict keys that have either [expired](https://redis.io/commands/expire) or have a [time-to-live (TTL)](https://redis.io/commands/ttl){: .external} set. In a `volatile` policy, if no keys match the policy, no keys are evicted.
+With an `allkeys` policy, the algorithm chooses which keys to evict from the set of all keys. With a `volatile` policy, the algorithm chooses to evict keys that have either [expired](https://redis.io/commands/expire){: external} or have a [time-to-live (TTL)](https://redis.io/commands/ttl){: .external} set. In a `volatile` policy, if no keys match the policy, no keys are evicted.
 {: .tip} 
 
 ### Other settings
@@ -65,15 +60,20 @@ With an `allkeys` policy, the algorithm chooses which keys to evict from the set
 
 To adjust the configuration of your deployment, send a JSON object with the settings that you want to change and their new values. 
 
-You are able to use `CONFIG SET` directly from a Redis cli-client, but changes made there are not permanent. Use the {{site.data.keyword.databases-for}} [cli-plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](https://{DomainName}/apidocs/cloud-databases-api#change-your-database-configuration) to change your deployment's configuration file. More information is in [Changing Your Redis Configuration](/docs/databases-for-redis?topic=databases-for-redis-redis-cache).
+You are able to use `CONFIG SET` directly from a Redis cli-client, but changes made there are not permanent. Use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration) to change your deployment's configuration file. More information is in [Changing Your Redis Configuration](/docs/databases-for-redis?topic=databases-for-redis-changing-configuration).
 {: .tip} 
 
-For example, the Redis documentation recommends the `allkeys-lru` setting as a good starting place for a general-use cache. It's also fine to leave the `maxmemory` and `maxmemory-samples` at their default values. So to configure the cache from the CLI, you can use
+For example, the Redis documentation recommends the `allkeys-lru` setting as a good starting place for a general-use cache. It's also fine to leave the `maxmemory` and `maxmemory-samples` at their default values. 
+
+To configure the cache **from the CLI**, you can use the following:
+
 ```sh
 ibmcloud cdb deployment-configuration '<deployment name or CRN>' '{"configuration":{"maxmemory-policy":"allkeys-lru", "appendonly":"no", "stop-writes-on-bgsave-error":"no"}}'
 ```
+{: pre}
 
-To set up the same configuration through the API, you can use
+To set up the same configuration **through the API**, you can use the following:
+
 ```sh
 curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/configuration/schema' \
 -H "Authorization: Bearer $APIKEY" \
@@ -85,3 +85,4 @@ curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{
       }
     }'
 ```
+{: pre}
