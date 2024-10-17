@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2023
-lastupdated: "2023-07-26"
+  years: 2018, 2024
+lastupdated: "2024-10-17"
 
 keywords: redis, databases, pub/sub, application
 
@@ -17,12 +17,12 @@ subcollection: databases-for-redis
 
 Applications running in {{site.data.keyword.cloud_notm}} can be bound to your {{site.data.keyword.databases-for-redis_full}} deployment. 
 
-## Connecting a Kubernetes Service application
+## Connecting a Kubernetes service application
 {: #ibmcloud-app-connect-kubernetes}
 
 There are two steps to connecting a Cloud databases deployment to a Kubernetes Service application. First, your deployment needs to be bound to your cluster and its connection strings stored in a secret. The second step is configuring your application to use the connection strings.
 
-The sample app in the [Connecting a Kubernetes Service Tutorial](/docs/databases-for-redis?topic=cloud-databases-tutorial-k8s-app) provides a sample application that uses Node.js and demonstrates how to bind the sample application to a {{site.data.keyword.databases-for}} deployment.
+The sample app in the [Connecting a Kubernetes service tutorial](/docs/cloud-databases?topic=cloud-databases-tutorial-k8s-app) provides a sample application that uses Node.js and demonstrates how to bind the sample application to a {{site.data.keyword.databases-for}} deployment.
 {: .tip}
 
 Before connecting your Kubernetes Service application to a deployment, make sure that the deployment and cluster are both in the same region and resource group.
@@ -37,7 +37,7 @@ ibmcloud ks cluster service bind <your_cluster_name> <resource_group> <your_data
 ```
 {: pre}
 
-**Private Endpoints** - Too use a private endpoint (if one is enabled on your deployment), create a service key for your database so Kubernetes can use it when binding to the database.
+**Private Endpoints** - To use a private endpoint (if one is enabled on your deployment), create a service key for your database so Kubernetes can use it when binding to the database.
 
 ```sh
 ibmcloud resource service-key-create <your-private-key> --instance-name <your_database_deployment> --service-endpoint private  

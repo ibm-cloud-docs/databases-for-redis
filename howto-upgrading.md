@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2024
-lastupdated: "2024-04-07"
+lastupdated: "2024-10-17"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -14,7 +14,7 @@ subcollection: databases-for-redis
 # Upgrading to a new major version
 {: #upgrading}
 
-When a major version of a database is at its end of life (EOL), upgrade to the next available major version. Find the available versions of Redis in the [{{site.data.keyword.databases-for-redis_full}} catalog](https://cloud.ibm.com/catalog/databases-for-redis){: external}, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables-permissions){: external}. 
+When a major version of a database is at its end of life (EOL), upgrade to the next available major version. Find the available versions of Redis in the [catalog](https://cloud.ibm.com/catalog/databases-for-redis){: external}, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables-permissions){: external}. 
 
 ## Simple upgrade path
 {: #upgrading-simple}
@@ -29,7 +29,7 @@ Prepare to run on, and then migrate to, the latest version before the EOL date. 
 Rolling back versions is not supported.
 {: .note}
 
-Upgrade to the latest version of Redis available to {{site.data.keyword.databases-for-redis}}. Find the latest version from the catalog page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](https://cloud.ibm.com/apidocs/cloud-databases-api#get-all-deployable-databases){: external} endpoint.
+Upgrade to the latest version of Redis available to {{site.data.keyword.databases-for-redis}}. Find the latest version from the catalog page, from the {{site.data.keyword.databases-for}} CLI plug-in command [`ibmcloud cdb deployables-show`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or from the {{site.data.keyword.databases-for}} API [`/deployables`](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables){: external} endpoint.
 
 Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups){: external} of your data into a new deployment. Restoring from a backup has various advantages:
 
@@ -41,7 +41,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 ### Upgrade paths
 {: #upgrading-paths}
 
-| Current Version |	Major Version Upgrade Path |
+| Current version |	Major version upgrade path |
 | ---- | ----- |
 | {{site.data.keyword.databases-for-redis}} V5  |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
 | {{site.data.keyword.databases-for-redis}} V6 |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
@@ -52,7 +52,10 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 {: #upgrading-ui}
 {: ui}
 
-You can upgrade to a new version by [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from the _Backups_ tab of your _Deployment Overview_. Click **Restore** on a backup to bring up a dialog box where you can change some options for the new deployment. One of them is the database version, which is auto-populated with the versions available for you to upgrade to. Select a version and click **Restore** to start the provision and restore process.
+For new hosting models, upgrading to a new major version is currently available through the [CLI](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=cli) and [API](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=api).
+{: note}
+
+Upgrade to a new version when [restoring a backup](/docs/cloud-databases?topic=cloud-databases-dashboard-backups&interface=ui#restore-backup) from the **Backups and restore** tab on the *Overview* page of your deployment. Click **Restore backup** on either the overflow menu or the expanded table row of your chosen backup. This opens the restore provisioning page where you can select options for the new deployment. One of the options is the Database Version, which is auto-populated with the versions available to you. Select a version and click **Restore backup** to start the provision and restore process.
 
 ### Upgrading using the CLI
 {: #upgrading-cli}
@@ -67,6 +70,15 @@ ibmcloud resource service-instance-create <service-name> <service-id> <service-p
 
 The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are all required. You also supply the `-p` with the version and backup ID parameters in a JSON object. The new deployment is automatically sized with the same disk and memory as the source deployment at the time of the backup.
 
+The list of backups and backup IDs for a deployment can be retrieved using the following command.
+
+```sh
+ibmcloud cdb deployment-backups-list <deployment name or CRN> --json
+```
+{: pre}
+
+Use the ID of your chosen backup as a parameter in the resource controller command as shown below.
+
 ```sh
 ibmcloud resource service-instance-create example-upgrade databases-for-redis standard us-south \
 -p \ '{
@@ -80,7 +92,17 @@ ibmcloud resource service-instance-create example-upgrade databases-for-redis st
 {: #upgrading-api}
 {: api}
 
-Similar to provisioning through the API, you need to complete [the required steps to use the resource controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning){: external} before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
+Similar to provisioning through the API, you need to complete [the required steps to use the resource controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=api#provision-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
+
+The list of backups and backup IDs for a deployment can be retrieved using the following API request.
+
+```sh
+curl -X GET  https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/backups  
+-H 'Authorization: Bearer <>' \
+```
+{: pre}
+
+Use the ID of your chosen backup in the resource controller API request as in the following example.
 
 ```sh
 curl -X POST \
@@ -102,24 +124,22 @@ curl -X POST \
 {: #backup_restore}
 {: ui}
 
-Complete the following on-demand backup and restore steps to upgrade. This example sets out the steps to upgrade from V5 to V6.2.
+Complete the following on-demand backup and restore steps to upgrade. This example sets out the steps to upgrade from V6 to V7.2.
 
-To create a manual backup in the UI:
+**To create a manual backup in the UI:**
 
 1. Go to the **Backups and restore** tab of your {{site.data.keyword.databases-for-redis}} instance
-2. Click **Create Backup**    
-    A message is displayed that a backup is in progress, and an on-demand backup is added to the list of available backups [The on-demand backup can be seen in the overview page]
+2. Click **Create Backup**: a message is displayed that a backup is in progress, and an on-demand backup is added to the list of available backups. The on-demand backup can be seen in the overview page, in the recent tasks panel.
 
-To restore a backup to a new service instance:
+**To restore a backup to a new service instance:**
 
 1. Go to the **Backups and restore** tab
-2. Click in the corresponding row to expand the options for the on-demand backup that you want to restore
-3. Click **restore backup** (this will re-direct to the restore instance page).
-   In the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring.
-    Under **Service Configuration**, select ‘6.2’ as the Database Version 
-4. Click **Restore Backup**.
+2. Click on the corresponding row to expand the options for the on-demand backup that you want to restore
+3. Click **restore backup**, that will re-direct you to the restore instance page.
+4. On the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring. Under **Service Configuration**, select ‘7.2’ as the Database Version.
+5. Click **Restore Backup**.
 
-Backups are restored to a new instance. After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 6.2 instance can be accessed from **Resource List**.
+After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 7.2 instance can be accessed from **Resource List**.
 
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
 {: .note}

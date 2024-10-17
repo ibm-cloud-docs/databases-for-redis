@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2024
-lastupdated: "2024-10-14"
+lastupdated: "2024-10-17"
 
 keyowrds: redis, databases, migrating
 
@@ -45,7 +45,7 @@ Now, have the credentials of both the old source database and your new {{site.da
 {: #upgrading-dest-source-cred-cli}
 {: cli}
 
-Get your destination and source database credentials by using the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-for-redis?topic=databases-for-redis-cdb-reference#connections){: external}.
+Get your destination and source database credentials by using the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin){: external}.
 
 Run a command like:
 
