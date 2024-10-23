@@ -1,27 +1,14 @@
 ---
 copyright:
   years: 2024
-lastupdated: "2024-05-16"
+lastupdated: "2024-10-17"
 
 subcollection: databases-for-redis
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: .external target="_blank"}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-
-{:external: .external target="_blank"}
-{:shortdesc: .shortdesc}
-{:screen: .screen}
-{:codeblock: .codeblock}
-{:pre: .pre}
-
-
 # Redis Pub/Sub
+{: #redis-pub-sub}
 
 Pub/Sub is a means of collecting data from any number of data _publishers_ and allowing 1 or more _subscribers_ to consume the feed in real time, without having to connect to the publishers directly. This pattern allows systems to scale more easily and allows publishers and subscribers to be added or removed at any time.
 
@@ -34,6 +21,7 @@ Use-cases:
 - Log streaming.
 
 ## Subscribing to a channel
+{: #redis-subscribing}
 
 A _subscriber_ simply issues a "SUBSCRIBE <channel>" command to begin subscribing to a channel:
 
@@ -50,8 +38,9 @@ If a subscriber needs to subscribe to more than one channel, then this is possib
 Subscribing to a channel means that the subscriber will receieve any messages that are published to that channel _after_ they have subscribed. Older messages are not persisted, so the subscriber must be connected and subscribed to get messages as they happen.
 
 If the channel does not exist then the subscriber will see no errors, nor will they see any messages.
-  
+
 ## Publishing to a channel
+{: #redis-publishing}
 
 A publisher can publish to a channel with the `PUBLISH <channel> <message>` command:
 
@@ -78,6 +67,7 @@ A common pattern is to send JSON objects as the message text:
 The return value from `PUBLISH` is an integer that tells the caller how many subscribers received the message.
 
 ## Selective subscription
+{: #redis-selective-subscription}
 
 Instead of subscribing to whole channels, it is possible to subscribe to wildcard channels. By prudent naming of channels, this can be helpful to see, for example, all of an application's logs, just its production logs, or just its production database's logs.
 
@@ -89,6 +79,7 @@ Instead of subscribing to whole channels, it is possible to subscribe to wildcar
 ```
 
 ## Unsubscribing
+{: #redis-unsubscribing}
 
 A subscriber can unsubscribe to all of its subscribed channels with:
 
@@ -97,7 +88,7 @@ A subscriber can unsubscribe to all of its subscribed channels with:
 ```
 
 ## Further reading
+{: #redis-further-reading}
 
-- [Redis Pub/Sub](https://redis.io/docs/interact/Pub/Sub/)
+- [Redis Pub/Sub](https://redis.io/docs/latest/develop/interact/pubsub/){: .external}
   
-

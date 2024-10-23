@@ -413,7 +413,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
        "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
             "members_host_flavor": "<members_host_flavor_value>",
-            "service-endpoints": "<ENDPOINT>"
+            "service_endpoints": "<ENDPOINT>"
       }
      }'
    ```
@@ -434,7 +434,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
        "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
           "members_host_flavor": "multitenant",
-          "service-endpoints": "private",
+          "service_endpoints": "private",
           "memory": {
             "allocation_mb": 16384
           },
@@ -460,7 +460,7 @@ Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the
        "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
           "member_host_flavor": "b3c.4x16.encrypted",
-          "service-endpoints":"private"
+          "service_endpoints":"private"
         }
       }'
    ```
@@ -481,7 +481,7 @@ The fields in the command are described in the table that follows.
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
    | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below, or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
-   | `service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints){: external} of your deployment, either `public`, `private` or `public-and-private`. | |
+   | `service_endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints){: external} of your deployment, either `public`, `private` or `public-and-private`. | |
    {: caption="Basic command format fields" caption-side="top"}
 
 
