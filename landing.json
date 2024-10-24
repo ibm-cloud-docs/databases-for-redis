@@ -8,32 +8,32 @@
     "links": [
       {
         "title": "Getting started",
-        "href": "https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-getting-started&interface=ui"
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-getting-started&interface=ui"
       },
       {
         "title": "Managing users and roles",
-        "href": "https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui"
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-user-management&interface=ui"
       },
       {
         "title": "Upgrading to a new major version",
-        "href": "https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui"
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui"
       },
       {
         "title": "Best practices",
-        "href": "https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-best-practices"
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-best-practices"
       },
       {
         "title": "Provisioning",
-        "href": "https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=ui"
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=ui"
       },
       {
         "title": "Changing the Redis configuration",
-        "href": "https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-changing-configuration&interface=cli"
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-changing-configuration&interface=cli"
       },
       {
         "title": "Connecting through the command-line interface",
-        "href": "https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client"
-      },
+        "href": "/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client"
+      }
     ]
   },
   "section_highlights": [
@@ -54,8 +54,8 @@
     "api": "/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction", 
     "cli": "/docs/databases-cli-plugin", 
     "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database"
-  }
-"section_updates": {
+    },
+  "section_updates": {
     "view_more": "/docs/databases-for-redis?topic=databases-for-redis-redis-relnotes",
     "tiles": [
       {
