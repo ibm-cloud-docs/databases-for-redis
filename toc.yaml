@@ -63,7 +63,7 @@ toc:
           - connecting-external.md
           - connecting-cli-client.md
       - topicgroup:
-          label: Managing Resources
+          label: Managing resources
           topics:
           - howto-resources-scaling.md
           - howto-autoscaling.md
@@ -106,12 +106,8 @@ toc:
   - navgroup:
       id: reference
       topics:
-      - link:
-          label: Versioning Policy
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-versioning-policy
-      - link:
-          label: Cloud Databases CLI plug-in
-          href: https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference
+      - include: ../cloud-databases/db-version-policy.md
+      - include: ../cloud-databases/icd-cli.md
       - link:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
