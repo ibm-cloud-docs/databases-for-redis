@@ -120,6 +120,8 @@ toc:
       - include: ../cloud-databases/reference-iam.md
       - include: ../cloud-databases/reference-hpcs.md
       - include: ../cloud-databases/reference-responsibilities.md
+      - topic: data-portability.md
+        navtitle: Data portability
   - navgroup:
       id: help
       topics:
