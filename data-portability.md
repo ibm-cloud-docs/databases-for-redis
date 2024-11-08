@@ -41,7 +41,7 @@ To find out more about responsibility ownership for using {{site.data.keyword.cl
 
 
 
-For more information about your responsibilities when using {{site.data.keyword._service-name_notm}}, see [Shared responsibilities for {{site.data.keyword.databases-for-redis_full}}](/docs/databases-for-redis?topic=databases-for-redis-responsibilities-cloud-databases).
+For more information about your responsibilities when using {{site.data.keyword.databases-for-redis}}, see [Shared responsibilities for {{site.data.keyword.databases-for-redis_full}}](/docs/databases-for-redis?topic=databases-for-redis-responsibilities-cloud-databases).
 
 ## Data export procedures
 {: #data-portability-procedures}
@@ -64,5 +64,3 @@ The format of the data exported from the {{site.data.keyword.databases-for-redis
 {: #data-ownership}
 
 All exported data are classified as Customer content and therefore apply to them the full customer ownership and licensing rights, as stated in [IBM Cloud Service Agreement](https://www.ibm.com/terms/?id=Z126-6304_WS).
-
-
