@@ -112,7 +112,7 @@ toc:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
       - topicgroup:
-          label: Connecting over Private Networks
+          label: Connecting over private networks
           topics:
           - include: ../cloud-databases/howto-vpes.md
           - include: ../cloud-databases/reference-service-endpoints.md
