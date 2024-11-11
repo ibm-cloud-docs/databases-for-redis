@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2023-09-18"
+lastupdated: "2024-11-11"
 
 keywords: redis, databases, scaling, manual scaling, disk I/O, memory, CPU
 
@@ -15,14 +15,15 @@ subcollection: databases-for-redis
 # Adding disk, memory, and CPU
 {: #resources-scaling}
 
-For new [hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models), scaling is available through the CLI, API, and Terraform.
+The Shared Compute hosting model supports more fine-grained resource allocations that are not shown in the UI to maintain clarity. For more information, see [Hosting models](/docs/databases-for-mongodb?topic=databases-for-mongodb-hosting-models&interface=cli).
 {: note}
+{: ui}
 
 To scale an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli#hosting-models-iso-compute-cli) host flavor instance, set the relevant `hostflavor` parameter to the Isolated Compute size you're targeting, such as "b3c.4x16.encrypted". As this includes CPU and RAM allocation selections, do not separately select CPU and RAM.
 {: important}
 {: cli}
 
-To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli#hosting-models-shared-compute-cli) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands in this documentation. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `hostflavor` parameter of "multitenant".
+To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=cli#hosting-models-shared-compute-cli) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands in this documentation. The CPU value scales as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `hostflavor` parameter of "multitenant".
 {: important}
 {: cli}
 
@@ -30,7 +31,7 @@ To scale an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosti
 {: important}
 {: api}
 
-To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api#hosting-models-shared-compute-api) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter of "multitenant".
+To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api#hosting-models-shared-compute-api) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value scales as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter of "multitenant".
 {: important}
 {: api}
 
@@ -38,7 +39,7 @@ To scale an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosti
 {: important}
 {: terraform}
 
-To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform#hosting-models-iso-compute-terraform) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value will scale as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter of "multitenant".
+To scale a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform#hosting-models-iso-compute-terraform) host flavor instance between the minimum CPU value and 2 CPU, set the CPU to 0 and scale the RAM allocation using the following commands. The CPU value scales as a ratio of 1 CPU : 8 GB RAM, up to 2 CPU. To scale above 2 CPU, set the CPU and RAM allocations to your target allocation. For both, make sure to include the relevant `host_flavor` parameter of "multitenant".
 {: important}
 {: terraform}
 
@@ -101,16 +102,41 @@ Old style dedicated core instances are deprecated, and will be removed in May 20
 
 - If you find consistent trends in resource usage or would like to set up scaling when certain resource thresholds are reached, checkout enabling [autoscaling](/docs/databases-for-redis?topic=databases-for-redis-autoscaling) on your deployment.
 
+## Review current resources and hosting model
+{: #review-resources-ui}
+{: ui}
+
+In the Resources tab, you find both "Hosting model" and "Resource allocations" tiles. These tiles reflect your current resources and hosting model. Selecting Configure allows you to adjust the settings in each tile. 
+
 ## Scaling in the UI
 {: #resources-scaling-ui}
 {: ui}
 
-For new [hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models), scaling is currently available through the CLI, API, and Terraform.
-{: note}
+In the Resources tab of the UI, select Configure on the Resource allocations tile. This opens up a panel where you can adjust your resources. 
 
-A visual representation of your data members and their resource allocation is available on the _Resources_ tab of your deployment's _Manage_ page. 
+If your database is on the Isolated Compute hosting model, you see a "Host sizes" table, where you can select the vCPU and RAM configuration per member for your database. 
 
-Adjust the slider to increase or decrease the resources that are allocated to your service. The slider controls how much memory or disk is allocated per member. The UI currently uses a coarser-grained resolution than is available via the CLI or API. The UI shows the total allocated memory or disk for the position of the slider. Click **Scale** to trigger the scaling operations and return to the dashboard overview. 
+If you are on the Shared Compute hosting model, you can see the Small configuration, providing 0.5 vCPU and 4 GB RAM per member; the Small Custom option; or Custom configuration. Small Custom indicates that your database was scaled with the CLI, API, or Terraform, which provides more fine-grained resource scaling, along with an option for automatically allocated vCPU pro-rated against RAM value. On the UI, you can scale to Small and Custom, but you can't scale to the fine-grained values provided by the CLI, API, or Terraform. With Custom, drag the slider or adjust the value in the input box to select your database's per member vCPU and RAM values. 
+
+The "Disk (GB/member)" slider is your disk selection per member. Drag the slider or adjust the number in the input box to change the number of GB disk. Note that Disk is tied to IOPS at 1 GB = 10 IOPS. 
+
+Members is the number of members of your database. For Redis, members are set to 2. 
+
+Review your total estimated cost in our calculator on the bottom. Note that if you have grandfathered costs, also known as legacy pricing structure, scaling your database instance removes some or all of your legacy pricing. For more information on grandfathering and when it ends, [please see the docs here]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-model-transition&interface=ui#hosting-model-transition-timeline-may25)). 
+
+After you are done, click "Apply changes" to trigger the scaling operation. 
+
+## Switch to and between hosting models in the UI
+{: #resources-switching-ui}
+{: ui}
+
+In the Resources tab of the UI, select Configure on the Hosting model tile. This opens up a panel where you can adjust your hosting model selection. 
+
+The first option available is "Select your hosting model". Here, you can switch to a different hosting model. 
+
+Next, you see the options to also adjust the resources of the new hosting model you've selected. Follow the instructions in the above section, "Scaling in the UI" to adjust your resources. 
+
+Clicking "Apply changes" triggers this scale operation. 
 
 ## Review current resources and hosting model 
 {: #review-resources-cli}
@@ -118,7 +144,7 @@ Adjust the slider to increase or decrease the resources that are allocated to yo
 
 [{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
 
-For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command will also reveal if your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
+For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command also reveals if your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
 
 ```sh
 ibmcloud cdb deployment-groups example-deployment
@@ -160,7 +186,6 @@ The deployment has two members, with 2048 MB of RAM and disk allocated in total.
 {: #resources-scaling-cli}
 {: cli}
 
-
 The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set in MB. For example, to scale the memory of the "example-deployment" to 4096 MB of RAM for each memory member (for a total memory of 8192 MB), you use the command:
 
 ```sh
@@ -172,7 +197,7 @@ ibmcloud cdb deployment-groups-set example-deployment member --memory 8192
 {: #resources-hosting-determine-cli}
 {: cli}
 
-Use the following command to review the value of the `hostflavor` attribute. This will be null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
+Use the following command to review the value of the `hostflavor` attribute. This is null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
 
 ```sh
 ibmcloud cdb groups <deployment_id> --json
@@ -183,7 +208,7 @@ ibmcloud cdb groups <deployment_id> --json
 {: #resources-switching-cli}
 {: cli}
 
-If your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) instance, you can adjust the memory, CPU, and disk options with the following command. If your database is not on Shared Compute, this command will also move a database from a different hosting model to the Shared Compute hosting model.
+If your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) instance, you can adjust the memory, CPU, and disk options with the following command. If your database is not on Shared Compute, this command also moves a database from a different hosting model to the Shared Compute hosting model.
 
 ```sh
 ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--memory <val>] [--cpu <val>] [--disk <val>] [--hostflavor multitenant]
@@ -191,12 +216,13 @@ ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--memory <val>] [--
 {: pre}
 
 For example, use:
+
 ```sh
 ibmcloud cdb deployment-groups-set crn:abc ... xyz:: member  --memory 24576 --cpu 6  --hostflavor multitenant
 ```
 {: pre}
 
-If your database is an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance, memory and CPU are adjusted together by selecting the Isolated Compute size (see all sizes in Table 1). Disk is scaled separately. If your database is not on Isolated Compute, this command will also move a database from a different hosting model to the Isolated Compute hosting model.
+If your database is an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance, memory and CPU are adjusted together by selecting the Isolated Compute size (see all sizes in Table 1). Disk is scaled separately. If your database is not on Isolated Compute, this command also moves a database from a different hosting model to the Isolated Compute hosting model.
 
 ```sh
 ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--disk <val>] [--hostflavor <hostflavor>]
@@ -257,7 +283,7 @@ For more information, see [API Reference](https://{DomainName}/apidocs/cloud-dat
 {: #resources-hosting-determine-api}
 {: api}
 
-Use the following command to review the value of the `host_flavor` attribute. This will be null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
+Use the following command to review the value of the `host_flavor` attribute. This is null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
 
 ```sh
 curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups 
@@ -269,7 +295,7 @@ curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}
 {: #resources-switching-api}
 {: api}
 
-To scale any {{site.data.keyword.databases-for}} Shared Compute instance, use the the following command, setting `host_flavor` to `multitenant`. If your database is not on Shared Compute, this command will also move a database from a different hosting model to the Shared Compute hosting model.
+To scale any {{site.data.keyword.databases-for}} Shared Compute instance, use the the following command, setting `host_flavor` to `multitenant`. If your database is not on Shared Compute, this command also moves a database from a different hosting model to the Shared Compute hosting model.
 
 ```sh
 curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups/member

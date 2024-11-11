@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-02"
+lastupdated: "2024-11-11"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision redis
 
@@ -57,7 +57,6 @@ Specify the disk size depending on your requirements. It can be increased after 
 ### Service configuration
 {: #service_configuration}
 {: ui}
-
 
 - **Database Version:** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 - **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
@@ -140,8 +139,6 @@ Before provisioning, follow the instructions provided in the documentation to in
    {: caption="Members host flavor sizing parameter" caption-side="bottom"}
    {: #members_host_flavor_table}
 
-
-
    You will see a response like:
 
    ```text
@@ -199,7 +196,7 @@ Before provisioning, follow the instructions provided in the documentation to in
                             Status    create succeeded
                             Message   Provisioning redis with version 12 (100%)
      ```
-     {: codeblck}
+     {: codeblock}
 
     - (Optional) Deleting a service instance. 
     Delete an instance by running a command like this one:
@@ -398,7 +395,6 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
 ```
 {: pre}
 
-
 5. Once you have all the information, [provision a new resource instance](/apidocs/resource-controller/resource-controller#create-resource-instance){: external} with    the {{site.data.keyword.cloud_notm}} Resource Controller.
 
    ```sh
@@ -408,12 +404,13 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
      -H 'Content-Type: application/json' \
        -d '{
        "name": "my-instance",
-       "target": "blue-us-south",
+       "target": "<region>",
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
        "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
             "members_host_flavor": "<members_host_flavor_value>",
-            "service_endpoints": "<ENDPOINT>"
+            "service_endpoints": "<ENDPOINT>",
+            "version": "<version>"
       }
      }'
    ```
@@ -429,18 +426,14 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
      -H 'Content-Type: application/json' \
      -d '{
        "name": "my-instance",
-       "location": "us-south",
+       "target": "us-south",
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
        "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
           "members_host_flavor": "multitenant",
           "service_endpoints": "private",
-          "memory": {
-            "allocation_mb": 16384
-          },
-          "cpu": {
-            "allocation_count": 4
-          }
+          "members_memory_allocation_mb": 16384, 
+          "members_cpu_allocation_count": 4 
         }
       }'
    ```
@@ -455,7 +448,7 @@ Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the
      -H 'Content-Type: application/json' \
      -d '{
        "name": "my-instance",
-       "location": "us-south",
+       "target": "us-south",
        "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
        "resource_plan_id": "databases-for-redis-standard"
        "parameters": {
@@ -476,7 +469,7 @@ The fields in the command are described in the table that follows.
    | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-redis}}, use `databases-for-redis`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
-   | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
+   | `target` [Required]{: tag-red} | The target location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
    | `SERVICE_ENDPOINTS_TYPE` | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public` or `private`. The default value is `public`. |  |
    | `RESOURCE_GROUP` | The Resource group name. The default value is `default`. | -g |
    | `--parameters` | JSON file or JSON string of parameters to create service instance | -p |
@@ -490,7 +483,6 @@ The fields in the command are described in the table that follows.
 {: api}
 
 The `members_host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration. 
-
 
 | **Members host flavor** | **members_host_flavor value** |
 |:-------------------------:|:---------------------:|
@@ -575,7 +567,6 @@ output "ICD Etcd database connection string" {
 ```
 {: codeblock}
 
-
 Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections. 
 
 ```terraform
@@ -614,7 +605,6 @@ output "ICD Etcd database connection string" {
 }
 ```
 {: codeblock}
-
 
 Before executing a Terraform script on an existing instance, use the `terraform plan` command to compare the current infrastructure state with the desired state defined in your Terraform files. Any alteration to the `resource_group_id`, `service plan`, `version`, `key_protect_instance`, `key_protect_key`, `backup_encryption_key_crn` attributes recreates your instance. For a list of current argument references with the `Forces new resource` specification, see the [ibm_database Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 {: important}
