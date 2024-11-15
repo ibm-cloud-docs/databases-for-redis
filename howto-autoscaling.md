@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-11-15"
 
 keywords: redis, databases, scaling, autoscaling, disk I/O, memory
 
@@ -15,7 +15,7 @@ subcollection: databases-for-redis
 # Autoscaling
 {: #autoscaling}
 
-Autoscaling is designed to respond to the short-to-medium term trends in resource usage on your {{site.data.keyword.databases-for-redis_full}} deployment. When enabled, your deployment is checked at the interval you specify. If it is running short on resources, more resources are added to the deployment. To keep an eye on your resources, use the [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization.
+Autoscaling is designed to respond to the short-to-medium term trends in resource usage on your {{site.data.keyword.databases-for-redis_full}} deployment. When enabled, your deployment is checked at the interval you specify. If it is running short on resources, more resources are added to the deployment. To keep an eye on your resources, use the [{{site.data.keyword.monitoringfull}} integration](/docs/databases-for-redis?topic=databases-for-redis-monitoring), which provides metrics for memory, disk space, and disk I/O utilization.
 
 You can set your deployment to autoscale disk, RAM, or both. 
 
@@ -35,6 +35,8 @@ If you have Redis configured as a cache, there aren't currently any parameters y
 
 Disk - Disk autoscaling can scale when either disk usage reaches a certain threshold, Disk I/O utilization reach a certain threshold, or both. (The "or" in the UI operates as an `inclusive or`, `|`, `v`.) The amount of IOPS available to your deployment increases with disk size at a ratio of 10 IOPS for each GB.
 
+CPU and RAM autoscaling is not supported on Isolated Compute. Disk autoscaling is available. If you provisioned an isolated instance or switched over from a deployment with autoscaling, monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/databases-for-redis?topic=databases-for-redis-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
+
 The resource numbers refer to each database node in a deployment. For example, there are two data members in a Redis deployment and if the deployment is scaled with 10 GB of disk and 1 GB of RAM, that means each member gets 10 GB of disk and 1 GB of RAM. The total resources added to your deployment is 20 GB of disk and 2 GB of RAM.
 
 ## Autoscaling considerations
@@ -46,7 +48,7 @@ The resource numbers refer to each database node in a deployment. For example, t
 
 - A few scaling operations can be more long running than others. Drastically increasing RAM or Disk can take longer than smaller increases to account for provisioning more underlying hardware resources.
 
-- Autoscaling operations are logged in [{{site.data.keyword.at_full}}](/docs/databases-for-redis?topic=databases-for-redis-activity-tracker).
+- Autoscaling operations are logged in [{{site.data.keyword.atracker_full}}](/docs/databases-for-redis?topic=databases-for-redis-at_events).
 
 - Limits:
    - Can't set anything to scale in an interval less than 60 seconds.
@@ -61,23 +63,31 @@ The resource numbers refer to each database node in a deployment. For example, t
 {: #autoscaling-ui}
 {: ui}
 
-Autoscaling is in _Resources_ in your deployment's _Manage_ page. To enable scaling, enter your parameters. Then, check the boxes to enable the parameters you are using. Be sure to click **Save Changes** for your configuration to be saved and your changes to take effect.
+Autoscaling is in _Resources_ in your deployment's _Manage_ page. To enable scaling, enter your parameters. Then, check the boxes to enable the parameters you are using. Be sure to click **Save changes** for your configuration to be saved and your changes to take effect.
 
-To disable autoscaling, clear the boxes for the parameters that you no longer want to use. If you clear all the boxes, autoscaling is disabled. Click **Save Changes** to save the configuration.
+To disable autoscaling, clear the boxes for the parameters that you no longer want to use. If you clear all the boxes, autoscaling is disabled. Click **Save changes** to save the configuration.
+
+CPU and RAM autoscaling is not supported on Isolated Compute. Disk autoscaling is available. If you provisioned an isolated instance or switched over from a deployment with autoscaling, monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 
 ## Configuring autoscaling in the CLI
 {: #autoscaling-cli}
 {: cli}
 
 Get the autoscaling parameters for your deployment through the CLI using the [`cdb deployment-autoscaling`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling) command.
+
 ```sh
 ibmcloud cdb deployment-autoscaling <deployment name or CRN> member
 ```
+{: pre}
 
 Enable and set autoscaling parameters through the CLI using a JSON object or file with the [`cdb deployment-autoscaling-set`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling-set) command.
+
 ```sh
 ibmcloud cdb deployment-autoscaling-set <deployment name or CRN> member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 125952,"units": "mb"}}}}'
 ```
+{: pre}
+
+CPU and RAM autoscaling is not supported on Isolated Compute. Disk autoscaling is available. If you provisioned an isolated instance or switched over from a deployment with autoscaling, monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/cloud-databases?topic=cloud-databases-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.
 
 ## Configuring autoscaling in the API
 {: #autoscaling-api}
@@ -116,3 +126,5 @@ curl -X PATCH https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{i
 {: pre}
 
 Disable autoscaling by sending the `PATCH` request with the currently enabled scalers set to `false`. If all of them are set to `false`, then autoscaling is disabled on your deployment.
+
+CPU and RAM autoscaling is not supported on Isolated Compute. Disk autoscaling is available. If you provisioned an isolated instance or switched over from a deployment with autoscaling, monitor your resources using [{{site.data.keyword.monitoringfull}} integration](/docs/databases-for-redis?topic=databases-for-redis-monitoring), which provides metrics for memory, disk space, and disk I/O utilization. To add resources to your instance, manually scale your deployment.

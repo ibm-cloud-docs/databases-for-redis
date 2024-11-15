@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-11-15"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -24,7 +24,7 @@ Because most uses of {{site.data.keyword.databases-for-redis}} serve as a cache 
 ## How to upgrade to a new major version
 {: #upgrading_major}
 
-Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see [Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
+Prepare to run on, and then migrate to, the latest version before the EOL date. For more information, see [Versioning policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
 
 Rolling back versions is not supported.
 {: .note}
@@ -135,11 +135,11 @@ Complete the following on-demand backup and restore steps to upgrade. This examp
 
 1. Go to the **Backups and restore** tab
 2. Click on the corresponding row to expand the options for the on-demand backup that you want to restore
-3. Click **restore backup**, that will re-direct you to the restore instance page.
-4. On the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring. Under **Service Configuration**, select ‘7.2’ as the Database Version.
-5. Click **Restore Backup**.
+3. Click **Restore backup**, that will re-direct you to the restore instance page.
+4. On the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring. Under **Service configuration**, select ‘7.2’ as the Database Version.
+5. Click **Restore backup**.
 
-After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 7.2 instance can be accessed from **Resource List**.
+After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 7.2 instance can be accessed from **Resource list**.
 
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
 {: .note}

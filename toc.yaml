@@ -39,13 +39,10 @@ toc:
       id: howto
       topics:
       - howto-provisioning.md
-      - link:
-          label: Getting to production for Cloud Databases
-          href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-best-practices
       - howto-user-management.md
       - learn-performance.md
       - topicgroup:
-          label: IBM Cloud Databases (ICD) enabled by IBM Cloud Satellite
+          label: IBM Cloud Databases enabled by IBM Cloud Satellite
           topics:
           - include: ../cloud-databases/howto-sat-loc.md
           - include: ../cloud-databases/howto-sat-loc-aws.md
@@ -90,12 +87,12 @@ toc:
           - include: ../cloud-databases/truck-tracker-tutorial.md
           - include: ../cloud-databases/disk-util-alerts-tutorial.md
       - topicgroup:
-          label: Logging and monitoring
+          label: Observability
           topics:
-          - include: ../cloud-databases/reference-monitoring.md
-          - include: ../cloud-databases/reference-activity-tracker.md
-          - include: ../cloud-databases/reference-logging.md
-          - include: ../cloud-databases/reference-sysdig.md
+          - include: ../cloud-databases/cdb-logging-monitoring.md
+          - include: ../cloud-databases/logging.md
+          - include: ../cloud-databases/reference-monitoring.md 
+          - include: ../cloud-databases/at-events.md
       - topicgroup:
           label: Enhancing security
           topics:
@@ -112,13 +109,14 @@ toc:
           label: Cloud Databases API
           href: https://cloud.ibm.com/apidocs/cloud-databases-api
       - topicgroup:
-          label: Connecting over Private Networks
+          label: Connecting over private networks
           topics:
           - include: ../cloud-databases/howto-vpes.md
           - include: ../cloud-databases/reference-service-endpoints.md
       - include: ../cloud-databases/reference-key-protect.md
       - include: ../cloud-databases/reference-iam.md
       - include: ../cloud-databases/reference-hpcs.md
+      - include: ../cloud-databases/learn-getting-to-production.md
       - include: ../cloud-databases/reference-responsibilities.md
       - topic: data-portability.md
         navtitle: Data portability
@@ -129,9 +127,7 @@ toc:
           label: Troubleshooting
           topics:
           - ts-connect.md
-          - link:
-              label: Why did my Terraform script delete my instance?
-              href: https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-troubleshoot-terraform
+          - include: ../cloud-databases/ts-terraform.md
           - ts-common-errors.md
       - topicgroup:
           label: FAQs

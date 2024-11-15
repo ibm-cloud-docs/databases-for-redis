@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-11-15"
 
 keywords: deployment, crn, task, gui, api endpoint, connection strings, recent tasks, observability
 
@@ -34,32 +34,32 @@ The resources tile contains information and configuration options on the size an
 ### Recent tasks
 {: #dashboard-overview-recent-tasks}
 
-Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24-48 hours. Unsuccessful tasks can show for 7-8 days. Tasks can also be retrieved from the [Cloud Databases API](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks) and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through the [{{site.data.keyword.at_full}} integration](/docs/databases-for-redis?topic=databases-for-redis-activity-tracker).
+Every time that you make administrative changes to your service (such as scaling, or taking a manual backup), a task starts up. The _Recent Tasks_ panel shows the task name and progress bar for any running tasks, and a list of the most recent completed tasks. Depending on how busy your deployment is, successful tasks can be shown for 24-48 hours. Unsuccessful tasks can show for 7-8 days. Tasks can also be retrieved from the [Cloud Databases API](/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeploymenttasks) and [CLI plug-in](https://cloud.ibm.com/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-tasks-list). A historical record of tasks from any time period is available through the [{{site.data.keyword.atracker_full}} integration](/docs/databases-for-redis?topic=databases-for-redis-at_events).
 
 ### Observability
 {: #dashboard-overview-observability}
 
 The _Observability_ tab provides access to the IBM Cloud monitoring, logging, and event tracking integrations available for your deployment.
 
-- [{{site.data.keyword.at_full}}](/docs/databases-for-redis?topic=databases-for-redis-activity-tracker)
-- [{{site.data.keyword.la_full}}](/docs/databases-for-redis?topic=databases-for-redis-logging)
-- [{{site.data.keyword.monitoringfull}}](/docs/databases-for-redis?topic=databases-for-redis-sysdig-monitor)
+- [{{site.data.keyword.atracker_full}}](/docs/databases-for-redis?topic=databases-for-redis-at_events)
+- [{{site.data.keyword.logs_full}}](/docs/databases-for-redis?topic=databases-for-redis-logging)
+- [{{site.data.keyword.monitoringfull}}](/docs/databases-for-redis?topic=databases-for-redis-monitoring)
 
 ### Endpoints
 {: #dashboard-overview-endpoints}
 
 The _Endpoints_ pane within the _Overview_ page contains connection strings for your deployment. Each tab contains connection information that is tailored to the type of connection or the protocol that uses it. Basic information includes _hostname_, _port_, the TLS self-signed certificate, TLS/SSL parameters, and the default database of your deployment.
 
-Reference tables for the different connection types are available on the [Getting Connection Strings](/docs/databases-for-redis?topic=databases-for-redis-connection-strings) page.
+Reference tables for the different connection types are available on the [Getting connection strings](/docs/databases-for-redis?topic=databases-for-redis-connection-strings) page.
 
-Connection strings reflect whether your deployment uses public endpoints, private endpoints or both. You can configure which endpoints are available on your deployment. For more information, see [Service Endpoints Integration](/docs/cloud-databases?topic=cloud-databases-service-endpoints).
+Connection strings reflect whether your deployment uses public endpoints, private endpoints or both. You can configure which endpoints are available on your deployment. For more information, see [Service endpoints integration](/docs/cloud-databases?topic=cloud-databases-service-endpoints).
 
 You can manage your {{site.data.keyword.databases-for-redis}} service through the {{site.data.keyword.databases-for}} API. For more information, see [API reference](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#introduction).
 
 ## Backup and restore
 {: #dashboard-overview-backups}
 
-The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click a backup to grab its ID or to restore it into a new deployment. For more information, see [Managing Backups](/docs/databases-for-redis?topic=databases-for-redis-dashboard-backups).
+The _Backups_ tab is the UI for managing your deployments backups. All of the available backups are listed with their timestamps. Click a backup to grab its ID or to restore it into a new deployment. For more information, see [Managing backups](/docs/databases-for-redis?topic=databases-for-redis-dashboard-backups).
 
 ## Settings
 {: #dashboard-overview-settings}

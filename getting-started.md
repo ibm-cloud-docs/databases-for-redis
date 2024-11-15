@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2024
-lastupdated: "2024-10-16"
+lastupdated: "2024-11-15"
 
 keywords: redis, getting started redis, deploy redis, redli
 
@@ -58,7 +58,7 @@ Follow these steps to complete the tutorial: {: cli}
 {: cli}
 
 - You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}. 
-- Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI Plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
+- Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
 - Download and install [Redli](#downloading-installing-redli).
 
 ## Download and install Redli
@@ -84,7 +84,7 @@ sudo cp <extracted redli filename> /usr/local/bin
 {: ui}
 
 1. Log in to the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/login){: external}.
-1. Click the [{{site.data.keyword.databases-for-redis_full}} service](https://cloud.ibm.com/databases/databases-for-redis/create){: external} in the **catalog**.
+1. Click the [{{site.data.keyword.databases-for-redis_full}} service](https://cloud.ibm.com/databases/databases-for-redis/create){: external} in the **Catalog**.
 1. Follow [these steps](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=ui) to provision a {{site.data.keyword.databases-for-redis_full}} instance.
 1. When your instance is provisioned, click on the instance name to view more information.
 
@@ -183,6 +183,6 @@ OK
 ## Things to remember
 {: #remember_important}
 
-* {{site.data.keyword.databases-for-redis_full}} deployments are set by default as [**persistence**](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-high-availability&interface=cli#high-availability-features), however, you can change it as [**Cache**](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli).
+* {{site.data.keyword.databases-for-redis_full}} deployments are set by default as [**persistence**](/docs/databases-for-redis?topic=databases-for-redis-high-availability&interface=cli#high-availability-features), however, you can change it as [**Cache**](/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli).
 
-* Integrate {{site.data.keyword.databases-for-redis_full}} with [{{site.data.keyword.cloud_notm}} Monitoring](/docs/cloud-databases?topic=cloud-databases-monitoring){: .external} and [{{site.data.keyword.cloud_notm}} Logs](https://cloud.ibm.com/docs/cloud-logs?topic=cloud-logs-getting-started){: .external} services to observe trends in your usage and right size your instance.
+* Integrate {{site.data.keyword.databases-for-redis_full}} with [{{site.data.keyword.monitoringfull}}](/docs/databases-for-redis?topic=databases-for-redis-monitoring) and [{{site.data.keyword.logs_full}}](/docs/log-analysis?topic=log-analysis-getting-started) services to observe trends in your usage and right size your instance.

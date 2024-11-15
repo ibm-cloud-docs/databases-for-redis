@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-11-15"
 
 keywords: redis, databases, ha, dr
 
@@ -53,7 +53,7 @@ Several minutes of database unavailability or connection interruptions are not e
 ## Monitoring the state of your databases
 {: #high-availability-monitor-databases}
 
-{{site.data.keyword.databases-for-redis}} has [{{site.data.keyword.la_full_notm}} integration](/docs/databases-for-redis?topic=databases-for-redis-logging) so that you can view live and historical logs.
+{{site.data.keyword.databases-for-redis}} has [{{site.data.keyword.logs_full}} integration](/docs/databases-for-redis?topic=databases-for-redis-logging) so that you can view live and historical logs.
 
 Checking your deployment's logs helps you monitor the state of HA and replication for your deployment. If you are having persistent issues with your applications, logs can also provide insight to what is happening on your databases when you are experiencing connection failures or other disruptions.
 
