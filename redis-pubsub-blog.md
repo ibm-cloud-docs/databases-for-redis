@@ -1,14 +1,14 @@
 ---
 copyright:
   years: 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-11-18"
 
 subcollection: databases-for-redis
 
 ---
 
 # Redis Pub/Sub
-{: #redis-pub-sub}
+{: #redis-pubsub}
 
 Pub/Sub is a means of collecting data from any number of data _publishers_ and allowing 1 or more _subscribers_ to consume the feed in real time, without having to connect to the publishers directly. This pattern allows systems to scale more easily and allows publishers and subscribers to be added or removed at any time.
 
