@@ -1,8 +1,7 @@
 ---
-
 copyright:
   years: 2024
-lastupdated: 2024-11-27
+lastupdated: "2024-11-28"
 
 keywords: redis, databases, best practices
 
