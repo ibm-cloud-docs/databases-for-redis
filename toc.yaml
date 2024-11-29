@@ -81,7 +81,6 @@ toc:
       - topicgroup:
           label: Tutorials
           topics:
-          - include: ../cloud-databases/howto-tutorials.md
           - include: ../cloud-databases/hello-world-tutorial.md
           - include: ../cloud-databases/terra-postgres-tutorial.md
           - include: ../cloud-databases/terra-mongodb-tutorial.md
