@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-12-02"
 
 keywords: redis, databases, connection limits, terminating connections, connection pooling, managing connections
 
@@ -64,4 +64,4 @@ One way to prevent exceeding the connection limit and ensure that connections fr
 ## Redis Context-based restrictions and Allowlisting
 {: #managing-redis-allowlisting}
 
-You can also use Context-based restrictions or allowlisting to manage and/or limit connections to your Redis deployment. For more information, see [Context-based restrictions](docs/databases-for-redis?topic=databases-for-redis-cbr&interface=ui) or [Allowlisting](/docs/databases-for-redis?topic=databases-for-redis-allowlisting).
+You can also use Context-based restrictions or allowlisting to manage and/or limit connections to your Redis deployment. For more information, see [Context-based restrictions](/docs/databases-for-redis?topic=databases-for-redis-cbr&interface=ui) or [Allowlisting](/docs/databases-for-redis?topic=databases-for-redis-allowlisting).
