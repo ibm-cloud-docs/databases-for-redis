@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-11-15"
+lastupdated: "2024-12-02"
 
 keywords: redis, databases, ha, dr
 
@@ -48,7 +48,7 @@ For more information on connecting your applications to {{site.data.keyword.data
 In all cases, you must review your client's documentation to help you design a stable application that checks for connectivity, reconnects when disconnected, and retries commands when it makes sense for your application to do so.
 {: .tip}
 
-Several minutes of database unavailability or connection interruptions are not expected. Open a [support ticket](/docs/get-support?topic=get-support-using-avatar) with details if you have time periods longer than a minute with no connectivity.
+Several minutes of database unavailability or connection interruptions are not expected. Open a [support ticket](/docs/account?topic=account-using-avatar) with details if you have time periods longer than a minute with no connectivity.
 
 ## Monitoring the state of your databases
 {: #high-availability-monitor-databases}
