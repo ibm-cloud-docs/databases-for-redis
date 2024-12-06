@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-11-11"
+lastupdated: "2024-12-06"
 
 keywords: provision cloud databases, terraform, provisioning parameters, cli, resource controller api, provision redis
 
@@ -59,8 +59,8 @@ Specify the disk size depending on your requirements. It can be increased after 
 {: ui}
 
 - **Database Version:** [Set only at deployment]{: tag-red} - The deployment version of your database. To ensure optimal performance, run the preferred version. The latest minor version is used automatically. For more information, see [Database Versioning Policy](/docs/cloud-databases?topic=cloud-databases-versioning-policy){: external}.
-- **Encryption** - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
-- **Endpoints** [Set only at deployment]{: tag-red} - Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. The default setting is *private*.
+- **Encryption** [Set only at deployment]{: tag-red} - If you use [Key Protect](/docs/cloud-databases?topic=cloud-databases-key-protect&interface=ui), an instance and key can be selected to encrypt the deployment's disk. If you do not use your own key, the deployment automatically creates and manages its own disk encryption key.
+- **Endpoints** - Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) on your deployment. The default setting is *private*.
 
 After you select the appropriate settings, click **Create** to start the provisioning process.
 
@@ -86,7 +86,7 @@ Before provisioning, follow the instructions provided in the documentation to in
 3. Create a {{site.data.keyword.databases-for-redis}} Shared service instance within {{site.data.keyword.cloud_notm}} by running a command like:
 
    ```sh
-   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <RESOURCE_GROUP> -p `{"members_host_flavor": "multitenant"}` --service-endpoints="<endpoint>"
+   ibmcloud resource service-instance-create <INSTANCE_NAME> <SERVICE_NAME> <SERVICE_PLAN_NAME> <LOCATION> <RESOURCE_GROUP> -p `{"members_host_flavor": "multitenant"}` --service-endpoints="<ENDPOINT>"
    ```
    {: pre}
 
@@ -108,7 +108,7 @@ Before provisioning, follow the instructions provided in the documentation to in
 
    | Field | Description | Flag |
    |-------|------------|------------|
-   | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
+   | `INSTANCE_NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
    | `SERVICE_NAME` [Required]{: tag-red} | Name or ID of the service. For {{site.data.keyword.databases-for-redis}}, use `databases-for-redis`. |  |
    | `SERVICE_PLAN_NAME` [Required]{: tag-red} | Standard plan (`standard`) |  |
    | `LOCATION` [Required]{: tag-red} | The location where you want to deploy. To retrieve a list of regions, use the `ibmcloud regions` command. |  |
@@ -202,7 +202,7 @@ Before provisioning, follow the instructions provided in the documentation to in
     Delete an instance by running a command like this one:
 
      ```sh
-     ibmcloud resource service-instance-delete <INSTANCE_NAME>
+     ibmcloud resource service-instance-delete <INSTANCE_NAME_OR_CRN>
      ```
      {: pre}
 
@@ -215,13 +215,13 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 
 The `service-instance-create` command supports a `-p` flag, which allows JSON-formatted parameters to be passed to the provisioning process. For example, you can pass Cloud Resource Names (CRNs) as parameter values, which uniquely identify a resource in the cloud. All parameter names and values are passed as strings.
 
-For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 9 GB of memory across three members, then the command to provision 3 GBs per member looks like:
+For example, if a database is being provisioned from a particular backup and the new database deployment needs a total of 12 GB of memory across three members, then the command to provision 4 GBs per member looks like:
 
 ```sh
 ibmcloud resource service-instance-create databases-for-redis <SERVICE_NAME> standard us-south \
 -p \ '{
   "backup_id": "crn:v1:blue:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-  "members_memory_allocation_mb": "3072"
+  "members_memory_allocation_mb": "4096"
 }' --service-endpoints="private"
 ```
 {: .pre}

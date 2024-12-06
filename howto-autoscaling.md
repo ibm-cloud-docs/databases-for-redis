@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2024
-lastupdated: "2024-11-26"
+lastupdated: "2024-12-06"
 
 keywords: redis, databases, scaling, autoscaling, disk I/O, memory
 
@@ -68,14 +68,14 @@ The resource numbers refer to each database node in a deployment. For example, t
 Get the autoscaling parameters for your deployment through the CLI using the [`cdb deployment-autoscaling`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling) command.
 
 ```sh
-ibmcloud cdb deployment-autoscaling <deployment name or CRN> member
+ibmcloud cdb deployment-autoscaling <INSTANCE_NAME_OR_CRN> member
 ```
 {: pre}
 
 Enable and set autoscaling parameters through the CLI using a JSON object or file with the [`cdb deployment-autoscaling-set`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-autoscaling-set) command.
 
 ```sh
-ibmcloud cdb deployment-autoscaling-set <deployment name or CRN> member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 125952,"units": "mb"}}}}'
+ibmcloud cdb deployment-autoscaling-set <INSTANCE_NAME_OR_CRN> member '{"autoscaling": { "memory": {"scalers": {"io_utilization": {"enabled": true, "over_period": "5m","above_percent": 90}},"rate": {"increase_percent": 10.0, "period_seconds": 300,"limit_mb_per_member": 125952,"units": "mb"}}}}'
 ```
 {: pre}
 

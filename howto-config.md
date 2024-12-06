@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2019, 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-12-06"
 
 keywords: redis, databases, configs
 
@@ -38,14 +38,14 @@ To make a change, you send a JSON object with the settings that you want to chan
 View the configuration schema of possible settings through the {{site.data.keyword.databases-for}} cli-plugin with the [`cdb deployment-configuration-schema`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration-schema) command.
 
 ```sh
-ibmcloud cdb deployment-configuration-schema <deployment name or CRN>
+ibmcloud cdb deployment-configuration-schema <INSTANCE_NAME_OR_CRN>
 ```
 {: .pre}
 
 To change your configuration, use the [`cdb deployment-configuration`](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) command.
 
 ```sh
-ibmcloud cdb deployment-configuration <deployment name or CRN> [@JSON_FILE | JSON_STRING]
+ibmcloud cdb deployment-configuration <INSTANCE_NAME_OR_CRN> [@JSON_FILE | JSON_STRING]
 ```
 {: .pre}
 

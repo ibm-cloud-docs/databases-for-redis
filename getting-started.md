@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2024
-lastupdated: "2024-11-15"
+lastupdated: "2024-12-06"
 
 keywords: redis, getting started redis, deploy redis, redli
 
@@ -51,15 +51,15 @@ Follow these steps to complete the tutorial: {: cli}
 - You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}. 
 
 - Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
-- Download and install [Redli](#downloading-installing-redli).
+- Download and install [Redli](#downloading-installing-redli){: external}.
 
 ## Before you begin
 {: #prereqs}
 {: cli}
 
 - You need an [{{site.data.keyword.cloud_notm}} account](https://cloud.ibm.com/registration){: external}. 
-- Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
-- Download and install [Redli](#downloading-installing-redli).
+- Download and install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-install-ibmcloud-cli) and the [Cloud Databases CLI Plugin](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference). Use the {{site.data.keyword.cloud_notm}} CLI tool to communicate with {{site.data.keyword.cloud_notm}} from your terminal or command line, and the plugin contains communication commands for your database deployments.
+- Download and install [Redli](#downloading-installing-redli){: external}.
 
 ## Download and install Redli
 {: #downloading-installing-redli}
@@ -138,7 +138,7 @@ You can easily connect to Redis through the {{site.data.keyword.cloud_notm}} CLI
 Now that you've installed and set up Redli, the {{site.data.keyword.cloud_notm}} CLI tool, and the {{site.data.keyword.cloud_notm}} Databases plugin, connect to your deployment. Log in with `ibmcloud login`, and connect with `ibmcloud cdb cxn -s`, for example:
 
 ```sh
-ibmcloud cdb cxn -s <deployment-name>
+ibmcloud cdb cxn -s <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 

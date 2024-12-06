@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-12-06"
 
 keyowrds: redis, databases, migrating
 
@@ -50,21 +50,21 @@ Get your destination and source database credentials by using the [{{site.data.k
 Run a command like:
 
 ```sh
-ibmcloud cdb deployment-connections <Redis deployment name>
+ibmcloud cdb deployment-connections <INSTANCE_NAME_OR_CRN>
 ```
 {: .pre}
 
 This provides you with your {{site.data.keyword.databases-for-redis}} connection URI that includes the hostname and port. To get the decoded CA certificate for the database, run:
 
 ```sh
-ibmcloud cdb deployment-cacert <Redis deployment name>
+ibmcloud cdb deployment-cacert <INSTANCE_NAME_OR_CRN>
 ```
 {: .pre}
 
 After the CA certificate is decoded, save it to a file to connect to the database later. If you don’t know the password for your deployment, get it either from your generated service credentials or create a new password by running:
 
 ```sh
-ibmcloud cdb deployment-user-password <Redis deployment name> admin <new password>
+ibmcloud cdb deployment-user-password <INSTANCE_NAME_OR_CRN> admin <NEW PASSWORD>
 ```
 {: .pre}
 
@@ -76,13 +76,13 @@ With this information, you have what you need for the destination and the source
 Since you have all the credentials for both databases (source and new {{site.data.keyword.databases-for-redis}} destination), you're ready to run the `pymigration.py` script. Run the code from your terminal by using the credentials from the prior steps:
 
 ```python
-python pymigration.py <source host> <source password> <source port>
-<destination host> <destination_username:destination_password> <destination port>
-<destination ca certificate path> --sslsrc --ssldst
+python pymigration.py <SOURCE HOST> <SOURCE PASSWORD> <SOURCE PORT>
+<DESTINATION HOST> <DESTINATION_USERNAME:DESTINATION_PASSWORD> <DESTINATION PORT>
+<DESTINATION CA CERTIFICATE PATH> --sslsrc --ssldst
 ```
 {: .pre}
 
-For newer versions of Redis as source, use `<source user:source password>`.
+For newer versions of Redis as source, use `<SOURCE USER:SOURCE PASSWORD>`.
 {: note}
 
 Since you are copying data from a source outside of {{site.data.keyword.databases-for-redis}} database, add the `--sslsrc` flag if your {{site.data.keyword.databases-for-redis}} database is SSL/TLS enabled. If it isn’t, then don’t add the flag. 

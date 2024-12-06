@@ -44,13 +44,13 @@ Follow these steps to retrieve your {{site.data.keyword.databases-for-redis}} in
 You can grab connection strings from the [CLI](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-connections).
 
 ```sh
-ibmcloud cdb deployment-connections example-deployment -u <newusername> [--endpoint-type <endpoint type>]
+ibmcloud cdb deployment-connections <INSTANCE_NAME_OR_CRN> -u <NEWUSERNAME> [--endpoint-type <endpoint type>]
 ```
 
-Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for a deployment named "example-deployment", use the following command.
+Full connection information is returned by the `ibmcloud cdb deployment-connections` command with the `--all` flag. To retrieve all the connection information for your deployment, use the following command:
 
 ```sh
-ibmcloud cdb deployment-connections example-deployment -u <newusername> --all [--endpoint-type <endpoint type>]
+ibmcloud cdb deployment-connections <INSTANCE_NAME_OR_CRN> -u <NEWUSERNAME> --all [--endpoint-type <endpoint type>]
 ```
 
 If you don't specify a user, the `deployment-connections` commands return information for the admin user by default. If you don't specify an endpoint type, the connection string returns the public endpoint by default. If your deployment has only a private endpoint, you must specify `--endpoint-type private` or the commands return an error. The user and endpoint type is not enforced. You can use any user on your deployment with either endpoint (if both exist on your deployment).
@@ -96,7 +96,7 @@ The new credentials appear in the table, and the connection strings are availabl
 If you manage your service through the {{site.data.keyword.cloud_notm}} CLI and the [cloud databases plug-in](/docs/cloud-databases?topic=cloud-databases-icd-cli), you can create a new user with `cdb user-create`. For example, to create a new user for an "example-deployment", use the following command.
 
 ```sh
-ibmcloud cdb user-create example-deployment <newusername> <newpassword>
+ibmcloud cdb user-create example-deployment <NEWUSERNAME> <NEWPASSWORD>
 ```
 {: .pre}
 
