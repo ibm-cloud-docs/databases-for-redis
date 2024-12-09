@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-12-06"
 
 keywords: redis, databases
 
@@ -78,7 +78,7 @@ r = redis.StrictRedis(
 ```
 {: pre}
 
-Redis has an array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients). Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability), security, and self-signed certificate support.
+Redis has an array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients){: external}. Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability), security, and self-signed certificate support.
 
 ## TLS and self-signed certificate support
 {: #tls-cert-support}
@@ -105,7 +105,7 @@ For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ]
 You can display the decoded certificate for your deployment with the CLI plug-in with a command like:
 
 ```sh
-ibmcloud cdb deployment-cacert <SERVICE_NAME>
+ibmcloud cdb deployment-cacert <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 

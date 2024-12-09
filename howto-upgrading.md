@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2024
-lastupdated: "2024-11-15"
+lastupdated: "2024-12-06"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -64,7 +64,7 @@ Upgrade to a new version when [restoring a backup](/docs/cloud-databases?topic=c
 When you upgrade and restore from backup through the {{site.data.keyword.cloud_notm}} CLI, use the provisioning command from the resource controller.
 
 ```sh
-ibmcloud resource service-instance-create <service-name> <service-id> <service-plan-id> <region>
+ibmcloud resource service-instance-create <INSTANCE-NAME> <SERVICE-ID> <SERVICE-PLAN-ID> <REGION>
 ```
 {: pre}
 
@@ -73,7 +73,7 @@ The parameters `service-name`, `service-id`, `service-plan-id`, and `region` are
 The list of backups and backup IDs for a deployment can be retrieved using the following command.
 
 ```sh
-ibmcloud cdb deployment-backups-list <deployment name or CRN> --json
+ibmcloud cdb deployment-backups-list <INSTANCE_NAME_OR_CRN> --json
 ```
 {: pre}
 

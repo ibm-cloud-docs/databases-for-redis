@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-12-06"
 
 keywords: redis, databases, redis cache
 
@@ -68,7 +68,7 @@ For example, the Redis documentation recommends the `allkeys-lru` setting as a g
 To configure the cache **from the CLI**, you can use the following:
 
 ```sh
-ibmcloud cdb deployment-configuration '<deployment name or CRN>' '{"configuration":{"maxmemory-policy":"allkeys-lru", "appendonly":"no", "stop-writes-on-bgsave-error":"no"}}'
+ibmcloud cdb deployment-configuration '<INSTANCE_NAME_OR_CRN>' '{"configuration":{"maxmemory-policy":"allkeys-lru", "appendonly":"no", "stop-writes-on-bgsave-error":"no"}}'
 ```
 {: pre}
 

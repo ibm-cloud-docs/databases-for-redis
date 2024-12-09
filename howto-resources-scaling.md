@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2024
-lastupdated: "2024-12-02"
+lastupdated: "2024-12-06"
 
 keywords: redis, databases, scaling, manual scaling, disk I/O, memory, CPU
 
@@ -140,7 +140,7 @@ Clicking "Apply changes" triggers this scale operation.
 For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command also reveals if your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
 
 ```sh
-ibmcloud cdb deployment-groups example-deployment
+ibmcloud cdb deployment-groups <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 
@@ -179,10 +179,10 @@ The deployment has two members, with 2048 MB of RAM and disk allocated in total.
 {: #resources-scaling-cli}
 {: cli}
 
-The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set in MB. For example, to scale the memory of the "example-deployment" to 4096 MB of RAM for each memory member (for a total memory of 8192 MB), you use the command:
+The `cdb deployment-groups-set` command allows either the total RAM or total disk allocation to be set in MB. For example, to scale the memory of your deployment to 4096 MB of RAM for each memory member (for a total memory of 8192 MB), you use the command:
 
 ```sh
-ibmcloud cdb deployment-groups-set example-deployment member --memory 8192
+ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> member --memory 8192
 ```
 {: pre}
 
@@ -193,7 +193,7 @@ ibmcloud cdb deployment-groups-set example-deployment member --memory 8192
 Use the following command to review the value of the `hostflavor` attribute. This is null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
 
 ```sh
-ibmcloud cdb groups <deployment_id> --json
+ibmcloud cdb groups <INSTANCE_NAME_OR_CRN> --json
 ```
 {: pre}
 
@@ -204,7 +204,7 @@ ibmcloud cdb groups <deployment_id> --json
 If your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) instance, you can adjust the memory, CPU, and disk options with the following command. If your database is not on Shared Compute, this command also moves a database from a different hosting model to the Shared Compute hosting model.
 
 ```sh
-ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--memory <val>] [--cpu <val>] [--disk <val>] [--hostflavor multitenant]
+ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> <GROUPID> [--memory <val>] [--cpu <val>] [--disk <val>] [--hostflavor multitenant]
 ```
 {: pre}
 
@@ -218,7 +218,7 @@ ibmcloud cdb deployment-groups-set crn:abc ... xyz:: member  --memory 24576 --cp
 If your database is an [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance, memory and CPU are adjusted together by selecting the Isolated Compute size (see all sizes in Table 1). Disk is scaled separately. If your database is not on Isolated Compute, this command also moves a database from a different hosting model to the Isolated Compute hosting model.
 
 ```sh
-ibmcloud cdb deployment-groups-set <deploymentid> <groupid> [--disk <val>] [--hostflavor <hostflavor>]
+ibmcloud cdb deployment-groups-set <INSTANCE_NAME_OR_CRN> <GROUPID> [--disk <val>] [--hostflavor <hostflavor>]
 ```
 {: pre}
 

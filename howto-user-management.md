@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2024
-lastupdated: "2024-10-14"
+lastupdated: "2024-12-06"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user, rbac
 
@@ -19,33 +19,33 @@ subcollection: databases-for-redis
 ## Managing Redis users
 {: #user-management-users}
 
-### The Admin user
+### The admin user
 {: #admin-user}
 
 When you provision a new instance in {{site.data.keyword.cloud_notm}}, you are automatically given access to the Admin user. If you are using Redis 5.x and older, the Admin user is the only user available on your instance. If you are using Redis 6.x and newer, you have the Admin user and the ability to create users and credentials.
 
 To use the Admin user to connect to your instance, first set the Admin password.
 
-#### Setting the Admin password in the UI
+#### Setting the admin password in the UI
 {: #user-management-set-admin-password-ui}
 {: ui}
 
 Set your Admin password through the UI by selecting your instance from the Resource List in the [{{site.data.keyword.cloud_notm}} Dashboard](https://cloud.ibm.com/){: external}. Then, select **Settings**. Next, select *Change Database Admin Password*.
 
-#### Setting the Admin password in the CLI
+#### Setting the admin password in the CLI
 {: #user-management-set-admin-password-cli}
 {: cli}
 
 Use the `cdb user-password` command from the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin) to set the `admin` password.
 
-For example, to set the Admin password for an instance named `example-instance`, use the following command:
+For example, to set the admin password for your instance, use the following command:
 
 ```sh
-ibmcloud cdb user-password example-instance admin <newpassword>
+ibmcloud cdb user-password <INSTANCE_NAME_OR_CRN> admin <NEWPASSWORD>
 ```
 {: pre}
 
-#### Setting the Admin password in the API
+#### Setting the admin password in the API
 {: #user-management-set-admin-password-api}
 {: api}
 
@@ -79,7 +79,7 @@ If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thorou
 To update the `default` user password, use a command like:
 
 ```sh
-ibmcloud cdb deployment-user-password <Redis deployment name> default <new password>
+ibmcloud cdb deployment-user-password <INSTANCE_NAME_OR_CRN> default <NEW PASSWORD>
 ```
 {: pre}
 
@@ -155,7 +155,7 @@ POST /deployments/{id}/users/{user_type}
 To create a user using RBAC roles, use a command like:
 
 ```sh
-ibmcloud cdb deployment-user-create <CRN_NAME> <USERNAME> <PASSWORD> -r "+@read +@write"
+ibmcloud cdb deployment-user-create <INSTANCE_NAME_OR_CRN> <USERNAME> <PASSWORD> -r "+@read +@write"
 ```
 {: pre}
 

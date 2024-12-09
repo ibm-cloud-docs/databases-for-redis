@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2024
-lastupdated: "2024-10-17"
+lastupdated: "2024-12-06"
 
 keywords: redis, databases, update, client, pub/sub
 
@@ -76,17 +76,17 @@ There are other connection options and parameters that are supported by `redli`.
 
 `redis-cli` is the official supported command-line interface for Redis. Unfortunately, it does not support TLS connections.
 
-If you choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, install [brew](http://brew.sh) and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download) and build it yourself. 
+If you choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, install [brew](http://brew.sh){: external} and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download){: external} and build it yourself. 
 
 ### Connecting with `redis-cli`
 {: #connecting-with-redis-cli}
 
-`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, set up a utility like [`stunnel`](https://www.stunnel.org/index.html), which wraps the `redis-cli` connection in TLS encryption.
+`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, set up a utility like [`stunnel`](https://www.stunnel.org/index.html){: external}, which wraps the `redis-cli` connection in TLS encryption.
 
 ### Setting up `stunnel`
 {: #setting-up-stunnel}
 
-1. Install `stunnel`. Use your package manager for Linux, Homebrew for Mac, or [download](https://www.stunnel.org/downloads.html) the appropriate package for your platform.
+1. Install `stunnel`. Use your package manager for Linux, Homebrew for Mac, or [download](https://www.stunnel.org/downloads.html){: external} the appropriate package for your platform.
 
 2. Grab connection information.
    To set up a connection, `stunnel` needs the host, the port, and the certificate of your Redis deployment. Host and port are both available from the CLI "composed" connection string. They can also be found parsed out in the [Connection Strings Breakdown](/docs/databases-for-redis?topic=databases-for-redis-connection-strings&interface=cli#connection-strings-breakdown) that is provided for connecting external applications and drivers.
@@ -117,7 +117,7 @@ If you choose to use `redis-cli`, there are some extra configuration steps. It c
 5. In a new terminal window, run `redis-cli` pointing to the local host and port, and authenticate with the deployment's credentials.
 
     ```sh
-    redis-cli -p 6830 -a <password>
+    redis-cli -p 6830 -a <PASSWORD>
     ```
     {: pre}
 
@@ -135,7 +135,7 @@ If you choose to use `redis-cli`, there are some extra configuration steps. It c
 You can display the decoded certificate for your deployment with the CLI plug-in with a command like:
 
 ```sh
-ibmcloud cdb deployment-cacert <SERVICE_NAME>
+ibmcloud cdb deployment-cacert <INSTANCE_NAME_OR_CRN>
 ```
 {: pre}
 
