@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-04-28"
+  years: 2017, 2024
+lastupdated: "2024-12-11"
 
 keywords: redis, databases, pricing, resources, scaling
 
@@ -21,7 +21,7 @@ A {{site.data.keyword.databases-for-redis}} Standard plan deploys as one highly 
 
 Templates are provided for ease of use and provide balanced resource allocations appropriate for general purpose workloads. The **Custom** tab can be used to configure Disk, RAM, and vCPU, as desired.
 
-For pricing estimation, use the **Add to Estimate** button on the [{{site.data.keyword.databases-for-redis}} catalog page](https://cloud.ibm.com/catalog/databases-for-redis). Input your total consumption across two data members into the calculator. This is roughly double the size of your data because your data is replicated to both members. For example, 1 GB of disk and 1 GB of RAM across two data members would be priced at 2 GB of disk and 2 GB of RAM respectively. 
+For pricing estimation, use the **Add to Estimate** button on the [{{site.data.keyword.databases-for-redis}} catalog page](https://cloud.ibm.com/databases/databases-for-redis/create?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPXJlZGlzI3NlYXJjaF9yZXN1bHRz). Input your total consumption across two data members into the calculator. This is roughly double the size of your data because your data is replicated to both members. For example, 1 GB of disk and 1 GB of RAM across two data members would be priced at 2 GB of disk and 2 GB of RAM respectively. 
 
 ## Backups Pricing
 {: #pricing-backup}
