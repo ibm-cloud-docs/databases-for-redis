@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2024
-lastupdated: "2024-12-02"
+  years: 2018, 2025
+lastupdated: "2025-01-31"
 
 keywords: databases-for-redis release notes
 
@@ -20,12 +20,28 @@ content-type: release-note
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
 
+## 31 January 2025
+{: #databases-for-redis-31jan2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-redis}} version 6.2 end of life
+:  End of life announcement: Version 6.2 reaches end of life on **30 July 2025**. All {{site.data.keyword.databases-for-redis}} instances on version 6.2 that are still active, will be upgraded in-place to the next major version. However, there are no SLAs for this forced migration.
+
+We recommend that you [upgrade to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading){: external} before the EOL date of your database version.
+
+## 15 January 2025
+{: #databases-for-redis-15jan2025}
+{: release-note}
+
+{{site.data.keyword.databases-for-redis}}  metrics addition
+:  Metrics for *active connections*, *blocked connections*, *rejected connections*, *number of operations per second*, and*total commands processed* are added for {{site.data.keyword.databases-for-redis}}. You can use these metrics on {{site.data.keyword.monitoringfull}} in your 'custom report' or leverage the {{site.data.keyword.databases-for-redis}} dashboard. For more information, see [Redis metrics](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-monitoring#metrics-by-plan-redis-desc){: external}.
+
 ## 15 November 2024
 {: #databases-for-redis-15nov2024}
 {: release-note}
 
 {{site.data.keyword.databases-for}} logs and events are now available on {{site.data.keyword.logs_full}}
-: {{site.data.keyword.databases-for}} has onboarded {{site.data.keyword.logs_full_notm}}, a scalable logging service that persists logs and provides users with capabilities for querying, tailing, and visualizing logs. Customers are expected to use {{site.data.keyword.logs_full_notm}} to review their database logs and events starting **November 15, 2024**. For more information, see [Set up logging and monitoring](/docs/databases-for-redis?topic=databases-for-redis-getting-started-cdb-logging-monitoring&interface=ui) and [About IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl).
+: {{site.data.keyword.databases-for}} has onboarded {{site.data.keyword.logs_full_notm}}, a scalable logging service that persists logs and provides users with capabilities for querying, tailing, and visualizing logs. Use {{site.data.keyword.logs_full_notm}} to review your database logs and events starting **November 15, 2024**. For more information, see [Set up logging and monitoring](/docs/databases-for-redis?topic=databases-for-redis-getting-started-cdb-logging-monitoring&interface=ui) and [About IBM Cloud Logs](/docs/cloud-logs?topic=cloud-logs-about-cl).
 
 ## 16 September 2024
 {: #databases-for-redis-16sept2024}
