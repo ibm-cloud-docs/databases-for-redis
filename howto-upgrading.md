@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-12-11"
+  years: 2021, 2025
+lastupdated: "2025-02-17"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -43,8 +43,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 
 | Current version |	Major version upgrade path |
 | ---- | ----- |
-| {{site.data.keyword.databases-for-redis}} V5  |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
-| {{site.data.keyword.databases-for-redis}} V6 |	-> {{site.data.keyword.databases-for-redis}} V6.2 |
+| {{site.data.keyword.databases-for-redis}} V6.2 |	-> {{site.data.keyword.databases-for-redis}} V7.2 |
 {: caption="Major version upgrade paths" caption-side="top"}
 
 
@@ -83,7 +82,7 @@ Use the ID of your chosen backup as a parameter in the resource controller comma
 ibmcloud resource service-instance-create example-upgrade databases-for-redis standard us-south \
 -p \ '{
   "backup_id": "crn:v1:bluemix:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-  "version":"5.0"
+  "version":"6.2"
 }'
 ```
 {: pre}
@@ -115,7 +114,7 @@ curl -X POST \
     "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
     "resource_plan_id": "databases-for-redis-standard",
     "backup_id": "crn:v1:bluemix:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-    "version":"5.0"
+    "version":"6.2"
   }'
 ```
 {: pre}
