@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2024
-lastupdated: "2024-11-28"
+  years: 2024, 2025
+lastupdated: "2025-03-19"
 
 keywords: redis, databases, best practices
 
@@ -48,7 +48,7 @@ Consider network bandwidth
 :   Your network bandwidth might significantly impact your {{site.data.keyword.databases-for-redis}} performance. Ensure that you have sufficient network bandwidth to handle your database loads.
 
 Monitoring and adjustments
-:   Our recommendation is to monitor your {{site.data.keyword.databases-for-redis}} instance performance and usage to determine the evolving usage pattern of your database instance and resize as needed.
+:   Our recommendation is to monitor your {{site.data.keyword.databases-for-redis}} instance performance and usage using {{site.data.keyword.monitoringlong}} to determine the evolving usage pattern of your database instance and resize as needed.
 
 ## Best practices for performance
 {: #best-practice-performance}
@@ -97,10 +97,10 @@ You must monitor your LogDNA for the following common errors and take corrective
 {: #best-practice-general}
 
 Connection pooling
-:   Creating or closing connections is costly. Managing connections efficiently is important and connection pooling is helpful to minimize the overhead associated with opening and closing connections.
+:   Creating or closing connections is costly. Managing connections efficiently is important and connection pooling is helpful to minimize the overhead associated with opening and closing connections. For more information, see [connection pooling](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-managing-redis-connections&interface=cli#managing-redis-connection-pooling).
 
 Connection limits 
-:   Utilize connections efficiently. Overloading {{site.data.keyword.databases-for-redis}} with too many connections will return errors and you will face application disruptions. Leave some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. You are encouraged to use connection pooling.
+:   Utilize connections efficiently. Overloading {{site.data.keyword.databases-for-redis}} with too many connections will return errors and you will face application disruptions. Leave some connections available, as a number of them are reserved internally to maintain the state and integrity of your database. You are encouraged to use connection pooling. For more information, see [connection limits](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-managing-redis-connections&interface=cli#managing-redis-connection-limits).
 
 Connection timeouts
 :   Setting appropriate timeout values for your connections is also important to prevent resources being tied up indefinitely. However, be careful with setting short timeouts because this can lead to connection churn and increased latency. Align timeouts with the operational expectations of your application.
