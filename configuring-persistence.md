@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2025
-lastupdated: "2025-05-07"
+lastupdated: "2025-05-08"
 
 subcollection: databases-for-redis
 
@@ -48,15 +48,14 @@ In {{site.data.keyword.databases-for-redis_full}} deployment, both RDB snapshot 
 {{site.data.keyword.databases-for-redis}} operates in high-availability, wherein RDB snapshots cannot be disabled.
 {: note}
 
-To provision a Redis instance in {{site.data.keyword.cloud_notm}}, follow [these steps](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=ui).
+1. Follow [these steps](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=ui) to provision a {{site.data.keyword.databases-for-redis}} instance.
+1. Check the persistence setting by verifying {{site.data.keyword.databases-for-redis}} configuration. Access the ICD Redis instance using Redis CLI.
 
-To check the persistence setting, you can verify your {{site.data.keyword.databases-for-redis}} configuration by accessing the ICD Redis instance using Redis CLI.
+  As the default, AOF is set to *yes*, so {{site.data.keyword.databases-for-redis}} is configured to take AOF persistence with fsync every second along with RDB snapshots. 
 
-As the default, AOF is set to *yes*, so {{site.data.keyword.databases-for-redis}} is configured to take AOF persistence with fsync every second along with RDB snapshots. 
+  AOF can be turned off if you want to use Redis as a cache. This can also increase database availability, as the Redis process doesn’t have to replay the transaction logs in case of a failover. For more information, see [Configuring Redis as a cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache).
 
-AOF can be turned off if you want to use Redis as a cache. This can also increase database availability, as the Redis process doesn’t have to replay the transaction logs in case of a failover. For more information, see [Configuring Redis as a cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache).
-
-### Reconfigure a Databases for Redis as a Persistent setting
+### Reconfigure a Databases for Redis as a persistent setting
 {: #reconfigure-redis-as-persistent}
 
 To configure changes to a {{site.data.keyword.databases-for-redis}} instance, you must utilize either the {{site.data.keyword.cloud_notm}} CLI or API for configuring persistence, as in the following example. 
@@ -67,14 +66,16 @@ Adjust the following settings:
 - Ensure `maxmemory-policy` is set to *noeviction* to prevent key expiration.
 - Set `stop-writes-on-bgsave-error` to *yes* to halt writes in case of backup errors.
 
-CLI
+CLI example
 
-```
+```sh
 ibmcloud cdb deployment-configuration '<deployment name or CRN>' '{"configuration":{"maxmemory-policy":" noeviction", "appendonly":"yes", "stop-writes-on-bgsave-error":"yes"}}'
 ```
+{: pre}
 
-API
+API example
 
-```
+```curl
 curl -X PATCH 'https://api.{region}.databases.cloud.ibm.com/v4/ibm/deployments/{id}/configuration/schema' -H "Authorization: Bearer $APIKEY" -H "Content-Type: application/json" -d '{"configuration":{ "maxmemory-policy":""noeviction, "appendonly":"yes", "stop-writes-on-bgsave-error":"yes" } }'
 ```
+{: pre}
