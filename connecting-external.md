@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2018, 2024
-lastupdated: "2024-12-06"
+  years: 2018, 2025
+lastupdated: "2025-05-14"
 
 keywords: redis, databases
 
@@ -33,7 +33,7 @@ All the information a driver needs to make a connection to your deployment is in
 | `Authentication` | `Method` | How authentication takes place; "direct" authentication is handled by the driver. |
 | `Hosts` | `0...` | A hostname and port to connect to. |
 | `Composed` | `0...` | A URI combining scheme, authentication, host, and path. |
-| `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment. |
+| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment. |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
 {: caption="redis/URI connection information" caption-side="top"}
 
@@ -78,20 +78,20 @@ r = redis.StrictRedis(
 ```
 {: pre}
 
-Redis has an array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients){: external}. Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability), security, and self-signed certificate support.
+Redis has an array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients){: external}. Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability), security, and service proprietary certificate support.
 
-## TLS and self-signed certificate support
+## TLS and service proprietary certificate support
 {: #tls-cert-support}
 
 All connections to {{site.data.keyword.databases-for-redis}} are TLS 1.2 enabled, so the driver you use to connect need to be able to support TLS encryption.
 
 If your driver does not support the `rediss:` protocol or TLS/SSL connections, it is still possible to tunnel connections to the Redis database endpoint by using a TLS/SSL tunnel application such as Stunnel. An example of using Stunnel can be found on the [Connecting with a command-line client](/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client) page, where it is used to connect the `redis-cli` application.
 
-Deployments also come with a self-signed certificate so you can verify the server upon starting a connection. While not required, it is an additional security step that is recommended if your client supports it.
+Deployments also come with a service proprietary certificate so you can verify the server upon starting a connection. While not required, it is an additional security step that is recommended if your client supports it.
 
 For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ](/docs/databases-for-redis?topic=databases-for-redis-faq-cert){: external}.
 
-### Using the self-signed certificate
+### Using the service proprietary certificate
 {: #using-cert}
 
 1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the service credential connection information.
@@ -99,7 +99,7 @@ For more information, see [{{site.data.keyword.databases-for}} Certificates FAQ]
 3. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the driver or client.
 
-### CLI plug-in support for the self-signed certificate
+### CLI plug-in support for the service proprietary certificate
 {: #cli-support-cert}
 
 You can display the decoded certificate for your deployment with the CLI plug-in with a command like:
