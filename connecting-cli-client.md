@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2024
-lastupdated: "2024-12-06"
+  years: 2017, 2025
+lastupdated: "2025-05-14"
 
 keywords: redis, databases, update, client, pub/sub
 
@@ -32,8 +32,8 @@ The information the clients need to connect to your deployment is in the "CLI" s
 | `Composed` | | A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings and uses `Arguments` as command-line parameters. |
 | `Environment` | | A list of key/values you set as environment variables. |
 | `Arguments` | 0... | The information that is passed as arguments to the command shown in the Bin field. |
-| `Certificate` | Base64 | A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
-| `Certificate` | Name | The allocated name for the self-signed certificate. |
+| `Certificate` | Base64 | A service proprietary certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
+| `Certificate` | Name | The allocated name for the service proprietary certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`. |
 {: caption="`redis`/`cli` connection information" caption-side="top"}
 
@@ -63,7 +63,7 @@ ibmcloud cdb cxn NewRedis -s
 
 The command prompts for the `admin` password and then runs the `redli` command-line client to connect to the database.
 
-If you have not installed the cloud databases plug-in, connect to your Redis databases with the `redli` command. Download and save the self-signed certificate from your deployment. Then, use `redli` by giving it the "composed" connection string and the path to the self-signed certificate. 
+If you have not installed the cloud databases plug-in, connect to your Redis databases with the `redli` command. Download and save the service proprietary certificate from your deployment. Then, use `redli` by giving it the "composed" connection string and the path to the service proprietary certificate. 
 
 ```sh
 redli --uri rediss://admin:$PASSWORD@e6b2c3f8-54a6-439e-8d8a-aa6c4a78df49.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32371/0 --certfile /path/to/redis-cert.pem
@@ -121,7 +121,7 @@ If you choose to use `redis-cli`, there are some extra configuration steps. It c
     ```
     {: pre}
 
-## Using the self-signed certificate
+## Using the service proprietary certificate
 {: #using-cert}
 
 1. Copy the certificate information from the _Endpoints_ panel or the Base64 field of the service credential connection information.
@@ -129,7 +129,7 @@ If you choose to use `redis-cli`, there are some extra configuration steps. It c
 3. Save the certificate  to a file. (You can use the Name that is provided or your own file name).
 4. Provide the path to the certificate to the driver or client.
 
-## CLI plug-in support for the self-signed certificate
+## CLI plug-in support for the service proprietary certificate
 {: #cli-support-cert}
 
 You can display the decoded certificate for your deployment with the CLI plug-in with a command like:

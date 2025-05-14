@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2024
-lastupdated: "2024-10-09"
+  years: 2017, 2025
+lastupdated: "2025-05-14"
 
 keywords: redis, databases, connection strings
 
@@ -147,7 +147,7 @@ The "Redis" section of a credential created on the *Service credentials* page co
 | `Authentication` | `Method`|How authentication takes place; "direct" authentication is handled by the driver. |
 | `Hosts` | `0...` | A hostname and port to connect to. |
 | `Composed` | `0...` | A URI combining Scheme, authentication, host, and path. |
-| `Certificate` | `Name` | The allocated name for the self-signed certificate for database deployment. |
+| `Certificate` | `Name` | The allocated name for the service proprietary certificate for database deployment. |
 | `Certificate` | Base64 | A base64 encoded version of the certificate. |
 {: caption="Redis/URI connection information" caption-side="top"}
 
@@ -166,8 +166,8 @@ The "CLI" section of a credential created on the *Service credentials* page cont
 | `Composed` | | A formatted command to establish a connection to your deployment. The command combines the `Bin` executable, `Environment` variable settings and uses `Arguments` as command-line parameters. |
 | `Environment` | | A list of keys or values you set as environment variables. |
 | `Arguments` | 0... | The information that is passed as arguments to the command shown in the Bin field. |
-| `Certificate` | Base64| A self-signed certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
-| `Certificate` | Name | The allocated name for the self-signed certificate. |
+| `Certificate` | Base64| A service proprietary certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
+| `Certificate` | Name | The allocated name for the service proprietary certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`.  |
 {: caption="Redis/cli connection information" caption-side="top"}
 
