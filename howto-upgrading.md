@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-17"
+lastupdated: "2025-05-16"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -91,13 +91,13 @@ ibmcloud resource service-instance-create example-upgrade databases-for-redis st
 {: #upgrading-api}
 {: api}
 
-Similar to provisioning through the API, you need to complete [the required steps to use the resource controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=api#provision-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, and `resource_plan_id` are all required. You also supply the version and backup ID. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
+Similar to provisioning through the API, you need to complete [the required steps to use the resource controller API](/docs/databases-for-redis?topic=databases-for-redis-provisioning&interface=api#provision-controller-api) before you can use it to upgrade from a backup. Then, send the API a POST request. The parameters `name`, `target`, `resource_group`, `resource_plan_id`, `backup_id`, `service_endpoints`, and `version` are all required. The new deployment has the same memory and disk allocation as the source deployment at the time of the backup.
 
 The list of backups and backup IDs for a deployment can be retrieved using the following API request.
 
 ```sh
 curl -X GET  https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/backups  
--H 'Authorization: Bearer <>' \
+-H 'Authorization: Bearer <token>' \
 ```
 {: pre}
 
@@ -106,15 +106,18 @@ Use the ID of your chosen backup in the resource controller API request as in th
 ```sh
 curl -X POST \
   https://resource-controller.cloud.ibm.com/v2/resource_instances \
-  -H 'Authorization: Bearer <>' \
+  -H 'Authorization: Bearer <token>' \
   -H 'Content-Type: application/json' \
     -d '{
-    "name": "my-instance",
-    "target": "bluemix-us-south",
+    "name": "new-instance-name",
+    "target": "us-south",
     "resource_group": "5g9f447903254bb58972a2f3f5a4c711",
     "resource_plan_id": "databases-for-redis-standard",
-    "backup_id": "crn:v1:bluemix:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-    "version":"6.2"
+    "parameters":{
+		  "backup_id": "crn:v1:bluemix:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
+		  "service_endpoints": "private",
+		  "version": "6.2"
+    }
   }'
 ```
 {: pre}
