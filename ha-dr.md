@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-04-28"
+lastupdated: "2025-06-04"
 
 keywords: HA, DR, high availability, disaster recovery, disaster recovery plan, disaster event, redis
 
@@ -27,9 +27,9 @@ For more information about the available {{site.data.keyword.cloud_notm}} region
 
 ![Redis architecture](/images/Redis-architecure.png){: caption="Redis architecture" caption-side="bottom"}
 
-{{site.data.keyword.databases-for-redis}} provides replication, failover, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and some failures. Deployments contain a cluster with two data members in a primary plus replica configuration. The replica is kept up to date using asynchronous replication. High availability is monitored and managed with three [Redis sentinels](https://redis.io/topics/sentinel.html){: .external}
+{{site.data.keyword.databases-for-redis}} provides replication, failover, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and some failures. Deployments contain a cluster with two data members in a primary plus replica configuration. The replica is kept up to date using asynchronous replication. High availability is monitored and managed with three [Redis sentinels](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/){: .external}
 
-By default, data persistence is enabled on all deployments and your data is written to disk. {{site.data.keyword.databases-for-redis}} uses a combination of [RDB snapshots and AOF (Append Only File)](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence.html){: .external} to persist data to disk. The interval for {{site.data.keyword.databases-for-redis}} to write to disk (fsync) is set to [once every second](https://redis.io/topics/persistence#how-durable-is-the-append-only-file.html){: .external} to balance durability and performance.
+By default, data persistence is enabled on all deployments and your data is written to disk. {{site.data.keyword.databases-for-redis}} uses a combination of [RDB snapshots and AOF (Append Only File)](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/){: .external} to persist data to disk. The interval for {{site.data.keyword.databases-for-redis}} to write to disk (fsync) is set to [once every second](https://redis.io/topics/persistence#how-durable-is-the-append-only-file.html){: .external} to balance durability and performance.
 
 You can turn off data persistence, which is useful for [configuring Redis as a cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache).
 
@@ -44,7 +44,7 @@ You can turn off data persistence, which is useful for [configuring Redis as a 
 | -------------- | -------------- | -------------- |
 | Automatic failover | Standard on all clusters and resilient against a zone or single member failure | |
 | Member count | Minimum - 2 members. Default is a Standard two member cluster in a primary and replica configuration. A two-member cluster will automatically recover from a single instance or zone failure (with data loss up to the lag threshold). | Three Sentinel nodes to monitor the health of the cluster and coordinate failovers. |
-|Asynchronous replication | Enables replication from primary to replica without blocking the write path, ensuring high availability with low latency. Refer to [Asynchronous replication](https://redis.io/docs/latest/operate/oss_and_stack/management/replication.html){: .external} below. |May result in data loss during failover due to replication lag (RPO > 0). Not suitable where strict data durability is required.|
+|Asynchronous replication | Enables replication from primary to replica without blocking the write path, ensuring high availability with low latency. Refer to [Asynchronous replication](https://redis.io/docs/latest/operate/oss_and_stack/management/replication/){: .external} below. |May result in data loss during failover due to replication lag (RPO > 0). Not suitable where strict data durability is required.|
 {: caption="High availability features" caption-side="top"}
 
 #### Asynchronous replication for {{site.data.keyword.databases-for-redis}}
