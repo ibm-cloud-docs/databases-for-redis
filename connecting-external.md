@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2025
-lastupdated: "2025-05-14"
+lastupdated: "2025-06-04"
 
 keywords: redis, databases
 
@@ -78,7 +78,7 @@ r = redis.StrictRedis(
 ```
 {: pre}
 
-Redis has an array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients){: external}. Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability), security, and service proprietary certificate support.
+Redis has an array of clients for applications to use. A fairly [comprehensive list is maintained on the Redis site](https://redis.io/clients){: external}. Some useful things to keep in mind when choosing a client are features that allow you to easily design your application for the cloud, like configuring [high-availability](/docs/databases-for-redis?topic=databases-for-redis-redis-ha-dr), security, and service proprietary certificate support.
 
 ## TLS and service proprietary certificate support
 {: #tls-cert-support}

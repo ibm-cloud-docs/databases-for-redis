@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2024
-lastupdated: "2024-10-17"
+  years: 2018, 2025
+lastupdated: "2025-06-04"
 
 keywords: redis, databases, soc, hipaa, gdpr, terms
 
@@ -34,7 +34,7 @@ subcollection: databases-for-redis
 {: #data-resilience}
 
 - [Backups](/docs/databases-for-redis?topic=databases-for-redis-dashboard-overview&interface=ui#dashboard-overview-backups) for your deployment are included, unless you [configure Redis as a cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache). The {{site.data.keyword.databases-for-redis}} backups reside in [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage&cloud-object-storage-about-cloud-object-storage) and are also [encrypted](/docs/cloud-object-storage?topic=cloud-object-storage-security).
-- All {{site.data.keyword.databases-for-redis}} deployments are configured with replication to provide both data resilience and [high-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability). Deployments contain a cluster with two data members in a primary/replica configuration and state is managed with a quorum of three [Redis sentinels](https://redis.io/topics/sentinel){: external}.
+- All {{site.data.keyword.databases-for-redis}} deployments are configured with replication to provide both data resilience and [high-availability](/docs/databases-for-redis?topic=databases-for-redis-redis-ha-dr). Deployments contain a cluster with two data members in a primary/replica configuration and state is managed with a quorum of three [Redis sentinels](https://redis.io/topics/sentinel){: external}.
 - If you deploy to an {{site.data.keyword.cloud_notm}} Single-Zone Region (SZR), each database node resides on a different host in the data center. 
 - If you deploy to an {{site.data.keyword.cloud_notm}} Multi-Zone Region (MZR), the nodes are spread over the region's availability zone locations.
  

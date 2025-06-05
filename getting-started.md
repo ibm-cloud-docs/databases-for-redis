@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2018, 2024
-lastupdated: "2024-12-06"
+  years: 2018, 2025
+lastupdated: "2025-06-04"
 
 keywords: redis, getting started redis, deploy redis, redli
 
@@ -176,13 +176,13 @@ OK
 
 * To use {{site.data.keyword.databases-for-redis_full}} with your applications, see [Connecting an external application](/docs/databases-for-redis?topic=databases-for-redis-external-app) and [Connecting an IBM Cloud application](/docs/databases-for-redis?topic=databases-for-redis-ibmcloud-app).
 
-* To ensure the stability of your applications and your database, see [High-availability](/docs/databases-for-redis?topic=databases-for-redis-high-availability) and [Performance](/docs/databases-for-redis?topic=databases-for-redis-performance).
+* To ensure the stability of your applications and your database, see [High-availability](/docs/databases-for-redis?topic=databases-for-redis-redis-ha-dr) and [Performance](/docs/databases-for-redis?topic=databases-for-redis-performance).
 
 * For more information on migrating your existing data to {{site.data.keyword.databases-for-redis}}, see [A how-to for migrating Redis to IBM Cloud Databases for Redis](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-migrating&interface=ui).
 
 ## Things to remember
 {: #remember_important}
 
-* {{site.data.keyword.databases-for-redis_full}} deployments are set by default as [**persistence**](/docs/databases-for-redis?topic=databases-for-redis-high-availability&interface=cli#high-availability-features), however, you can change it as [**Cache**](/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli).
+* {{site.data.keyword.databases-for-redis_full}} deployments are set by default as [**persistence**](/docs/databases-for-redis?topic=databases-for-redis-redis-ha-dr#ha-feature), however, you can change it as [**Cache**](/docs/databases-for-redis?topic=databases-for-redis-redis-cache&interface=cli).
 
-* Integrate {{site.data.keyword.databases-for-redis_full}} with [{{site.data.keyword.monitoringfull}}](/docs/databases-for-redis?topic=databases-for-redis-monitoring) and [{{site.data.keyword.logs_full}}](/docs/log-analysis?topic=log-analysis-getting-started) services to observe trends in your usage and right size your instance.
+* Integrate {{site.data.keyword.databases-for-redis_full}} with [{{site.data.keyword.monitoringfull}}](/docs/databases-for-redis?topic=databases-for-redis-monitoring) and [{{site.data.keyword.logs_routing_full}}](/docs/logs-router?topic=logs-router-about) services to observe trends in your usage and right size your instance.
