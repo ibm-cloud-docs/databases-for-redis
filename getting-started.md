@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2018, 2025
-lastupdated: "2025-06-04"
+lastupdated: "2025-06-05"
 
 keywords: redis, getting started redis, deploy redis, redli
 
@@ -172,13 +172,13 @@ OK
 
 * If you are using Redis for the first time, read the [official Redis documentation](https://redis.io/documentation){: .external}, [an introduction to Redis data types and abstractions](https://redis.io/topics/data-types-intro){: .external}, and a [Command reference](https://redis.io/commands/){: .external} to learn about Redis.
 
-* Implement {{site.data.keyword.databases-for-redis_full}} best practices, read [Best practices for Redis on the IBM Cloud](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-best-practices){: .external}.
+* Implement {{site.data.keyword.databases-for-redis_full}} best practices, read [Best practices for Redis on the IBM Cloud](/docs/databases-for-redis?topic=databases-for-redis-best-practices){: .external}.
 
 * To use {{site.data.keyword.databases-for-redis_full}} with your applications, see [Connecting an external application](/docs/databases-for-redis?topic=databases-for-redis-external-app) and [Connecting an IBM Cloud application](/docs/databases-for-redis?topic=databases-for-redis-ibmcloud-app).
 
 * To ensure the stability of your applications and your database, see [High-availability](/docs/databases-for-redis?topic=databases-for-redis-redis-ha-dr) and [Performance](/docs/databases-for-redis?topic=databases-for-redis-performance).
 
-* For more information on migrating your existing data to {{site.data.keyword.databases-for-redis}}, see [A how-to for migrating Redis to IBM Cloud Databases for Redis](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-migrating&interface=ui).
+* For more information on migrating your existing data to {{site.data.keyword.databases-for-redis}}, see [A how-to for migrating Redis to IBM Cloud Databases for Redis](/docs/databases-for-redis?topic=databases-for-redis-migrating&interface=ui).
 
 ## Things to remember
 {: #remember_important}
