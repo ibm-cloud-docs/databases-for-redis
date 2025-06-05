@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-06-04"
+lastupdated: "2025-06-05"
 
 keywords: HA, DR, high availability, disaster recovery, disaster recovery plan, disaster event, redis
 
@@ -29,7 +29,7 @@ For more information about the available {{site.data.keyword.cloud_notm}} region
 
 {{site.data.keyword.databases-for-redis}} provides replication, failover, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and some failures. Deployments contain a cluster with two data members in a primary plus replica configuration. The replica is kept up to date using asynchronous replication. High availability is monitored and managed with three [Redis sentinels](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/){: .external}
 
-By default, data persistence is enabled on all deployments and your data is written to disk. {{site.data.keyword.databases-for-redis}} uses a combination of [RDB snapshots and AOF (Append Only File)](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/){: .external} to persist data to disk. The interval for {{site.data.keyword.databases-for-redis}} to write to disk (fsync) is set to [once every second](https://redis.io/topics/persistence#how-durable-is-the-append-only-file.html){: .external} to balance durability and performance.
+By default, data persistence is enabled on all deployments and your data is written to disk. {{site.data.keyword.databases-for-redis}} uses a combination of [RDB snapshots and AOF (Append Only File)](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/){: .external} to persist data to disk. The interval for {{site.data.keyword.databases-for-redis}} to write to disk (fsync) is set to [once every second](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/#how-durable-is-the-append-only-file){: .external} to balance durability and performance.
 
 You can turn off data persistence, which is useful for [configuring Redis as a cache](/docs/databases-for-redis?topic=databases-for-redis-redis-cache).
 
@@ -54,7 +54,7 @@ By default, {{site.data.keyword.databases-for-redis}} uses asynchronous replicat
 
 {{site.data.keyword.databases-for-redis}} replication is designed for high availability, not strict durability. A failover is automatically triggered if the primary becomes unreachable, promoting the replica to leader. Because replication is asynchronous, some committed writes may be lost during this process. This replication lag defines the Recovery Point Objective (RPO) of {{site.data.keyword.databases-for-redis}} deployments.
 
-To reduce data loss risk, {{site.data.keyword.databases-for-redis}} supports persistence mechanisms like [RDB snapshots and AOF(Append Only File)](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence.html){: .external} , which write data to disk independently of the replication process. These should be configured carefully based on workload requirements.
+To reduce data loss risk, {{site.data.keyword.databases-for-redis}} supports persistence mechanisms like [RDB snapshots and AOF(Append Only File)](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/){: .external}, which write data to disk independently of the replication process. These should be configured carefully based on workload requirements.
 
 Asynchronous replication in {{site.data.keyword.databases-for-redis}} ensures fast performance but does not eliminate the possibility of data loss during failover events. It is recommended for workloads where speed and availability outweigh strict data consistency.
 {: .note}
