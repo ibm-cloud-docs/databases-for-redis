@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-12-06"
+  years: 2019, 2025
+lastupdated: "2025-07-07"
 
 keywords: redis, databases, scaling, manual scaling, disk I/O, memory, CPU
 
@@ -82,6 +82,9 @@ Old style dedicated core instances are deprecated, and will be removed in May 20
 {: #resources-scaling-consider}
 
 - Scaling your deployment up might cause your databases to restart. If your deployment needs to be moved to a host with more capacity then the databases are restarted as part of the move.
+
+This is the only supported method for clients to restart their instances on {{site.data.keyword.databases}}. {{site.data.keyword.cloud}} support does not support on-demand restarts. 
+{: tip}
 
 - Scaling down RAM or CPU does not trigger database restarts.
 
