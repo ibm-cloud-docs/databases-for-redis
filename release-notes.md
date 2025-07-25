@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2025
-lastupdated: "2025-03-19"
+lastupdated: "2025-07-25"
 
 keywords: databases-for-redis release notes
 
@@ -25,7 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 {{site.data.keyword.databases-for-redis}} {{site.data.keyword.satelliteshort}} plan is deprecated
-:   {{site.data.keyword.satellitelong}} is now deprecated due to changes in market expectations, client fit, and lack of adoption. As of March 10 2025, all documentation relating to Satellite has been removed, as well as the ability to select {{site.data.keyword.databases-for-redis}} {{site.data.keyword.satelliteshort}} plan in the Cloud console.
+:   {{{site.data.keyword.databases-for-redis}} {{site.data.keyword.satelliteshort}} plan is now deprecated. As of March 10 2025, all documentation relating to {{{site.data.keyword.databases-for-redis}} {{site.data.keyword.satelliteshort}} plan has been removed, as well as the ability to select {{site.data.keyword.databases-for-redis}} {{site.data.keyword.satelliteshort}} plan in the Cloud console.
 
 ## 31 January 2025
 {: #databases-for-redis-31jan2025}
