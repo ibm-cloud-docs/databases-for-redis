@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2024
-lastupdated: "2024-12-06"
+  years: 2018, 2025
+lastupdated: "2025-08-20"
 
 keywords: redis, databases, pub/sub, application
 
@@ -35,7 +35,7 @@ Before connecting your Kubernetes Service application to a deployment, make sure
   - **Public endpoints** - If you are using the default public service endpoint to connect to your deployment, you can run the `cluster service bind` command with your cluster name, the resource group, and your instance name or CRN.
 
     ```sh
-    ibmcloud ks cluster service bind <YOUR_CLUSTER_NAME> <RESOURCE_GROUP> <INSTANCE_NAME_OR_CRN>
+    ibmcloud ks cluster service bind --cluster CLUSTER --namespace NAMESPACE --service SERVICE [-q] (--key KEY | --role ROLE)
     ```
     
   - **Private endpoints** - If you want to use a private endpoint (if one is enabled on your deployment), then first you need to create a service key for your database. Kubernetes uses it when binding to the database.
