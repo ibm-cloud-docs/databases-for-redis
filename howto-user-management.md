@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2024
-lastupdated: "2024-12-06"
+  years: 2020, 2025
+lastupdated: "2025-10-13"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user, rbac
 
@@ -14,7 +14,8 @@ subcollection: databases-for-redis
 # Managing users and roles
 {: #user-management}
 
-{{site.data.keyword.databases-for-redis_full}} instances come with authentication enabled and use Redis's built-in access control. Redis 5.x and older support only a single `admin` user. Redis 6 introduced [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. Upgrade to take advantage of multiple users and authentication.
+{{site.data.keyword.databases-for-redis_full}} instances come with authentication enabled and use Redis's built-in access control.They support multiple users and authentication through  [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. 
+
 
 ## Managing Redis users
 {: #user-management-users}
@@ -22,7 +23,7 @@ subcollection: databases-for-redis
 ### The admin user
 {: #admin-user}
 
-When you provision a new instance in {{site.data.keyword.cloud_notm}}, you are automatically given access to the Admin user. If you are using Redis 5.x and older, the Admin user is the only user available on your instance. If you are using Redis 6.x and newer, you have the Admin user and the ability to create users and credentials.
+When you provision a new instance in {{site.data.keyword.cloud_notm}}, you are automatically given access to the Admin user. You can also create additional users and credentials for your instance.
 
 To use the Admin user to connect to your instance, first set the Admin password.
 
@@ -62,19 +63,15 @@ curl -X PATCH `https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{
 ### The `default` user
 {: #redis-default-user}
 
-Before the arrival of [ACL support in Redis 6](https://redis.com/blog/getting-started-redis-6-access-control-lists-acls/){: external}, the `default` user had broad permissions and was used internally by {{site.data.keyword.databases-for}} and external users to manage {{site.data.keyword.databases-for-redis}} instances.
+{{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. Instead, {{site.data.keyword.databases-for-redis}} instances are managed by the {{site.data.keyword.databases-for}} `ibm-user`.
 
-With Redis 6.x, {{site.data.keyword.databases-for-redis}} no longer uses the `default` user internally. Instead, {{site.data.keyword.databases-for-redis}} instances are managed by the {{site.data.keyword.databases-for}} `ibm-user`.
-
-If your instances currently use the `default` user (Redis 5.x), it's possible to continue doing so in the later versions, like 6.2. However, continued usage of the `default` user after upgrading to v6.2 requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user, starting with Redis v6.2:
+If your instances currently use the `default` user, it's possible to continue doing so. However, continued usage of the `default` user requires a password change, which is expected to limit permissions. These permission limitations are an expected behavioral change as part of a major version upgrade. Specifically, the following permissions are restricted for the `default` user:
 
 - `config`: The `default` user cannot view, add, update, or delete database configurations. The `default` user also cannot create or manage database users and roles.
 - `acl`: The `default` user cannot create new users.
 
-#### Upgrading to Redis 6.2 and the `default` user
-{: #redis-default-user-permissions-upgrading}
-
-If you are using Redis 5, upgrade directly to Redis 6.2. After upgrading, thoroughly test your applications by using the `default` user to make sure that your applications are fully functional. Upgrading to v6.2 and continuing to use the `default` user requires a password change.
+If you plan to continue using the default user, ensure you test your applications thoroughly after updating the password for compatibility.
+For more information on configuring access and permissions in Redis, see [ACL support in Redis](https://redis.com/blog/getting-started-redis-6-access-control-lists-acls/).
 
 To update the `default` user password, use a command like:
 
@@ -132,19 +129,70 @@ These combinations provide different levels of access control. Choose the combin
 {: #redis-rba-create-user-api}
 {: api}
 
-To create a user using RBAC roles, use a command like:
+To create a user using RBAC roles, use the following command:
 
 ```sh
-Create User
+curl -X POST "https://{region}.databases.cloud.ibm.com/v5/ibm/deployments/{deployment_id}/users/database" \
+     -H "Authorization: Bearer {iam_token}" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "user": {
+             "username": "example-user",
+             "password": "YourPassword123!"
+           }
+         }'
+```
+{: pre}
 
-POST /deployments/{id}/users/{user_type}
-{
-  "user": {
-  "username": "#{USER}",
-  "password": "<PASSWORD>",
-  "role": "<+/-@all> <+/-@read> <+/-@write> <+/-@admin>"
-  }
-}
+To create a user with default role, use the following command:
+
+```sh
+curl -X POST "https://{region}.databases.cloud.ibm.com/v5/ibm/deployments/{deployment_id}/users/database" \
+     -H "Authorization: Bearer {iam_token}" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "user": {
+             "username": "example-user",
+             "password": "YourPassword123!"
+           }
+         }'
+```
+{: pre}
+
+To change or update a role, use the following command:
+
+```sh
+curl -X PATCH "https://{region}.databases.cloud.ibm.com/v5/ibm/deployments/{deployment_id}/users/database/{username}" \
+     -H "Authorization: Bearer {iam_token}" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "user": {
+             "role": "+@read +@admin"
+           }
+         }'
+```
+{: pre}
+
+To change password of a role, use the following command:
+
+```sh
+curl -X PATCH "https://{region}.databases.cloud.ibm.com/v5/ibm/deployments/{deployment_id}/users/database/{username}" \
+     -H "Authorization: Bearer {iam_token}" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "user": {
+             "password": "NewSecurePassword456!"
+           }
+         }'
+```
+{: pre}
+
+To delete a user, use the following command:
+
+```sh
+curl -X DELETE "https://{region}.databases.cloud.ibm.com/v5/ibm/deployments/{deployment_id}/users/database/{username}" \
+     -H "Authorization: Bearer {iam_token}" \
+     -H "Accept: application/json"
 ```
 {: pre}
 
@@ -152,50 +200,260 @@ POST /deployments/{id}/users/{user_type}
 {: #redis-rba-create-user-cli}
 {: cli}
 
-To create a user using RBAC roles, use a command like:
+To create a user using RBAC roles, use the following command:
 
 ```sh
-ibmcloud cdb deployment-user-create <INSTANCE_NAME_OR_CRN> <USERNAME> <PASSWORD> -r "+@read +@write"
+ibmcloud cdb user-create <CRN> <USERNAME> <PASSWORD> -r "<ROLE_STRING>"
 ```
 {: pre}
 
 For `-r USER_ROLE`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant access.
 
-Once the task is finished, retrieve the new user's connection strings with the `ibmcloud cdb deployment-connections` command.
+Example:
+
+```sh
+ibmcloud cdb user-create \
+  crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:: \
+  ibm_cloud_35ea37ad_119b_462d_bfd4_a4f001387cdf \
+  Password1234567890 \
+  -r "+@read +@write"
+```
+{: pre}
+
+Sample output:
+
+```sh
+The user is being created with this task:
+
+Key                   Value
+ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:task:49ec86e6-a2ac-4eb2-9c6b-48039c554f7e
+Deployment ID         crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45::
+Description           Creating user
+Created At            2025-04-18T07:26:31Z
+Status                running
+Progress Percentage   0
+...
+Progress Percentage   66
+...
+Status                completed
+Progress Percentage   100
+Location              https://api.dev-yp-03.us-south.databases.cloud.ibm.com/v5/ibm/deployments/crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a%2F40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45::
+OK
+```
+{: pre}
+
+To create a user with default role, use the following command:
+
+```sh
+ibmcloud cdb user-create <CRN> <USERNAME> <PASSWORD>
+```
+{: pre}
+
+Example:
+
+```sh
+ibmcloud cdb user-create \
+  crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:: \
+  ibm_cloud_user_default_role \
+  Password1234567890
+```
+{: pre}
+
+Sample output:
+
+```sh
+The user is being created with this task:
+
+Key                   Value
+ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:task:f225e6a3-3f4e-449d-bfce-a5e171719074
+Deployment ID         crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45::
+Description           Creating user
+Created At            2025-04-18T07:47:27Z
+Status                running
+Progress Percentage   0
+
+Status                completed
+Progress Percentage   100
+Location              https://api.dev-yp-03.us-south.databases.cloud.ibm.com/v5/ibm/deployments/crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a%2F40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45::
+OK
+```
+{: pre}
+
+To change or update a role, use the following command:
+
+```sh
+ibmcloud cdb redis user-set <CRN> <USERNAME> <ROLE_STRING>
+```
+{: pre}
+
+Example:
+
+```sh
+ibmcloud cdb redis user-set \
+  crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:: \
+  ibm_cloud_35ea37ad_119b_462d_bfd4_a4f001387cdf \
+  "+@all"
+```
+{: pre}
+
+Sample output:
+
+```sh
+The user's role is being changed with this task:
+
+Key                   Value
+ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:task:3a30ebc4-20d8-4004-8514-47c615276f81
+Deployment ID         crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45::
+Description           Updating user
+Created At            2025-04-18T07:32:40Z
+Status                running
+Progress Percentage   0
+
+Status                completed
+Progress Percentage   100
+Location              https://api.dev-yp-03.us-south.databases.cloud.ibm.com/v5/ibm/deployments/crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a%2F40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45::
+OK
+```
+{: pre}
+
+To change the password of a role, use the following command:
+
+```sh
+ibmcloud cdb user-password <CRN> <USERNAME> <NEW_PASSWORD>
+```
+{: pre}
+
+Example:
+
+```sh
+ibmcloud cdb user-password \
+  crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02:: \
+  ibm_cloud_35ea37ad_119b_462d_bfd4_a4f001387cdf \
+  Password1234567890123
+```
+
+Sample output:
+
+```sh
+The user's password is being changed with this task:
+
+Key                   Value
+ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02:task:c254ccef-9e9c-4375-ae0f-4c78173f6278
+Deployment ID         crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02::
+Description           Updating user
+Created At            2025-04-18T07:41:32Z
+Status                running
+Progress Percentage   0
+
+Progress Percentage   66
+
+Status                completed
+Progress Percentage   100
+Location              https://api.dev-yp-03.us-south.databases.cloud.ibm.com/v5/ibm/deployments/crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a%2F40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02::
+OK
+```
+{: pre}
+
+To delete a role, use the following command:
+
+```sh
+ibmcloud cdb user-delete <CRN> <USERNAME>
+```
+{: pre}
+
+Example:
+
+```sh
+ibmcloud cdb user-delete \
+  crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02:: \
+  ibm_cloud_35ea37ad_119b_462d_bfd4_a4f001387cdf
+```
+{: pre}
+
+Sample output:
+
+```sh
+The user is being deleted with this task:
+
+Key                   Value
+ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02:task:cc7effad-4fb2-4ae6-bd94-2d432b471e39
+Deployment ID         crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02::
+Description           Deleting user
+Created At            2025-04-18T07:44:10Z
+Status                running
+Progress Percentage   0
+
+Status                completed
+Progress Percentage   100
+Location              https://api.dev-yp-03.us-south.databases.cloud.ibm.com/v5/ibm/deployments/crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a%2F40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02::
+OK
+```
+{: pre}
 
 ### Create a user with RBAC roles through Terraform
 {: #redis-rba-create-user-tf}
 {: terraform}
 
-To create a user using RBAC roles, use a configuration like:
+To create a formation with a user using RBAC roles, use the following command:
 
 ```terraform
 resource "ibm_database" "redis" {
-  name = "example-redis"
-  plan = "standard"
-  location = "us-south"
-  service = "databases-for-redis"
+  name              = "Databases for Redis-jt-DO-NOT-DELETE"
+  plan              = "standard"
+  location          = var.region
+  service           = "databases-for-redis"
+  version           = "7.2"
+  service_endpoints = "public-and-private"
   resource_group_id = data.ibm_resource_group.group.id
-  tags = ["tag1", "tag2"]
-  version = "6"
+  tags              = ["redis", "user-mgmt"]
 
+#   ##################################################
+#   # 1. Create user with custom ACL role
+#   ##################################################
   users {
-    name = "<user_name>"
-    password = "securepassword123"
-    role = "-@all +@read"
+    name     = "reader-user-with-role"
+    password = "secureReadPass123456789"
+    role     = "-@all +@read"
   }
-}
 ```
 {: pre}
 
 For `role`, use some combination of `<+/-@all>` `<+/-@read>` `<+/-@write>` `<+/-@admin>` to grant  access.
+
+To create a formation with a default role, use the following command:
+
+```sh
+resource "ibm_database" "redis" {
+  name              = "Databases for Redis-jt-DO-NOT-DELETE"
+  plan              = "standard"
+  location          = var.region
+  service           = "databases-for-redis"
+  version           = "7.2"
+  service_endpoints = "public-and-private"
+  resource_group_id = data.ibm_resource_group.group.id
+  tags              = ["redis", "user-mgmt"]
+
+
+  ##################################################
+  # 2. Create user with default role
+  ##################################################
+  users {
+    name     = "default-user-role"
+    password = "defaultPass123456789"
+    # no `role` field → default ACL applies
+  }
+```
+{: pre}
+
+We do not support user operations such as creating, deleting, updating passwords, or changing roles through Terraform after the formation is provisioned. Users can only be defined during initial provisioning — either with a default role or with a specified role.
+{: note}
 
 ## Redis roles
 {: #redis-roles}
 
 The Admin user and all other users on your instance have full access to the set of Redis commands, except for the subcommand `config` and `acl` - this includes the Admin user. `config get`, `config reset`, `acl whoami`, `acl cat`, `acl users`, `acl genpass`, `acl log`, and `acl help` are useable.
 
-In Redis 6.x and newer, any user that you create; whether through *Service Credentials*, the CLI, API, or directly in Redis; have the same access. You cannot use Redis itself to create users or roles with access that is limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensure propagation across the cluster.
+In Redis, any user that you create, whether through *Service Credentials*, the CLI, API, or directly in Redis, has the same access. You cannot use Redis itself to create users or roles with access that is limited to specific keys or ranges of keys, as they are not propagated automatically in a cluster deployment. All other means to manage users ensure propagation across the cluster.
 
 ### Creating users through the UI
 {: #create-users-service-cred}
@@ -226,7 +484,7 @@ curl -X POST https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id
 
 To retrieve a user's connection strings, use the base URL with the `/users/{userid}/connections` endpoint.
 
-## Internal-use users - Redis 6.x and newer
+## Internal-use users 
 {: #internal-users}
 
 There are four reserved users on your instance. Modifying these users causes your instance to become unstable or unusable.

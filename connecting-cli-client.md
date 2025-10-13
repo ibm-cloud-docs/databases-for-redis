@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2017, 2025
-lastupdated: "2025-05-14"
+lastupdated: "2025-10-13"
 
 keywords: redis, databases, update, client, pub/sub
 
@@ -16,7 +16,7 @@ subcollection: databases-for-redis
 
 Access your Redis database directly from a command-line interface (CLI). The CLI allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
 
-The `redli` client needs to be updated for the user management features introduced in [Redis 6](https://github.com/IBM-Cloud/redli/releases){: external}. If you try to connect to without updating the client, you see an error like: `(error) WRONGPASS invalid username-password pair`. 
+The `redli` client needs to be updated for the user management features introduced in [Redis](https://github.com/IBM-Cloud/redli/releases){: external}. If you try to connect to without updating the client, you see an error like: `(error) WRONGPASS invalid username-password pair`. 
 {: .note}
 
 ## Connection strings
