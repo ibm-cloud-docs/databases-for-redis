@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2025
-lastupdated: "2025-05-16"
+lastupdated: "2025-10-13"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -43,7 +43,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 
 | Current version |	Major version upgrade path |
 | ---- | ----- |
-| {{site.data.keyword.databases-for-redis}} V6.2 |	-> {{site.data.keyword.databases-for-redis}} V7.2 |
+| {{site.data.keyword.databases-for-redis}} V7.2 |	-> {{site.data.keyword.databases-for-redis}} V8.0 (TBA) |
 {: caption="Major version upgrade paths" caption-side="top"}
 
 
@@ -82,7 +82,7 @@ Use the ID of your chosen backup as a parameter in the resource controller comma
 ibmcloud resource service-instance-create example-upgrade databases-for-redis standard us-south \
 -p \ '{
   "backup_id": "crn:v1:bluemix:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
-  "version":"6.2"
+  "version":"7.2"
 }'
 ```
 {: pre}
@@ -116,7 +116,7 @@ curl -X POST \
     "parameters":{
 		  "backup_id": "crn:v1:bluemix:public:databases-for-redis:us-south:a/54e8ffe85dcedf470db5b5ee6ac4a8d8:1b8f53db-fc2d-4e24-8470-f82b15c71717:backup:06392e97-df90-46d8-98e8-cb67e9e0a8e6",
 		  "service_endpoints": "private",
-		  "version": "6.2"
+		  "version": "7.2"
     }
   }'
 ```
@@ -126,22 +126,22 @@ curl -X POST \
 {: #backup_restore}
 {: ui}
 
-Complete the following on-demand backup and restore steps to upgrade. This example sets out the steps to upgrade from V6 to V7.2.
+Complete the following on-demand backup and restore steps to upgrade. This example sets out the steps to upgrade to the latest version.
 
 **To create a manual backup in the UI:**
 
 1. Go to the **Backups and restore** tab of your {{site.data.keyword.databases-for-redis}} instance
-2. Click **Create Backup**: a message is displayed that a backup is in progress, and an on-demand backup is added to the list of available backups. The on-demand backup can be seen in the overview page, in the recent tasks panel.
+2. Click **Create backup**: a message is displayed that a backup is in progress, and an on-demand backup is added to the list of available backups. The on-demand backup can be seen in the overview page, in the recent tasks panel.
 
 **To restore a backup to a new service instance:**
 
 1. Go to the **Backups and restore** tab
 2. Click on the corresponding row to expand the options for the on-demand backup that you want to restore
 3. Click **Restore backup**, that will re-direct you to the restore instance page.
-4. On the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring. Under **Service configuration**, select ‘7.2’ as the Database Version.
+4. On the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring. Under **Service configuration**, select latest available version as the Database Version.
 5. Click **Restore backup**.
 
-After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded 7.2 instance can be accessed from **Resource list**.
+After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded instance can be accessed from the **Resource list**.
 
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
 {: .note}

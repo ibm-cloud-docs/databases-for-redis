@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2019, 2024
-lastupdated: "2024-12-06"
+  years: 2019, 2025
+lastupdated: "2025-10-13"
 
 keywords: redis, databases, configs
 
@@ -16,11 +16,8 @@ subcollection: databases-for-redis
 
 In {{site.data.keyword.databases-for-redis_full}}, you can change some of the Redis configuration settings to tune your databases to your use-case. In a typical Redis setting, you can change the configuration from the command line by using [`CONFIG SET`](https://redis.io/commands/config-set){: external}. You can still use `CONFIG SET` on your deployment but the changes do NOT persist if there is a failover, node restart, or other event on your deployment. Changing the configuration with `CONFIG SET` can be used for testing, evaluation, and tuning purposes.
 
-Note the following Redis configuration restrictions:
-
-* Redis 4: `CONFIG` and all subcommands are deprecated and will no longer work on or after 30 November 2021
-* Redis 5: no restrictions
-* Redis 6 (and newer): only `CONFIG GET` and `CONFIG RESETSTAT` are exposed
+In Redis 6 and above versions, only `CONFIG GET` and `CONFIG RESETSTAT` are exposed.
+{: note}
 
 To make permanent changes to the database configuration, use the {{site.data.keyword.databases-for}} [CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployment-configuration) or [API](/apidocs/cloud-databases-api/cloud-databases-api-v5#updatedatabaseconfiguration) to write the changes to the configuration file for your deployment. 
 
