@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-10-14"
 
 keywords: HA, DR, high availability, disaster recovery, disaster recovery plan, disaster event, redis
 
@@ -25,7 +25,7 @@ For more information about the available {{site.data.keyword.cloud_notm}} region
 ## High availability architecture
 {: #ha-architecture}
 
-![Redis architecture](/images/Redis-architecure.png){: caption="Redis architecture" caption-side="bottom"}
+![Redis architecture](/images/Redis_high_availability.svg){: caption="Redis high availability architecture" caption-side="bottom"}
 
 {{site.data.keyword.databases-for-redis}} provides replication, failover, and high-availability features to protect your databases and data from infrastructure maintenance, upgrades, and some failures. Deployments contain a cluster with two data members in a primary plus replica configuration. The replica is kept up to date using asynchronous replication. High availability is monitored and managed with three [Redis sentinels](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/){: .external}
 
@@ -64,7 +64,7 @@ Asynchronous replication in {{site.data.keyword.databases-for-redis}} ensures fa
 
 The general strategy for disaster recovery is to create a new database, like the `Restore` database below. The contents of the new database can be a backup of the source database created before the disaster.
 
-![Redis disaster recovery architecture](/images/Redis_disaster-recovery.svg){: caption="Redis disaster recovery architecture" caption-side="bottom"}
+![Redis disaster recovery architecture](/images/Redis_disaster_recovery.svg){: caption="Redis disaster recovery architecture" caption-side="bottom"}
 
 ### Disaster recovery features
 {: #dr-features}
