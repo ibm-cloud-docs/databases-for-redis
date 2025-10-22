@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2025
-lastupdated: "2025-10-13"
+lastupdated: "2025-10-22"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -14,7 +14,7 @@ subcollection: databases-for-redis
 # Upgrading to a new major version
 {: #upgrading}
 
-When a major version of a database is at its end of life (EOL), upgrade to the next available major version. Find the available versions of Redis in the [catalog](https://cloud.ibm.com/databases/databases-for-redis/create?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPXJlZGlzI3NlYXJjaF9yZXN1bHRz){: external}, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables-permissions){: external}. 
+As major database versions reach end-of-life (EOL), upgrading to the next available version ensures continued support and optimal performance. Redis version details can be found in the [catalog](https://cloud.ibm.com/databases/databases-for-redis/create?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPXJlZGlzI3NlYXJjaF9yZXN1bHRz){: external}, with the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference#deployables-show){: external}, or through the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#listdeployables-permissions){: external}. 
 
 ## Simple upgrade path
 {: #upgrading-simple}
