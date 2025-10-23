@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2020, 2025
-lastupdated: "2025-10-13"
+lastupdated: "2025-10-22"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user, rbac
 
@@ -223,7 +223,6 @@ ibmcloud cdb user-create \
 Sample output:
 
 ```sh
-The user is being created with this task:
 
 Key                   Value
 ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:task:49ec86e6-a2ac-4eb2-9c6b-48039c554f7e
@@ -262,7 +261,6 @@ ibmcloud cdb user-create \
 Sample output:
 
 ```sh
-The user is being created with this task:
 
 Key                   Value
 ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:task:f225e6a3-3f4e-449d-bfce-a5e171719074
@@ -299,7 +297,6 @@ ibmcloud cdb redis user-set \
 Sample output:
 
 ```sh
-The user's role is being changed with this task:
 
 Key                   Value
 ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:7065adf2-cc4f-433a-9a97-aa69d03f6f45:task:3a30ebc4-20d8-4004-8514-47c615276f81
@@ -335,7 +332,6 @@ ibmcloud cdb user-password \
 Sample output:
 
 ```sh
-The user's password is being changed with this task:
 
 Key                   Value
 ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02:task:c254ccef-9e9c-4375-ae0f-4c78173f6278
@@ -373,7 +369,6 @@ ibmcloud cdb user-delete \
 Sample output:
 
 ```sh
-The user is being deleted with this task:
 
 Key                   Value
 ID                    crn:v1:bluemix:public:databases-for-redis-dev-yp-03:us-south:a/40ddc34a953a8c02f10987b59085b60e:3b20b985-1c89-441e-8e00-2d394d441a02:task:cc7effad-4fb2-4ae6-bd94-2d432b471e39
@@ -445,7 +440,7 @@ resource "ibm_database" "redis" {
 ```
 {: pre}
 
-We do not support user operations such as creating, deleting, updating passwords, or changing roles through Terraform after the formation is provisioned. Users can only be defined during initial provisioning — either with a default role or with a specified role.
+Users can be configured during the initial Terraform provisioning with either default or custom roles. After provisioning, operations, such as creating, deleting, updating passwords, or changing roles are not supported to maintain consistency and security.
 {: note}
 
 ## Redis roles
