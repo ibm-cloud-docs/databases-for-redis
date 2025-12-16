@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2024, 2025
-lastupdated: "2025-03-19"
+lastupdated: "2025-11-20"
 
 keywords: redis, databases, best practices
 
@@ -19,9 +19,9 @@ Take time to review the following best practices that are recommended if you're 
 ## What is {{site.data.keyword.databases-for-redis}}?
 {: #what-is-redis}
 
-{{site.data.keyword.databases-for-redis}} is a managed Redis OSS service offered on {{site.data.keyword.Bluemix_notm}}. It is an in-memory _data structure store_ used as a database, cache, message broker, and streaming engine. Unlike traditional databases, which store data on disk, Redis stores data in memory (RAM) enabling low latency. The data is _ephemeral_, which enables {{site.data.keyword.databases-for-redis}} to offer top performance and high throughput. You can also configure Redis to store data persistently on disk by trading off performance with data availability, because this is achieved by enabling AOF (Append Only File) sync with RBD snapshots.
+{{site.data.keyword.databases-for-redis}} is a managed Redis OSS service offered on {{site.data.keyword.Bluemix_notm}}. It is an in-memory _data structure store_ used as a database, cache, message broker, and streaming engine. Unlike traditional databases, which store data on disk, Redis stores data in memory (RAM) enabling low latency. The data is _ephemeral_, which enables {{site.data.keyword.databases-for-redis}} to offer top performance and high throughput. You can also configure Redis to store data persistently on disk by trading off performance with data availability, because this is achieved by enabling AOF (Append Only File) sync with RDB snapshots.
 
-RBD snapshots are enabled for backup and high availability, even if persistence is disabled.
+RDB snapshots are enabled for backup and high availability, even if persistence is disabled.
 {: note}
 
 ## Best practices for instance capacity planning
