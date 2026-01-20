@@ -36,16 +36,16 @@ The information the clients need to connect to your deployment is in the "CLI" s
 | `Certificate` | Base64 | A service proprietary certificate that is used to confirm that an application is connecting to the appropriate server. It is base64 encoded. |
 | `Certificate` | Name | The allocated name for the service proprietary certificate. |
 | `Type` | | The type of package that uses this connection information; in this case `cli`. |
-{: caption="`redis`/`cli` connection information" caption-side="top"}
+{: caption="redis/cli connection information" caption-side="top"}
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
 ## Installing `redis-cli`
 {: #installing-redis-cli}
 
-`redis-cli` is the official supported command-line interface for Redis.
+`redis-cli` is the official supported command-line interface for Redis. If you want to use `redis-cli`, there are some extra configuration steps to complete.
 
-If you choose to use `redis-cli`, there are some extra configuration steps to complete. `redis-cli` comes as part of the Redis package, so first install Redis locally to use it. On macOS, install [brew](http://brew.sh){: external} and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you prefer, [download the source](http://redis.io/download){: external} and build it yourself.
+`redis-cli` comes as part of the Redis package, so first install Redis locally. On macOS, install [brew](http://brew.sh){: external} and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you prefer, [download the source](http://redis.io/download){: external} and build it yourself.
 
 ## Installing `redli`
 {: #install-redli}
