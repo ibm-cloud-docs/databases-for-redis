@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2017, 2025
-lastupdated: "2025-10-13"
+  years: 2017, 2026
+lastupdated: "2026-01-20"
 
 keywords: redis, databases, update, client, pub/sub
 
@@ -39,6 +39,13 @@ The information the clients need to connect to your deployment is in the "CLI" s
 
 * `0...` indicates that there might be one or more of these entries in an array.
 
+## Installing `redis-cli`
+{: #installing-redis-cli}
+
+`redis-cli` is the official supported command-line interface for Redis. 
+
+If you choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, install [brew](http://brew.sh){: external} and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download){: external} and build it yourself. 
+
 ## Installing `redli`
 {: #install-redli}
 
@@ -70,56 +77,6 @@ redli --uri rediss://admin:$PASSWORD@e6b2c3f8-54a6-439e-8d8a-aa6c4a78df49.8f7bfd
 ```
 
 There are other connection options and parameters that are supported by `redli`. For more information, see its documentation in the [`redli` GitHub repo](https://github.com/IBM-Cloud/redli){: external}.
-
-## Installing `redis-cli`
-{: #installing-redis-cli}
-
-`redis-cli` is the official supported command-line interface for Redis. Unfortunately, it does not support TLS connections.
-
-If you choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, install [brew](http://brew.sh){: external} and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download){: external} and build it yourself. 
-
-### Connecting with `redis-cli`
-{: #connecting-with-redis-cli}
-
-`redis-cli` does not support TLS-enabled connections. If you want to use the `redis-cli` with an encrypted connection, set up a utility like [`stunnel`](https://www.stunnel.org/index.html){: external}, which wraps the `redis-cli` connection in TLS encryption.
-
-### Setting up `stunnel`
-{: #setting-up-stunnel}
-
-1. Install `stunnel`. Use your package manager for Linux, Homebrew for Mac, or [download](https://www.stunnel.org/downloads.html){: external} the appropriate package for your platform.
-
-2. Grab connection information.
-   To set up a connection, `stunnel` needs the host, the port, and the certificate of your Redis deployment. Host and port are both available from the CLI "composed" connection string. They can also be found parsed out in the [Connection Strings Breakdown](/docs/databases-for-redis?topic=databases-for-redis-connection-strings&interface=cli#connection-strings-breakdown) that is provided for connecting external applications and drivers.
-
-   The certificate is in the Base64 field of the service credential connection information. Copy, decode, and save the certificate to a file.
-
-3. Add your configuration information to the `stunnel.conf` file. The configuration includes the following information.
-    - A name for a service. (`[redis-cli]`)
-    - A setting that says this stunnel is a TLS client. (`client=yes`)
-    - An IP address and port to accept connections on (`accept=127.0.0.1:6830`) and connect.
-    - The host name and port to connect to. (`connect=`portal972-7.bmix-lon-yp-38898e17-ff6f-4340-9da8-2ba24c41e6d8.composeci-us-ibm-com.composedb.com:24370`)
-    - The path to the certificate.
-    
-    ```sh
-    [redis-cli]
-    client=yes  
-    accept=127.0.0.1:6830  
-    connect=sl-us-south-1-portal.7.dblayer.com:23870
-    verify=2  
-    checkHost=sl-us-south-1-portal.7.dblayer.com 
-    CAfile=/path/to/redis/cert.crt
-    ```
-
-4. Run `stunnel`.
-
-    Type the `stunnel` command at the command line. It immediately runs in the background.
-    
-5. In a new terminal window, run `redis-cli` pointing to the local host and port, and authenticate with the deployment's credentials.
-
-    ```sh
-    redis-cli -p 6830 -a <PASSWORD>
-    ```
-    {: pre}
 
 ## Using the service proprietary certificate
 {: #using-cert}
