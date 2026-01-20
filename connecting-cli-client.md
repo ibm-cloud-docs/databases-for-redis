@@ -1,6 +1,7 @@
 ---
+
 copyright:
-  years: 2017, 2026
+  years: 2026
 lastupdated: "2026-01-20"
 
 keywords: redis, databases, update, client, pub/sub
@@ -16,7 +17,7 @@ subcollection: databases-for-redis
 
 Access your Redis database directly from a command-line interface (CLI). The CLI allows for direct interaction and monitoring of the data structures that are created within the database. It is also useful for administering and monitoring the keyspace and performance, installing and modifying scripts, and other management activities.
 
-The `redli` client needs to be updated for the user management features introduced in [Redis](https://github.com/IBM-Cloud/redli/releases){: external}. If you try to connect to without updating the client, you see an error like: `(error) WRONGPASS invalid username-password pair`. 
+The `redli` client needs to be updated for the user management features introduced in [Redis](https://github.com/IBM-Cloud/redli/releases){: external}. If you try to connect to without updating the client, you see an error like: `(error) WRONGPASS invalid username-password pair`.
 {: .note}
 
 ## Connection strings
@@ -42,14 +43,14 @@ The information the clients need to connect to your deployment is in the "CLI" s
 ## Installing `redis-cli`
 {: #installing-redis-cli}
 
-`redis-cli` is the official supported command-line interface for Redis. 
+`redis-cli` is the official supported command-line interface for Redis.
 
-If you choose to use `redis-cli`, there are some extra configuration steps. It comes as part of the Redis package, so you need Redis installed locally to use it. On macOS, install [brew](http://brew.sh){: external} and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you are so inclined, [download the source](http://redis.io/download){: external} and build it yourself. 
+If you choose to use `redis-cli`, there are some extra configuration steps to complete. `redis-cli` comes as part of the Redis package, so first install Redis locally to use it. On macOS, install [brew](http://brew.sh){: external} and then use `brew install redis` to get up and running. On Linux, refer to your distributions package manager for the latest Redis package or, if you prefer, [download the source](http://redis.io/download){: external} and build it yourself.
 
 ## Installing `redli`
 {: #install-redli}
 
-`redli` is an open source Redis command-line client. It is stand-alone, mimics the redis-cli command-line arguments, and adds support for TLS/SSL Redis connections. It recognizes the `rediss:` protocol in URIs and supports a `--tls` flag for non-URI connections. It can connect to TLS/SSL secured Redis without the need for tunnels. Download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases){: external}. 
+`redli` is an open source Redis command-line client. It is standalone, mimics the redis-cli command-line arguments, and adds support for TLS/SSL Redis connections. It recognizes the `rediss:` protocol in URIs and supports a `--tls` flag for non-URI connections. It can connect to TLS/SSL secured Redis without the need for tunnels. Download and install it from the [releases page](https://github.com/IBM-Cloud/redli/releases){: external}.
 
 ### Connecting with `redli`
 {: #connection-redli}
@@ -70,7 +71,7 @@ ibmcloud cdb cxn NewRedis -s
 
 The command prompts for the `admin` password and then runs the `redli` command-line client to connect to the database.
 
-If you have not installed the cloud databases plug-in, connect to your Redis databases with the `redli` command. Download and save the service proprietary certificate from your deployment. Then, use `redli` by giving it the "composed" connection string and the path to the service proprietary certificate. 
+If you have not installed the cloud databases plug-in, connect to your Redis databases with the `redli` command. Download and save the service proprietary certificate from your deployment. Then, use `redli` by giving it the "composed" connection string and the path to the service proprietary certificate.
 
 ```sh
 redli --uri rediss://admin:$PASSWORD@e6b2c3f8-54a6-439e-8d8a-aa6c4a78df49.8f7bfd8f3faa4218aec56e069eb46187.databases.appdomain.cloud:32371/0 --certfile /path/to/redis-cert.pem
