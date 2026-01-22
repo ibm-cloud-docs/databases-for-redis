@@ -4,4 +4,5 @@ This repo contains documentation for the Databases for Redis services.
 
 
 
-Documentation source repository for content published at https://cloud.ibm.com/docs/repo-name.
+Documentation source repository for content published at
+https://cloud.ibm.com/docs/databases-for-redis.

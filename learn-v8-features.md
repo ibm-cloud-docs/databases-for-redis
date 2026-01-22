@@ -12,7 +12,7 @@ subcollection: databases-for-redis
 
 {{site.data.keyword.attribute-definition-list}}
 
-# {{site.data.keyword.databases-for-redis}} 8 features
+# Redis V8 features
 {: #v8-features}
 
 Redis 8.2 introduces significant improvements over Redis 7.x, delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. It introduces new capabilities in Streams, bitmaps, vector search, and cluster metrics, and preserves the familiar Redis programming model.
@@ -62,7 +62,7 @@ The typical use cases are as follows:
 #### RedisBloom example
 {: #redisbloom_example}
 
-# Create Bloom filter: 1% error rate, capacity 1000
+Create Bloom filter: 1% error rate, capacity 1000:
 
 ```sh
 > BF.RESERVE bikes:models 0.01 1000
@@ -71,7 +71,7 @@ OK
 ```
 {: codeblock}
 
-# Add and check a model name
+Add and check a model name:
 
 ```sh
 > BF.ADD bikes:models "Smoky Mountain Striker"
