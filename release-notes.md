@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2025
-lastupdated: "2025-07-28"
+  years: 2018, 2026
+lastupdated: "2026-01-22"
 
 keywords: databases-for-redis release notes
 
@@ -158,35 +158,35 @@ Protecting {{site.data.keyword.databases-for-redis_full}} resources with context
 {: release-note}
 
 {{site.data.keyword.databases-for-redis_full}} 4.0 End of Life in May 2022
-:  After May 27, 2022, all {{site.data.keyword.databases-for-redis_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version, Redis 5.0. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-for-redis-4-end-of-life-in-march-2022).
+:  After May 27, 2022, all {{site.data.keyword.databases-for-redis_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version, Redis 5.0. 
 
 ## 30 June 2021
 {: #databases-for-redis-30jun2021}
 {: release-note}
 
 General Availability of {{site.data.keyword.databases-for-redis_full}} support for IBM Cloud Databases enabled by IBM Cloud Satellite.
-:  A distributed cloud provides consistent security and services across environments, centralized workload visibility, reduced latency, easier compliance and higher application development velocity. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/deploy-managed-cloud-native-databases-anywhere-with-ibm-cloud-satellite).
+:  A distributed cloud provides consistent security and services across environments, centralized workload visibility, reduced latency, easier compliance and higher application development velocity.
 
 ## 13 April 2020
 {: #databases-for-redis-13apr2020}
 {: release-note}
 
 {{site.data.keyword.databases-for-redis_full}} autoscaling
-:  We are excited to announce that autoscaling of your deployments based on disk capacity and disk I/O utilization is now available for {{site.data.keyword.databases-for-redis_full}} via the UI, API, and CLI. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/ibm-cloud-databases-portfolio-introduces-autoscaling).
+:  We are excited to announce that autoscaling of your deployments based on disk capacity and disk I/O utilization is now available for {{site.data.keyword.databases-for-redis_full}} via the UI, API, and CLI.
 
 ## 17 October 2019
 {: #databases-for-redis-17oct2019}
 {: release-note}
 
 {{site.data.keyword.databases-for-redis_full}} 5 is Available in Preview
-:  Redis 5 is now available in Preview on {{site.data.keyword.databases-for-redis_full}}. This release has lots of interesting new features, but the most important is the introduction of Redis Streams. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/databases-for-redis-5-is-available-in-preview).
+:  Redis 5 is now available in Preview on {{site.data.keyword.databases-for-redis_full}}. This release has lots of interesting new features, but the most important is the introduction of Redis Streams.
 
 ## 6 August 2019
 {: #databases-for-redis-06aug2019}
 {: release-note}
 
 New Regions Available for IBM Cloud Database Services
-:  {{site.data.keyword.databases-for-redis_full}} is now available to be deployed in Seoul; South Korea; and Chennai, India. See blog post announcement [here](https://www.ibm.com/cloud/blog/announcements/new-regions-available-for-ibm-cloud-database-services).
+:  {{site.data.keyword.databases-for-redis_full}} is now available to be deployed in Seoul; South Korea; and Chennai, India.
 
 ## 2 October 2018
 {: #databases-for-redis-02oct2018}
