@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2025
-lastupdated: 2025-07-21
+  years: 2020, 2026
+lastupdated: 2026-01-22
 
 keywords: troubleshooting for Redis
 
