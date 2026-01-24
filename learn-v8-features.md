@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-01-23"
+lastupdated: "2026-01-24"
 
 keywords: redis, databases, V8, V7, improvements
 
@@ -15,7 +15,7 @@ subcollection: databases-for-redis
 # Redis V8 features
 {: #v8-features}
 
-Redis 8.2 introduces significant improvements over Redis 7.x, delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. It introduces new capabilities in Streams, bitmaps, vector search, and cluster metrics, and preserves the familiar Redis programming model.
+Redis V8.2 introduces significant improvements to Redis 7.x, delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. V8.2 offers new capabilities in Streams, bitmaps, vector search, and cluster metrics, and preserves the familiar Redis programming model.
 
 The key high-level improvements are as follows:
 
@@ -24,34 +24,34 @@ The key high-level improvements are as follows:
 * New functionality in Streams, bit operations, and vector search.
 * Expanded metrics and observability for clusters and replication.
 
-## Upgrading from Redis 7.2 to Redis 8.2
+## Upgrading from Redis V7.2 to Redis V8.2
 {: #v7-v8-upgrading}
 
-To upgrade from Redis 7.2 to Redis 8.2, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui).
+To information about how to upgrade from Redis V7.2 to Redis V8.2, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui).
 
 ## {{site.data.keyword.databases-for-redis}} modules
 {: #v8-modules}
 
-Redis 8 supports several official modules that extend its functionality for advanced use cases. The following are the key modules and their capabilities.
+Redis V8 supports several official modules that extend its functionality for advanced use cases. The following key modules are described along with their capabilities.
 
 ### RedisBloom
 {: #redisbloom}
 
-RedisBloom is an official Redis module that provides probabilistic data structures: Bloom Filter, Cuckoo Filter, Count‑Min Sketch, and Top‑K. These structures trade exactness for extreme space efficiency and speed, making them ideal when approximate answers with a known error bound are acceptable.
+RedisBloom is an official Redis module that provides probabilistic data structures: Bloom Filter, Cuckoo Filter, Count‑Min Sketch, and Top‑K. These structures trade exactness for extreme space efficiency and speed, making them ideal for when approximate answers with a known error bound are acceptable.
 
-The key capabilities are as follows:
+The key capabilities of RedisBloom are as follows:
 
-* Bloom Filter: Tests whether an element can be in a set, with configurable false‑positive probability and no false negatives.
+* Bloom Filter: tests whether an element can be in a set, with configurable false‑positive probability and no false negatives.
 
-* Cuckoo Filter: Similar to Bloom but supports deletions more naturally.
+* Cuckoo Filter: similar to Bloom but supports deletions more naturally.
 
-* Count‑Min Sketch: Estimates the frequency of events (for example, how many times a key appears) in a streaming fashion.
+* Count‑Min Sketch: estimates the frequency of events (for example, how many times a key appears) in a streaming fashion.
 
-* Top‑K: Tracks the most frequent items in a data stream.
+* Top‑K: tracks the most frequent items in a data stream.
 
-The typical use cases are as follows:
+The typical use cases for RedisBloom are as follows:
 
-* Duplicate and seen‑before checks (URLs, emails, user IDs).
+* Duplicate and seen‑before checks (URLs, emails, and user IDs).
 
 * Fraud detection and abuse prevention (flag suspicious patterns without storing the full history).
 
@@ -62,7 +62,7 @@ The typical use cases are as follows:
 #### RedisBloom example
 {: #redisbloom_example}
 
-Create Bloom filter: 1% error rate, capacity 1000:
+To create a Bloom filter with 1% error rate and a capacity of 1000:
 
 ```sh
 > BF.RESERVE bikes:models 0.01 1000
@@ -71,7 +71,7 @@ OK
 ```
 {: codeblock}
 
-Add and check a model name:
+To add and check a model name:
 
 ```sh
 > BF.ADD bikes:models "Smoky Mountain Striker"
@@ -84,7 +84,7 @@ Add and check a model name:
 ```
 {: codeblock}
 
-For more information, see the official [RedisBloom filter documentation](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)
+For more information, see the [RedisBloom filter documentation](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)
 
 ****** https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/.redis%E2%80%8B/ doesn't work *******
 
@@ -93,9 +93,9 @@ For more information, see the official [RedisBloom filter documentation](https:/
 ### RediSearch
 {: #redisearch}
 
-RediSearch is a query and indexing engine for Redis that provides full‑text search, secondary indexing, aggregations, and support for vector similarity search. It indexes Redis data (hashes, JSON, and so on) and enables powerful queries with scoring, filtering, and highlighting.
+RediSearch is a query and indexing engine for Redis that provides full‑text search, secondary indexing, aggregations, and support for vector similarity search. RediSearch indexes Redis data (hashes, JSON, and so on) and enables powerful queries with scoring, filtering, and highlighting.
 
-Its key capabilities are as follows:
+The key capabilities of RediSearch are as follows:
 
 * Full‑text search with stemming, phonetics, and fuzzy matching.
 
@@ -105,17 +105,18 @@ Its key capabilities are as follows:
 
 * Integration with vector fields for semantic and ANN search.
 
-Typical use cases:
+The typical use cases for RediSearch are as follows:
 
 * Product catalog search with filters and facets.
 
-* Log/event search with free‑text and structured filters.
+* Log and event search with free‑text and structured filters.
 
-* Real-time search over user content (tweets, posts, documents).
+* Real-time search over user content (tweets, posts, and documents).
 
 * Combining text and vector search for AI‑powered applications.
 
-Example :# Create index and add one doc
+#### RediSearch example: create index and add one doc
+{: #redisearch_example}
 
 ```sh
 > FT.CREATE idx ON HASH PREFIX 1 "doc:" SCHEMA title TEXT
@@ -128,7 +129,7 @@ OK
 ```
 {: codeblock}
 
-Search by text:
+To search by text:
 
 ```sh
 > FT.SEARCH idx "hello"
@@ -152,9 +153,9 @@ For more information, see [RediSearch documentation](https://redis.io/docs/lates
 ### RedisJSON
 {: #redisjson}
 
-RedisJSON introduces a native JSON data type for Redis, enabling storage, retrieval, and partial updates of JSON documents using JSONPath-like syntax. It is optimized for fast access to sub‑documents and integrates with other Redis features such as RediSearch.
+RedisJSON introduces a native JSON data type for Redis, enabling storage, retrieval, and partial updates of JSON documents using JSONPath-like syntax. RedisJSON is optimized for fast access to sub‑documents and integrates with other Redis features such as RediSearch.
 
-Its key capabilities are as follows:
+The key capabilities of RedisJSON are as follows:
 
 * Store structured JSON documents as first‑class values.
 
@@ -164,7 +165,7 @@ Its key capabilities are as follows:
 
 * Option to integrate with search and query features for indexing JSON fields.
 
-Typical use cases
+The typical use cases of RedisJSON are as follows:
 
 * User profiles and sessions with frequently updated nested fields.
 
@@ -174,7 +175,8 @@ Typical use cases
 
 * JSON‑based APIs where Redis acts as a high‑speed backing store.
 
-Example :# Store a simple JSON document
+#### RedisJSON example: store a simple JSON document
+{: #redisjson_example}
 
 ```sh
 127.0.0.1:6379> JSON.SET user:1 $ '{"name":"Alice","age":30}'
@@ -199,17 +201,17 @@ For more information, see the [RedisJSON documentation](https://redis.io/docs/la
 
 RedisTimeSeries is a module for efficient time‑series data ingestion, storage, querying, aggregation, and downsampling. It adds a time-series data type and related commands to model metrics and events over time.
 
-Key capabilities:
+The key capabilities of RedisTimeSeries are as follows:
 
 * High-throughput ingestion with automatic timestamping.
 
-* Range queries over time intervals, with aggregations like avg, min, max, sum.
+* Range queries over time intervals, with aggregations like avg, min, max, and sum.
 
 * Retention policies and compaction rules for long‑term storage.
 
 * Labels for grouping and querying sets of time-series.
 
-The typical use cases are as follows:
+The typical use cases of RedisTimeSeries are as follows:
 
 * Infrastructure and application metrics (CPU, memory, latency).
 
@@ -219,7 +221,9 @@ The typical use cases are as follows:
 
 * Business KPIs and operational dashboards.
 
-Example :# Create a time series and add a value
+
+#### Example: create a time series and add a value
+{: #redistimeseries_example}
 
 ```sh
 > TS.CREATE temp:room1
