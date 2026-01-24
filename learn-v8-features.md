@@ -256,7 +256,7 @@ For more information, see [RedisTimeSeries documentation](https://redis.io/docs/
 
 Redis Vector provides a vector data type and vector similarity search capabilities, supporting approximate nearest neighbor (ANN) queries over embeddings. This enables AI and ML workloads such as semantic search and recommendations to run directly inside Redis.
 
-The key capabilities are as follows:
+The key capabilities of Redis Vector are as follows:
 
 * Storage of high-dimensional vectors (for example, 128–1536 dimensions) with configurable index types (HNSW, flat, and so on.).
 
@@ -266,7 +266,7 @@ The key capabilities are as follows:
 
 * Integration with RediSearch or Query Engine for flexible schemas.
 
-The typical use cases are as follows:
+The typical use cases of Redis Vector are as follows:
 
 * Semantic document search for RAG pipelines.
 
@@ -276,7 +276,7 @@ The typical use cases are as follows:
 
 * Fraud and anomaly detection using learned embeddings.
 
-Example :# Minimal vector index and one doc (4-dim example)
+#### Example: minimal vector index and one doc (4-dim example)
 
 ```sh
 > FT.CREATE vIdx ON HASH PREFIX 1 "vdoc:" \
@@ -291,7 +291,7 @@ OK
 ```
 {: codeblock}
 
-KNN search for nearest vector:
+To KNN search for nearest vector:
 
 ```sh
 > FT.SEARCH vIdx "(*=>[KNN 1 @embedding $v AS score])" \
@@ -354,15 +354,3 @@ Estimate memory requirements
 
 Understand the read/write loads
 :   Identifying your read/write loads helps you prepare for auto-scaling needs, time your application requests, and maintain master-follower sync.
-
-Understand your IOPS needs
-:   Input/output operations per second is a key factor that you should consider in instance capacity planning. {{site.data.keyword.databases-for-redis}} takes RDB snapshots periodically in keeping with the default Redis configuration, which engages disk even if your instance is set up for cache. It's possible for very busy databases to exceed the IOPS for the disk size, and increasing disk size can alleviate a performance bottleneck.
-
-Plan for redundancy and reconnects
-:   There are multiple components that are involved in cloud computation, which can cause momentary failures. However, at {{site.data.keyword.IBM}} {{site.data.keyword.databases-for}}, we offer 99.99% high availability, and encourage you to plan for connection blips in your application design using retry and reconnect logic.
-
-Consider network bandwidth
-:   Your network bandwidth might significantly impact your {{site.data.keyword.databases-for-redis}} performance. Ensure that you have sufficient network bandwidth to handle your database loads.
-
-Monitoring and adjustments
-:   Our recommendation is to monitor your {{site.data.keyword.databases-for-redis}} instance performance and usage using {{site.data.keyword.monitoringlong}} to determine the evolving usage pattern of your database instance and resize as needed.
