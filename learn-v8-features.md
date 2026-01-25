@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-01-24"
+lastupdated: "2026-01-25"
 
 keywords: redis, databases, V8, V7, improvements
 
@@ -15,9 +15,9 @@ subcollection: databases-for-redis
 # Redis V8 features
 {: #v8-features}
 
-Redis V8.2 introduces significant improvements to Redis 7.x, delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. V8.2 offers new capabilities in Streams, bitmaps, vector search, and cluster metrics, and preserves the familiar Redis programming model.
+Redis V8.2 introduces significant improvements compared to Redis 7.x, by delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. V8.2 offers new capabilities in Streams, bitmaps, vector search, cluster metrics, and preserves the familiar Redis programming model.
 
-The key high-level improvements are as follows:
+The key high-level improvements in V8.2 are as follows:
 
 * Significant performance gains across common commands and workloads.
 * Reduced memory usage, especially for JSON and key metadata.
@@ -27,12 +27,12 @@ The key high-level improvements are as follows:
 ## Upgrading from Redis V7.2 to Redis V8.2
 {: #v7-v8-upgrading}
 
-To information about how to upgrade from Redis V7.2 to Redis V8.2, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui).
+For information about how to upgrade from Redis V7.2 to Redis V8.2, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui).
 
-## {{site.data.keyword.databases-for-redis}} modules
+## Redis modules
 {: #v8-modules}
 
-Redis V8 supports several official modules that extend its functionality for advanced use cases. The following key modules are described along with their capabilities.
+Redis V8 supports several official modules that extend its functionality for advanced use cases. The key modules are described along with their capabilities.
 
 ### RedisBloom
 {: #redisbloom}
@@ -45,7 +45,7 @@ The key capabilities of RedisBloom are as follows:
 
 * Cuckoo Filter: similar to Bloom but supports deletions more naturally.
 
-* Count‑Min Sketch: estimates the frequency of events (for example, how many times a key appears) in a streaming fashion.
+* Count‑Min Sketch: estimates the frequency of events in a streaming fashion (for example, how many times a key appears).
 
 * Top‑K: tracks the most frequent items in a data stream.
 
@@ -55,12 +55,12 @@ The typical use cases for RedisBloom are as follows:
 
 * Fraud detection and abuse prevention (flag suspicious patterns without storing the full history).
 
-* Recommendation systems and trending lists (using Count‑Min Sketch and Top‑K).
+* Recommendation systems and trending lists using Count‑Min Sketch and Top‑K.
 
 * Cache pre‑filters to avoid unnecessary backend lookups.
 
-#### RedisBloom example
-{: #redisbloom_example}
+#### RedisBloom examples
+{: #redisbloom_examples}
 
 To create a Bloom filter with 1% error rate and a capacity of 1000:
 
@@ -93,7 +93,7 @@ For more information, see the [RedisBloom filter documentation](https://redis.io
 ### RediSearch
 {: #redisearch}
 
-RediSearch is a query and indexing engine for Redis that provides full‑text search, secondary indexing, aggregations, and support for vector similarity search. RediSearch indexes Redis data (hashes, JSON, and so on) and enables powerful queries with scoring, filtering, and highlighting.
+RediSearch is a query and indexing engine for Redis that provides full‑text search, secondary indexing, aggregations, and support for vector similarity search. RediSearch indexes Redis data (foe example, hashes and JSON) and enables powerful queries with scoring, filtering, and highlighting.
 
 The key capabilities of RediSearch are as follows:
 
@@ -153,7 +153,7 @@ For more information, see [RediSearch documentation](https://redis.io/docs/lates
 ### RedisJSON
 {: #redisjson}
 
-RedisJSON introduces a native JSON data type for Redis, enabling storage, retrieval, and partial updates of JSON documents using JSONPath-like syntax. RedisJSON is optimized for fast access to sub‑documents and integrates with other Redis features such as RediSearch.
+RedisJSON introduces a native JSON data type for Redis, enabling storage, retrieval, and partial updates of JSON documents using JSONPath-like syntax. RedisJSON is optimized for fast access to subdocuments and integrates with other Redis features such as RediSearch.
 
 The key capabilities of RedisJSON are as follows:
 
@@ -199,7 +199,7 @@ For more information, see the [RedisJSON documentation](https://redis.io/docs/la
 ### RedisTimeSeries
 {: #redistimeseries}
 
-RedisTimeSeries is a module for efficient time‑series data ingestion, storage, querying, aggregation, and downsampling. It adds a time-series data type and related commands to model metrics and events over time.
+RedisTimeSeries is a module for efficient time‑series data ingestion, storage, querying, aggregation, and downsampling. RedisTimeSeries adds a time-series data type and related commands to model metrics and events over time.
 
 The key capabilities of RedisTimeSeries are as follows:
 
