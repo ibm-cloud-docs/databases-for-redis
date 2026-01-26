@@ -55,7 +55,7 @@ The typical use cases for RedisBloom are as follows:
 
 * Fraud detection and abuse prevention (flag suspicious patterns without storing the full history).
 
-* Recommendation systems and trending lists using Count‑Min Sketch and Top‑K.
+* Recommendation systems and trending lists that use Count‑Min Sketch and Top‑K.
 
 * Cache pre‑filters to avoid unnecessary backend lookups.
 
@@ -113,7 +113,7 @@ The typical use cases for RediSearch are as follows:
 
 * Real-time search over user content (tweets, posts, and documents).
 
-* Combining text and vector search for AI‑powered applications.
+* Text and vector search combined for AI‑powered applications.
 
 #### RediSearch examples
 {: #redisearch_examples}
@@ -147,7 +147,7 @@ To search by text:
 ```
 {: codeblock}
 
-For more information, see [RediSearch documentation](https://redis.io/docs/latest/develop/ai/search-and-query/).
+For more information, see the [RediSearch documentation](https://redis.io/docs/latest/develop/ai/search-and-query/).
 
 **** http://redis.io/docs/latest/develop/ai/search-and-query/ doesn't work ****
 
@@ -155,7 +155,7 @@ For more information, see [RediSearch documentation](https://redis.io/docs/lates
 ### RedisJSON
 {: #redisjson}
 
-RedisJSON introduces a native JSON data type for Redis, enabling storage, retrieval, and partial updates of JSON documents using JSONPath-like syntax. RedisJSON is optimized for fast access to subdocuments and integrates with other Redis features such as RediSearch.
+RedisJSON introduces a native JSON data type for Redis, enabling storage, retrieval, and partial updates of JSON documents that use JSONPath-like syntax. RedisJSON is optimized for fast access to subdocuments and integrates with other Redis features such as RediSearch.
 
 The key capabilities of RedisJSON are as follows:
 
@@ -256,7 +256,7 @@ To get the latest sample:
 ```
 {: codeblock}
 
-For more information, see [RedisTimeSeries documentation](https://redis.io/docs/latest/develop/data-types/timeseries/).
+For more information, see the [RedisTimeSeries documentation](https://redis.io/docs/latest/develop/data-types/timeseries/).
 
 ***** https://redis.io/docs/latest/develop/data-types/timeseries/.redis%E2%80%8B **** doesn't work
 
@@ -324,7 +324,7 @@ PARAMS 2 v "\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?" SORTBY score D
 ```
 {: codeblock}
 
-For more information, see [Vector search concepts documentation](https://redis.io/docs/latest/develop/ai/search-and-query/vectors/).
+For more information, see the [Vector search concepts documentation](https://redis.io/docs/latest/develop/ai/search-and-query/vectors/).
 
 
 (https://redis.io/docs/latest/develop/ai/search-and-query/vectors/.redis%E2%80%8B) doesn't work
@@ -337,7 +337,7 @@ The functional differences between Redis V7 and Redis V8 are as follows:
 
 * Enhanced Streams commands XDELEX and XACKDEL for atomic message lifecycle and cleaner consumer group management.
 
-* Extended bitmap operations using richer BITOP operators for analytics over large bitsets.
+* Extended bitmap operations that use richer BITOP operators for analytics over large bitsets.
 
 * More mature vector search capabilities integrated with the query engine.
 
