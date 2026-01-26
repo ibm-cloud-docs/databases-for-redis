@@ -15,7 +15,7 @@ subcollection: databases-for-redis
 # Redis 8 features
 {: #v8-features}
 
-Redis 8.2 introduces significant improvements compared to Redis 7.x, by delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. 8.2 offers new capabilities in Streams, bitmaps, vector search, cluster metrics, and preserves the familiar Redis programming model.
+Redis 8.2 introduces significant improvements over Redis 7.x by delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. 8.2 offers new capabilities in Streams, bitmaps, vector search, cluster metrics while preserving the familiar Redis programming model.
 
 The key high-level improvements in 8.2 are as follows:
 
@@ -32,7 +32,7 @@ For information about how to upgrade from Redis 7.2 to Redis 8.2, see [Upgrading
 ## Redis modules
 {: #v8-modules}
 
-Redis 8 supports several official modules that extend its functionality for advanced use cases. The key modules are described along with their capabilities.
+Redis 8 supports several official modules that extend its functionality for advanced use cases. The key modules and their capabilities are described in the following sections.
 
 ### RedisBloom
 {: #redisbloom}
@@ -59,8 +59,8 @@ The typical use cases for RedisBloom are as follows:
 
 * Cache pre‑filters to avoid unnecessary backend lookups.
 
-#### RedisBloom examples
-{: #redisbloom_examples}
+#### RedisBloom example
+{: #redisbloom_example}
 
 To create a Bloom filter with 1% error rate and a capacity of 1000:
 
@@ -103,7 +103,7 @@ The key capabilities of RediSearch are as follows:
 
 * Aggregation engine for faceting, analytics, and ranking.
 
-* Integration with vector fields for semantic and ANN search.
+* Integration with vector fields for semantic and approximate nearest neighbor (ANN) search.
 
 The typical use cases for RediSearch are as follows:
 
@@ -111,12 +111,12 @@ The typical use cases for RediSearch are as follows:
 
 * Log and event search with free‑text and structured filters.
 
-* Real-time search over user content (tweets, posts, and documents).
+* Real-time search of user content (tweets, posts, and documents).
 
 * Text and vector search combined for AI‑powered applications.
 
-#### RediSearch examples
-{: #redisearch_examples}
+#### RediSearch example
+{: #redisearch_example}
 
 To create an index and add one document:
 
@@ -200,7 +200,7 @@ To get one field:
 
 For more information, see the [RedisJSON documentation](https://redis.io/docs/latest/develop/data-types/json/).
 
-**** http://%20https//redis.io/docs/latest/develop/data-types/json/.redis%E2%80%8B doesn't work ****
+**** https//redis.io/docs/latest/develop/data-types/json/.redis%E2%80%8B doesn't work ****
 
 
 ### RedisTimeSeries
@@ -267,7 +267,7 @@ Redis Vector provides a vector data type and vector similarity search capabiliti
 
 The key capabilities of Redis Vector are as follows:
 
-* Storage of high-dimensional vectors (for example, 128–1536 dimensions) with configurable index types (for example, HNSW and flat).
+* Storage of high-dimensional vectors (for example, 128–1536 dimensions) with configurable index types like HNSW and flat.
 
 * K‑nearest neighbor (KNN) search on vector fields using distance metrics such as cosine, inner product, or L2.
 
