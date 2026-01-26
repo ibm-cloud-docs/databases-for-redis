@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-01-25"
+lastupdated: "2026-01-26"
 
 keywords: redis, databases, V8, V7, improvements
 
@@ -93,7 +93,7 @@ For more information, see the [RedisBloom filter documentation](https://redis.io
 ### RediSearch
 {: #redisearch}
 
-RediSearch is a query and indexing engine for Redis that provides full‑text search, secondary indexing, aggregations, and support for vector similarity search. RediSearch indexes Redis data (foe example, hashes and JSON) and enables powerful queries with scoring, filtering, and highlighting.
+RediSearch is a query and indexing engine for Redis that provides full‑text search, secondary indexing, aggregations, and support for vector similarity search. RediSearch indexes Redis data (for example, hashes and JSON) and enables powerful queries with scoring, filtering, and highlighting.
 
 The key capabilities of RediSearch are as follows:
 
@@ -182,16 +182,19 @@ The typical use cases of RedisJSON are as follows:
 127.0.0.1:6379> JSON.SET user:1 $ '{"name":"Alice","age":30}'
 
 OK
+```
+{: codeblock}
 
-Get one field:
+To get one field:
 
+```sh
 127.0.0.1:6379> JSON.GET user:1 $.name
 
 "\"Alice\""
 ```
 {: codeblock}
 
-For more information, see the [RedisJSON documentation](https://redis.io/docs/latest/develop/data-types/json/)
+For more information, see the [RedisJSON documentation](https://redis.io/docs/latest/develop/data-types/json/).
 
 ****** http://%20https//redis.io/docs/latest/develop/data-types/json/.redis%E2%80%8B doesn't work *****
 
@@ -247,7 +250,7 @@ Get the latest sample:
 ```
 {: codeblock}
 
-For more information, see [RedisTimeSeries documentation](https://redis.io/docs/latest/develop/data-types/timeseries/)
+For more information, see [RedisTimeSeries documentation](https://redis.io/docs/latest/develop/data-types/timeseries/).
 
 ***** https://redis.io/docs/latest/develop/data-types/timeseries/.redis%E2%80%8B **** doesn't work
 
@@ -312,13 +315,13 @@ PARAMS 2 v "\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?" SORTBY score D
 ```
 {: codeblock}
 
-For more information, see [Vector search concepts documentation](https://redis.io/docs/latest/develop/ai/search-and-query/vectors/)
+For more information, see [Vector search concepts documentation](https://redis.io/docs/latest/develop/ai/search-and-query/vectors/).
 
 
 (https://redis.io/docs/latest/develop/ai/search-and-query/vectors/.redis%E2%80%8B) doesn't work
 
 
-## Changelog and release notes ({{site.data.keyword.databases-for-redis}} 7 to {{site.data.keyword.databases-for-redis}} 8)
+## Changelog and release notes (Redis 7 to Redis 8)
 {: #v8-changelog}
 
 The functional differences between Redis V7 and Redis V8 are as follows:
@@ -336,13 +339,7 @@ The functional differences between Redis V7 and Redis V8 are as follows:
 
 
 
-## What is {{site.data.keyword.databases-for-redis}}?
-{: #what-is-redis}
-
-{{site.data.keyword.databases-for-redis}} is a managed Redis OSS service offered on {{site.data.keyword.Bluemix_notm}}. It is an in-memory _data structure store_ used as a database, cache, message broker, and streaming engine. Unlike traditional databases, which store data on disk, Redis stores data in memory (RAM) enabling low latency. The data is _ephemeral_, which enables {{site.data.keyword.databases-for-redis}} to offer top performance and high throughput. You can also configure Redis to store data persistently on disk by trading off performance with data availability because this is achieved by enabling AOF (Append Only File) sync with RDB snapshots.
-
-RDB snapshots are enabled for backup and high availability, even if persistence is disabled.
-{: note}
+-----------
 
 
 
