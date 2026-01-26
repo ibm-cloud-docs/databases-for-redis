@@ -12,27 +12,27 @@ subcollection: databases-for-redis
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Redis V8 features
+# Redis 8 features
 {: #v8-features}
 
-Redis V8.2 introduces significant improvements compared to Redis 7.x, by delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. V8.2 offers new capabilities in Streams, bitmaps, vector search, cluster metrics, and preserves the familiar Redis programming model.
+Redis 8.2 introduces significant improvements compared to Redis 7.x, by delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. 8.2 offers new capabilities in Streams, bitmaps, vector search, cluster metrics, and preserves the familiar Redis programming model.
 
-The key high-level improvements in V8.2 are as follows:
+The key high-level improvements in 8.2 are as follows:
 
 * Significant performance gains across common commands and workloads.
 * Reduced memory usage, especially for JSON and key metadata.
 * New functionality in Streams, bit operations, and vector search.
 * Expanded metrics and observability for clusters and replication.
 
-## Upgrading from Redis V7.2 to Redis V8.2
+## Upgrading from Redis 7.2 to Redis 8.2
 {: #v7-v8-upgrading}
 
-For information about how to upgrade from Redis V7.2 to Redis V8.2, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui).
+For information about how to upgrade from Redis 7.2 to Redis 8.2, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui).
 
 ## Redis modules
 {: #v8-modules}
 
-Redis V8 supports several official modules that extend its functionality for advanced use cases. The key modules are described along with their capabilities.
+Redis 8 supports several official modules that extend its functionality for advanced use cases. The key modules are described along with their capabilities.
 
 ### RedisBloom
 {: #redisbloom}
@@ -86,7 +86,7 @@ To add and check a model name:
 
 For more information, see the [RedisBloom filter documentation](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)
 
-****** https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/.redis%E2%80%8B/ doesn't work *******
+**** https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/.redis%E2%80%8B/ doesn't work ****
 
 
 
@@ -200,7 +200,7 @@ To get one field:
 
 For more information, see the [RedisJSON documentation](https://redis.io/docs/latest/develop/data-types/json/).
 
-****** http://%20https//redis.io/docs/latest/develop/data-types/json/.redis%E2%80%8B doesn't work *****
+**** http://%20https//redis.io/docs/latest/develop/data-types/json/.redis%E2%80%8B doesn't work ****
 
 
 ### RedisTimeSeries
@@ -258,7 +258,7 @@ To get the latest sample:
 
 For more information, see the [RedisTimeSeries documentation](https://redis.io/docs/latest/develop/data-types/timeseries/).
 
-***** https://redis.io/docs/latest/develop/data-types/timeseries/.redis%E2%80%8B **** doesn't work
+**** https://redis.io/docs/latest/develop/data-types/timeseries/.redis%E2%80%8B **** doesn't work
 
 ### Redis Vector
 {: #redisvector}
@@ -327,13 +327,13 @@ PARAMS 2 v "\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?" SORTBY score D
 For more information, see the [Vector search concepts documentation](https://redis.io/docs/latest/develop/ai/search-and-query/vectors/).
 
 
-(https://redis.io/docs/latest/develop/ai/search-and-query/vectors/.redis%E2%80%8B) doesn't work
+**** https://redis.io/docs/latest/develop/ai/search-and-query/vectors/.redis%E2%80%8B **** doesn't work
 
 
 ## Release notes and changelog for Redis 7 to Redis 8
 {: #v8-changelog}
 
-The functional differences between Redis V7 and Redis V8 are as follows:
+The functional differences between Redis 7 and Redis 8 are as follows:
 
 * Enhanced Streams commands XDELEX and XACKDEL for atomic message lifecycle and cleaner consumer group management.
 
@@ -343,4 +343,4 @@ The functional differences between Redis V7 and Redis V8 are as follows:
 
 * Multiple security and stability fixes that are not available in earlier 7.x releases.
 
-* Distribution and packaging of modules are consolidated in V8.x, therefore simplifying deployment.
+* Distribution and packaging of modules are consolidated in 8.x, therefore simplifying deployment.
