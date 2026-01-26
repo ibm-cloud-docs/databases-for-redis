@@ -115,8 +115,10 @@ The typical use cases for RediSearch are as follows:
 
 * Combining text and vector search for AI‑powered applications.
 
-#### RediSearch example: create index and add one doc
-{: #redisearch_example}
+#### RediSearch examples
+{: #redisearch_examples}
+
+To create an index and add one document:
 
 ```sh
 > FT.CREATE idx ON HASH PREFIX 1 "doc:" SCHEMA title TEXT
@@ -175,8 +177,10 @@ The typical use cases of RedisJSON are as follows:
 
 * JSON‑based APIs where Redis acts as a high‑speed backing store.
 
-#### RedisJSON example: store a simple JSON document
+#### RedisJSON example:
 {: #redisjson_example}
+
+To store a simple JSON document:
 
 ```sh
 127.0.0.1:6379> JSON.SET user:1 $ '{"name":"Alice","age":30}'
@@ -225,8 +229,10 @@ The typical use cases of RedisTimeSeries are as follows:
 * Business KPIs and operational dashboards.
 
 
-#### Example: create a time series and add a value
+#### RedisTimeSeries example
 {: #redistimeseries_example}
+
+To create a time series and add a value:
 
 ```sh
 > TS.CREATE temp:room1
@@ -239,7 +245,7 @@ OK
 ```
 {: codeblock}
 
-Get the latest sample:
+To get the latest sample:
 
 ```sh
 > TS.GET temp:room1
@@ -261,7 +267,7 @@ Redis Vector provides a vector data type and vector similarity search capabiliti
 
 The key capabilities of Redis Vector are as follows:
 
-* Storage of high-dimensional vectors (for example, 128–1536 dimensions) with configurable index types (HNSW, flat, and so on.).
+* Storage of high-dimensional vectors (for example, 128–1536 dimensions) with configurable index types (for example, HNSW and flat).
 
 * K‑nearest neighbor (KNN) search on vector fields using distance metrics such as cosine, inner product, or L2.
 
@@ -279,7 +285,10 @@ The typical use cases of Redis Vector are as follows:
 
 * Fraud and anomaly detection using learned embeddings.
 
-#### Example: minimal vector index and one doc (4-dim example)
+#### Redis Vector example:
+{: #redisvector_example}
+
+To create a minimal vector index and one document (4-dim example):
 
 ```sh
 > FT.CREATE vIdx ON HASH PREFIX 1 "vdoc:" \
@@ -321,33 +330,17 @@ For more information, see [Vector search concepts documentation](https://redis.i
 (https://redis.io/docs/latest/develop/ai/search-and-query/vectors/.redis%E2%80%8B) doesn't work
 
 
-## Changelog and release notes (Redis 7 to Redis 8)
+## Release notes and changelog for Redis 7 to Redis 8
 {: #v8-changelog}
 
 The functional differences between Redis V7 and Redis V8 are as follows:
 
-* Enhanced Streams commands (XDELEX and XACKDEL) for atomic message lifecycle and cleaner consumer group management.
+* Enhanced Streams commands XDELEX and XACKDEL for atomic message lifecycle and cleaner consumer group management.
 
-* Extended bitmap operations through richer BITOP operators for analytics over large bitsets.
+* Extended bitmap operations using richer BITOP operators for analytics over large bitsets.
 
 * More mature vector search capabilities integrated with the query engine.
 
-* Multiple security and stability fixes that are not present in earlier 7.x releases.
+* Multiple security and stability fixes that are not available in earlier 7.x releases.
 
-* Distribution and packaging of modules are consolidated in 8.x, simplifying deployment.
-
-
-
-
------------
-
-
-
-Understand your data
-:   You are expected to know the data types, size, and lifetime of your data. This helps you understand the duration of data available in-memory before it gets deleted or moved.
-
-Estimate memory requirements
-:   It is important to calculate your memory requirements. Remember to factor in not only your data, but also the memory required for replication, client connections, max-memory buffers, and Redis metadata.
-
-Understand the read/write loads
-:   Identifying your read/write loads helps you prepare for auto-scaling needs, time your application requests, and maintain master-follower sync.
+* Distribution and packaging of modules are consolidated in V8.x, therefore simplifying deployment.
