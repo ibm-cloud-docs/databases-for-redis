@@ -25,9 +25,7 @@ Use these release notes to learn about the latest updates to {{site.data.keyword
 {: release-note}
 
 Redis V8 improvements
-:   Redis 8.2 introduces considerable improvements over Redis 7.x including performance gains, reduced memory usage, expanded metrics and observability, and new functionality in Streams, bit operations, and vector search.
-
-For more details and information about specific key Redis modules, see [Redis 8 features](/docs/databases-for-redis?topic=databases-for-redis-v8-features).
+:   Redis 8.2 introduces considerable improvements over Redis 7.x including performance gains, reduced memory usage, expanded metrics and observability, and new functionality in Streams, bit operations, and vector search. For more details about Redis 8 and information about specific key Redis modules, see [Redis 8 features](/docs/databases-for-redis?topic=databases-for-redis-v8-features).
 
 ## 10 March 2025
 {: #databases-for-redis-10mar2025}
