@@ -1,0 +1,335 @@
+---
+
+copyright:
+  years: 2026
+lastupdated: "2026-01-27"
+
+keywords: redis, databases, V8, V7, improvements
+
+subcollection: databases-for-redis
+
+---
+
+{{site.data.keyword.attribute-definition-list}}
+
+# Redis 8 features
+{: #v8-features}
+
+Redis 8.2 introduces significant improvements over Redis 7.x by delivering higher performance, enhanced memory efficiency, stronger observability, and improved developer experience. 8.2 offers new capabilities in Streams, bitmaps, vector search, cluster metrics while preserving the familiar Redis programming model.
+
+The key high-level improvements in 8.2 are as follows:
+
+* Significant performance gains across common commands and workloads.
+* Reduced memory usage, especially for JSON and key metadata.
+* New functionality in Streams, bit operations, and vector search.
+* Expanded metrics and observability for clusters and replication.
+
+## Upgrading from Redis 7.2 to Redis 8.2
+{: #v7-v8-upgrading}
+
+For information about how to upgrade from Redis 7.2 to Redis 8.2, see [Upgrading to a new major version](/docs/databases-for-redis?topic=databases-for-redis-upgrading&interface=ui).
+
+## Redis modules
+{: #v8-modules}
+
+Redis 8 supports several official modules that extend its functionality for advanced use cases. The key modules and their capabilities are described in the following sections.
+
+### RedisBloom
+{: #redisbloom}
+
+RedisBloom is an official Redis module that provides probabilistic data structures: Bloom Filter, Cuckoo Filter, Count‑Min Sketch, and Top‑K. These structures trade exactness for extreme space efficiency and speed, making them ideal for when approximate answers with a known error bound are acceptable.
+
+The key capabilities of RedisBloom are as follows:
+
+* Bloom Filter: tests whether an element can be in a set, with configurable false‑positive probability and no false negatives.
+
+* Cuckoo Filter: similar to Bloom but supports deletions more naturally.
+
+* Count‑Min Sketch: estimates the frequency of events in a streaming fashion (for example, how many times a key appears).
+
+* Top‑K: tracks the most frequent items in a data stream.
+
+The typical use cases for RedisBloom are as follows:
+
+* Duplicate and seen‑before checks (URLs, emails, and user IDs).
+
+* Fraud detection and abuse prevention (flag suspicious patterns without storing the full history).
+
+* Recommendation systems and trending lists that use Count‑Min Sketch and Top‑K.
+
+* Cache pre‑filters to avoid unnecessary backend lookups.
+
+#### RedisBloom example
+{: #redisbloom_example}
+
+To create a Bloom filter with 1% error rate and a capacity of 1000:
+
+```sh
+> BF.RESERVE bikes:models 0.01 1000
+
+OK
+```
+{: codeblock}
+
+To add and check a model name:
+
+```sh
+> BF.ADD bikes:models "Smoky Mountain Striker"
+
+(integer) 1
+
+> BF.EXISTS bikes:models "Smoky Mountain Striker"
+
+(integer) 1
+```
+{: codeblock}
+
+For more information, see the [RedisBloom filter documentation](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)
+
+
+### RediSearch
+{: #redisearch}
+
+RediSearch is a query and indexing engine for Redis that provides full‑text search, secondary indexing, aggregations, and support for vector similarity search. RediSearch indexes Redis data (for example, hashes and JSON) and enables powerful queries with scoring, filtering, and highlighting.
+
+The key capabilities of RediSearch are as follows:
+
+* Full‑text search with stemming, phonetics, and fuzzy matching.
+
+* Numeric, tag, and geospatial fields for advanced filters.
+
+* Aggregation engine for faceting, analytics, and ranking.
+
+* Integration with vector fields for semantic and approximate nearest neighbor (ANN) search.
+
+The typical use cases for RediSearch are as follows:
+
+* Product catalog search with filters and facets.
+
+* Log and event search with free‑text and structured filters.
+
+* Real-time search of user content (tweets, posts, and documents).
+
+* Text and vector search combined for AI‑powered applications.
+
+#### RediSearch example
+{: #redisearch_example}
+
+To create an index and add one document:
+
+```sh
+> FT.CREATE idx ON HASH PREFIX 1 "doc:" SCHEMA title TEXT
+
+OK
+
+> HSET doc:1 title "hello redis"
+
+(integer) 1
+```
+{: codeblock}
+
+To search by text:
+
+```sh
+> FT.SEARCH idx "hello"
+
+1) (integer) 1
+
+2) "doc:1"
+
+3) 1) "title"
+
+   2) "hello redis"
+
+```
+{: codeblock}
+
+For more information, see the [RediSearch documentation](https://redis.io/docs/latest/develop/ai/search-and-query/).
+
+
+### RedisJSON
+{: #redisjson}
+
+RedisJSON introduces a native JSON data type for Redis, enabling storage, retrieval, and partial updates of JSON documents that use JSONPath-like syntax. RedisJSON is optimized for fast access to subdocuments and integrates with other Redis features such as RediSearch.
+
+The key capabilities of RedisJSON are as follows:
+
+* Store structured JSON documents as first‑class values.
+
+* Retrieve or update specific paths without loading the entire document.
+
+* Support for arrays, objects, and nested structures.
+
+* Option to integrate with search and query features for indexing JSON fields.
+
+The typical use cases of RedisJSON are as follows:
+
+* User profiles and sessions with frequently updated nested fields.
+
+* Configuration documents and feature flags.
+
+* Product catalogs or content objects that are shared across services.
+
+* JSON‑based APIs where Redis acts as a high‑speed backing store.
+
+#### RedisJSON example:
+{: #redisjson_example}
+
+To store a simple JSON document:
+
+```sh
+127.0.0.1:6379> JSON.SET user:1 $ '{"name":"Alice","age":30}'
+
+OK
+```
+{: codeblock}
+
+To get one field:
+
+```sh
+127.0.0.1:6379> JSON.GET user:1 $.name
+
+"\"Alice\""
+```
+{: codeblock}
+
+For more information, see the [RedisJSON documentation](https://redis.io/docs/latest/develop/data-types/json/).
+
+
+### RedisTimeSeries
+{: #redistimeseries}
+
+RedisTimeSeries is a module for efficient time‑series data ingestion, storage, querying, aggregation, and downsampling. RedisTimeSeries adds a time-series data type and related commands to model metrics and events over time.
+
+The key capabilities of RedisTimeSeries are as follows:
+
+* High-throughput ingestion with automatic timestamping.
+
+* Range queries over time intervals, with aggregations like avg, min, max, and sum.
+
+* Retention policies and compaction rules for long‑term storage.
+
+* Labels for grouping and querying sets of time-series.
+
+The typical use cases of RedisTimeSeries are as follows:
+
+* Infrastructure and application metrics (CPU, memory, latency).
+
+* IoT sensor readings and telemetry.
+
+* Financial tick data and market metrics.
+
+* Business KPIs and operational dashboards.
+
+
+#### RedisTimeSeries example
+{: #redistimeseries_example}
+
+To create a time series and add a value:
+
+```sh
+> TS.CREATE temp:room1
+
+OK
+
+> TS.ADD temp:room1 * 25.3
+
+(integer) 1736846400000
+```
+{: codeblock}
+
+To get the latest sample:
+
+```sh
+> TS.GET temp:room1
+
+1) (integer) 1736846400000
+
+2) "25.3"
+```
+{: codeblock}
+
+For more information, see the [RedisTimeSeries documentation](https://redis.io/docs/latest/develop/data-types/timeseries/).
+
+
+### Redis Vector
+{: #redisvector}
+
+Redis Vector provides a vector data type and vector similarity search capabilities, supporting approximate nearest neighbor (ANN) queries over embeddings. This enables AI and ML workloads such as semantic search and recommendations to run directly inside Redis.
+
+The key capabilities of Redis Vector are as follows:
+
+* Storage of high-dimensional vectors (for example, 128–1536 dimensions) with configurable index types like HNSW and flat.
+
+* K‑nearest neighbor (KNN) search on vector fields using distance metrics such as cosine, inner product, or L2.
+
+* Hybrid queries that combine vector similarity with filter conditions on structured fields.
+
+* Integration with RediSearch or Query Engine for flexible schemas.
+
+The typical use cases of Redis Vector are as follows:
+
+* Semantic document search for RAG pipelines.
+
+* Personalized recommendations using user or item embeddings.
+
+* Similarity search for images, audio, or code embeddings.
+
+* Fraud and anomaly detection using learned embeddings.
+
+#### Redis Vector example:
+{: #redisvector_example}
+
+To create a minimal vector index and one document (4-dim example):
+
+```sh
+> FT.CREATE vIdx ON HASH PREFIX 1 "vdoc:" \
+
+SCHEMA embedding VECTOR HNSW 6 TYPE FLOAT32 DIM 4 DISTANCE_METRIC COSINE
+
+OK
+
+> HSET vdoc:1 embedding "\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?"
+
+(integer) 1
+```
+{: codeblock}
+
+To KNN search for nearest vector:
+
+```sh
+> FT.SEARCH vIdx "(*=>[KNN 1 @embedding $v AS score])" \
+
+PARAMS 2 v "\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?" SORTBY score DIALECT 2
+
+1) (integer) 1
+
+2) "vdoc:1"
+
+3) 1) "embedding"
+
+   2) "\x00\x00\x80?..."
+
+   3) "score"
+
+   4) "0.000000"
+```
+{: codeblock}
+
+For more information, see the [Vector search concepts documentation](https://redis.io/docs/latest/develop/ai/search-and-query/vectors/).
+
+
+## Release notes and changelog for Redis 7 to Redis 8
+{: #v8-changelog}
+
+The functional differences between Redis 7 and Redis 8 are as follows:
+
+* Enhanced Streams commands XDELEX and XACKDEL for atomic message lifecycle and cleaner consumer group management.
+
+* Extended bitmap operations that use richer BITOP operators for analytics over large bitsets.
+
+* More mature vector search capabilities integrated with the query engine.
+
+* Multiple security and stability fixes that are not available in earlier 7.x releases.
+
+* Distribution and packaging of modules are consolidated in 8.x, therefore simplifying deployment.

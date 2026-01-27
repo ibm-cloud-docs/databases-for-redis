@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: 2025-07-21
+  years: 2019, 2026
+lastupdated: 2026-01-23
 
 keywords: redis, databases
 
