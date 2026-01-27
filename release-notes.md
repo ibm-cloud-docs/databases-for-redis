@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2026
-lastupdated: "2026-01-22"
+lastupdated: "2026-01-27"
 
 keywords: databases-for-redis release notes
 
@@ -19,6 +19,14 @@ content-type: release-note
 
 Use these release notes to learn about the latest updates to {{site.data.keyword.databases-for-redis_full}} that are grouped by _date_ or _build number_.
 {: shortdesc}
+
+## 27 January 2026
+{: #databases-for-redis-27jan2026}
+{: release-note}
+
+Redis 8.2 introduces considerable improvements over Redis 7.x including performance gains, reduced memory usage, expanded metrics and observability, and new functionality in Streams, bit operations, and vector search.
+
+For more details and information about specific key Redis modules, see [Redis 8 features](/docs/databases-for-redis?topic=databases-for-redis-v8-features).
 
 ## 10 March 2025
 {: #databases-for-redis-10mar2025}
@@ -158,7 +166,7 @@ Protecting {{site.data.keyword.databases-for-redis_full}} resources with context
 {: release-note}
 
 {{site.data.keyword.databases-for-redis_full}} 4.0 End of Life in May 2022
-:  After May 27, 2022, all {{site.data.keyword.databases-for-redis_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version, Redis 5.0. 
+:  After May 27, 2022, all {{site.data.keyword.databases-for-redis_full}} instances on version 4.0 that are still active will be upgraded in-place to the next major version, Redis 5.0.
 
 ## 30 June 2021
 {: #databases-for-redis-30jun2021}
