@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-01-26"
+lastupdated: "2026-01-27"
 
 keywords: redis, databases, V8, V7, improvements
 
@@ -86,9 +86,6 @@ To add and check a model name:
 
 For more information, see the [RedisBloom filter documentation](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)
 
-**** https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/.redis%E2%80%8B/ doesn't work ****
-
-
 
 ### RediSearch
 {: #redisearch}
@@ -149,8 +146,6 @@ To search by text:
 
 For more information, see the [RediSearch documentation](https://redis.io/docs/latest/develop/ai/search-and-query/).
 
-**** http://redis.io/docs/latest/develop/ai/search-and-query/ doesn't work ****
-
 
 ### RedisJSON
 {: #redisjson}
@@ -199,8 +194,6 @@ To get one field:
 {: codeblock}
 
 For more information, see the [RedisJSON documentation](https://redis.io/docs/latest/develop/data-types/json/).
-
-**** https//redis.io/docs/latest/develop/data-types/json/.redis%E2%80%8B doesn't work ****
 
 
 ### RedisTimeSeries
@@ -258,7 +251,6 @@ To get the latest sample:
 
 For more information, see the [RedisTimeSeries documentation](https://redis.io/docs/latest/develop/data-types/timeseries/).
 
-**** https://redis.io/docs/latest/develop/data-types/timeseries/.redis%E2%80%8B **** doesn't work
 
 ### Redis Vector
 {: #redisvector}
@@ -325,9 +317,6 @@ PARAMS 2 v "\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?\x00\x00\x80?" SORTBY score D
 {: codeblock}
 
 For more information, see the [Vector search concepts documentation](https://redis.io/docs/latest/develop/ai/search-and-query/vectors/).
-
-
-**** https://redis.io/docs/latest/develop/ai/search-and-query/vectors/.redis%E2%80%8B **** doesn't work
 
 
 ## Release notes and changelog for Redis 7 to Redis 8
