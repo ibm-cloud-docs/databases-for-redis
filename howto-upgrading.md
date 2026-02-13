@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-10"
+lastupdated: "2026-02-12"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -41,7 +41,7 @@ Upgrading is handled by [restoring a backup](/docs/cloud-databases?topic=cloud-d
 ### Upgrade paths
 {: #upgrading-paths}
 
-| Current version |	Major version upgrade path |
+| Current version | Major version upgrade path |
 | ---- | ----- |
 | {{site.data.keyword.databases-for-redis}} V7.2 |	-> {{site.data.keyword.databases-for-redis}} V8.2 |
 {: caption="Major version upgrade paths" caption-side="top"}
@@ -141,7 +141,10 @@ Complete the following on-demand backup and restore steps to upgrade. This examp
 4. On the **Restore** page, you can modify the new instance service name, region and resource allocation values. By default, the new instance is auto-sized to the same disk and memory allocation as the source instance at the time of the backup from which you are restoring. Under **Service configuration**, select latest available version as the Database Version.
 5. Click **Restore backup**.
 
-After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded instance can be accessed from the **Resource list**.
+   Keep "appendonly=yes" during backup-restoration. Switch to cache mode only after restoration completes to prevent data loss.
+   {: .note}
+
+   After the new instance finishes provisioning, your data in the backup file is restored into the new instance. The new upgraded instance can be accessed from the **Resource list**.
 
 Do not delete the source instance while the backup is restoring. Before you delete the old instance, wait until the new instance is provisioned and the backup is restored. Deleting an instance also deletes its backups.
 {: .note}
