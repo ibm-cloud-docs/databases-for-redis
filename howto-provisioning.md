@@ -15,7 +15,7 @@ subcollection: databases-for-redis
 # Provisioning
 {: #provisioning}
 
-Provision a {{site.data.keyword.databases-for-redis_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-redis/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external} or through pre-built, open-source and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-redis/ibm/latest){: external}.
+Provision a {{site.data.keyword.databases-for-redis_full}} deployment through the [catalog](https://cloud.ibm.com/databases/databases-for-redis/create){: external}, the [{{site.data.keyword.databases-for}} CLI plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference){: external}, the [{{site.data.keyword.databases-for}} API](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5){: external}, through [Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}, or through pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://registry.terraform.io/modules/terraform-ibm-modules/icd-redis/ibm/latest){: external}.
 
 ## Provisioning through the {{site.data.keyword.cloud_notm}} console
 {: #catalog}
@@ -46,7 +46,7 @@ For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-dat
 Fine tune your resource allocation. The available options differ based on your selected hosting model.
 
 - **Isolated:** Use the table to choose the machine size for each member of your deployment, and specify the disk size.
-- **Shared:** By default, the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations, select the *Custom* tile, which allows flexible resource configuration with 2+ cores. 
+- **Shared:** By default, the smallest possible resource allocation is selected. This is ideal for small applications or testing. For larger allocations, select the *Custom* tile, which allows flexible resource configuration with 2+ cores.
 
 The Shared Compute hosting model supports more fine-grained resource allocations that are not shown in the UI to maintain clarity. For more information, see [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 {: note}
@@ -117,7 +117,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    | `members_host_flavor` | To provision an Isolated or Shared Compute instance, use `{"members_host_flavor": "<members_host_flavor value>"}`. For Shared Compute, specify `multitenant`. For Isolated Compute, select desired CPU and RAM configuration. For more information, see the table below or [Hosting models](/docs/cloud-databases?topic=cloud-databases-hosting-models).| |
    | `--service-endpoints` [Required]{: tag-red} | Configure the [Service endpoints](/docs/cloud-databases?topic=cloud-databases-service-endpoints) of your deployment, either `public`, `private` or `public-and-private`. |  |
    {: caption="Basic command format fields" caption-side="top"}
-   
+
    In the CLI, `service-endpoints` is a flag, not a parameter.
    {: note}
 
@@ -125,7 +125,7 @@ Before provisioning, follow the instructions provided in the documentation to in
    {: #host-flavor-parameter-cli}
    {: cli}
 
-   The `members_host_flavor` parameter defines your Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration. 
+   The `members_host_flavor` parameter defines your Compute sizing. Input the appropriate value for your desired size. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
 
    | **Members host flavor** | **members_host_flavor value** |
    |:-------------------------:|:---------------------:|
@@ -198,7 +198,7 @@ Before provisioning, follow the instructions provided in the documentation to in
      ```
      {: codeblock}
 
-    - (Optional) Deleting a service instance. 
+    - (Optional) Deleting a service instance.
     Delete an instance by running a command like this one:
 
      ```sh
@@ -252,7 +252,7 @@ Follow these steps to provision using the [Resource Controller API](/apidocs/res
    ```
    {: pre}
 
-4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later. 
+4. Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=api) you want your database to be provisioned on. You can change this later.
 
 A host flavor represents fixed sizes of guaranteed resource allocations. To see which host flavors are available in your region, call the [host flavors capability endpoint](https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5#capability) like this:
 
@@ -418,7 +418,7 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
 
 
     For example, to make a Shared Compute instance, follow this example:
-   
+
    ```sh
    curl -X POST \
      https://resource-controller.cloud.ibm.com/v2/resource_instances \
@@ -432,14 +432,14 @@ To scale your instance up to 8 CPUs and `32768` megabytes of RAM, submit a scale
        "parameters": {
           "members_host_flavor": "multitenant",
           "service_endpoints": "private",
-          "members_memory_allocation_mb": 16384, 
-          "members_cpu_allocation_count": 4 
+          "members_memory_allocation_mb": 16384,
+          "members_cpu_allocation_count": 4
         }
       }'
    ```
    {: .pre}
 
-Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.  
+Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"members_host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `members_host_flavor value` parameters are listed in [Table 2](#host-flavor-parameter-api). For example, `{"members_host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
 ```sh
    curl -X POST \
@@ -463,7 +463,7 @@ Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the
    {: required}
 
 The fields in the command are described in the table that follows.
-   
+
    | Field | Description | Flag |
    |-------|------------|------------|
    | `NAME` [Required]{: tag-red} | The instance name can be any string and is the name that is used on the web and in the CLI to identify the new deployment. |  |
@@ -482,7 +482,7 @@ The fields in the command are described in the table that follows.
 {: #host-flavor-parameter-api}
 {: api}
 
-The `members_host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration. 
+The `members_host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
 
 | **Members host flavor** | **members_host_flavor value** |
 |:-------------------------:|:---------------------:|
@@ -520,9 +520,9 @@ CPU and RAM autoscaling is not supported on {{site.data.keyword.databases-for}} 
 
 Use Terraform to manage your infrastructure through the [`ibm_database` Resource for Terraform](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database) supports provisioning {{site.data.keyword.databases-for}} deployments. Alternatively, you can use Terraform IBM Modules to manage your infrastructure through [Terraform IBM Modules for {{site.data.keyword.databases-for-redis}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-redis/ibm/latest){: external}.
 
-Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later. 
+Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=terraform) you want your database to be provisioned on. You can change this later.
 
-Provision a {{site.data.keyword.databases-for-redis}} Shared hosting model instance with the `"host_flavor"` parameter set to `multitenant`. See the following example: 
+Provision a {{site.data.keyword.databases-for-redis}} Shared hosting model instance with the `"host_flavor"` parameter set to `multitenant`. See the following example:
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -567,7 +567,7 @@ output "ICD Etcd database connection string" {
 ```
 {: codeblock}
 
-Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections. 
+Provision a {{site.data.keyword.databases-for-redis}} Isolated instance with the same `"host_flavor"` parameter, setting it to the desired Isolated size. Available hosting sizes and their `host_flavor value` parameters are listed in [Table 1](#host-flavor-parameter-terraform). For example, `{"host_flavor": "b3c.4x16.encrypted"}`. Note that since the host flavor selection includes CPU and RAM sizes (`b3c.4x16.encrypted` is 4 CPU and 16 RAM), this request does not accept both, an Isolated size selection and separate CPU and RAM allocation selections.
 
 ```terraform
 data "ibm_resource_group" "group" {
@@ -613,7 +613,7 @@ Before executing a Terraform script on an existing instance, use the `terraform 
 {: #host-flavor-parameter-terraform}
 {: terraform}
 
-The `host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration. 
+The `host_flavor` parameter defines your Compute sizing. To provision a Shared Compute instance, specify `multitenant`. To provision an Isolated Compute instance, input the appropriate value for your desired CPU and RAM configuration.
 
 | **Host Flavor** | **host_flavor value** |
 |:-------------------------:|:---------------------:|
