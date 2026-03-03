@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2025
-lastupdated: "2025-07-25"
+  years: 2019, 2026
+lastupdated: "2026-03-03"
 
 keywords: redis, databases, scaling, manual scaling, disk I/O, memory, CPU
 
@@ -58,14 +58,14 @@ Disk allocation also affects the performance of the disk, with larger disks havi
 If you have configured Redis as a cache, persistence been disabled on your deployment. If you re-enable Redis persistence, be sure to scale your disk first to prevent losing data.
 
 You cannot scale down storage. You can recover space by backing up and restoring to a new deployment.
-{: tip} 
+{: tip}
 
 ### Memory
 {: #resources-scaling-memory}
 
 By default, your deployment is configured with a `noeviction` policy, so your memory resources should be scaled to fit your data set. Each data node contains a copy of your data, so the total amount of memory you use is approximately twice the size of your data set. When you add memory to the total allocation, it adds memory to both members equally.
 
-If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the RAM allocation that you want for your database. Note that Dedicated Core is deprecated, and will be removed in May 2025. 
+If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the RAM allocation that you want for your database. Note that Dedicated Core is deprecated, and will be removed in May 2025.
 
 Also, your deployment is configured with `maxmemory` is set to use 80% of the node's memory, so when scaling up memory to accommodate more data, you might also want to [adjust the `maxmemory` setting](/docs/databases-for-redis?topic=databases-for-redis-changing-configuration).
 
@@ -74,9 +74,9 @@ If you [configured Redis as a cache](/docs/databases-for-redis?topic=databases-f
 ### vCPU
 {: #resources-scaling-cores}
 
-If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database. 
+If you find that your database workloads need more CPU resources, you can scale the amount of CPU allocated to your service. If your database instance is on an Isolated Compute hosting model, select the CPU x RAM configuration that matches your resource needs. If your database instance is on a Shared Compute or Dedicated Core hosting model, select the CPU allocation that you want for your database.
 
-Old style dedicated core instances are deprecated, and will be removed in May 2025. For more information on the new hosting models, see the [Hosting models overview](/docs/cloud-databases?topic=cloud-databases-hosting-models). 
+Old style dedicated core instances are deprecated, and will be removed in May 2025. For more information on the new hosting models, see the [Hosting models overview](/docs/cloud-databases?topic=cloud-databases-hosting-models).
 
 ## Scaling considerations
 {: #resources-scaling-consider}
@@ -102,43 +102,43 @@ This is the only supported method for clients to restart their instances on {{si
 {: #review-resources-ui}
 {: ui}
 
-In the Resources tab, you find both "Hosting model" and "Resource allocations" tiles. These tiles reflect your current resources and hosting model. Selecting Configure allows you to adjust the settings in each tile. 
+In the Resources tab, you find both "Hosting model" and "Resource allocations" tiles. These tiles reflect your current resources and hosting model. Selecting Configure allows you to adjust the settings in each tile.
 
 ## Scaling in the UI
 {: #resources-scaling-ui}
 {: ui}
 
-In the Resources tab of the UI, select Configure on the Resource allocations tile. This opens up a panel where you can adjust your resources. 
+In the Resources tab of the UI, select Configure on the Resource allocations tile. This opens up a panel where you can adjust your resources.
 
-If your database is on the Isolated Compute hosting model, you see a "Host sizes" table, where you can select the vCPU and RAM configuration per member for your database. 
+If your database is on the Isolated Compute hosting model, you see a "Host sizes" table, where you can select the vCPU and RAM configuration per member for your database.
 
-If you are on the Shared Compute hosting model, you can see the Small configuration, providing 0.5 vCPU and 4 GB RAM per member; the Small Custom option; or Custom configuration. Small Custom indicates that your database was scaled with the CLI, API, or Terraform, which provides more fine-grained resource scaling, along with an option for automatically allocated vCPU pro-rated against RAM value. On the UI, you can scale to Small and Custom, but you can't scale to the fine-grained values provided by the CLI, API, or Terraform. With Custom, drag the slider or adjust the value in the input box to select your database's per member vCPU and RAM values. 
+If you are on the Shared Compute hosting model, you can see the Small configuration, providing 0.5 vCPU and 4 GB RAM per member; the Small Custom option; or Custom configuration. Small Custom indicates that your database was scaled with the CLI, API, or Terraform, which provides more fine-grained resource scaling, along with an option for automatically allocated vCPU pro-rated against RAM value. On the UI, you can scale to Small and Custom, but you can't scale to the fine-grained values provided by the CLI, API, or Terraform. With Custom, drag the slider or adjust the value in the input box to select your database's per member vCPU and RAM values.
 
-The "Disk (GB/member)" slider is your disk selection per member. Drag the slider or adjust the number in the input box to change the number of GB disk. Note that Disk is tied to IOPS at 1 GB = 10 IOPS. 
+The "Disk (GB/member)" slider is your disk selection per member. Drag the slider or adjust the number in the input box to change the number of GB disk. Note that Disk is tied to IOPS at 1 GB = 10 IOPS.
 
-Members is the number of members of your database. For Redis, members are set to 2. 
+Members is the number of members of your database. For Redis, members are set to 2.
 
-Review your total estimated cost in our calculator on the bottom. Note that if you have grandfathered costs, also known as legacy pricing structure, scaling your database instance removes some or all of your legacy pricing. For more information on grandfathering and when it ends, [please see the docs here]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-model-transition&interface=ui#hosting-model-transition-timeline-may25)). 
+Review your total estimated cost in our calculator on the bottom. Note that if you have grandfathered costs, also known as legacy pricing structure, scaling your database instance removes some or all of your legacy pricing. For more information on grandfathering and when it ends, [please see the docs here]([url](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-model-transition&interface=ui#hosting-model-transition-timeline-may25)).
 
-After you are done, click "Apply changes" to trigger the scaling operation. 
+After you are done, click "Apply changes" to trigger the scaling operation.
 
 ## Switch to and between hosting models in the UI
 {: #resources-switching-ui}
 {: ui}
 
-In the Resources tab of the UI, select Configure on the Hosting model tile. This opens up a panel where you can adjust your hosting model selection. 
+In the Resources tab of the UI, select Configure on the Hosting model tile. This opens up a panel where you can adjust your hosting model selection.
 
-The first option available is "Select your hosting model". Here, you can switch to a different hosting model. 
+The first option available is "Select your hosting model". Here, you can switch to a different hosting model.
 
-Next, you see the options to also adjust the resources of the new hosting model you've selected. Follow the instructions in the above section, "Scaling in the UI" to adjust your resources. 
+Next, you see the options to also adjust the resources of the new hosting model you've selected. Follow the instructions in the above section, "Scaling in the UI" to adjust your resources.
 
-Clicking "Apply changes" triggers this scale operation. 
+Clicking "Apply changes" triggers this scale operation.
 
-## Review current resources and hosting model 
+## Review current resources and hosting model
 {: #review-resources-cli}
 {: cli}
 
-[{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command. 
+[{{site.data.keyword.cloud_notm}} CLI cloud databases plug-in](/docs/databases-cli-plugin?topic=databases-cli-plugin-cdb-reference) supports viewing and scaling the resources on your deployment. Use the command `cdb deployment-groups` to see current resource information for your service, including which resource groups are adjustable. To scale any of the available resource groups, use `cdb deployment-groups-set` command.
 
 For example, with the following command you can view the resource groups for a deployment named "example-deployment". Note that this command also reveals if your database is a [Shared Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) instance through the `hostflavor` attribute. If the `hostflavor` is null, it is on an old style hosting model.
 
@@ -282,7 +282,7 @@ For more information, see [API Reference](https://{DomainName}/apidocs/cloud-dat
 Use the following command to review the value of the `host_flavor` attribute. This is null if the database is on a deprecated hosting model (not Shared or Isolated Compute).
 
 ```sh
-curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups 
+curl -X GET https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/groups
 -H 'Authorization: Bearer <>' \
 ```
 {: pre}
@@ -341,7 +341,7 @@ The `host_flavor` parameter defines your compute sizing. To provision a Shared C
 {: #review-resources-terraform}
 {: terraform}
 
-Review resource allocations to your database by checking your terraform scripts for `cpu { allocation_count = }`, `memory {allocation_mb = }`, and `disk { allocation_mb = }`. Review the `host_flavor` setting to determine if your database is a [Shared Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) style hosting model. If `host_flavor` does not exist, your database is on an old style hosting model. 
+Review resource allocations to your database by checking your terraform scripts for `cpu { allocation_count = }`, `memory {allocation_mb = }`, and `disk { allocation_mb = }`. Review the `host_flavor` setting to determine if your database is a [Shared Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-shared-compute-ui) or [Isolated Compute](https://cloud.ibm.com/docs/cloud-databases?topic=cloud-databases-hosting-models&interface=ui#hosting-models-iso-compute-ui) style hosting model. If `host_flavor` does not exist, your database is on an old style hosting model.
 
 ## Scaling with Terraform
 {: #resources-scaling-terraform}
@@ -350,7 +350,7 @@ Review resource allocations to your database by checking your terraform scripts 
 Before executing a Terraform script on an existing instance, use the `terraform plan` command to compare the current infrastructure state with the desired state defined in your Terraform files. Any alteration to the `resource_group_id`, `service plan`, `version`, `key_protect_instance`, `key_protect_key`, `backup_encryption_key_crn` attributes recreates your instance. For a list of current argument references with the `Forces new resource` specification, see the [ibm_database Terraform Registry](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/database){: external}.
 {: important}
 
-Scale your instance by adjusting your Terraform script for the resource you're interested in. In the following example, `cpu`, `memory`, and `disk` allocations are specified. Note that if you have a host flavor selected (Isolated Compute or Shared Compute Multitenant), keep the host flavor selection in your script. 
+Scale your instance by adjusting your Terraform script for the resource you're interested in. In the following example, `cpu`, `memory`, and `disk` allocations are specified. Note that if you have a host flavor selected (Isolated Compute or Shared Compute Multitenant), keep the host flavor selection in your script.
 
 To implement your change, run `terraform apply`.
 
@@ -393,13 +393,15 @@ output "ICD Redis database connection string" {
 ```
 {: codeblock}
 
+Alternatively, you can use pre-built, open-source, and enterprise-ready [Terraform IBM Modules (TIM)](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim) for [{{site.data.keyword.databases-for-redis}}](https://registry.terraform.io/modules/terraform-ibm-modules/icd-redis/ibm/latest){: external} that support the auto-scaling feature.
+
 ## Switching to and scaling hosting models in Terraform
 {: #resources-switching-terraform}
 {: terraform}
 
 Select the [hosting model](/docs/cloud-databases?topic=cloud-databases-hosting-models) you want your database to be scaled to. You can change this later.
 
-To scale your {{site.data.keyword.databases-for-redis}} instance to the Shared Compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared Compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`. 
+To scale your {{site.data.keyword.databases-for-redis}} instance to the Shared Compute hosting flavor, set the `"host_flavor"` parameter to `multitenant`. This works if you want to scale to the Shared Compute hosting flavor, or if you want to keep the host flavor and scale your resources. To implement your change, run `terraform apply`.
 
 See the following example:
 
