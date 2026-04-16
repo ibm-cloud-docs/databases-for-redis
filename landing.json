@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "title": "IBM Cloud® Databases for Redis Gen 1",
+  "title": "IBM Cloud® Databases for Redis",
   "introduction": "Redis is a blazingly fast, in-memory data structure store.",
   "product_page": "https://www.ibm.com/products/databases-for-redis",
   "console_page": "/databases/databases-for-redis/create",
