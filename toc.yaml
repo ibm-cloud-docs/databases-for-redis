@@ -9,7 +9,7 @@ toc:
     console-page: /catalog/services/databases-for-redis
     product-page: https://www.ibm.com/cloud/databases-for-redis
     path: databases-for-redis
-    label: Databases for Redis Gen 1
+    label: Databases for Redis
   entries:
   - navgroup:
       id: learn
