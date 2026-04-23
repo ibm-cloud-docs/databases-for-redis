@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024
-lastupdated: "2024-05-20"
+  years: 2024, 2026
+lastupdated: "2026-04-21"
 
 keywords: troubleshooting for Redis, common errors
 
@@ -28,7 +28,7 @@ content-type: troubleshoot
 
 {{site.data.keyword.databases-for-redis}} works with two members (master and replica) and three sentinels. The following reasons might be the cause of the `connection to master lost` message:
 
-a. Because of lower input/output operations per second (IOPS), master is busy and is not responding to sentinels, which returns this error message in LogDNA. 
+a. Because of lower input/output operations per second (IOPS), master is busy and is not responding to sentinels, which returns this error message in platform logs. 
 
 b. Because of network latency, sentinels are unable to communicate with master.
 
@@ -114,12 +114,12 @@ c. Do not reduce your RAM drastically. You are advised to decrement gradually.
 Ensure there is watermark memory left for Redis to perform its inherent processes.
 {: note} 
 
-## Error: READONLY You can't write against a read-only slave
+## Error: READONLY You can't write against a read-only replica
 {: #error-readonly}
 
 {{site.data.keyword.databases-for-redis}} has two nodes, master and replica. Users can connect only to master node and the replica node is used for ensuring high-availability, which is generally inaccessible to users. However, as with any remote connection, a switchover can occur where the replica is promoted to master. You can experience a momentary blip in service, and no other impact is expected if the nodes are configured correctly.
 
-a. Because of lower IOPS, master is busy and does not respond to sentinels, which returns this error message in LogDNA.
+a. Because of lower IOPS, master is busy and does not respond to sentinels, which returns this error message in platform logs.
 
 b. Because of network latency, sentinels are unable to communicate with master.
 
@@ -139,9 +139,3 @@ b. Certain clients have retry and reconnect logic built in. You can make use of 
 c. Retry and reconnect logic is strongly recommended for any cloud services.
 
  
-
-
-
-
-
-
