@@ -1,7 +1,7 @@
 ---
 copyright:
-  years: 2020, 2025
-lastupdated: "2025-10-22"
+  years: 2020, 2026
+lastupdated: "2026-07-13"
 
 keywords: acl, access control list, connection strings, admin, service credentials, new user, admin password, default user, rbac
 
@@ -122,6 +122,7 @@ These roles can also be combined to configure a user's level of access.
 - `admin` + `read` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 - `admin` + `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 - `read` + `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
+- + `read` - `write` : User will only have `read` role and will only be able to perform `read` operations. 
 
 These combinations provide different levels of access control. Choose the combination that aligns with your specific requirements and security considerations.
 
