@@ -33,6 +33,9 @@ toc:
       - learn-pricing.md
       - release-notes.md
       - learn-v8-features.md
+      - link:
+          label: Gen 2 docs
+          href: https://cloud.ibm.com/docs/databases-for-redis-gen2
   - navgroup:
       id: howto
       topics:
