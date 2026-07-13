@@ -14,7 +14,7 @@ subcollection: databases-for-redis
 # Managing users and roles
 {: #user-management}
 
-{{site.data.keyword.databases-for-redis_full}} instances come with authentication enabled and use Redis's built-in access control.They support multiple users and authentication through  [Access Control List (ACL) support](https://redis.io/topics/acl){: external}. 
+{{site.data.keyword.databases-for-redis_full}} instances come with authentication enabled and use Redis's built-in access control.They support multiple users and authentication through  [Access Control List (ACL) support](https://redis.io/topics/acl){: external}.
 
 
 ## Managing Redis users
@@ -115,14 +115,14 @@ These roles can also be combined to configure a user's level of access.
 - `admin` + `read`: Full `admin` control with the ability to run `read` operations.
 - `admin` + `write`: Full `admin` control with the ability to run `write` operations.
 - `admin` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
-- `read` + `write`: Users with both `read` and `write` roles can perform both `read` and `write` operations, but they won't have administrative privileges.
+- `read` + `write`: Users with both `read` and `write` roles can complete both `read` and `write` operations, but they won't have administrative privileges.
 - `read` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 - `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 - `admin` + `read` + `write`: Full `admin` control with the ability to run both `read` and `write` operations.
 - `admin` + `read` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 - `admin` + `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
 - `read` + `write` + `all`: Simplifies to `all`, which includes `admin`, `read`, and `write`.
-- + `read` - `write` : User will only have `read` role and will only be able to perform `read` operations. 
+- + `read` - `write` : User will only have `read` role and will only be able to complete `read` operations.
 
 These combinations provide different levels of access control. Choose the combination that aligns with your specific requirements and security considerations.
 
@@ -472,7 +472,7 @@ The _Foundation Endpoint_ that is shown in the _Overview_ of your service provid
 
 ```sh
 curl -X POST https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id}/users/{user_type} \
--H "Authorization: Bearer $APIKEY" \ 
+-H "Authorization: Bearer $APIKEY" \
 -H "Content-Type: application/json" \
 -d "{"user": {"username": "user", "password": "v3ry-1-secUre-pAssword-2"}}" \
 ```
@@ -480,7 +480,7 @@ curl -X POST https://api.{region}.databases.cloud.ibm.com/v5/ibm/deployments/{id
 
 To retrieve a user's connection strings, use the base URL with the `/users/{userid}/connections` endpoint.
 
-## Internal-use users 
+## Internal-use users
 {: #internal-users}
 
 There are four reserved users on your instance. Modifying these users causes your instance to become unstable or unusable.
