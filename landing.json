@@ -31,8 +31,8 @@
         "href": "/docs/databases-for-redis?topic=databases-for-redis-changing-configuration&interface=cli"
       },
       {
-        "title": "Connecting through the command-line interface",
-        "href": "/docs/databases-for-redis?topic=databases-for-redis-connecting-cli-client"
+        "title": "Gen 2 docs",
+        "href": "/docs/databases-for-redis-gen2"
       }
     ]
   },
