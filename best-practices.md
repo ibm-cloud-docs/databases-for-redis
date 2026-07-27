@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-01-22"
+lastupdated: "2026-07-27"
 
 keywords: redis, databases, best practices
 
@@ -20,7 +20,7 @@ Take time to review the following best practices that are recommended if you're 
 ## What is {{site.data.keyword.databases-for-redis}}?
 {: #what-is-redis}
 
-{{site.data.keyword.databases-for-redis}} is a managed Redis OSS service offered on {{site.data.keyword.Bluemix_notm}}. It is an in-memory _data structure store_ used as a database, cache, message broker, and streaming engine. Unlike traditional databases, which store data on disk, Redis stores data in memory (RAM) enabling low latency. The data is _ephemeral_, which enables {{site.data.keyword.databases-for-redis}} to offer top performance and high throughput. You can also configure Redis to store data persistently on disk by trading off performance with data availability, because this is achieved by enabling AOF (Append Only File) sync with RDB snapshots.
+{{site.data.keyword.databases-for-redis}} is a managed Redis OSS service that is offered on {{site.data.keyword.Bluemix_notm}}. It is an in-memory _data structure store_ used as a database, cache, message broker, and streaming engine. Unlike traditional databases, which store data on disk, Redis stores data in memory (RAM) enabling low latency. The data is _ephemeral_, which enables {{site.data.keyword.databases-for-redis}} to offer top performance and high throughput. You can also configure Redis to store data persistently on disk by trading off performance with data availability, because this is achieved by enabling AOF (Append Only File) sync with RDB snapshots.
 
 RDB snapshots are enabled for backup and high availability, even if persistence is disabled.
 {: note}
@@ -28,7 +28,7 @@ RDB snapshots are enabled for backup and high availability, even if persistence 
 ## Best practices for instance capacity planning
 {: #capacity-planning}
 
-You must plan {{site.data.keyword.databases-for-redis}} instance capacity based on your application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations can help you to optimize the size your instance.
+You must plan {{site.data.keyword.databases-for-redis}} instance capacity based on your application and architectural design, understand hardware requirements, and prepare for the increase or decrease in demand. The following recommendations can help you to optimize the size of your instance.
 
 Understand your data
 :   You are expected to know the data types, size, and lifetime of your data. This helps you understand the duration of data available in-memory before it gets deleted or moved.
