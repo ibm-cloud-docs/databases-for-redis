@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-08-20"
 
 keyowrds: redis, databases, upgrading, major versions, changing versions
 
@@ -155,6 +155,7 @@ Do not delete the source instance while the backup is restoring. Before you dele
 If you choose not to upgrade using restore and upgrade, {{site.data.keyword.databases-for-redis}} will be force upgraded to the next major version at the version end of life. 
 {: .note}
 
+This approach is not recommended for production environments. Major version upgrades can introduce changes to functionality, behavior, performance characteristics, configuration settings, or client compatibility that may affect existing applications. For more information, see [End-of-life procedure](https://cloud.ibm.com/docs/databases-for-redis?topic=databases-for-redis-versioning-policy#version-EOL). To reduce the risk of unexpected issues, perform a controlled upgrade and test your applications thoroughly against the target version before the end-of-life date. This process helps you identify and address compatibility issues, operational changes, and application impacts before upgrading your production environment.
 
 ## If you require data migration
 {: #upgrading-req-data-migration}
